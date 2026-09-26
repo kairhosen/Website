@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flight Logbook — User guide</title>
+<meta name="description" content="Complete guide to the features of Flight Logbook (Carnet de Vol), the flight tracking application for Microsoft Flight Simulator 2024." />
+<style>
+  :root {
+    --bg: #F4F7FA;
+    --panel: #FFFFFF;
+    --panel-border: #E1E6EB;
+    --text: #1A1A1A;
+    --text-secondary: #6B7280;
+    --accent: #0F6FB5;
+    --accent-soft: #E4F3FA;
+    --accent2: #FF8A3D;
+    --accent2-soft: #FFF1E4;
+    --danger: #E0505F;
+    --danger-soft: #FBE7E9;
+    --success-soft: #E6F5EA;
+    --success-text: #1E7A3D;
+    --code-bg: #EEF1F4;
+    --shadow: 0 1px 3px rgba(20, 30, 40, 0.08), 0 8px 24px rgba(20, 30, 40, 0.06);
+    --banner-grad: linear-gradient(100deg, #0B2545 0%, #0F5C8C 55%, #13A6C9 100%);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1B1E;
+      --panel: #26262A;
+      --panel-border: #3A3A40;
+      --text: #EDEDED;
+      --text-secondary: #A6A6AD;
+      --accent: #4FC3F7;
+      --accent-soft: #1F3A46;
+      --accent2: #FFB74D;
+      --accent2-soft: #3A2E1F;
+      --danger: #EF6B75;
+      --danger-soft: #3A2226;
+      --success-soft: #1E3326;
+      --success-text: #7EDBA0;
+      --code-bg: #323238;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1B1E;
+    --panel: #26262A;
+    --panel-border: #3A3A40;
+    --text: #EDEDED;
+    --text-secondary: #A6A6AD;
+    --accent: #4FC3F7;
+    --accent-soft: #1F3A46;
+    --accent2: #FFB74D;
+    --accent2-soft: #3A2E1F;
+    --danger: #EF6B75;
+    --danger-soft: #3A2226;
+    --success-soft: #1E3326;
+    --success-text: #7EDBA0;
+    --code-bg: #323238;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  .hero {
+    background: var(--banner-grad);
+    color: #fff;
+    padding: 40px 24px 34px;
+    text-align: center;
+    position: relative;
+  }
+  .hero .icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .hero h1 { margin: 0 0 8px; font-size: 30px; letter-spacing: 0.3px; }
+  .hero p { margin: 0; opacity: 0.92; font-size: 15px; }
+  .hero .badge {
+    display: inline-block; margin-top: 14px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 4px 12px; border-radius: 999px; font-size: 12.5px;
+  }
+  .theme-toggle {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff; border-radius: 999px;
+    padding: 7px 14px; font-size: 13px; cursor: pointer;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.25); }
+  .lang-switch {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff; border-radius: 999px; text-decoration: none;
+    padding: 7px 14px; font-size: 13px;
+  }
+  .lang-switch a { color: #fff; text-decoration: none; }
+  .lang-switch a:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .hero { padding-top: 70px; }
+  }
+
+  .layout {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 28px;
+    padding: 28px 24px 60px;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    box-shadow: var(--shadow);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+  nav.toc h2 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-secondary); margin: 4px 0 10px;
+  }
+  nav.toc ul { list-style: none; margin: 0; padding: 0; }
+  nav.toc li { margin: 2px 0; }
+  nav.toc a {
+    display: block; padding: 7px 10px; border-radius: 8px;
+    color: var(--text); text-decoration: none; font-size: 13.5px;
+  }
+  nav.toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  nav.toc .sub { padding-left: 20px; font-size: 12.5px; }
+  nav.toc .sub a { color: var(--text-secondary); padding: 5px 10px; }
+
+  main { min-width: 0; }
+
+  section { margin-bottom: 46px; scroll-margin-top: 16px; }
+  section.tab-section { scroll-margin-top: 16px; }
+
+  h2.section-title {
+    font-size: 22px; margin: 0 0 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  h2.section-title .emoji { font-size: 24px; }
+  .section-lead { color: var(--text-secondary); margin: 0 0 20px; font-size: 15px; }
+
+  h3 { font-size: 16.5px; margin: 28px 0 10px; }
+  h4 { font-size: 14.5px; margin: 20px 0 8px; color: var(--accent); }
+
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 5px; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    margin-bottom: 18px;
+  }
+
+  figure { margin: 16px 0 22px; }
+  figure img {
+    width: 100%; max-width: 760px; display: block;
+    border-radius: 10px; border: 1px solid var(--panel-border);
+    box-shadow: var(--shadow);
+  }
+  figcaption {
+    margin-top: 8px; font-size: 12.5px; color: var(--text-secondary);
+    max-width: 760px;
+  }
+  .shot-row {
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .shot-row figure { flex: 1 1 340px; margin: 16px 0; }
+  .shot-row figure img { max-width: 100%; }
+
+  kbd, .ui {
+    background: var(--code-bg); border: 1px solid var(--panel-border);
+    border-radius: 5px; padding: 1px 7px; font-size: 0.92em;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  }
+  .btn-label {
+    display: inline-block; background: var(--accent-soft); color: var(--accent);
+    border-radius: 6px; padding: 2px 9px; font-size: 0.9em; font-weight: 600;
+    white-space: nowrap;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 10px 0 18px;
+    font-size: 13.5px;
+  }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--panel-border); }
+  th { color: var(--text-secondary); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:last-child td { border-bottom: none; }
+
+  .callout {
+    border-radius: 10px; padding: 14px 16px; margin: 16px 0;
+    font-size: 13.8px; border: 1px solid transparent;
+  }
+  .callout.tip { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+  .callout.warn { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
+  .callout.note { background: var(--accent2-soft); border-color: color-mix(in srgb, var(--accent2) 30%, transparent); }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  .example {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .example h4 { margin: 0 0 8px; color: var(--accent); }
+  .example ol { margin-bottom: 0; }
+
+  .grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--code-bg); border-radius: 999px;
+    padding: 3px 11px; font-size: 12px; margin: 2px 4px 2px 0;
+  }
+
+  footer {
+    text-align: center; color: var(--text-secondary);
+    font-size: 12.5px; padding: 30px 24px 50px;
+  }
+
+  code.path {
+    font-family: ui-monospace, Consolas, monospace;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 5px; font-size: 0.92em;
+  }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { position: static; max-height: none; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <nav class="lang-switch" aria-label="Language"><a href="guia-usuario.html" hreflang="es" lang="es">Español</a> · <a href="guide-utilisateur.html" hreflang="fr" lang="fr">Français</a></nav>
+  <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark mode</button>
+  <div class="icon">🧭</div>
+  <h1>Flight Logbook — User guide</h1>
+  <p>Flight tracking · Microsoft Flight Simulator 2024</p>
+  <span class="badge">Version 1.0.23 · Windows · native application</span>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ul>
+      <li><a href="#overview">1. Overview</a></li>
+      <li><a href="#first-launch">2. First launch</a></li>
+      <li><a href="#interface">3. General interface</a></li>
+      <li><a href="#flights-tab">4. Flights tab</a>
+        <ul class="sub">
+          <li><a href="#flights-manual">Manual entry</a></li>
+          <li><a href="#flights-simbrief">SimBrief import</a></li>
+          <li><a href="#flights-tracking">Live tracking</a></li>
+          <li><a href="#flights-landing">Landing detection</a></li>
+        </ul>
+      </li>
+      <li><a href="#map-tab">5. Map tab</a></li>
+      <li><a href="#history-tab">6. Flight history</a></li>
+      <li><a href="#stats-tab">7. Statistics</a></li>
+      <li><a href="#settings-tab">8. Settings</a></li>
+      <li><a href="#log-tab">9. Log</a></li>
+      <li><a href="#tips">10. Tips &amp; good practice</a></li>
+      <li><a href="#troubleshooting">11. Troubleshooting</a></li>
+      <li><a href="#appendix-licenses">Appendix — Sources and licenses</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="callout note">
+      <strong>Screenshots</strong>
+      The screenshots in this guide show the application in French; the English interface has
+      exactly the same layout, with the labels quoted in the text.
+    </div>
+
+    <section id="overview">
+      <h2 class="section-title"><span class="emoji">🧭</span> 1. Overview</h2>
+      <p class="section-lead">What Flight Logbook does, and who it is for.</p>
+      <div class="card">
+        <p><strong>Flight Logbook</strong> (Carnet de Vol) is a standalone Windows application that
+        keeps the history of every flight you fly in <strong>Microsoft Flight Simulator 2024</strong>.
+        It works in three complementary ways:</p>
+        <ul>
+          <li><strong>Live tracking</strong>: connected to MSFS through SimConnect, it detects the
+          takeoff, records the GPS track second by second, detects the landing and rates it, then
+          saves the flight automatically when tracking stops.</li>
+          <li><strong>Manual entry</strong>: to log a flight afterwards, without live tracking.</li>
+          <li><strong>Import</strong>: from a <strong>SimBrief</strong> flight plan (pre-filling the
+          form) or from a <strong>SimToolKitPro</strong> export (bulk history import).</li>
+        </ul>
+        <p>All data stays local, in a <strong>SQLite</strong> database next to the executable — no
+        data is sent to any server, apart from the read-only calls to SimBrief, adsbdb and
+        aviationweather.gov described in this guide.</p>
+      </div>
+    </section>
+
+    <section id="first-launch">
+      <h2 class="section-title"><span class="emoji">🚀</span> 2. First launch</h2>
+      <p class="section-lead">What happens automatically the first time you open the application.</p>
+      <div class="card">
+        <p>On the very first start the database is empty: the application then
+        <strong>automatically</strong> downloads, in the background, the two reference datasets
+        the search fields need:</p>
+        <table>
+          <tr><th>Dataset</th><th>Source</th><th>Approximate size</th></tr>
+          <tr><td>Airports</td><td>ourairports-data (GitHub)</td><td>~72,000 airports</td></tr>
+          <tr><td>Aircraft types</td><td>rikgale/ICAOList (GitHub)</td><td>~2,800 types</td></tr>
+        </table>
+        <p>No action is required: you only need an Internet connection for this first launch. You
+        can update them manually at any time from the <a href="#settings-tab"><strong>Settings</strong></a> tab.</p>
+        <div class="callout note">
+          <strong>Files created next to the executable</strong>
+          <code class="path">carnetdevol.db</code> (your flights and the reference data),
+          <code class="path">carnetdevol.log</code> (SimConnect connection log),
+          <code class="path">theme.txt</code> (light/dark theme) and, once you pick a language,
+          <code class="path">settings.json</code>. These files are not part of the installation: if
+          you move the executable, copy them along with it (together with the
+          <code class="path">Languages</code> folder shipped with the application) to keep your
+          history and settings.
+        </div>
+      </div>
+    </section>
+
+    <section id="interface">
+      <h2 class="section-title"><span class="emoji">🖥️</span> 3. General interface</h2>
+      <p class="section-lead">The banner, the connection indicator, the six tabs, the theme and the language.</p>
+      <div class="card">
+        <p>The main window has three fixed areas, whatever the active tab:</p>
+        <ul>
+          <li>A <strong>banner</strong> at the top, with the <span class="btn-label">🌙 Dark mode</span>
+          / <span class="btn-label">☀️ Light mode</span> button that instantly switches the whole
+          application theme (remembered between sessions);</li>
+          <li>Just below, a <strong>thin status bar</strong> with a coloured dot (red = not
+          connected, green = connected) and a text showing the connection state to MSFS 2024. While
+          it is not connected, the application retries automatically every <strong>5 seconds</strong>,
+          without any action from you;</li>
+          <li><strong>Six tabs</strong>: Flights, Map, Flight history, Statistics, Settings, Log —
+          described in the following sections.</li>
+        </ul>
+        <p>The application is displayed in the <strong>Windows language</strong> when it is
+        available (English, French or Spanish, whatever the regional variant: Canadian or Belgian French,
+        British or American English…), and in <strong>English</strong> otherwise. You can change it
+        at any time in the <a href="#settings-tab">Settings</a> tab.</p>
+        <div class="shot-row">
+          <figure>
+            <img src="images/en-onglet-vols-sombre.png" alt="Application in dark mode, Flights tab, connected to MSFS 2024" loading="lazy" />
+            <figcaption>Dark mode (default on first launch) — connected to MSFS 2024.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/en-onglet-vols-clair.png" alt="Application in light mode, Flights tab" loading="lazy" />
+            <figcaption>The same screen in light mode, after clicking the theme button.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="flights-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">✈️</span> 4. Flights tab</h2>
+      <p class="section-lead">The heart of the application: enter, import or record a flight live.</p>
+
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-vols.png" alt="Flights tab: London – Paris flight imported from SimBrief, tracking in progress" loading="lazy" />
+        <figcaption>The flight form, here filled in by the SimBrief import during live tracking:
+        airports, aircraft, date/time, distance, duration, notes, airline callsign, cost index and
+        flight level.</figcaption>
+      </figure>
+
+      <h3 id="flights-manual">Manual entry</h3>
+      <div class="card">
+        <p>To log a flight without live tracking:</p>
+        <ol>
+          <li>Click <span class="btn-label">🆕 New flight</span> to start from an empty form.</li>
+          <li>Fill in the <strong>departure airport</strong> and the <strong>arrival airport</strong>:
+          both fields accept an <strong>ICAO</strong> or <strong>IATA</strong> code or part of an
+          <strong>airport name</strong> — a list of suggestions appears as you type, to pick with
+          the mouse or the keyboard.</li>
+          <li>Fill in the <strong>aircraft</strong> the same way (ICAO code or name).</li>
+          <li>The <strong>distance (Nm)</strong> is computed automatically as the crow flies (great
+          circle) as soon as departure and arrival are chosen — you can correct it by hand if needed
+          (for example to reflect a longer actual route).</li>
+          <li>Complete the departure <strong>UTC date/time</strong> (strict formats
+          <code class="path">dd/mm/yyyy</code> and <code class="path">hh:mm</code>), the
+          <strong>duration</strong> in minutes, and any <strong>notes</strong>.</li>
+          <li>Click <span class="btn-label">Save flight</span>.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>Weather icon ⛅</strong>
+          Each airport field has a small icon on its right: hover over it to show the raw
+          <strong>METAR</strong> (live from aviationweather.gov) of the airport currently selected or typed.
+        </div>
+      </div>
+
+      <h3 id="flights-simbrief">SimBrief import</h3>
+      <div class="card">
+        <p>If you plan your flights with <a href="https://www.simbrief.com/" target="_blank" rel="noopener">SimBrief</a>,
+        the application can fetch your <strong>latest flight plan</strong> and fill in the form for
+        you (the SimBrief API only returns the most recent flight, never a history).</p>
+        <ol>
+          <li>First enter your <strong>SimBrief username</strong> in the
+          <a href="#settings-tab">Settings</a> tab (once).</li>
+          <li>In the Flights tab, click <span class="btn-label">📥 SimBrief import</span>.</li>
+          <li>A window opens, fetches the plan and shows the route, aircraft, distance, estimated
+          departure time, duration and airline callsign.</li>
+          <li>Click <strong>Import</strong> to copy all these values into the form (including the
+          planned <strong>Cost index</strong> and <strong>Flight level</strong>, read-only), or
+          <strong>Cancel</strong> to change nothing.</li>
+        </ol>
+        <figure>
+          <img src="images/en-dialogue-simbrief.png" alt="SimBrief import window showing an error message for an unknown username" loading="lazy" />
+          <figcaption>The SimBrief import window. Here with an invalid username, to show the
+          explicit error message returned when the SimBrief identifier is wrong or has no recent
+          flight plan.</figcaption>
+        </figure>
+        <div class="callout tip">
+          <strong>Airline callsign</strong>
+          A SimBrief import also tries to resolve the airline's radio callsign (e.g.
+          “AIRFRANS”) through <a href="https://www.adsbdb.com/" target="_blank" rel="noopener">adsbdb</a>,
+          from the airline ICAO code. The 📋 button next to the field copies the callsign to the clipboard.
+        </div>
+        <div class="callout note">
+          <strong>Resume last flight</strong>
+          After a SimBrief import, if the most recent flight already saved in the database matches
+          the imported plan exactly (same airports and same aircraft), the
+          <span class="btn-label">⏮ Resume last flight</span> button becomes available. It resumes
+          live tracking on that existing flight — useful after restarting MSFS or the application
+          mid-flight, without losing the track already recorded.
+        </div>
+      </div>
+
+      <h3 id="flights-tracking">Live tracking (SimConnect)</h3>
+      <div class="card">
+        <p>When MSFS 2024 is running and the application is connected to it (green dot in the
+        status bar), live tracking can start in two ways:</p>
+        <ul>
+          <li><strong>Automatically</strong> — as soon as the aircraft taxis (ground speed
+          &gt; 3 kt) near an already known departure airport (itself detected automatically within
+          5 Nm of the first ground position received).</li>
+          <li><strong>Manually</strong> — by choosing the departure airport and clicking
+          <span class="btn-label">▶ Start tracking</span>.</li>
+        </ul>
+        <p>During tracking, the <a href="#map-tab">Map</a> tab shows the aircraft position live and
+        draws the path flown. As soon as the <a href="#flights-landing">landing is detected</a>,
+        the <strong>Arrival airport</strong> field fills itself in with the nearest airport (within
+        5 Nm), if it was empty. To finish:</p>
+        <ol>
+          <li>Click <span class="btn-label">⏹ End flight</span>.</li>
+          <li>If no arrival airport was chosen, the application uses the one nearest to the current
+          position (within 5 Nm); if none is found, select it yourself and click the button again.
+          An arrival filled in automatically at landing is also re-evaluated at that point (useful
+          after a touch-and-go at another airfield).</li>
+          <li>The flight is <strong>saved automatically</strong>: actual distance flown (computed
+          from the GPS track, not as the crow flies), duration, maximum altitude, aircraft and
+          landing data are all filled in without manual entry.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>Aircraft detected automatically</strong>
+          As soon as it connects to MSFS, the application identifies the aircraft loaded in the
+          simulator (MSFS name and ICAO type, e.g. “C172SP G1000 Passengers” → <strong>C172 - CESSNA
+          172 Skyhawk</strong>) and shows it in the <strong>Aircraft</strong> field of the Flights
+          tab; it updates if you change aircraft in the simulator. It never replaces an aircraft you
+          chose or imported from SimBrief: if you type in this field yourself, detection stops until
+          the next <span class="btn-label">🆕 New flight</span>. An aircraft with no match in the
+          reference data is added to the aircraft list automatically.
+        </div>
+      </div>
+
+      <h3 id="flights-landing">Landing detection</h3>
+      <div class="card">
+        <p>During live tracking, the landing is measured on every simulator frame (about 45 times
+        per second), not once per second:</p>
+        <ul>
+          <li><strong>Touchdown vertical speed</strong>: the one measured by MSFS itself when the
+          wheels touch, perpendicular to the runway (accurate even on a sloping runway). The main
+          gear contact is used, not the softer nose-wheel contact.</li>
+          <li><strong>Load factor (G)</strong>: the peak measured within 2 seconds after touchdown.</li>
+          <li><strong>Bounces</strong>: if the aircraft becomes airborne again and touches down
+          again, each bounce is counted and the landing is rated on the hardest contact. Micro
+          lift-offs of a few hundredths of a second while the gear compresses do not count, and a
+          touch-and-go or go-around (more than 10 s airborne) is not a bounce.</li>
+          <li><strong>Pitch and bank</strong> at touchdown (positive pitch = nose up).</li>
+        </ul>
+        <p>The landing is confirmed once the aircraft has stayed <strong>3 seconds on the
+        ground</strong> (so a possible bounce can be counted); a pop-up then shows these values, an
+        icon and an automatic quality rating, until you close it with its cross:</p>
+        <table>
+          <tr><th>Touchdown vertical speed</th><th>Quality shown</th><th>Icon</th></tr>
+          <tr><td>&lt; 100 ft/min</td><td>Very soft</td><td>cloud</td></tr>
+          <tr><td>100 – 249 ft/min</td><td>Soft</td><td>feather</td></tr>
+          <tr><td>250 – 499 ft/min</td><td>Normal</td><td>arrow to the runway</td></tr>
+          <tr><td>500 – 699 ft/min</td><td>Firm</td><td>arrow and impacts</td></tr>
+          <tr><td>≥ 700 ft/min</td><td>Very firm</td><td>anvil</td></tr>
+        </table>
+        <figure>
+          <img src="../../assets/img/carnetdevol/en-atterrissage.png" alt="Landing pop-up: Soft, 180 ft/min, 1.28 G, feather icon" loading="lazy" style="max-width: 344px;" />
+          <figcaption>The landing pop-up after a “Soft” touchdown; the cross at the top right closes it.</figcaption>
+        </figure>
+        <p>This rating and these values are also stored with the flight and can be viewed later in
+        the <a href="#history-tab">Flight history</a> (“Landing (ft/min)”, “Landing (G)”, “Bounces”
+        and “Landing quality” columns), for example to filter your best — or worst — landings.</p>
+        <div class="callout note">
+          <strong>Tracking stopped right after touchdown</strong>
+          If you click <span class="btn-label">⏹ End flight</span> before the 3 seconds on the
+          ground, the landing in progress is still saved with the flight.
+        </div>
+      </div>
+
+      <div class="example">
+        <h4>Example — a flight tracked from start to finish</h4>
+        <ol>
+          <li>MSFS 2024 is open, with a flight loaded at the departure gate. The status bar turns green.</li>
+          <li>The aircraft loaded in MSFS appears by itself in the <span class="ui">Aircraft</span> field.</li>
+          <li>You start taxiing: the departure airport fills itself in, tracking starts
+          automatically, and the <span class="ui">Map</span> tab starts drawing your position.</li>
+          <li>In flight, you check the <span class="ui">Live data</span> panel (altitude, heading,
+          speeds, ETA) directly on the map.</li>
+          <li>Three seconds after touchdown, a pop-up shows your landing quality (touchdown speed,
+          G, bounces, pitch) and the arrival airport fills itself in.</li>
+          <li>Once parked, click <span class="btn-label">⏹ End flight</span>: the flight appears
+          immediately in the <span class="ui">Flight history</span>, GPS track included.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="map-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🗺️</span> 5. Map tab</h2>
+      <p class="section-lead">OpenStreetMap map, live position, flight track and planned route.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-carte.jpg" alt="Map tab: London – Paris flight tracked live, with the planned route, the TOC/TOD markers and the live data panel" loading="lazy" />
+        <figcaption>Live tracking: path flown in red, SimBrief planned route in blue with its
+        TOC/TOD markers, aircraft icon oriented along the heading, and the “Live data” panel at
+        the bottom of the screen.</figcaption>
+      </figure>
+      <div class="card">
+        <p>Use the mouse to move around the map (drag to pan, wheel to zoom) or the buttons stacked
+        at the top right:</p>
+        <table>
+          <tr><th>Button</th><th>Action</th></tr>
+          <tr><td>Planned route (dotted route icon)</td><td>Shows/hides the planned route of the
+          imported SimBrief plan, in <strong>blue</strong> — handy to compare the route actually
+          flown (red track) with the planned one. The planned top of climb and top of descent are
+          marked with a yellow dot labelled <strong>TOC</strong> and <strong>TOD</strong>.</td></tr>
+          <tr><td>Recenter (crosshair icon)</td><td>Turns automatic map following of the aircraft
+          back on. Following turns itself off as soon as you drag the map by hand, so you can look
+          elsewhere without being forcibly “recentered”.</td></tr>
+          <tr><td>Dark map (moon/sun)</td><td>Switches the look of the OpenStreetMap tiles,
+          independently of the application theme.</td></tr>
+          <tr><td>+ / −</td><td>Zoom in / out.</td></tr>
+        </table>
+        <p>A graduated <strong>vertical scale</strong> (in Nm) is shown below these buttons as soon
+        as the tab opens and is recomputed automatically at every zoom or position change, like on
+        a paper chart. It keeps the width of the buttons, with the value and the unit on two lines.</p>
+        <p>At the top left, the <strong>© OpenStreetMap contributors</strong> notice credits the map
+        data (ODbL license, see the <a href="#appendix-licenses">appendix</a>); clicking it opens the
+        OpenStreetMap license page in your browser.</p>
+        <p>During active tracking, the <strong>Live data</strong> panel at the bottom of the map
+        shows: altitude, heading, ground speed, vertical speed, GPS position, elapsed time,
+        estimated arrival time / remaining flight time, and the connection state. It can be
+        collapsed with the <strong>−</strong> button in its corner to free up space on the map.</p>
+        <div class="callout tip">
+          <strong>Replay the track of a past flight</strong>
+          In the <a href="#history-tab">Flight history</a>, <strong>double-click</strong> a flight
+          that was tracked live (“Map” column checked): the application switches to this tab
+          automatically and draws its full GPS path, zoomed to fit the whole route.
+        </div>
+      </div>
+    </section>
+
+    <section id="history-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📖</span> 6. Flight history</h2>
+      <p class="section-lead">All your saved flights, filterable column by column.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-historique.png" alt="Flight history table with its column filters" loading="lazy" />
+        <figcaption>Each column has its own filter (free text, or a drop-down list for
+        “Live tracked” and “Map”).</figcaption>
+      </figure>
+      <div class="card">
+        <p>The table lists every saved flight, most recent first, with: departure/arrival dates,
+        airports, aircraft, distance, duration, maximum altitude, landing data (vertical speed, G,
+        number of bounces, quality), whether the flight was tracked live, and whether it has a GPS track.</p>
+        <ul>
+          <li><strong>Filter</strong>: type in the field under any column header (contained text,
+          case-insensitive); combine several columns at once.</li>
+          <li><strong>Reset</strong>: the <span class="btn-label">↺ Reset filters</span> button clears
+          all filters in one click.</li>
+          <li><strong>View the track</strong>: double-click a row to open it on the
+          <a href="#map-tab">map</a> (only if a GPS track exists).</li>
+          <li><strong>Delete</strong>: each row's “Delete” button asks for confirmation before a
+          <strong>permanent, irreversible</strong> deletion.</li>
+        </ul>
+      </div>
+      <div class="example">
+        <h4>Example — find your firmest landings</h4>
+        <ol>
+          <li>Open <span class="ui">Flight history</span>.</li>
+          <li>In the <span class="ui">Landing quality</span> column filter, type
+          <code class="path">firm</code> — the list keeps only the “Firm” and “Very firm” flights
+          (the filter checks whether the text is contained, so both labels match).</li>
+          <li>Then sort by clicking the <span class="ui">Landing (ft/min)</span> header to rank them
+          from hardest to softest.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="stats-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📊</span> 7. Statistics</h2>
+      <p class="section-lead">Totals and breakdowns, with filters by aircraft and by airport.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-stats.png" alt="Statistics tab: summary and breakdowns by aircraft and by airport" loading="lazy" />
+        <figcaption>Summary (flights, flight hours, total distance) and three breakdown tables,
+        sorted by number of flights.</figcaption>
+      </figure>
+      <div class="card">
+        <p>This tab refreshes automatically every time you select it, so it never shows outdated
+        figures after a flight is added or deleted.</p>
+        <ul>
+          <li><strong>Filters</strong>: three drop-down lists (aircraft, departure airport, arrival
+          airport), combinable, filled automatically from your existing flights.</li>
+          <li><strong>Summary</strong>: number of flights, total flight hours and total distance
+          (Nm) for the filtered selection.</li>
+          <li><strong>Breakdowns</strong>: three tables (by aircraft, by departure airport, by
+          arrival airport), each with flights / hours / distance, sorted from most to least frequent.</li>
+        </ul>
+        <p>The <span class="btn-label">↺ Reset filters</span> button goes back to “(All)”
+        everywhere; <span class="btn-label">🔄 Refresh</span> forces an immediate recalculation.</p>
+      </div>
+    </section>
+
+    <section id="settings-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">⚙️</span> 8. Settings</h2>
+      <p class="section-lead">Application language, SimBrief username, airport/aircraft data updates, and SimToolKitPro import.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-config.png" alt="Settings tab with the Language, SimBrief, Airports and Aircraft blocks" loading="lazy" />
+        <figcaption>Language choice, SimBrief username, then counters and last update date for
+        each reference dataset.</figcaption>
+      </figure>
+      <div class="card">
+        <h4>🌐 Language</h4>
+        <p>The <strong>Application language</strong> list only offers the available languages
+        (currently <strong>English</strong>, <strong>Español</strong> and <strong>Français</strong>). The change is
+        <strong>immediate</strong>, without restarting: menus, tabs, columns and messages switch to
+        the new language, including the landing quality of flights already saved.</p>
+        <p>Your choice is saved in <code class="path">settings.json</code>, next to the executable,
+        and then takes precedence over the Windows language at every launch. Delete this file to go
+        back to the Windows language.</p>
+        <div class="callout note">
+          <strong>Language files</strong>
+          Each language is a text file in the <code class="path">Languages</code> folder, shipped
+          next to the executable and named after the international language code
+          (<code class="path">fr.json</code>, <code class="path">en.json</code>). To add a language,
+          copy <code class="path">en.json</code> under the new code (for example
+          <code class="path">de.json</code>), translate the texts and the <code class="path">_name</code>
+          value (name shown in the list), then restart the application. Any missing text is shown in English.
+        </div>
+
+        <h4>🛰️ SimBrief</h4>
+        <p>The <strong>SimBrief username</strong> field is saved automatically as soon as you leave
+        it (no “Save” button needed). This identifier is used by the
+        <a href="#flights-simbrief">SimBrief import</a> button of the Flights tab.</p>
+
+        <h4>🌍 Airports &amp; 🛩️ Aircraft</h4>
+        <p>Each block shows the number of entries currently in the database and the last update
+        date, with a button to download the latest source again
+        (<a href="https://github.com/davidmegginson/ourairports-data" target="_blank" rel="noopener">ourairports-data</a>
+        for airports, <a href="https://github.com/rikgale/ICAOList" target="_blank" rel="noopener">rikgale/ICAOList</a>
+        for aircraft). An update never deletes your flights: it only touches the reference tables.</p>
+
+        <h4>📥 SimToolKitPro import</h4>
+        <p>If you used SimToolKitPro for your logbook before, you can import its whole history,
+        exported as CSV, in one go:</p>
+        <ol>
+          <li>Make sure the <strong>airport</strong> data is up to date (a flight whose airport is
+          missing from the reference data is skipped).</li>
+          <li>Click <strong>Choose a CSV file and import</strong>, then select the export.</li>
+          <li>A summary is shown: number of flights imported, duplicates already present and
+          skipped, flights skipped because an airport was not recognised, and invalid rows skipped.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>No risk of duplicates</strong>
+          Importing the same file several times never adds the same flight twice.
+        </div>
+      </div>
+    </section>
+
+    <section id="log-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📝</span> 9. Log</h2>
+      <p class="section-lead">The technical history of connections to MSFS, to diagnose a connection problem.</p>
+      <figure>
+        <img src="images/en-onglet-journal.png" alt="Log tab showing a preview of carnetdevol.log" loading="lazy" />
+        <figcaption>Preview of the last 200 lines of <code class="path">carnetdevol.log</code>.</figcaption>
+      </figure>
+      <div class="card">
+        <p>Every connection attempt, disconnection and SimConnect error is recorded in
+        <code class="path">carnetdevol.log</code>, next to the executable, together with the
+        aircraft detected in the simulator and the details of each landing measurement (touchdown
+        speed reported by MSFS, final result). The log entries themselves are written in French.
+        Two buttons:</p>
+        <ul>
+          <li><span class="btn-label">Open the log file</span> — opens it in your default text
+          viewer, to read it in full or attach it to a bug report.</li>
+          <li><span class="btn-label">Refresh preview</span> — refreshes the preview shown directly
+          in the application (the last 200 lines).</li>
+        </ul>
+        <p>While MSFS is not running, only the first connection failure is detailed, followed by a
+        one-line reminder roughly every 5 minutes. Beyond 5 MB, the log is renamed to
+        <code class="path">carnetdevol.old.log</code> (replacing the previous one) and a new file
+        starts.</p>
+      </div>
+    </section>
+
+    <section id="tips">
+      <h2 class="section-title"><span class="emoji">💡</span> 10. Tips &amp; good practice</h2>
+      <div class="card">
+        <h4>What the application does automatically, without any action from you</h4>
+        <table>
+          <tr><th>Situation</th><th>Automatic behaviour</th></tr>
+          <tr><td>First launch, empty database</td><td>Download of the airport/aircraft reference data</td></tr>
+          <tr><td>No language chosen</td><td>Display in the Windows language, or in English if it is not available</td></tr>
+          <tr><td>MSFS not connected</td><td>New connection attempt every 5 seconds</td></tr>
+          <tr><td>Aircraft on the ground, departure airport unknown</td><td>Detection of the nearest airport (within 5 Nm)</td></tr>
+          <tr><td>Connected to MSFS, Aircraft field empty</td><td>Display of the aircraft loaded in the simulator</td></tr>
+          <tr><td>Aircraft starting to taxi (&gt; 3 kt)</td><td>Tracking starts automatically</td></tr>
+          <tr><td>Landing detected, no arrival chosen</td><td>Arrival airport filled in with the nearest one</td></tr>
+          <tr><td>Tracking ended with no arrival chosen</td><td>Detection of the nearest arrival airport</td></tr>
+          <tr><td>Aircraft flown not in the reference data</td><td>Added automatically to the aircraft list</td></tr>
+        </table>
+
+        <h4>Application files</h4>
+        <p>All your data lives in files next to <code class="path">CarnetDeVol.exe</code>:</p>
+        <div>
+          <span class="pill">💾 carnetdevol.db — your flights and reference data</span>
+          <span class="pill">📝 carnetdevol.log — connection log</span>
+          <span class="pill">🎨 theme.txt — chosen theme</span>
+          <span class="pill">⚙️ settings.json — chosen language</span>
+          <span class="pill">🌐 Languages\ — language files</span>
+        </div>
+        <p style="margin-top:10px">To back up your history or move to a new installation, simply
+        copy <code class="path">carnetdevol.db</code> next to the new executable.</p>
+      </div>
+    </section>
+
+    <section id="troubleshooting">
+      <h2 class="section-title"><span class="emoji">🛠️</span> 11. Troubleshooting</h2>
+      <div class="card">
+        <h4>“Not connected to MSFS 2024” never turns green</h4>
+        <p>Check that Microsoft Flight Simulator 2024 is running and that a flight is loaded. Look
+        at the <a href="#log-tab">Log</a> tab: connection attempts and their errors are detailed
+        there. Reconnection is automatic (every 5 s); no action is needed once MSFS is available.</p>
+
+        <h4>The SimBrief import shows “Cannot fetch the flight”</h4>
+        <p>Check the spelling of the <strong>SimBrief username</strong> set in the
+        <a href="#settings-tab">Settings</a> tab (it is the pilot identifier used on SimBrief, not
+        your e-mail address), and make sure a flight plan was generated recently on SimBrief with
+        this account.</p>
+
+        <h4>The Aircraft or Arrival airport field does not fill itself in</h4>
+        <p>This is intended if it already holds a value you chose or imported from SimBrief:
+        automatic detection never overwrites it. Click <span class="btn-label">🆕 New flight</span>
+        to start from an empty form. For the arrival, the aircraft must have landed within 5 Nm of
+        an airport known to the reference data, during live tracking. The
+        <a href="#log-tab">Log</a> tab shows the aircraft detected in the simulator.</p>
+
+        <h4>A flight in the history has no track on the map</h4>
+        <p>This is normal for a flight entered manually or imported (SimBrief, SimToolKitPro): only
+        a flight actually <strong>tracked live</strong> through SimConnect has GPS points. The “Map”
+        column of the Flight history shows it clearly.</p>
+
+        <h4>An airport is not found during a SimToolKitPro import</h4>
+        <p>First update the airport data from the <a href="#settings-tab">Settings</a> tab, then run
+        the import again: the flights previously skipped for lack of a recognised airport will be
+        imported, without creating duplicates of the flights already imported.</p>
+
+        <h4>A text is still in the previous language after switching</h4>
+        <p>Status messages already shown (result of a save, of an import…) keep their language
+        until the next message; everything else switches immediately.</p>
+      </div>
+    </section>
+
+    <section id="appendix-licenses">
+      <h2 class="section-title"><span class="emoji">⚖️</span> Appendix — Data sources and licenses</h2>
+      <p class="section-lead">The external services used by the application, and the terms that apply to them.</p>
+      <div class="card">
+        <p>Flight Logbook only makes read-only calls to the services below. Terms checked on
+        24/09/2026 on each service's official pages; they may change, and the links given are
+        authoritative.</p>
+        <table>
+          <tr><th>Service</th><th>Use in the application</th><th>License / terms</th></tr>
+          <tr>
+            <td><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></td>
+            <td>Base map of the Map tab (tile.openstreetmap.org tiles)</td>
+            <td>Data under the <strong>ODbL</strong> (Open Database License), “© OpenStreetMap
+            contributors” attribution required; tile use subject to the OSMF
+            <a href="https://operations.osmfoundation.org/policies/tiles/" target="_blank" rel="noopener">tile usage policy</a>.</td>
+          </tr>
+          <tr>
+            <td><a href="https://ourairports.com/data/" target="_blank" rel="noopener">OurAirports</a>
+            (<a href="https://github.com/davidmegginson/ourairports-data" target="_blank" rel="noopener">ourairports-data</a>)</td>
+            <td>Airport reference data (<code class="path">airports.csv</code>)</td>
+            <td><strong>Public domain</strong> (repository under The Unlicense); provided with no
+            guarantee of accuracy; attribution appreciated but not required.</td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/rikgale/ICAOList" target="_blank" rel="noopener">rikgale/ICAOList</a></td>
+            <td>Aircraft type reference data (<code class="path">ICAOList.csv</code>)</td>
+            <td><strong>No license declared</strong> by the author. The type codes themselves come
+            from ICAO Doc 8643 (<em>Aircraft Type Designators</em>). The list is only used for
+            aircraft search, locally.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.simbrief.com/" target="_blank" rel="noopener">SimBrief</a> (Navigraph)</td>
+            <td>Import of your latest flight plan (<code class="path">xml.fetcher.php</code>)</td>
+            <td>Subject to the <a href="https://navigraph.com/legal/terms-of-service" target="_blank" rel="noopener">Navigraph terms of service</a>
+            and <a href="https://developers.navigraph.com/docs/developer-terms-of-service" target="_blank" rel="noopener">developer terms</a>:
+            <strong>simulation use only</strong>, forbidden for real-world navigation and for
+            logging flight hours towards a pilot license; do not overload the API. SimBrief is a
+            trademark of Navigraph.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.adsbdb.com/" target="_blank" rel="noopener">adsbdb</a></td>
+            <td>Airline radio callsign during a SimBrief import</td>
+            <td>Open source project under the <strong>MIT</strong> license
+            (<a href="https://github.com/mrjackwills/adsbdb" target="_blank" rel="noopener">source code</a>);
+            free public API with no published terms of use. Data from third-party sources credited
+            by the project.</td>
+          </tr>
+          <tr>
+            <td><a href="https://aviationweather.gov/data/api/" target="_blank" rel="noopener">aviationweather.gov</a> (NOAA / NWS)</td>
+            <td>METAR shown when hovering over the ⛅ weather icon</td>
+            <td>National Weather Service information in the <strong>public domain</strong>
+            (<a href="https://www.weather.gov/disclaimer" target="_blank" rel="noopener">NWS disclaimer</a>),
+            provided “as is”, with no warranty; limit of 100 requests per minute.</td>
+          </tr>
+        </table>
+        <div class="callout note">
+          <strong>Simulation use only</strong>
+          The data shown by Flight Logbook (SimBrief plans, METAR, reference data) is provided with
+          no warranty and must never be used for real-world navigation. This logbook records
+          <strong>simulated</strong> flights and is not an official pilot logbook: the Navigraph
+          terms forbid using SimBrief data to log flight hours towards a pilot license.
+        </div>
+        <div class="callout tip">
+          <strong>Respecting usage policies</strong>
+          The application identifies itself to OpenStreetMap with its own User-Agent, keeps the
+          tiles already downloaded in a local cache (<code class="path">%LocalAppData%\GMap.NET</code>),
+          offers no offline map download, and always shows the OpenStreetMap attribution, legibly,
+          in the top-left corner of the map, with a link to the license page. SimBrief, adsbdb and
+          METAR calls are only made at your request (import button, hovering over the weather icon).
+        </div>
+        <p>Microsoft Flight Simulator 2024 and SimConnect are trademarks of Microsoft; Flight
+        Logbook is not affiliated with Microsoft, Navigraph or the other services mentioned.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 1.0.23.
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var stored = null;
+    try { stored = localStorage.getItem('cdv-doc-theme'); } catch (e) {}
+    if (stored === 'dark' || stored === 'light') {
+      root.setAttribute('data-theme', stored);
+      btn.textContent = stored === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
+    }
+    btn.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var isDark = current === 'dark' || (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      btn.textContent = next === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
+      try { localStorage.setItem('cdv-doc-theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>

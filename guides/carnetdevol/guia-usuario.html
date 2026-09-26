@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bitácora de vuelo — Guía del usuario</title>
+<meta name="description" content="Guía completa de las funciones de la Bitácora de vuelo (Carnet de Vol), la aplicación de seguimiento de vuelos para Microsoft Flight Simulator 2024." />
+<style>
+  :root {
+    --bg: #F4F7FA;
+    --panel: #FFFFFF;
+    --panel-border: #E1E6EB;
+    --text: #1A1A1A;
+    --text-secondary: #6B7280;
+    --accent: #0F6FB5;
+    --accent-soft: #E4F3FA;
+    --accent2: #FF8A3D;
+    --accent2-soft: #FFF1E4;
+    --danger: #E0505F;
+    --danger-soft: #FBE7E9;
+    --success-soft: #E6F5EA;
+    --success-text: #1E7A3D;
+    --code-bg: #EEF1F4;
+    --shadow: 0 1px 3px rgba(20, 30, 40, 0.08), 0 8px 24px rgba(20, 30, 40, 0.06);
+    --banner-grad: linear-gradient(100deg, #0B2545 0%, #0F5C8C 55%, #13A6C9 100%);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1B1E;
+      --panel: #26262A;
+      --panel-border: #3A3A40;
+      --text: #EDEDED;
+      --text-secondary: #A6A6AD;
+      --accent: #4FC3F7;
+      --accent-soft: #1F3A46;
+      --accent2: #FFB74D;
+      --accent2-soft: #3A2E1F;
+      --danger: #EF6B75;
+      --danger-soft: #3A2226;
+      --success-soft: #1E3326;
+      --success-text: #7EDBA0;
+      --code-bg: #323238;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1B1E;
+    --panel: #26262A;
+    --panel-border: #3A3A40;
+    --text: #EDEDED;
+    --text-secondary: #A6A6AD;
+    --accent: #4FC3F7;
+    --accent-soft: #1F3A46;
+    --accent2: #FFB74D;
+    --accent2-soft: #3A2E1F;
+    --danger: #EF6B75;
+    --danger-soft: #3A2226;
+    --success-soft: #1E3326;
+    --success-text: #7EDBA0;
+    --code-bg: #323238;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+
+  .hero {
+    background: var(--banner-grad);
+    color: #fff;
+    padding: 40px 24px 34px;
+    text-align: center;
+    position: relative;
+  }
+  .hero .icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .hero h1 { margin: 0 0 8px; font-size: 30px; letter-spacing: 0.3px; }
+  .hero p { margin: 0; opacity: 0.92; font-size: 15px; }
+  .hero .badge {
+    display: inline-block; margin-top: 14px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 4px 12px; border-radius: 999px; font-size: 12.5px;
+  }
+  .theme-toggle {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff; border-radius: 999px;
+    padding: 7px 14px; font-size: 13px; cursor: pointer;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,0.25); }
+  .lang-switch {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff; border-radius: 999px; text-decoration: none;
+    padding: 7px 14px; font-size: 13px;
+  }
+  .lang-switch a { color: #fff; text-decoration: none; }
+  .lang-switch a:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .hero { padding-top: 70px; }
+  }
+
+  .layout {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 28px;
+    padding: 28px 24px 60px;
+  }
+
+  nav.toc {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    box-shadow: var(--shadow);
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+  nav.toc h2 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-secondary); margin: 4px 0 10px;
+  }
+  nav.toc ul { list-style: none; margin: 0; padding: 0; }
+  nav.toc li { margin: 2px 0; }
+  nav.toc a {
+    display: block; padding: 7px 10px; border-radius: 8px;
+    color: var(--text); text-decoration: none; font-size: 13.5px;
+  }
+  nav.toc a:hover { background: var(--accent-soft); color: var(--accent); }
+  nav.toc .sub { padding-left: 20px; font-size: 12.5px; }
+  nav.toc .sub a { color: var(--text-secondary); padding: 5px 10px; }
+
+  main { min-width: 0; }
+
+  section { margin-bottom: 46px; scroll-margin-top: 16px; }
+  section.tab-section { scroll-margin-top: 16px; }
+
+  h2.section-title {
+    font-size: 22px; margin: 0 0 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  h2.section-title .emoji { font-size: 24px; }
+  .section-lead { color: var(--text-secondary); margin: 0 0 20px; font-size: 15px; }
+
+  h3 { font-size: 16.5px; margin: 28px 0 10px; }
+  h4 { font-size: 14.5px; margin: 20px 0 8px; color: var(--accent); }
+
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 5px; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+    margin-bottom: 18px;
+  }
+
+  figure { margin: 16px 0 22px; }
+  figure img {
+    width: 100%; max-width: 760px; display: block;
+    border-radius: 10px; border: 1px solid var(--panel-border);
+    box-shadow: var(--shadow);
+  }
+  figcaption {
+    margin-top: 8px; font-size: 12.5px; color: var(--text-secondary);
+    max-width: 760px;
+  }
+  .shot-row {
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .shot-row figure { flex: 1 1 340px; margin: 16px 0; }
+  .shot-row figure img { max-width: 100%; }
+
+  kbd, .ui {
+    background: var(--code-bg); border: 1px solid var(--panel-border);
+    border-radius: 5px; padding: 1px 7px; font-size: 0.92em;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  }
+  .btn-label {
+    display: inline-block; background: var(--accent-soft); color: var(--accent);
+    border-radius: 6px; padding: 2px 9px; font-size: 0.9em; font-weight: 600;
+    white-space: nowrap;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 10px 0 18px;
+    font-size: 13.5px;
+  }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--panel-border); }
+  th { color: var(--text-secondary); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:last-child td { border-bottom: none; }
+
+  .callout {
+    border-radius: 10px; padding: 14px 16px; margin: 16px 0;
+    font-size: 13.8px; border: 1px solid transparent;
+  }
+  .callout.tip { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+  .callout.warn { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
+  .callout.note { background: var(--accent2-soft); border-color: color-mix(in srgb, var(--accent2) 30%, transparent); }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  .example {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 18px 0;
+  }
+  .example h4 { margin: 0 0 8px; color: var(--accent); }
+  .example ol { margin-bottom: 0; }
+
+  .grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--code-bg); border-radius: 999px;
+    padding: 3px 11px; font-size: 12px; margin: 2px 4px 2px 0;
+  }
+
+  footer {
+    text-align: center; color: var(--text-secondary);
+    font-size: 12.5px; padding: 30px 24px 50px;
+  }
+
+  code.path {
+    font-family: ui-monospace, Consolas, monospace;
+    background: var(--code-bg); padding: 1px 6px; border-radius: 5px; font-size: 0.92em;
+  }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { position: static; max-height: none; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <nav class="lang-switch" aria-label="Idioma"><a href="guide-utilisateur.html" hreflang="fr" lang="fr">Français</a> · <a href="user-guide.html" hreflang="en" lang="en">English</a></nav>
+  <button class="theme-toggle" id="themeToggle" type="button">🌙 Modo oscuro</button>
+  <div class="icon">🧭</div>
+  <h1>Bitácora de vuelo — Guía del usuario</h1>
+  <p>Seguimiento de vuelos · Microsoft Flight Simulator 2024</p>
+  <span class="badge">Versión 1.0.23 · Windows · aplicación nativa</span>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Índice">
+    <h2>Índice</h2>
+    <ul>
+      <li><a href="#presentacion">1. Presentación</a></li>
+      <li><a href="#primer-inicio">2. Primer inicio</a></li>
+      <li><a href="#interfaz">3. Interfaz general</a></li>
+      <li><a href="#pestana-vuelos">4. Pestaña Vuelos</a>
+        <ul class="sub">
+          <li><a href="#vuelos-manual">Introducción manual</a></li>
+          <li><a href="#vuelos-simbrief">Importar SimBrief</a></li>
+          <li><a href="#vuelos-seguimiento">Seguimiento en directo</a></li>
+          <li><a href="#vuelos-aterrizaje">Detección del aterrizaje</a></li>
+        </ul>
+      </li>
+      <li><a href="#pestana-mapa">5. Pestaña Mapa</a></li>
+      <li><a href="#pestana-historial">6. Historial de vuelos</a></li>
+      <li><a href="#pestana-estadisticas">7. Estadísticas</a></li>
+      <li><a href="#pestana-configuracion">8. Configuración</a></li>
+      <li><a href="#pestana-registro">9. Registro</a></li>
+      <li><a href="#consejos">10. Consejos y buenas prácticas</a></li>
+      <li><a href="#solucion-problemas">11. Solución de problemas</a></li>
+      <li><a href="#anexo-licencias">Anexo — Fuentes y licencias</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="callout note">
+      <strong>Capturas de pantalla</strong>
+      Las capturas de esta guía muestran la aplicación en francés; la interfaz en español tiene
+      exactamente la misma disposición, con los textos citados en esta guía.
+    </div>
+
+    <section id="presentacion">
+      <h2 class="section-title"><span class="emoji">🧭</span> 1. Presentación</h2>
+      <p class="section-lead">Qué hace la Bitácora de vuelo y para quién es.</p>
+      <div class="card">
+        <p>La <strong>Bitácora de vuelo</strong> (Carnet de Vol) es una aplicación de Windows
+        independiente que mantiene el historial de todos los vuelos que realiza en
+        <strong>Microsoft Flight Simulator 2024</strong>. Funciona de tres formas complementarias:</p>
+        <ul>
+          <li><strong>Seguimiento en directo</strong>: conectada a MSFS mediante SimConnect, detecta
+          el despegue, registra la traza GPS segundo a segundo, detecta el aterrizaje y evalúa su
+          calidad, y guarda el vuelo automáticamente al detener el seguimiento.</li>
+          <li><strong>Introducción manual</strong>: para anotar un vuelo a posteriori, sin seguimiento en directo.</li>
+          <li><strong>Importación</strong>: desde un plan de vuelo de <strong>SimBrief</strong>
+          (rellena el formulario) o desde una exportación de <strong>SimToolKitPro</strong>
+          (importación masiva del historial).</li>
+        </ul>
+        <p>Todos los datos se quedan en local, en una base <strong>SQLite</strong> junto al
+        ejecutable: no se envía ningún dato a ningún servidor, salvo las consultas de solo lectura
+        a SimBrief, adsbdb y aviationweather.gov descritas en esta guía.</p>
+      </div>
+    </section>
+
+    <section id="primer-inicio">
+      <h2 class="section-title"><span class="emoji">🚀</span> 2. Primer inicio</h2>
+      <p class="section-lead">Lo que ocurre automáticamente la primera vez que abre la aplicación.</p>
+      <div class="card">
+        <p>En el primer inicio la base de datos está vacía: la aplicación descarga entonces
+        <strong>automáticamente</strong>, en segundo plano, los dos conjuntos de datos de
+        referencia que necesitan los campos de búsqueda:</p>
+        <table>
+          <tr><th>Datos</th><th>Fuente</th><th>Volumen aproximado</th></tr>
+          <tr><td>Aeropuertos</td><td>ourairports-data (GitHub)</td><td>~72 000 aeropuertos</td></tr>
+          <tr><td>Tipos de aeronave</td><td>rikgale/ICAOList (GitHub)</td><td>~2 800 tipos</td></tr>
+        </table>
+        <p>No hace falta hacer nada: solo se necesita conexión a Internet en este primer inicio.
+        Después puede actualizarlos manualmente en cualquier momento desde la pestaña
+        <a href="#pestana-configuracion"><strong>Configuración</strong></a>.</p>
+        <div class="callout note">
+          <strong>Archivos creados junto al ejecutable</strong>
+          <code class="path">carnetdevol.db</code> (sus vuelos y los datos de referencia),
+          <code class="path">carnetdevol.log</code> (registro de conexión de SimConnect),
+          <code class="path">theme.txt</code> (tema claro/oscuro) y, si elige un idioma,
+          <code class="path">settings.json</code>. Estos archivos no forman parte de la instalación:
+          si mueve el ejecutable, cópielos con él (junto con la carpeta
+          <code class="path">Languages</code> incluida con la aplicación) para conservar su
+          historial y su configuración.
+        </div>
+      </div>
+    </section>
+
+    <section id="interfaz">
+      <h2 class="section-title"><span class="emoji">🖥️</span> 3. Interfaz general</h2>
+      <p class="section-lead">El encabezado, el indicador de conexión, las seis pestañas, el tema y el idioma.</p>
+      <div class="card">
+        <p>La ventana principal tiene tres zonas fijas, sea cual sea la pestaña activa:</p>
+        <ul>
+          <li>Un <strong>encabezado</strong> arriba, con el botón <span class="btn-label">🌙 Modo oscuro</span>
+          / <span class="btn-label">☀️ Modo claro</span> que cambia al instante el tema de toda la
+          aplicación (se recuerda entre sesiones);</li>
+          <li>Justo debajo, una <strong>barra de estado</strong> con un punto de color (rojo = no
+          conectado, verde = conectado) y un texto con el estado de la conexión a MSFS 2024.
+          Mientras no está conectada, la aplicación lo reintenta automáticamente cada
+          <strong>5 segundos</strong>, sin que tenga que hacer nada;</li>
+          <li><strong>Seis pestañas</strong>: Vuelos, Mapa, Historial de vuelos, Estadísticas,
+          Configuración y Registro, descritas en las secciones siguientes.</li>
+        </ul>
+        <p>La aplicación se muestra en el <strong>idioma de Windows</strong> si está disponible
+        (español, francés o inglés, sea cual sea la variante regional: español de España, de México,
+        de Argentina…), y en <strong>inglés</strong> en caso contrario. Puede cambiarlo en cualquier
+        momento en la pestaña <a href="#pestana-configuracion">Configuración</a>.</p>
+        <div class="shot-row">
+          <figure>
+            <img src="images/es-onglet-vols-sombre.png" alt="Aplicación en modo oscuro, pestaña Vuelos, conectada a MSFS 2024" loading="lazy" />
+            <figcaption>Modo oscuro (predeterminado en el primer inicio), conectada a MSFS 2024.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/es-onglet-vols-clair.png" alt="Aplicación en modo claro, pestaña Vuelos" loading="lazy" />
+            <figcaption>La misma pantalla en modo claro, tras pulsar el botón de tema.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="pestana-vuelos" class="tab-section">
+      <h2 class="section-title"><span class="emoji">✈️</span> 4. Pestaña Vuelos</h2>
+      <p class="section-lead">El corazón de la aplicación: introducir, importar o registrar un vuelo en directo.</p>
+
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-vols.png" alt="Pestaña Vuelos: vuelo Londres – París importado de SimBrief, seguimiento en curso" loading="lazy" />
+        <figcaption>El formulario de vuelo (capturas con la interfaz en inglés), aquí rellenado por
+        la importación de SimBrief durante un seguimiento en directo: aeropuertos, aeronave,
+        fecha/hora, distancia, duración, notas, indicativo de la aerolínea, cost index y flight
+        level.</figcaption>
+      </figure>
+
+      <h3 id="vuelos-manual">Introducción manual</h3>
+      <div class="card">
+        <p>Para anotar un vuelo sin seguimiento en directo:</p>
+        <ol>
+          <li>Pulse <span class="btn-label">🆕 Nuevo vuelo</span> para empezar con un formulario vacío.</li>
+          <li>Indique el <strong>aeropuerto de salida</strong> y el <strong>aeropuerto de llegada</strong>:
+          ambos campos aceptan un código <strong>ICAO</strong> o <strong>IATA</strong> o parte del
+          <strong>nombre del aeropuerto</strong>; mientras escribe aparece una lista de sugerencias,
+          que puede elegir con el ratón o el teclado.</li>
+          <li>Indique la <strong>aeronave</strong> del mismo modo (código o nombre ICAO).</li>
+          <li>La <strong>distancia (Nm)</strong> se calcula automáticamente en línea recta
+          (ortodrómica) en cuanto se eligen la salida y la llegada; puede corregirla a mano si es
+          necesario (por ejemplo, para reflejar una ruta real más larga).</li>
+          <li>Complete la <strong>fecha/hora UTC</strong> de salida (formatos estrictos
+          <code class="path">dd/mm/aaaa</code> y <code class="path">hh:mm</code>), la
+          <strong>duración</strong> en minutos y, si quiere, unas <strong>notas</strong>.</li>
+          <li>Pulse <span class="btn-label">Guardar vuelo</span>.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>Icono meteorológico ⛅</strong>
+          Cada campo de aeropuerto tiene un pequeño icono a su derecha: pase el ratón por encima
+          para ver el <strong>METAR</strong> en bruto (en directo desde aviationweather.gov) del
+          aeropuerto seleccionado o escrito.
+        </div>
+      </div>
+
+      <h3 id="vuelos-simbrief">Importar desde SimBrief</h3>
+      <div class="card">
+        <p>Si prepara sus vuelos con <a href="https://www.simbrief.com/" target="_blank" rel="noopener">SimBrief</a>,
+        la aplicación puede obtener su <strong>último plan de vuelo</strong> y rellenar el
+        formulario por usted (la API de SimBrief solo devuelve el vuelo más reciente, nunca un historial).</p>
+        <ol>
+          <li>Indique primero su <strong>nombre de usuario de SimBrief</strong> en la pestaña
+          <a href="#pestana-configuracion">Configuración</a> (una sola vez).</li>
+          <li>En la pestaña Vuelos, pulse <span class="btn-label">📥 Importar SimBrief</span>.</li>
+          <li>Se abre una ventana que obtiene el plan y muestra la ruta, la aeronave, la distancia,
+          la hora de salida estimada, la duración y el indicativo de la aerolínea.</li>
+          <li>Pulse <strong>Importar</strong> para copiar todos estos valores en el formulario
+          (incluidos el <strong>Cost index</strong> y el <strong>Flight level</strong> previstos,
+          de solo lectura), o <strong>Cancelar</strong> para no cambiar nada.</li>
+        </ol>
+        <figure>
+          <img src="images/es-dialogue-simbrief.png" alt="Ventana de importación de SimBrief con un mensaje de error para un usuario desconocido" loading="lazy" />
+          <figcaption>La ventana de importación de SimBrief. Aquí con un nombre de usuario no
+          válido, para mostrar el mensaje de error explícito que aparece si el identificador de
+          SimBrief es incorrecto o no tiene ningún plan de vuelo reciente.</figcaption>
+        </figure>
+        <div class="callout tip">
+          <strong>Indicativo de la aerolínea</strong>
+          Una importación de SimBrief también intenta obtener el indicativo de radio de la
+          aerolínea (p. ej. «AIRFRANS») mediante <a href="https://www.adsbdb.com/" target="_blank" rel="noopener">adsbdb</a>,
+          a partir del código ICAO de la aerolínea. El botón 📋 junto al campo copia el indicativo
+          al portapapeles.
+        </div>
+        <div class="callout note">
+          <strong>Reanudar el último vuelo</strong>
+          Tras una importación de SimBrief, si el vuelo más reciente ya guardado en la base
+          coincide exactamente con el plan importado (mismos aeropuertos y misma aeronave), se
+          activa el botón <span class="btn-label">⏮ Reanudar último vuelo</span>. Permite reanudar
+          el seguimiento en directo sobre ese vuelo, algo útil tras reiniciar MSFS o la aplicación
+          en pleno vuelo, sin perder la traza ya registrada.
+        </div>
+      </div>
+
+      <h3 id="vuelos-seguimiento">Seguimiento en directo (SimConnect)</h3>
+      <div class="card">
+        <p>Cuando MSFS 2024 está abierto y la aplicación está conectada a él (punto verde en la
+        barra de estado), el seguimiento en directo puede empezar de dos formas:</p>
+        <ul>
+          <li><strong>Automáticamente</strong>: en cuanto la aeronave rueda por tierra (velocidad
+          &gt; 3 kt) cerca de un aeropuerto de salida ya conocido (que también se detecta
+          automáticamente en un radio de 5 Nm alrededor de la primera posición en tierra recibida).</li>
+          <li><strong>Manualmente</strong>: eligiendo el aeropuerto de salida y pulsando
+          <span class="btn-label">▶ Iniciar seguimiento</span>.</li>
+        </ul>
+        <p>Durante el seguimiento, la pestaña <a href="#pestana-mapa">Mapa</a> muestra la posición
+        de la aeronave en directo y dibuja el recorrido. En cuanto se
+        <a href="#vuelos-aterrizaje">detecta el aterrizaje</a>, el campo <strong>Aeropuerto de
+        llegada</strong> se rellena solo con el aeropuerto más cercano (radio de 5 Nm), si estaba
+        vacío. Para terminar:</p>
+        <ol>
+          <li>Pulse <span class="btn-label">⏹ Terminar vuelo</span>.</li>
+          <li>Si no se eligió ningún aeropuerto de llegada, la aplicación toma el más cercano a la
+          posición actual (radio de 5 Nm); si no encuentra ninguno, selecciónelo usted y vuelva a
+          pulsar el botón. Una llegada rellenada automáticamente en el aterrizaje también se
+          reevalúa en ese momento (útil tras un toque y despegue en otro aeródromo).</li>
+          <li>El vuelo se <strong>guarda automáticamente</strong>: distancia real recorrida
+          (calculada a partir de la traza GPS, no en línea recta), duración, altitud máxima,
+          aeronave y datos del aterrizaje se rellenan sin introducción manual.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>Aeronave detectada automáticamente</strong>
+          Nada más conectarse a MSFS, la aplicación identifica la aeronave cargada en el simulador
+          (nombre en MSFS y tipo OACI, p. ej. «C172SP G1000 Passengers» → <strong>C172 - CESSNA 172
+          Skyhawk</strong>) y la muestra en el campo <strong>Aeronave</strong> de la pestaña
+          Vuelos; se actualiza si cambia de aeronave en el simulador. Nunca sustituye una aeronave
+          elegida por usted o importada de SimBrief: si escribe usted mismo en este campo, la
+          detección se detiene hasta el siguiente <span class="btn-label">🆕 Nuevo vuelo</span>.
+          Una aeronave sin equivalente en los datos de referencia se añade automáticamente a la
+          lista de aeronaves.
+        </div>
+      </div>
+
+      <h3 id="vuelos-aterrizaje">Detección del aterrizaje</h3>
+      <div class="card">
+        <p>Durante el seguimiento en directo, el aterrizaje se mide en cada fotograma del
+        simulador (unas 45 veces por segundo), y no una vez por segundo:</p>
+        <ul>
+          <li><strong>Velocidad vertical en la toma</strong>: la que mide el propio MSFS al contacto
+          de las ruedas, perpendicular a la pista (exacta incluso en una pista con pendiente). Se
+          usa el contacto del tren principal, no el de la rueda de morro, más suave.</li>
+          <li><strong>Factor de carga (G)</strong>: el pico medido en los 2 segundos siguientes a la toma.</li>
+          <li><strong>Rebotes</strong>: si la aeronave vuelve al aire y toca de nuevo, se cuenta
+          cada rebote y el aterrizaje se evalúa con el contacto más duro. Los microdespegues de
+          unas centésimas de segundo durante la compresión del tren no cuentan, y un toque y
+          despegue o una motor y al aire (más de 10 s en el aire) no es un rebote.</li>
+          <li><strong>Cabeceo y alabeo</strong> en la toma (cabeceo positivo = morro arriba).</li>
+        </ul>
+        <p>El aterrizaje se confirma cuando la aeronave lleva <strong>3 segundos en tierra</strong>
+        (para poder contar un posible rebote); aparece entonces una ventana emergente, hasta que la
+        cierre con su cruz, con estos valores, un icono y una clasificación automática de la calidad:</p>
+        <table>
+          <tr><th>Velocidad vertical en la toma</th><th>Calidad mostrada</th><th>Icono</th></tr>
+          <tr><td>&lt; 100 ft/min</td><td>Muy suave</td><td>nube</td></tr>
+          <tr><td>100 – 249 ft/min</td><td>Suave</td><td>pluma</td></tr>
+          <tr><td>250 – 499 ft/min</td><td>Normal</td><td>flecha hacia la pista</td></tr>
+          <tr><td>500 – 699 ft/min</td><td>Firme</td><td>flecha e impactos</td></tr>
+          <tr><td>≥ 700 ft/min</td><td>Muy firme</td><td>yunque</td></tr>
+        </table>
+        <figure>
+          <img src="../../assets/img/carnetdevol/en-atterrissage.png" alt="Ventana emergente de aterrizaje: Suave, 180 ft/min, 1,28 G, icono de pluma" loading="lazy" style="max-width: 344px;" />
+          <figcaption>La ventana emergente de aterrizaje tras una toma «Suave»; la cruz de arriba a la derecha la cierra.</figcaption>
+        </figure>
+        <p>Esta calidad y estos valores también se guardan con el vuelo y pueden consultarse más
+        tarde en el <a href="#pestana-historial">Historial de vuelos</a> (columnas «Aterrizaje
+        (ft/min)», «Aterrizaje (G)», «Rebotes» y «Calidad del aterrizaje»), por ejemplo para
+        filtrar sus mejores (o peores) aterrizajes.</p>
+        <div class="callout note">
+          <strong>Seguimiento detenido justo después de la toma</strong>
+          Si pulsa <span class="btn-label">⏹ Terminar vuelo</span> antes de los 3 segundos en
+          tierra, el aterrizaje en curso se guarda igualmente con el vuelo.
+        </div>
+      </div>
+
+      <div class="example">
+        <h4>Ejemplo: un vuelo seguido de principio a fin</h4>
+        <ol>
+          <li>MSFS 2024 está abierto, con un vuelo cargado en el aparcamiento de salida. La barra de estado se pone verde.</li>
+          <li>La aeronave cargada en MSFS aparece sola en el campo <span class="ui">Aeronave</span>.</li>
+          <li>Empieza a rodar: el aeropuerto de salida se rellena solo, el seguimiento empieza
+          automáticamente y la pestaña <span class="ui">Mapa</span> empieza a dibujar su posición.</li>
+          <li>En vuelo, consulta el panel <span class="ui">Datos en directo</span> (altitud, rumbo,
+          velocidades, hora estimada de llegada) directamente en el mapa.</li>
+          <li>Tres segundos después de la toma, una ventana muestra la calidad de su aterrizaje
+          (velocidad en la toma, G, rebotes, cabeceo) y el aeropuerto de llegada se rellena solo.</li>
+          <li>Una vez estacionado, pulse <span class="btn-label">⏹ Terminar vuelo</span>: el vuelo
+          aparece inmediatamente en el <span class="ui">Historial de vuelos</span>, con su traza GPS.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="pestana-mapa" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🗺️</span> 5. Pestaña Mapa</h2>
+      <p class="section-lead">Mapa de OpenStreetMap, posición en directo, traza del vuelo y ruta prevista.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-carte.jpg" alt="Pestaña Mapa: vuelo Londres – París seguido en directo, con la ruta prevista, los marcadores TOC/TOD y el panel de datos en tiempo real" loading="lazy" />
+        <figcaption>Seguimiento en directo: trayecto recorrido en rojo, ruta prevista de SimBrief en
+        azul con sus marcadores TOC/TOD, icono de avión orientado según el rumbo y panel «Datos en
+        directo» en la parte inferior de la pantalla.</figcaption>
+      </figure>
+      <div class="card">
+        <p>El mapa se maneja con el ratón (arrastrar para desplazar, rueda para acercar o alejar)
+        o con los botones apilados arriba a la derecha:</p>
+        <table>
+          <tr><th>Botón</th><th>Acción</th></tr>
+          <tr><td>Ruta prevista (icono de itinerario punteado)</td><td>Muestra/oculta la ruta
+          prevista del plan de SimBrief importado, en <strong>azul</strong>, para comparar la ruta
+          realmente seguida (traza roja) con la planificada. El final del ascenso y el inicio del
+          descenso previstos se marcan con un punto amarillo rotulado <strong>TOC</strong> (top of
+          climb) y <strong>TOD</strong> (top of descent).</td></tr>
+          <tr><td>Recentrar (icono de mira)</td><td>Reactiva el seguimiento automático del mapa
+          sobre la aeronave. Este seguimiento se desactiva solo en cuanto arrastra el mapa a mano,
+          para que pueda mirar a otra parte sin que se le «recentre» a la fuerza.</td></tr>
+          <tr><td>Mapa oscuro (luna/sol)</td><td>Cambia el aspecto de los mosaicos de
+          OpenStreetMap, independientemente del tema de la aplicación.</td></tr>
+          <tr><td>+ / −</td><td>Acercar / alejar.</td></tr>
+        </table>
+        <p>Una <strong>escala vertical</strong> graduada (en Nm) aparece bajo estos botones en
+        cuanto se abre la pestaña y se recalcula automáticamente con cada cambio de zoom o de
+        posición, como en una carta de papel. Mantiene el ancho de los botones, con el valor y la
+        unidad en dos líneas.</p>
+        <p>Arriba a la izquierda, la mención <strong>© colaboradores de OpenStreetMap</strong>
+        acredita los datos cartográficos (licencia ODbL, véase el <a href="#anexo-licencias">anexo</a>);
+        al pulsarla se abre la página de licencia de OpenStreetMap en su navegador.</p>
+        <p>Durante un seguimiento activo, el panel <strong>Datos en directo</strong> de la parte
+        inferior del mapa reúne: altitud, rumbo, velocidad respecto al suelo, velocidad vertical,
+        posición GPS, tiempo transcurrido, hora estimada de llegada / tiempo de vuelo restante y
+        estado de la conexión. Se puede contraer con el botón <strong>−</strong> de su esquina
+        para dejar más espacio al mapa.</p>
+        <div class="callout tip">
+          <strong>Volver a ver la traza de un vuelo antiguo</strong>
+          En el <a href="#pestana-historial">Historial de vuelos</a>, haga <strong>doble clic</strong>
+          en un vuelo seguido en directo (columna «Mapa» marcada): la aplicación cambia
+          automáticamente a esta pestaña y dibuja su recorrido GPS completo, ajustando el zoom a
+          toda la ruta.
+        </div>
+      </div>
+    </section>
+
+    <section id="pestana-historial" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📖</span> 6. Historial de vuelos</h2>
+      <p class="section-lead">Todos sus vuelos guardados, filtrables columna por columna.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-historique.png" alt="Tabla del historial de vuelos con sus filtros por columna" loading="lazy" />
+        <figcaption>Cada columna tiene su propio filtro (texto libre, o lista desplegable para
+        «Seguido en directo» y «Mapa»).</figcaption>
+      </figure>
+      <div class="card">
+        <p>La tabla muestra todos los vuelos guardados, del más reciente al más antiguo, con:
+        fechas de salida/llegada, aeropuertos, aeronave, distancia, duración, altitud máxima,
+        datos del aterrizaje (velocidad vertical, G, número de rebotes, calidad), si el vuelo se
+        siguió en directo y si tiene traza GPS.</p>
+        <ul>
+          <li><strong>Filtrar</strong>: escriba en el campo bajo cualquier encabezado de columna
+          (texto contenido, sin distinguir mayúsculas); puede combinar varias columnas.</li>
+          <li><strong>Restablecer</strong>: el botón <span class="btn-label">↺ Restablecer filtros</span>
+          vacía todos los filtros con un clic.</li>
+          <li><strong>Ver la traza</strong>: haga doble clic en una fila para abrirla en el
+          <a href="#pestana-mapa">mapa</a> (solo si existe una traza GPS).</li>
+          <li><strong>Eliminar</strong>: el botón «Eliminar» de cada fila pide confirmación antes
+          de una eliminación <strong>definitiva e irreversible</strong>.</li>
+        </ul>
+      </div>
+      <div class="example">
+        <h4>Ejemplo: encontrar sus aterrizajes más firmes</h4>
+        <ol>
+          <li>Abra <span class="ui">Historial de vuelos</span>.</li>
+          <li>En el filtro de la columna <span class="ui">Calidad del aterrizaje</span>, escriba
+          <code class="path">firme</code>: la lista conserva solo los vuelos «Firme» y «Muy firme»
+          (el filtro comprueba si el texto está contenido, así que aparecen ambas etiquetas).</li>
+          <li>Después, ordene pulsando el encabezado <span class="ui">Aterrizaje (ft/min)</span>
+          para clasificarlos del más duro al más suave.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="pestana-estadisticas" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📊</span> 7. Estadísticas</h2>
+      <p class="section-lead">Totales y desgloses, con filtros por aeronave y por aeropuerto.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-stats.png" alt="Pestaña Estadísticas: resumen y desgloses por aeronave y por aeropuerto" loading="lazy" />
+        <figcaption>Resumen (vuelos, horas de vuelo, distancia acumulada) y tres tablas de
+        desglose, ordenadas por número de vuelos.</figcaption>
+      </figure>
+      <div class="card">
+        <p>Esta pestaña se actualiza automáticamente cada vez que la selecciona, para no mostrar
+        nunca cifras desfasadas tras añadir o eliminar un vuelo.</p>
+        <ul>
+          <li><strong>Filtros</strong>: tres listas desplegables (aeronave, aeropuerto de salida,
+          aeropuerto de llegada), combinables, que se rellenan automáticamente con sus vuelos.</li>
+          <li><strong>Resumen</strong>: número de vuelos, horas de vuelo totales y distancia
+          acumulada (Nm) de la selección filtrada.</li>
+          <li><strong>Desgloses</strong>: tres tablas (por aeronave, por aeropuerto de salida, por
+          aeropuerto de llegada), cada una con vuelos / horas / distancia, ordenadas de la más
+          frecuente a la menos frecuente.</li>
+        </ul>
+        <p>El botón <span class="btn-label">↺ Restablecer filtros</span> vuelve a «(Todos)» en
+        todas partes; <span class="btn-label">🔄 Actualizar</span> fuerza un nuevo cálculo inmediato.</p>
+      </div>
+    </section>
+
+    <section id="pestana-configuracion" class="tab-section">
+      <h2 class="section-title"><span class="emoji">⚙️</span> 8. Configuración</h2>
+      <p class="section-lead">Idioma de la aplicación, usuario de SimBrief, actualización de aeropuertos/aeronaves e importación de SimToolKitPro.</p>
+      <figure>
+        <img src="../../assets/img/carnetdevol/en-config.png" alt="Pestaña Configuración con los bloques Idioma, SimBrief, Aeropuertos y Aeronaves" loading="lazy" />
+        <figcaption>Elección del idioma, usuario de SimBrief y, después, contadores y fecha de la
+        última actualización de cada conjunto de datos.</figcaption>
+      </figure>
+      <div class="card">
+        <h4>🌐 Idioma</h4>
+        <p>La lista <strong>Idioma de la aplicación</strong> solo ofrece los idiomas disponibles
+        (actualmente <strong>Español</strong>, <strong>English</strong> y <strong>Français</strong>).
+        El cambio es <strong>inmediato</strong>, sin reiniciar: menús, pestañas, columnas y mensajes
+        pasan al nuevo idioma, incluida la calidad del aterrizaje de los vuelos ya guardados.</p>
+        <p>Su elección se guarda en <code class="path">settings.json</code>, junto al ejecutable, y
+        a partir de entonces tiene prioridad sobre el idioma de Windows en cada inicio. Elimine
+        este archivo para volver al idioma de Windows.</p>
+        <div class="callout note">
+          <strong>Archivos de idioma</strong>
+          Cada idioma es un archivo de texto de la carpeta <code class="path">Languages</code>,
+          incluida junto al ejecutable y nombrada con el código internacional del idioma
+          (<code class="path">es.json</code>, <code class="path">en.json</code>,
+          <code class="path">fr.json</code>). Para añadir un idioma, copie
+          <code class="path">en.json</code> con el nombre del nuevo código (por ejemplo
+          <code class="path">de.json</code>), traduzca los textos y el valor
+          <code class="path">_name</code> (nombre que aparece en la lista) y reinicie la
+          aplicación. Cualquier texto que falte se muestra en inglés.
+        </div>
+
+        <h4>🛰️ SimBrief</h4>
+        <p>El campo <strong>Nombre de usuario de SimBrief</strong> se guarda automáticamente al
+        salir de él (no hace falta ningún botón «Guardar»). Es el identificador que usa el botón
+        <a href="#vuelos-simbrief">Importar SimBrief</a> de la pestaña Vuelos.</p>
+
+        <h4>🌍 Aeropuertos y 🛩️ Aeronaves</h4>
+        <p>Cada bloque muestra el número de entradas en la base y la fecha de la última
+        actualización, con un botón para volver a descargar la fuente más reciente
+        (<a href="https://github.com/davidmegginson/ourairports-data" target="_blank" rel="noopener">ourairports-data</a>
+        para los aeropuertos, <a href="https://github.com/rikgale/ICAOList" target="_blank" rel="noopener">rikgale/ICAOList</a>
+        para las aeronaves). Una actualización nunca borra sus vuelos: solo afecta a las tablas de referencia.</p>
+
+        <h4>📥 Importar SimToolKitPro</h4>
+        <p>Si antes usaba SimToolKitPro como bitácora, puede importar de una vez todo su historial
+        exportado en CSV:</p>
+        <ol>
+          <li>Asegúrese de que los datos de <strong>aeropuertos</strong> están actualizados (un
+          vuelo cuyo aeropuerto no figura en los datos de referencia se omite).</li>
+          <li>Pulse <strong>Elegir un archivo CSV e importar</strong> y seleccione la exportación.</li>
+          <li>Aparece un resumen: vuelos importados, duplicados ya presentes omitidos, vuelos
+          omitidos por aeropuerto no reconocido y filas no válidas omitidas.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>Sin riesgo de duplicados</strong>
+          Importar varias veces el mismo archivo nunca añade dos veces el mismo vuelo.
+        </div>
+      </div>
+    </section>
+
+    <section id="pestana-registro" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📝</span> 9. Registro</h2>
+      <p class="section-lead">El historial técnico de las conexiones a MSFS, para diagnosticar un problema de conexión.</p>
+      <figure>
+        <img src="images/es-onglet-journal.png" alt="Pestaña Registro con una vista previa de carnetdevol.log" loading="lazy" />
+        <figcaption>Vista previa de las 200 últimas líneas de <code class="path">carnetdevol.log</code>.</figcaption>
+      </figure>
+      <div class="card">
+        <p>Cada intento de conexión, desconexión y error de SimConnect se registra en
+        <code class="path">carnetdevol.log</code>, junto al ejecutable, así como la aeronave
+        detectada en el simulador y el detalle de la medición de cada aterrizaje (velocidad en la
+        toma transmitida por MSFS, resultado final). Las entradas del registro se escriben en
+        francés. Dos botones:</p>
+        <ul>
+          <li><span class="btn-label">Abrir el archivo de registro</span>: lo abre en su visor de
+          texto predeterminado, para leerlo entero o adjuntarlo a un informe de error.</li>
+          <li><span class="btn-label">Actualizar la vista previa</span>: actualiza la vista previa
+          mostrada en la aplicación (las 200 últimas líneas).</li>
+        </ul>
+        <p>Mientras MSFS no esté abierto, solo se detalla el primer fallo de conexión, seguido de
+        un recordatorio de una línea aproximadamente cada 5 minutos. Por encima de 5 MB, el registro
+        se renombra a <code class="path">carnetdevol.old.log</code> (que sustituye al anterior) y
+        comienza un archivo nuevo.</p>
+      </div>
+    </section>
+
+    <section id="consejos">
+      <h2 class="section-title"><span class="emoji">💡</span> 10. Consejos y buenas prácticas</h2>
+      <div class="card">
+        <h4>Lo que la aplicación hace automáticamente, sin que usted intervenga</h4>
+        <table>
+          <tr><th>Situación</th><th>Comportamiento automático</th></tr>
+          <tr><td>Primer inicio, base vacía</td><td>Descarga de los datos de aeropuertos/aeronaves</td></tr>
+          <tr><td>Ningún idioma elegido</td><td>Interfaz en el idioma de Windows, o en inglés si no está disponible</td></tr>
+          <tr><td>MSFS no conectado</td><td>Nuevo intento de conexión cada 5 segundos</td></tr>
+          <tr><td>Aeronave en tierra, aeropuerto de salida desconocido</td><td>Detección del aeropuerto más cercano (radio de 5 Nm)</td></tr>
+          <tr><td>Conexión a MSFS, campo Aeronave vacío</td><td>Muestra la aeronave cargada en el simulador</td></tr>
+          <tr><td>Aeronave que empieza a rodar (&gt; 3 kt)</td><td>Inicio automático del seguimiento</td></tr>
+          <tr><td>Aterrizaje detectado, llegada no elegida</td><td>Rellena el aeropuerto de llegada más cercano</td></tr>
+          <tr><td>Fin del seguimiento sin llegada elegida</td><td>Detección del aeropuerto de llegada más cercano</td></tr>
+          <tr><td>Aeronave pilotada que no figura en los datos</td><td>Se añade automáticamente a la lista de aeronaves</td></tr>
+        </table>
+
+        <h4>Archivos de la aplicación</h4>
+        <p>Todos sus datos están en archivos junto a <code class="path">CarnetDeVol.exe</code>:</p>
+        <div>
+          <span class="pill">💾 carnetdevol.db — sus vuelos y datos de referencia</span>
+          <span class="pill">📝 carnetdevol.log — registro de conexión</span>
+          <span class="pill">🎨 theme.txt — tema elegido</span>
+          <span class="pill">⚙️ settings.json — idioma elegido</span>
+          <span class="pill">🌐 Languages\ — archivos de idioma</span>
+        </div>
+        <p style="margin-top:10px">Para hacer una copia de seguridad de su historial o pasar a una
+        nueva instalación, basta con copiar <code class="path">carnetdevol.db</code> junto al nuevo ejecutable.</p>
+      </div>
+    </section>
+
+    <section id="solucion-problemas">
+      <h2 class="section-title"><span class="emoji">🛠️</span> 11. Solución de problemas</h2>
+      <div class="card">
+        <h4>«No conectado a MSFS 2024» nunca se pone verde</h4>
+        <p>Compruebe que Microsoft Flight Simulator 2024 está abierto y que hay un vuelo cargado.
+        Consulte la pestaña <a href="#pestana-registro">Registro</a>: allí se detallan los intentos
+        de conexión y sus errores. La reconexión es automática (cada 5 s); no hace falta hacer nada
+        una vez que MSFS está disponible.</p>
+
+        <h4>La importación de SimBrief muestra «No se puede obtener el vuelo»</h4>
+        <p>Compruebe la ortografía del <strong>nombre de usuario de SimBrief</strong> indicado en la
+        pestaña <a href="#pestana-configuracion">Configuración</a> (es el identificador de piloto
+        de SimBrief, no su dirección de correo) y asegúrese de haber generado recientemente un plan
+        de vuelo en SimBrief con esa cuenta.</p>
+
+        <h4>El campo Aeronave o Aeropuerto de llegada no se rellena solo</h4>
+        <p>Es lo previsto si ya contiene un valor elegido por usted o importado de SimBrief: la
+        detección automática nunca lo sobrescribe. Pulse <span class="btn-label">🆕 Nuevo vuelo</span>
+        para empezar con un formulario vacío. Para la llegada, la aeronave debe haber aterrizado a
+        menos de 5 Nm de un aeropuerto conocido, durante un seguimiento en directo. La pestaña
+        <a href="#pestana-registro">Registro</a> indica la aeronave detectada en el simulador.</p>
+
+        <h4>Un vuelo del historial no tiene traza en el mapa</h4>
+        <p>Es normal en un vuelo introducido manualmente o importado (SimBrief, SimToolKitPro):
+        solo un vuelo realmente <strong>seguido en directo</strong> mediante SimConnect tiene puntos
+        GPS. La columna «Mapa» del Historial de vuelos lo indica claramente.</p>
+
+        <h4>No se encuentra un aeropuerto al importar desde SimToolKitPro</h4>
+        <p>Actualice primero los datos de aeropuertos desde la pestaña
+        <a href="#pestana-configuracion">Configuración</a> y vuelva a lanzar la importación: los
+        vuelos omitidos antes por aeropuerto no reconocido se importarán sin duplicar los ya importados.</p>
+
+        <h4>Un texto sigue en el idioma anterior tras el cambio</h4>
+        <p>Los mensajes de estado ya mostrados (resultado de un guardado, de una importación…)
+        conservan su idioma hasta el siguiente mensaje; todo lo demás cambia de inmediato.</p>
+      </div>
+    </section>
+
+    <section id="anexo-licencias">
+      <h2 class="section-title"><span class="emoji">⚖️</span> Anexo — Fuentes de datos y licencias</h2>
+      <p class="section-lead">Los servicios externos que usa la aplicación y las condiciones que se les aplican.</p>
+      <div class="card">
+        <p>La Bitácora de vuelo solo hace consultas de solo lectura a los servicios siguientes.
+        Condiciones comprobadas el 24/09/2026 en las páginas oficiales de cada servicio; pueden
+        cambiar, y los enlaces indicados son los que prevalecen.</p>
+        <table>
+          <tr><th>Servicio</th><th>Uso en la aplicación</th><th>Licencia / condiciones</th></tr>
+          <tr>
+            <td><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></td>
+            <td>Mapa base de la pestaña Mapa (mosaicos de tile.openstreetmap.org)</td>
+            <td>Datos bajo licencia <strong>ODbL</strong> (Open Database License), atribución
+            «© OpenStreetMap contributors» obligatoria; el uso de los mosaicos está sujeto a la
+            <a href="https://operations.osmfoundation.org/policies/tiles/" target="_blank" rel="noopener">política de uso de mosaicos</a>
+            de la OSMF.</td>
+          </tr>
+          <tr>
+            <td><a href="https://ourairports.com/data/" target="_blank" rel="noopener">OurAirports</a>
+            (<a href="https://github.com/davidmegginson/ourairports-data" target="_blank" rel="noopener">ourairports-data</a>)</td>
+            <td>Datos de aeropuertos (<code class="path">airports.csv</code>)</td>
+            <td><strong>Dominio público</strong> (repositorio bajo The Unlicense); sin garantía de
+            exactitud; la atribución se agradece, pero no es obligatoria.</td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/rikgale/ICAOList" target="_blank" rel="noopener">rikgale/ICAOList</a></td>
+            <td>Datos de tipos de aeronave (<code class="path">ICAOList.csv</code>)</td>
+            <td><strong>Ninguna licencia declarada</strong> por el autor. Los códigos de tipo
+            proceden del documento OACI 8643 (<em>Aircraft Type Designators</em>). La lista solo se
+            usa para buscar aeronaves, en local.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.simbrief.com/" target="_blank" rel="noopener">SimBrief</a> (Navigraph)</td>
+            <td>Importación de su último plan de vuelo (<code class="path">xml.fetcher.php</code>)</td>
+            <td>Sujeto a las <a href="https://navigraph.com/legal/terms-of-service" target="_blank" rel="noopener">condiciones de uso de Navigraph</a>
+            y a las <a href="https://developers.navigraph.com/docs/developer-terms-of-service" target="_blank" rel="noopener">condiciones para desarrolladores</a>:
+            uso <strong>solo para simulación</strong>, prohibido para la navegación real y para
+            contabilizar horas de vuelo de cara a una licencia de piloto; no sobrecargar la API.
+            SimBrief es una marca de Navigraph.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.adsbdb.com/" target="_blank" rel="noopener">adsbdb</a></td>
+            <td>Indicativo de radio de la aerolínea al importar desde SimBrief</td>
+            <td>Proyecto de código abierto bajo licencia <strong>MIT</strong>
+            (<a href="https://github.com/mrjackwills/adsbdb" target="_blank" rel="noopener">código fuente</a>);
+            API pública gratuita sin condiciones de uso publicadas. Datos de fuentes de terceros
+            acreditadas por el proyecto.</td>
+          </tr>
+          <tr>
+            <td><a href="https://aviationweather.gov/data/api/" target="_blank" rel="noopener">aviationweather.gov</a> (NOAA / NWS)</td>
+            <td>METAR mostrado al pasar el ratón por el icono meteorológico ⛅</td>
+            <td>Información del National Weather Service de <strong>dominio público</strong>
+            (<a href="https://www.weather.gov/disclaimer" target="_blank" rel="noopener">aviso legal del NWS</a>),
+            proporcionada «tal cual», sin garantía; límite de 100 consultas por minuto.</td>
+          </tr>
+        </table>
+        <div class="callout note">
+          <strong>Uso exclusivamente simulado</strong>
+          Los datos que muestra la Bitácora de vuelo (planes de SimBrief, METAR, datos de
+          referencia) se proporcionan sin garantía y nunca deben usarse para la navegación real.
+          Esta bitácora registra vuelos <strong>simulados</strong> y no tiene valor de libro de
+          vuelo oficial: las condiciones de Navigraph prohíben usar los datos de SimBrief para
+          contabilizar horas de vuelo de cara a una licencia de piloto.
+        </div>
+        <div class="callout tip">
+          <strong>Respeto de las políticas de uso</strong>
+          La aplicación se identifica ante OpenStreetMap con su propio User-Agent, conserva en una
+          caché local los mosaicos ya descargados (<code class="path">%LocalAppData%\GMap.NET</code>),
+          no ofrece descarga de mapas sin conexión y muestra siempre, de forma legible, la
+          atribución de OpenStreetMap en la esquina superior izquierda del mapa, con un enlace a la
+          página de licencia. Las consultas a SimBrief, adsbdb y METAR solo se hacen cuando usted
+          lo pide (botón de importación, paso del ratón por el icono meteorológico).
+        </div>
+        <p>Microsoft Flight Simulator 2024 y SimConnect son marcas de Microsoft; la Bitácora de
+        vuelo no está afiliada a Microsoft, a Navigraph ni a los demás servicios citados.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 1.0.23.
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var stored = null;
+    try { stored = localStorage.getItem('cdv-doc-theme'); } catch (e) {}
+    if (stored === 'dark' || stored === 'light') {
+      root.setAttribute('data-theme', stored);
+      btn.textContent = stored === 'dark' ? '☀️ Modo claro' : '🌙 Modo oscuro';
+    }
+    btn.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var isDark = current === 'dark' || (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      btn.textContent = next === 'dark' ? '☀️ Modo claro' : '🌙 Modo oscuro';
+      try { localStorage.setItem('cdv-doc-theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
