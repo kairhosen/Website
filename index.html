@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://api.github.com; base-uri 'none'; form-action 'none'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carnet de Vol &amp; Camify – applications pour Microsoft Flight Simulator 2024</title>
+  <meta name="description" content="" data-i18n-attr="content:meta.homeDescription" />
+  <meta name="theme-color" content="#0B2545" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/i18n.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main" data-i18n="nav.skip"></a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="publisher" href="index.html" data-i18n-attr="aria-label:nav.home">
+        <img src="assets/img/favicon.svg" alt="" width="22" height="22" />
+        <span>Kairhosen</span>
+      </a>
+      <nav class="site-nav" data-i18n-attr="aria-label:nav.label">
+        <a class="nav-app nav-cdv" href="#carnetdevol"><img src="assets/img/carnetdevol/logo.svg" alt="" width="20" height="20" /><span data-i18n="cdv.name"></span></a>
+        <a class="nav-app nav-camify" href="#camify"><img src="assets/img/camify/logo.svg" alt="" width="20" height="20" /><span>Camify</span></a>
+        <a href="#guides" data-i18n="nav.guides"></a>
+        <a href="copyright.html" data-i18n="nav.copyright"></a>
+      </nav>
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+        <button type="button" data-lang="fr" lang="fr">FR</button>
+        <button type="button" data-lang="en" lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Accueil : les deux applications se partagent tout l'écran. Au survol (ou au focus), le
+         panneau actif s'élargit ; sur mobile, les panneaux s'empilent. -->
+    <section class="split" data-i18n-attr="aria-label:split.label">
+      <article class="app-panel theme-cdv" data-app="cdv" id="hero-cdv">
+        <div class="panel-bg" aria-hidden="true"></div>
+        <div class="panel-content">
+          <div class="panel-title">
+            <img class="app-logo" src="assets/img/carnetdevol/logo.svg" alt="" width="68" height="68" />
+            <div>
+              <p class="eyebrow" data-i18n="cdv.eyebrow"></p>
+              <h1 data-i18n="cdv.name"></h1>
+            </div>
+          </div>
+          <p class="tagline" data-i18n-html="cdv.tagline"></p>
+          <ul class="checks">
+            <li data-i18n="cdv.check1"></li>
+            <li data-i18n="cdv.check2"></li>
+            <li data-i18n="cdv.check3"></li>
+          </ul>
+          <div class="panel-visual cdv-collage" aria-hidden="true">
+            <div class="shot back"><img data-shot="cdv:historique" alt="" width="1845" height="893" /></div>
+            <div class="shot front"><img data-shot="cdv:carte" alt="" width="1286" height="893" /></div>
+            <div class="shot popup"><img data-shot="cdv:atterrissage" alt="" width="344" height="134" /></div>
+          </div>
+          <div class="download-card">
+            <a class="btn btn-accent btn-large js-download" data-app="cdv" href="https://github.com/kairhosen/CarnetDeVol-releases/releases/latest/download/CarnetDeVol.exe">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17z M5 19h14v2H5z"/></svg>
+              <span data-i18n="cdv.download"></span>
+            </a>
+            <div class="download-meta">
+              <span class="release-info" data-app="cdv" data-i18n="hero.latest"></span>
+              <span data-i18n="hero.requirements"></span>
+              <a class="js-notes" data-app="cdv" href="https://github.com/kairhosen/CarnetDeVol-releases/releases/latest" data-i18n="hero.releaseNotes"></a>
+            </div>
+            <details class="release-hash" data-app="cdv" hidden>
+              <summary data-i18n="hero.hashSummary"></summary>
+              <p data-i18n="hero.hashText"></p>
+              <code class="hash-value"></code>
+              <p data-i18n="hero.hashCommand"></p>
+              <code class="hash-command"></code>
+            </details>
+          </div>
+          <a class="discover" href="#carnetdevol"><span data-i18n="hero.discover"></span> <span aria-hidden="true">↓</span></a>
+        </div>
+      </article>
+
+      <article class="app-panel theme-camify" data-app="camify" id="hero-camify">
+        <div class="panel-bg" aria-hidden="true"></div>
+        <div class="panel-content">
+          <div class="panel-title">
+            <img class="app-logo" src="assets/img/camify/logo.svg" alt="" width="68" height="68" />
+            <div>
+              <p class="eyebrow" data-i18n="camify.eyebrow"></p>
+              <h1>Camify</h1>
+            </div>
+          </div>
+          <p class="tagline" data-i18n-html="camify.tagline"></p>
+          <ul class="checks">
+            <li data-i18n="camify.check1"></li>
+            <li data-i18n="camify.check2"></li>
+            <li data-i18n="camify.check3"></li>
+          </ul>
+          <!-- Scène animée : un avion traverse l'écran, suivi par le viseur de la caméra. -->
+          <div class="panel-visual camify-scene" aria-hidden="true">
+            <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMin slice">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FFB27A" stop-opacity="0.55" />
+                  <stop offset="1" stop-color="#FFB27A" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <rect x="0" y="120" width="400" height="100" fill="url(#sky)" />
+              <path class="hills" d="M0 190 Q60 160 120 182 T240 176 T400 170 V220 H0 Z" />
+              <g class="scene-plane">
+                <path d="M0 0 L46 0 C52 0 56 3 56 6 C56 9 52 12 46 12 L4 12 L-6 -8 L2 -8 Z" />
+                <path d="M18 5 L34 5 L22 26 L14 26 Z" />
+              </g>
+              <g class="scene-frame">
+                <path d="M-44 -30 h16 M-44 -30 v12 M44 -30 h-16 M44 -30 v12 M-44 30 h16 M-44 30 v-12 M44 30 h-16 M44 30 v-12" />
+                <circle r="3" />
+              </g>
+              <g class="scene-rec"><circle cx="24" cy="22" r="5" /><text x="35" y="27">REC</text></g>
+            </svg>
+          </div>
+          <div class="download-card">
+            <a class="btn btn-accent btn-large js-download" data-app="camify" href="https://github.com/kairhosen/Camify-releases/releases/latest/download/Camify.exe">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M11 3h2v10.17l3.59-3.58L18 11l-6 6-6-6 1.41-1.41L11 13.17z M5 19h14v2H5z"/></svg>
+              <span data-i18n="camify.download"></span>
+            </a>
+            <div class="download-meta">
+              <span class="release-info" data-app="camify" data-i18n="hero.latest"></span>
+              <span data-i18n="hero.requirements"></span>
+              <a class="js-notes" data-app="camify" href="https://github.com/kairhosen/Camify-releases/releases/latest" data-i18n="hero.releaseNotes"></a>
+            </div>
+            <details class="release-hash" data-app="camify" hidden>
+              <summary data-i18n="hero.hashSummary"></summary>
+              <p data-i18n="hero.hashText"></p>
+              <code class="hash-value"></code>
+              <p data-i18n="hero.hashCommand"></p>
+              <code class="hash-command"></code>
+            </details>
+          </div>
+          <a class="discover" href="#camify"><span data-i18n="hero.discover"></span> <span aria-hidden="true">↓</span></a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Sections chargées au fil du défilement, en alternant les deux applications (assets/js/main.js). -->
+    <div id="feed" aria-live="polite"></div>
+    <div id="feed-sentinel" class="feed-loader" role="status">
+      <span class="spinner" aria-hidden="true"></span>
+      <span data-i18n="feed.loading"></span>
+    </div>
+
+    <noscript>
+      <div class="container noscript">
+        <p>Carnet de Vol : <a href="https://github.com/kairhosen/CarnetDeVol-releases/releases/latest/download/CarnetDeVol.exe">CarnetDeVol.exe</a> ·
+          <a href="https://github.com/kairhosen/CarnetDeVol-releases">github.com/kairhosen/CarnetDeVol-releases</a></p>
+        <p>Camify : <a href="https://github.com/kairhosen/Camify-releases/releases/latest/download/Camify.exe">Camify.exe</a> ·
+          <a href="https://github.com/kairhosen/Camify-releases">github.com/kairhosen/Camify-releases</a></p>
+        <p><a href="copyright.html">Copyright</a></p>
+      </div>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-apps"><strong data-i18n="cdv.name"></strong> · <strong>Camify</strong></p>
+        <p data-i18n="footer.disclaimer"></p>
+      </div>
+      <nav class="footer-links" data-i18n-attr="aria-label:footer.label">
+        <a href="https://github.com/kairhosen/CarnetDeVol-releases/releases" data-i18n="footer.cdvReleases"></a>
+        <a href="https://github.com/kairhosen/Camify-releases/releases" data-i18n="footer.camifyReleases"></a>
+        <a href="copyright.html" data-i18n="nav.copyright"></a>
+      </nav>
+      <p class="footer-copy" data-i18n-html="footer.copy"></p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
+    <button type="button" class="lightbox-close" data-i18n-attr="aria-label:lightbox.close">×</button>
+    <figure>
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

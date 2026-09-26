@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#15122B"/>
+      <stop offset="0.55" stop-color="#3B2466"/>
+      <stop offset="1" stop-color="#C2456B"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <g transform="translate(6.4 7) scale(0.8)">
+    <path fill="#fff" fill-opacity="0.93" d="M17,31 C11,30 6,28.4 1.8,26.4 C1.2,26.1 0.8,26.6 1,27.3 L1.8,29.8 C6.5,32.4 11.5,35 17,37.5 Z"/>
+    <path fill="#fff" fill-opacity="0.93" d="M47,31 C53,30 58,28.4 62.2,26.4 C62.8,26.1 63.2,26.6 63,27.3 L62.2,29.8 C57.5,32.4 52.5,35 47,37.5 Z"/>
+    <path fill="#fff" fill-rule="evenodd" d="M16.5,14.5a7.5,7.5 0 1,0 15,0a7.5,7.5 0 1,0 -15,0Z M22.3,10.5a1.7,1.7 0 1,0 3.4,0a1.7,1.7 0 1,0 -3.4,0Z M25.76,16.5a1.7,1.7 0 1,0 3.4,0a1.7,1.7 0 1,0 -3.4,0Z M18.84,16.5a1.7,1.7 0 1,0 3.4,0a1.7,1.7 0 1,0 -3.4,0Z M23,14.5a1,1 0 1,0 2,0a1,1 0 1,0 -2,0Z"/>
+    <path fill="#fff" fill-rule="evenodd" d="M31.5,13.5a8.5,8.5 0 1,0 17,0a8.5,8.5 0 1,0 -17,0Z M38,8.9a2,2 0 1,0 4,0a2,2 0 1,0 -4,0Z M41.98,15.8a2,2 0 1,0 4,0a2,2 0 1,0 -4,0Z M34.02,15.8a2,2 0 1,0 4,0a2,2 0 1,0 -4,0Z M38.9,13.5a1.1,1.1 0 1,0 2.2,0a1.1,1.1 0 1,0 -2.2,0Z"/>
+    <rect x="17" y="23" width="30" height="21" rx="3.5" fill="#fff"/>
+    <circle cx="32" cy="33.5" r="6.8" fill="#0F5C8C"/>
+    <circle cx="32" cy="33.5" r="3.4" fill="#4FC3F7"/>
+    <circle cx="30.6" cy="32.1" r="1.1" fill="#fff"/>
+    <circle cx="42.5" cy="27.2" r="1.5" fill="#EF6B75"/>
+  </g>
+</svg>
