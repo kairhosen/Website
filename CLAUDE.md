@@ -43,7 +43,27 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
   dépôt Camify (`tools/Screenshots`) : recopier ensuite `guides/camify/images/` et
   `assets/img/camify/`.
 
+## Placer les images (leçons apprises)
+
+- `width`/`height` des `<img>` générés = taille réelle du fichier (`SIZES`, `CAMIFY_SIZE`) : sinon
+  le ratio réservé est faux et la mise en page saute ou laisse une bande vide. Vérifier avec
+  `file assets/img/camify/*.png` après toute régénération des captures.
+- Cadre à ratio imposé (`aspect-ratio`, plaquettes) : `object-fit: cover` + `object-position`
+  pour remplir sans bande sombre ; `contain` seulement si la capture entière doit rester lisible.
+  Recadrer/redimensionner le fichier plutôt que de compenser par des marges.
+- `MODE_VIDEO` : la clé de la carte doit correspondre au contenu du fichier, pas seulement à son
+  nom — flyby = caméra fixe, l'avion arrive de face, grossit puis passe ; traveling = distance
+  constante, l'angle tourne autour de l'avion. Contrôler une image de chaque vidéo
+  (`Camify/tools/VideoFrames`) avant de publier.
+
 ## Vérifier
 
 `node tools/check.js` (clés de langue, pas de script/style en ligne, ressources présentes,
 taille). Ouvrir `index.html` en clair et en sombre, en 1440 px et 390 px de large.
+
+Rendu : `node tools/serve.js` (serveur statique en lecture seule sur `http://127.0.0.1:8765/`,
+gère les requêtes `Range` des vidéos). Si le panneau navigateur ne rend plus (MSFS au premier
+plan), utiliser Edge sans fenêtre :
+`msedge --headless=new --window-size=1440,4000 --screenshot=<sortie.png> http://127.0.0.1:8765/`
+(`--dump-dom` pour le DOM généré par `main.js`). Les liens et fichiers se vérifient avec `curl -I`
+depuis le shell : un `fetch` lancé dans la page est bloqué par la CSP et ne prouve rien.
