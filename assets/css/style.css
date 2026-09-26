@@ -312,14 +312,15 @@ code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 0.92em; ba
   100% { transform: translate(250px, 26px) rotate(-5deg); }
 }
 .runway { fill: rgba(10, 8, 24, 0.55); }
-.runway-line { stroke: #fff; stroke-width: 2; stroke-dasharray: 6 5; }
+.runway-line { stroke: #fff; stroke-width: 2; stroke-dasharray: 10 7; }
+.runway-threshold { stroke: #fff; stroke-width: 2; }
 .tower-icon { fill: var(--camify-light); }
 .landing { animation: landing 6s ease-out infinite; }
 @keyframes landing {
-  0% { transform: translate(-10px, 20px) scale(0.6) rotate(8deg); opacity: 0; }
+  0% { transform: translate(-30px, 34px) scale(0.8) rotate(4deg); opacity: 0; }
   10% { opacity: 1; }
-  70% { transform: translate(104px, 104px) scale(1.1) rotate(0deg); opacity: 1; }
-  100% { transform: translate(130px, 104px) scale(1.1); opacity: 0; }
+  55% { transform: translate(70px, 104px) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(190px, 104px) scale(1); opacity: 0; }
 }
 
 /* Captures cliquables */
@@ -466,5 +467,5 @@ tbody th { white-space: nowrap; }
   .scene-plane { transform: translate(170px, 90px) rotate(-8deg); }
   .scene-frame { transform: translate(196px, 86px); }
   .fly-across { transform: translate(100px, 40px) rotate(-5deg); }
-  .landing { transform: translate(104px, 104px) scale(1.1); opacity: 1; }
+  .landing { transform: translate(100px, 104px); opacity: 1; }
 }

@@ -123,9 +123,12 @@
     flyby: '<svg viewBox="0 0 240 140" aria-hidden="true"><path class="path" d="M-10 58 Q120 40 250 30"/>' +
       '<g class="art-plane fly-across">' + PLANE + "</g>" +
       '<g class="art-cam" transform="translate(130 112)">' + CAMERA + "</g></svg>",
-    tower: '<svg viewBox="0 0 240 140" aria-hidden="true"><path class="runway" d="M40 126 L200 126 L160 96 L90 96 Z"/>' +
-      '<path class="runway-line" d="M120 124 L122 98"/>' +
-      '<g class="tower-icon" transform="translate(212 60)"><rect x="-4" y="10" width="8" height="56"/><path d="M-12 0 H12 L9 12 H-9 Z"/></g>' +
+    // Piste vue de côté depuis la tour : elle s'étend dans le sens du vol de l'avion, qui s'y pose.
+    tower: '<svg viewBox="0 0 240 140" aria-hidden="true">' +
+      '<g class="tower-icon" transform="translate(200 40)"><rect x="-4" y="10" width="8" height="62"/><path d="M-12 0 H12 L9 12 H-9 Z"/></g>' +
+      '<path class="runway" d="M6 130 L214 130 L234 114 L26 114 Z"/>' +
+      '<path class="runway-line" d="M24 122 H216"/>' +
+      '<path class="runway-threshold" d="M14 116 V128 M18 116 V128 M22 116 V128"/>' +
       '<g class="art-plane landing">' + PLANE + "</g></svg>"
   };
 
