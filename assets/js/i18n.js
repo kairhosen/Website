@@ -101,6 +101,9 @@ window.KH_I18N = {
     "camify.modes.flyby.title": "Flyby",
     "camify.modes.flyby.text": "La caméra attend l'avion sur sa trajectoire prévue, le regarde passer avec un zoom adapté, puis se repositionne plus loin. Distance et hauteur réglables, jamais sous le sol.",
     "camify.modes.tower.title": "Tour de contrôle",
+    "camify.modes.watch": "Voir en situation réelle",
+    "camify.modes.back": "Revoir l'animation",
+    "camify.modes.videoLabel": "Vidéo : mode {name} dans Microsoft Flight Simulator 2024",
     "camify.modes.tower.text": "En approche, Camify détecte l'aéroport et la piste d'atterrissage, pose la caméra en bord de piste à hauteur de bâtiment et suit votre atterrissage, zoom compris.",
 
     "camify.features.kicker": "Camify · Au quotidien",
@@ -278,6 +281,9 @@ window.KH_I18N = {
     "camify.modes.flyby.title": "Flyby",
     "camify.modes.flyby.text": "The camera waits for the aircraft on its predicted path, watches it go by with a matching zoom, then moves further ahead. Adjustable distance and height, never below the ground.",
     "camify.modes.tower.title": "Control tower",
+    "camify.modes.watch": "Watch it in the sim",
+    "camify.modes.back": "Back to the animation",
+    "camify.modes.videoLabel": "Video: {name} mode in Microsoft Flight Simulator 2024",
     "camify.modes.tower.text": "On approach, Camify finds the airport and the landing runway, sets the camera beside the runway at building height and follows your landing, zoom included.",
 
     "camify.features.kicker": "Camify · Day to day",

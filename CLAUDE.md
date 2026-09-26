@@ -8,7 +8,7 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 
 - HTML/CSS/JS statique, sans framework, bibliothèque, police web, traceur ni cookie ; doit marcher
   en `file://`.
-- Sécurité : CSP stricte dans chaque page (`script-src 'self'; style-src 'self'`, aucun script ni
+- Sécurité : CSP stricte dans chaque page (`script-src 'self'; style-src 'self'; media-src 'self'`, aucun script ni
   style en ligne, y compris dans le HTML généré par `main.js` : délais d'animation par classes
   `d1`/`d2`). Seule requête externe : l'API publique GitHub `releases/latest` des dépôts
   `*-releases`, dont la réponse est validée (`sanitizeRelease`) et insérée par `textContent`.
@@ -27,6 +27,8 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 - Captures : `assets/img/carnetdevol/` = copies de `CarnetDeVol/docs/images/brochure/`
   (préfixes `fr-`, `en-`). Camify n'a pas encore de captures : ses modes sont illustrés par des
   SVG animés (`MODE_ART` dans `main.js`, scène du panneau d'accueil dans `index.html`).
+  Le bouton « Voir en situation réelle » de chaque carte de mode remplace l'animation par la
+  vidéo du guide (`MODE_VIDEO`, fichiers de `guides/camify/images/`), chargée seulement au clic.
 - Guides : `guides/carnetdevol/` = copies des guides de `CarnetDeVol/docs/` ; les images de
   plaquette pointent vers `../../assets/img/carnetdevol/`, `images/` reprend `docs/images/`.
   À recopier à chaque modification des guides sources.

@@ -132,6 +132,62 @@
       '<g class="art-plane landing">' + PLANE + "</g></svg>"
   };
 
+  // Vidéos réelles des modes (mêmes fichiers que les guides), chargées seulement au clic.
+  var MODE_VIDEO = {
+    traveling: "guides/camify/images/demo-traveling.mp4",
+    flyby: "guides/camify/images/demo-flyby.mp4",
+    tower: "guides/camify/images/demo-tour.mp4"
+  };
+
+  // Bascule d'une carte de mode entre l'animation et la vidéo réelle. Éléments créés par le DOM
+  // (pas de HTML), source prise dans MODE_VIDEO uniquement.
+  function toggleModeVideo(btn) {
+    var mode = btn.getAttribute("data-mode");
+    var art = btn.closest(".mode-card").querySelector(".mode-art");
+    var svg = art.querySelector("svg");
+    var label = btn.querySelector(".btn-video-label");
+    var icon = btn.querySelector("[aria-hidden]");
+    var video = art.querySelector("video");
+    if (video) {
+      video.pause();
+      video.remove();
+      svg.classList.remove("is-hidden");
+      btn.setAttribute("aria-pressed", "false");
+      icon.textContent = "▶";
+      label.textContent = t("camify.modes.watch");
+      return;
+    }
+    if (!MODE_VIDEO[mode]) return;
+    video = document.createElement("video");
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("aria-label", t("camify.modes.videoLabel", { name: t("camify.modes." + mode + ".title") }));
+    if (reduceMotion) video.controls = true; else video.autoplay = true;
+    video.addEventListener("error", function () {
+      video.remove();
+      svg.classList.remove("is-hidden");
+      btn.hidden = true; // vidéo illisible par ce navigateur : on garde l'animation
+      btn.setAttribute("aria-pressed", "false");
+    });
+    video.src = MODE_VIDEO[mode];
+    svg.classList.add("is-hidden"); // un <svg> n'a pas la propriété hidden des éléments HTML
+    art.appendChild(video);
+    if (!reduceMotion) {
+      var playing = video.play();
+      if (playing && playing.catch) playing.catch(function () { video.controls = true; });
+    }
+    btn.setAttribute("aria-pressed", "true");
+    icon.textContent = "↺";
+    label.textContent = t("camify.modes.back");
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest(".btn-video");
+    if (btn) toggleModeVideo(btn);
+  });
+
   // ===== Sections du flux (scrolling infini) =====
 
   function sectionHead(prefix, withSubtitle) {
@@ -167,7 +223,9 @@
         sectionHead("camify.modes", true) +
         '<div class="modes">' + ["traveling", "flyby", "tower"].map(function (m, i) {
           return '<article class="mode-card reveal d' + i + '"><div class="mode-art mode-' + m + '">' + MODE_ART[m] + "</div>" +
-            '<div class="mode-body"><h3>' + t("camify.modes." + m + ".title") + "</h3><p>" + t("camify.modes." + m + ".text") + "</p></div></article>";
+            '<div class="mode-body"><h3>' + t("camify.modes." + m + ".title") + "</h3><p>" + t("camify.modes." + m + ".text") + "</p>" +
+            '<button type="button" class="btn btn-small btn-video" data-mode="' + m + '" aria-pressed="false">' +
+            '<span aria-hidden="true">▶</span> <span class="btn-video-label">' + t("camify.modes.watch") + "</span></button></div></article>";
         }).join("") + "</div></div></section>";
     },
 
