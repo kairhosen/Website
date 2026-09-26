@@ -84,9 +84,12 @@
     btn.addEventListener("click", function () { setLanguage(btn.getAttribute("data-lang")); });
   });
 
-  // ===== Captures (Carnet de Vol) =====
+  // ===== Captures =====
 
-  function shot(name) {
+  // Carnet de Vol : copies de CarnetDeVol/docs/images/brochure. Camify : copies de Camify/docs/images
+  // (fenêtre entière, toutes de la même taille).
+  function shot(name, app) {
+    if (app === "camify") return "assets/img/camify/" + lang + "-" + name + ".png";
     return "assets/img/carnetdevol/" + lang + "-" + name + (name === "carte" ? ".jpg" : ".png");
   }
 
@@ -94,13 +97,14 @@
     vols: [1286, 893], carte: [1286, 893], historique: [1845, 893],
     stats: [1286, 893], config: [1286, 893], atterrissage: [344, 134]
   };
+  var CAMIFY_SIZE = [986, 773];
 
-  function zoomable(name, alt, extraClass) {
-    var size = SIZES[name];
-    var caption = name === "carte" ? alt + " — " + t("cdv.osm") : alt;
-    return '<button type="button" class="zoom ' + (extraClass || "") + '" data-full="' + shot(name) +
+  function zoomable(name, alt, extraClass, app) {
+    var size = app === "camify" ? CAMIFY_SIZE : SIZES[name];
+    var caption = app !== "camify" && name === "carte" ? alt + " — " + t("cdv.osm") : alt;
+    return '<button type="button" class="zoom ' + (extraClass || "") + '" data-full="' + shot(name, app) +
       '" data-caption="' + escapeAttr(caption) + '" aria-label="' + escapeAttr(alt) + '">' +
-      '<img src="' + shot(name) + '" alt="' + escapeAttr(alt) + '" width="' + size[0] + '" height="' + size[1] +
+      '<img src="' + shot(name, app) + '" alt="' + escapeAttr(alt) + '" width="' + size[0] + '" height="' + size[1] +
       '" loading="lazy" decoding="async" /></button>';
   }
 
@@ -210,6 +214,22 @@
     }).join("") + "</div>";
   }
 
+  // Bandeau de captures qui défile (en double pour une boucle continue), cliquables pour agrandir.
+  function gallery(app, names, sectionClass) {
+    var items = function (hidden) {
+      return names.map(function (n) {
+        var alt = t(app + ".shotAlt", { name: t(app + ".tab." + n) });
+        return hidden
+          ? '<div class="marquee-item" aria-hidden="true"><img src="' + shot(n, app) + '" alt="" loading="lazy" decoding="async" /></div>'
+          : '<div class="marquee-item">' + zoomable(n, alt, "", app) + "</div>";
+      }).join("");
+    };
+    return '<section class="section ' + sectionClass + " theme-" + app + '" id="' + app + '-gallery"><div class="container">' +
+      '<header class="section-head reveal"><p class="kicker">' + t(app + ".gallery.kicker") + "</p><h2>" + t(app + ".gallery.title") + "</h2>" +
+      '<p class="subtitle">' + t(app + ".gallery.hint") + "</p></header></div>" +
+      '<div class="marquee reveal"><div class="marquee-track">' + items(false) + items(true) + "</div></div></section>";
+  }
+
   var CHUNKS = [
     function cdvFeatures() {
       return '<section class="section theme-cdv app-section" id="carnetdevol"><div class="container">' + appBadge("cdv") +
@@ -252,19 +272,11 @@
     },
 
     function cdvGallery() {
-      var names = ["vols", "carte", "historique", "stats", "config"];
-      var items = function (hidden) {
-        return names.map(function (n) {
-          var alt = t("cdv.shotAlt", { name: t("cdv.tab." + n) });
-          return hidden
-            ? '<div class="marquee-item" aria-hidden="true"><img src="' + shot(n) + '" alt="" loading="lazy" decoding="async" /></div>'
-            : '<div class="marquee-item">' + zoomable(n, alt, "") + "</div>";
-        }).join("");
-      };
-      return '<section class="section section-navy theme-cdv" id="cdv-gallery"><div class="container">' +
-        '<header class="section-head reveal"><p class="kicker">' + t("cdv.gallery.kicker") + "</p><h2>" + t("cdv.gallery.title") + "</h2>" +
-        '<p class="subtitle">' + t("cdv.gallery.hint") + "</p></header></div>" +
-        '<div class="marquee reveal"><div class="marquee-track">' + items(false) + items(true) + "</div></div></section>";
+      return gallery("cdv", ["vols", "carte", "historique", "stats", "config"], "section-navy");
+    },
+
+    function camifyGallery() {
+      return gallery("camify", ["camera-sombre", "camera-clair", "flyby", "config", "journal"], "section-dark");
     },
 
     function shared() {

@@ -25,16 +25,23 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 ## Contenu repris des applications
 
 - Captures : `assets/img/carnetdevol/` = copies de `CarnetDeVol/docs/images/brochure/`
-  (préfixes `fr-`, `en-`). Camify n'a pas encore de captures : ses modes sont illustrés par des
-  SVG animés (`MODE_ART` dans `main.js`, scène du panneau d'accueil dans `index.html`).
-  Le bouton « Voir en situation réelle » de chaque carte de mode remplace l'animation par la
-  vidéo du guide (`MODE_VIDEO`, fichiers de `guides/camify/images/`), chargée seulement au clic.
+  (préfixes `fr-`, `en-`). `assets/img/camify/` = copies renommées de `Camify/docs/images/`
+  (`<lang>-onglet-camera-sombre.png` → `<lang>-camera-sombre.png`, `-onglet-camera-clair` →
+  `-camera-clair`, `-reglages-flyby` → `-flyby`, `-onglet-configuration` → `-config`,
+  `-onglet-journal` → `-journal`), en FR et EN, montrées par la galerie `camify-gallery`
+  (`gallery()` dans `main.js`, commune aux deux applications ; `CAMIFY_SIZE` = taille des captures).
+  Les modes de Camify restent illustrés par des SVG animés (`MODE_ART` dans `main.js`, scène du
+  panneau d'accueil dans `index.html`) ; le bouton « Voir en situation réelle » de chaque carte
+  remplace l'animation par la vidéo du guide (`MODE_VIDEO`, fichiers de `guides/camify/images/`),
+  chargée seulement au clic.
 - Guides : `guides/carnetdevol/` = copies des guides de `CarnetDeVol/docs/` ; les images de
   plaquette pointent vers `../../assets/img/carnetdevol/`, `images/` reprend `docs/images/`.
   À recopier à chaque modification des guides sources.
 - Guides de Camify : `guides/camify/` = copies de `Camify/docs/` (trois guides + `guide.css` +
-  `guide.js`, et `images/` quand les captures et vidéos existeront). Leurs animations SVG sont
-  les mêmes que `MODE_ART` : modifier les deux ensemble.
+  `guide.js`, et `images/` = captures et vidéos de `Camify/docs/images/`). Leurs animations SVG
+  sont les mêmes que `MODE_ART` : modifier les deux ensemble. Les captures se régénèrent dans le
+  dépôt Camify (`tools/Screenshots`) : recopier ensuite `guides/camify/images/` et
+  `assets/img/camify/`.
 
 ## Vérifier
 

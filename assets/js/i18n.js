@@ -121,6 +121,16 @@ window.KH_I18N = {
     "camify.features.local.title": "Léger et local",
     "camify.features.local.text": "Un seul exécutable, aucun compte. Français, anglais, espagnol, thème clair ou sombre.",
 
+    "camify.gallery.kicker": "Camify · En images",
+    "camify.gallery.title": "Une fenêtre, un bouton play",
+    "camify.gallery.hint": "Survolez pour mettre en pause, cliquez pour agrandir.",
+    "camify.shotAlt": "Camify, {name}",
+    "camify.tab.camera-sombre": "onglet Caméra en thème sombre, mode Traveling en cours",
+    "camify.tab.camera-clair": "onglet Caméra en thème clair",
+    "camify.tab.flyby": "réglages du mode Flyby",
+    "camify.tab.config": "onglet Configuration",
+    "camify.tab.journal": "onglet Journal",
+
     "shared.kicker": "Deux applications, un même esprit",
     "shared.title": "Pensées ensemble, pour votre simulateur",
     "shared.subtitle": "Carnet de Vol et Camify partagent la même interface et les mêmes principes. Utilisez-les séparément ou ensemble pendant le même vol.",
@@ -300,6 +310,16 @@ window.KH_I18N = {
     "camify.features.live.text": "The current shot and the next shot change are shown while the camera rolls.",
     "camify.features.local.title": "Lightweight and local",
     "camify.features.local.text": "A single executable, no account. English, French, Spanish, light or dark theme.",
+
+    "camify.gallery.kicker": "Camify · Screenshots",
+    "camify.gallery.title": "One window, one play button",
+    "camify.gallery.hint": "Hover to pause, click to enlarge.",
+    "camify.shotAlt": "Camify, {name}",
+    "camify.tab.camera-sombre": "Camera tab in dark theme, Traveling mode running",
+    "camify.tab.camera-clair": "Camera tab in light theme",
+    "camify.tab.flyby": "Flyby mode settings",
+    "camify.tab.config": "Settings tab",
+    "camify.tab.journal": "Log tab",
 
     "shared.kicker": "Two applications, one spirit",
     "shared.title": "Designed together, for your simulator",
