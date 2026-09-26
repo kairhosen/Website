@@ -51,10 +51,10 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 - Cadre à ratio imposé (`aspect-ratio`, plaquettes) : `object-fit: cover` + `object-position`
   pour remplir sans bande sombre ; `contain` seulement si la capture entière doit rester lisible.
   Recadrer/redimensionner le fichier plutôt que de compenser par des marges.
-- `MODE_VIDEO` : la clé de la carte doit correspondre au contenu du fichier, pas seulement à son
-  nom — flyby = caméra fixe, l'avion arrive de face, grossit puis passe ; traveling = distance
-  constante, l'angle tourne autour de l'avion. Contrôler une image de chaque vidéo
-  (`Camify/tools/VideoFrames`) avant de publier.
+- `MODE_VIDEO` : un nom de fichier correct ne prouve pas que le contenu l'est. Les vidéos
+  `demo-traveling.mp4` et `demo-flyby.mp4` ont été inversées une fois (issue Camify #18) et deviner
+  le mode d'après quelques images a échoué. Quand une vidéo est ajoutée ou remplacée, faire
+  confirmer par l'auteur des enregistrements quelle vidéo montre quel mode.
 
 ## Vérifier
 
