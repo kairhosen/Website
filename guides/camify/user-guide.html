@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Camify — User guide</title>
+<meta name="description" content="Complete guide to Camify, the cinematic cameras for Microsoft Flight Simulator 2024: Traveling, Flyby and Control tower modes, settings, keyboard shortcut." />
+<link rel="stylesheet" href="guide.css" />
+</head>
+<body>
+
+<header class="hero">
+  <nav class="lang-switch" aria-label="Language"><a href="guide-utilisateur.html" hreflang="fr" lang="fr">Français</a> · <a href="guia-usuario.html" hreflang="es" lang="es">Español</a></nav>
+  <button class="theme-toggle" id="themeToggle" type="button" data-dark="🌙 Dark mode" data-light="☀️ Light mode">🌙 Dark mode</button>
+  <div class="icon">🎥</div>
+  <h1>Camify — User guide</h1>
+  <p>Cinematic cameras · Microsoft Flight Simulator 2024</p>
+  <span class="badge">Windows · native application · a single file</span>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ul>
+      <li><a href="#overview">1. Overview</a></li>
+      <li><a href="#first-launch">2. Installation and first launch</a></li>
+      <li><a href="#interface">3. General interface</a></li>
+      <li><a href="#camera-tab">4. Camera tab</a>
+        <ul class="sub">
+          <li><a href="#camera-start">Starting and stopping</a></li>
+          <li><a href="#mode-traveling">Traveling mode</a></li>
+          <li><a href="#mode-flyby">Flyby mode</a></li>
+          <li><a href="#mode-tower">Control tower mode</a></li>
+          <li><a href="#camera-live">Live panel</a></li>
+          <li><a href="#camera-stop">Automatic stops</a></li>
+        </ul>
+      </li>
+      <li><a href="#settings-tab">5. Settings</a></li>
+      <li><a href="#log-tab">6. Log</a></li>
+      <li><a href="#tips">7. Tips &amp; good practice</a></li>
+      <li><a href="#troubleshooting">8. Troubleshooting</a></li>
+      <li><a href="#appendix-licenses">Appendix — Sources and licences</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section id="overview">
+      <h2 class="section-title"><span class="emoji">🎥</span> 1. Overview</h2>
+      <p class="section-lead">What Camify does, and who it is for.</p>
+      <div class="card">
+        <p><strong>Camify</strong> is a standalone Windows application that drives the
+        <strong>Microsoft Flight Simulator 2024</strong> camera to film your aircraft like a movie,
+        while you fly or while the autopilot flies for you. It uses the <strong>SimConnect</strong>
+        camera API, the simulator's official interface: there is no mod to install in MSFS.</p>
+        <figure class="anim anim-wide">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMin slice" role="img" aria-label="Animation: an aircraft crosses the frame, followed by the camera viewfinder">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFB27A" stop-opacity="0.55" />
+                <stop offset="1" stop-color="#FFB27A" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="120" width="400" height="100" fill="url(#sky)" />
+            <path class="hills" d="M0 190 Q60 160 120 182 T240 176 T400 170 V220 H0 Z" />
+            <g class="scene-plane">
+              <path d="M0 0 L46 0 C52 0 56 3 56 6 C56 9 52 12 46 12 L4 12 L-6 -8 L2 -8 Z" />
+              <path d="M18 5 L34 5 L22 26 L14 26 Z" />
+            </g>
+            <g class="scene-frame">
+              <path d="M-44 -30 h16 M-44 -30 v12 M44 -30 h-16 M44 -30 v12 M-44 30 h16 M-44 30 v-12 M44 30 h-16 M44 30 v-12" />
+              <circle r="3" />
+            </g>
+            <g class="scene-rec"><circle cx="24" cy="22" r="5" /><text x="35" y="27">REC</text></g>
+          </svg>
+        </figure>
+        <p>Three camera modes, each started with a click or a keyboard shortcut:</p>
+        <ul>
+          <li><strong>Traveling</strong>: slow outside shots around the aircraft, picked at random
+          (front three-quarter, side, high angle, view from below, chase…);</li>
+          <li><strong>Flyby</strong>: the camera waits for the aircraft on its path, watches it go
+          by, then moves further ahead;</li>
+          <li><strong>Control tower</strong>: on approach, the camera is set beside the landing
+          runway and follows your landing.</li>
+        </ul>
+        <p>Camify never flies the aircraft and does not record video: it positions the simulator's
+        camera. To keep a record, use your usual capture tool (for example the Windows Xbox Game
+        Bar, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
+      </div>
+    </section>
+
+    <section id="first-launch">
+      <h2 class="section-title"><span class="emoji">🚀</span> 2. Installation and first launch</h2>
+      <p class="section-lead">A single file to download, nothing to install.</p>
+      <div class="card">
+        <ol>
+          <li>Download <code class="path">Camify.exe</code> from the releases page:
+          <a href="https://github.com/kairhosen/Camify-releases/releases/latest" target="_blank" rel="noopener">github.com/kairhosen/Camify-releases</a>.</li>
+          <li>Put it in a folder of your own (for example <code class="path">Documents\Camify</code>):
+          the application writes its files next to the executable.</li>
+          <li>Start it, before or after MSFS 2024: it connects by itself.</li>
+        </ol>
+        <p>On the very first start, Camify automatically downloads the <strong>airport and runway
+        reference data</strong> (OurAirports), needed by the <a href="#mode-tower">Control tower</a>
+        mode. An Internet connection is only needed at that moment; the data can then be updated on
+        demand from the <a href="#settings-tab">Settings</a> tab.</p>
+        <div class="callout note">
+          <strong>Files created next to the executable</strong>
+          <code class="path">camify.db</code> (airports and runways),
+          <code class="path">camify.log</code> (log),
+          <code class="path">settings.json</code> (language, selected mode, slider values, shortcut)
+          and <code class="path">theme.txt</code> (light or dark theme). If you move the executable,
+          copy them along to keep your settings.
+        </div>
+      </div>
+    </section>
+
+    <section id="interface">
+      <h2 class="section-title"><span class="emoji">🖥️</span> 3. General interface</h2>
+      <p class="section-lead">The banner, the connection indicator, the three tabs and the theme.</p>
+      <div class="card">
+        <ul>
+          <li>A <strong>banner</strong> at the top, with the <span class="btn-label">🌙 Dark mode</span>
+          / <span class="btn-label">☀️ Light mode</span> button that switches the whole application
+          theme (remembered between sessions);</li>
+          <li>A <strong>status bar</strong> with a coloured dot (red = not connected, green =
+          connected). While MSFS is not available, Camify retries the connection every
+          <strong>5 seconds</strong>, with nothing for you to do;</li>
+          <li><strong>Three tabs</strong>: <span class="ui">🎥 Camera</span>,
+          <span class="ui">⚙️ Settings</span> and <span class="ui">📝 Log</span>.</li>
+        </ul>
+        <p>The application is shown in the <strong>Windows language</strong> when available
+        (English, French or Spanish), and in <strong>English</strong> otherwise. You can change it
+        in the <a href="#settings-tab">Settings</a> tab.</p>
+        <div class="shot-row">
+          <figure class="shot">
+            <img src="images/en-onglet-camera-sombre.png" alt="Camera tab in dark mode, Traveling mode running" loading="lazy" />
+            <figcaption>Dark mode — Camera tab, Traveling mode running.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="images/en-onglet-camera-clair.png" alt="Camera tab in light mode" loading="lazy" />
+            <figcaption>The same screen in light mode.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="camera-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Camera tab</h2>
+      <p class="section-lead">Choose a mode, adjust it, start it — and follow what the camera does.</p>
+
+      <h3 id="camera-start">Starting and stopping</h3>
+      <div class="card">
+        <p>The tab shows three <strong>mode cards</strong>: Traveling, Flyby and Control tower.</p>
+        <ul>
+          <li><strong>Clicking a card</strong> selects it and shows its settings in the
+          <span class="ui">🎚️ Mode settings</span> block, without starting the camera;</li>
+          <li>Each card's <strong>round ▶ button</strong> starts that mode. It turns into
+          <strong>■</strong> while the mode runs: a click stops it and hands the camera back to the
+          simulator;</li>
+          <li><strong>Only one mode plays at a time</strong>: starting a mode stops the current one;</li>
+          <li>The <strong>global keyboard shortcut</strong> (<kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>C</kbd>
+          by default), shown to the right of the <span class="ui">🎞️ Camera mode</span> title, stops
+          the running mode or starts the selected one — from MSFS, even in full screen.</li>
+        </ul>
+        <p>Slider changes apply immediately, even while the camera is running, and are kept for the
+        next session.</p>
+      </div>
+
+      <h3 id="mode-traveling">Traveling mode</h3>
+      <div class="card mode-card">
+        <figure class="anim">
+          <svg viewBox="0 0 240 140" role="img" aria-label="Animation: the camera slowly circles the aircraft">
+            <ellipse class="orbit" cx="120" cy="70" rx="90" ry="38" />
+            <g class="art-plane" transform="translate(102 66)"><path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/></g>
+            <g class="art-cam"><rect x="-9" y="-6" width="18" height="12" rx="2"/><path d="M9 -3 L15 -6 V6 L9 3 Z"/>
+              <animateMotion dur="9s" repeatCount="indefinite" path="M210 70 A90 38 0 1 1 30 70 A90 38 0 1 1 210 70" /></g>
+          </svg>
+        </figure>
+        <div>
+          <p>Camify chains <strong>outside shots</strong> picked at random. During each shot the
+          camera glides gently (slight circular tracking, moving closer or away, zoom), with
+          progressive acceleration and deceleration; moving to the next shot is a cut. Two
+          consecutive shots are never of the same kind.</p>
+          <table>
+            <tr><th>Shot</th><th>Viewpoint</th></tr>
+            <tr><td>Front three-quarter</td><td>Ahead of the aircraft, to the side, slightly above</td></tr>
+            <tr><td>Side</td><td>To the side, level with the aircraft</td></tr>
+            <tr><td>Rear three-quarter</td><td>Behind, to the side, a little above</td></tr>
+            <tr><td>High angle</td><td>Above the aircraft</td></tr>
+            <tr><td>Low angle</td><td>To the side, below the aircraft (in flight only)</td></tr>
+            <tr><td>View from below</td><td>Almost straight below the aircraft (in flight only)</td></tr>
+            <tr><td>Nose close-up</td><td>Very close to the nose</td></tr>
+            <tr><td>Chase</td><td>Behind the aircraft, in its wake</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Settings</h4>
+        <ul>
+          <li><strong>Minimum duration</strong> and <strong>Maximum duration</strong> (2 to 30 s, 4
+          and 10 s by default): each shot lasts a random time between these two values. The two
+          sliders stay consistent (the minimum never exceeds the maximum).</li>
+          <li><strong>Distance</strong>: average camera distance. By default it follows the
+          aircraft's <strong>wingspan</strong> (an A380 is filmed from much further away than a
+          C172) and the slider shows “(auto)”. Move it to set a value (5 to 200 m); the
+          <span class="btn-label">Auto</span> button goes back to the automatic value. This manual
+          choice lasts for the session and returns to automatic when you change aircraft.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Never below the ground</strong>
+          On the ground, shots from below are excluded and the camera stays above the terrain. In
+          flight, they are only offered with enough height for the chosen distance.
+        </div>
+        <figure class="shot">
+          <video src="images/demo-traveling.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Real example: a few Traveling shots in MSFS 2024.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="mode-flyby">Flyby mode</h3>
+      <div class="card mode-card">
+        <figure class="anim">
+          <svg viewBox="0 0 240 140" role="img" aria-label="Animation: the aircraft flies past a fixed camera">
+            <path class="path" d="M-10 58 Q120 40 250 30" />
+            <g class="art-plane fly-across"><path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/></g>
+            <g class="art-cam" transform="translate(130 112)"><rect x="-9" y="-6" width="18" height="12" rx="2"/><path d="M9 -3 L15 -6 V6 L9 3 Z"/></g>
+          </svg>
+        </figure>
+        <div>
+          <p>The camera is set, <strong>fixed</strong>, far ahead of the aircraft on its
+          <strong>predicted path</strong> (track, ground speed and vertical speed), slightly offset
+          to the side. It follows the aircraft with a zoom matched to the distance, watches it go by
+          and fly away, then is set again further ahead.</p>
+          <p>If the aircraft turns back or turns far away from the camera, the camera is set ahead
+          of it again. With the aircraft parked, it stands beside it at eye level.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Settings</h4>
+        <ul>
+          <li><strong>Initial distance</strong> (100 to 3,000 m, 600 m by default): distance at
+          which the camera is set ahead of the aircraft. The zoom then adapts to keep the aircraft
+          framed.</li>
+          <li><strong>Height</strong> (−200 to +500 m, 0 by default): moves the camera above (+) or
+          below (−) the path, for more varied angles. A small random variation is added each time
+          the camera is placed.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Never below the ground</strong>
+          With a negative height, the camera does not go below the terrain under the aircraft. The
+          exact terrain at the camera position is not known: over rising ground, the simulator
+          itself keeps the camera above the surface.
+        </div>
+        <figure class="shot">
+          <img src="images/en-reglages-flyby.png" alt="Flyby settings: initial distance and height" loading="lazy" />
+          <figcaption>Flyby settings.</figcaption>
+        </figure>
+        <figure class="shot">
+          <video src="images/demo-flyby.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Real example: a flyby pass in MSFS 2024.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="mode-tower">Control tower mode</h3>
+      <div class="card mode-card">
+        <figure class="anim">
+          <svg viewBox="0 0 240 140" role="img" aria-label="Animation: the aircraft lands on the runway, filmed from the tower">
+            <g class="tower-icon" transform="translate(200 40)"><rect x="-4" y="10" width="8" height="62"/><path d="M-12 0 H12 L9 12 H-9 Z"/></g>
+            <path class="runway" d="M6 130 L214 130 L234 114 L26 114 Z" />
+            <path class="runway-line" d="M24 122 H216" />
+            <path class="runway-threshold" d="M14 116 V128 M18 116 V128 M22 116 V128" />
+            <g class="art-plane landing"><path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/></g>
+          </svg>
+        </figure>
+        <div>
+          <p>Start this mode at any time, for example at the top of descent. Until the aircraft is
+          on approach, <strong>the simulator view is kept</strong>. As soon as the aircraft is below
+          <strong>3,000 ft above ground</strong> and <strong>aligned with a runway</strong>,
+          Camify:</p>
+          <ol>
+            <li>looks for the nearest airport (20 km radius) and the landing runway;</li>
+            <li>sets the camera <strong>once</strong> beside the runway, level with the touchdown
+            zone, at building height (12 m);</li>
+            <li>follows the aircraft, zoom included, <strong>without ever moving the camera</strong>
+            until it stops.</li>
+          </ol>
+          <p>This mode has no settings. It needs the airport and runway data: if it is empty, a red
+          warning appears below the description.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="callout note">
+          <strong>Runways with an approximate position</strong>
+          Some runways in the reference data have no threshold coordinates: Camify rebuilds them
+          around the airport reference point, with a wider tolerance. The status says so with
+          “approximate runway position”.
+        </div>
+        <figure class="shot">
+          <video src="images/demo-tour.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Real example: a landing filmed from beside the runway.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="camera-live">Live panel</h3>
+      <div class="card">
+        <p>The <span class="ui">📡 Live</span> block is updated four times per second:</p>
+        <table>
+          <tr><th>Line</th><th>Content</th></tr>
+          <tr><td>Aircraft</td><td>Name of the aircraft loaded in the simulator</td></tr>
+          <tr><td>Wingspan</td><td>Wingspan declared by the aircraft, and the size used for framing (bounded when the wingspan is unknown or abnormal, for example for a helicopter)</td></tr>
+          <tr><td>Camera</td><td>“Simulator view”, “Driven by Camify”, “Taken by another application” or “Disabled in the simulator options”</td></tr>
+          <tr><td>Status</td><td>What the mode is doing: current shot and countdown (Traveling), camera distance (Flyby), airport, runway and distance from the centreline (Tower), or the reason for a stop</td></tr>
+        </table>
+      </div>
+
+      <h3 id="camera-stop">Automatic stops</h3>
+      <div class="card">
+        <p>You always stay in control: Camify stops and hands the camera back to the simulator in
+        the following cases, with the reason shown in the status.</p>
+        <ul>
+          <li><strong>You change the view in MSFS</strong> (view key, joystick, camera menu…):
+          Camify detects it and stops at once;</li>
+          <li>the <strong>connection to MSFS is lost</strong>;</li>
+          <li>the camera is <strong>already used by another application</strong>;</li>
+          <li><strong>add-on cameras are disabled</strong> in the simulator options;</li>
+          <li>an error occurs (details in the <a href="#log-tab">Log</a>).</li>
+        </ul>
+        <p>When Camify is closed, the camera is also handed back to the simulator.</p>
+      </div>
+    </section>
+
+    <section id="settings-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Settings</h2>
+      <p class="section-lead">Language, keyboard shortcut and airport data.</p>
+      <figure class="shot">
+        <img src="images/en-onglet-configuration.png" alt="Settings tab: language, keyboard shortcut, airports and runways" loading="lazy" />
+        <figcaption>The Settings tab.</figcaption>
+      </figure>
+      <div class="card">
+        <h4>🌐 Language</h4>
+        <p>English, French or Spanish. By default the application follows the Windows language.
+        The choice is saved in <code class="path">settings.json</code>.</p>
+
+        <h4>⌨️ Keyboard shortcut</h4>
+        <p>The shortcut starts or stops the camera from any application, including the simulator
+        in full screen:</p>
+        <ol>
+          <li>click in the input box;</li>
+          <li>type the combination: <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>Win</kbd> (optionally
+          with <kbd>Shift</kbd>) plus a letter, a digit, an <kbd>F1</kbd>–<kbd>F24</kbd> key or a
+          navigation key;</li>
+          <li>click <span class="btn-label">Save</span>. <span class="btn-label">Default</span>
+          goes back to <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>C</kbd>.</li>
+        </ol>
+        <p>If the combination is already taken by another application, Camify says so and the
+        shortcut reminder shows “(unavailable)”: choose another one.</p>
+
+        <h4>🛬 Airports and runways</h4>
+        <p>Shows the number of airports and runways in the database and the update date. The
+        <span class="btn-label">Update</span> button downloads OurAirports'
+        <code class="path">airports.csv</code> and <code class="path">runways.csv</code> again. Only
+        large, medium and small airports with at least one usable runway are kept.</p>
+      </div>
+    </section>
+
+    <section id="log-tab" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📝</span> 6. Log</h2>
+      <p class="section-lead">The technical history, to diagnose a problem.</p>
+      <figure class="shot">
+        <img src="images/en-onglet-journal.png" alt="Log tab showing a preview of camify.log" loading="lazy" />
+        <figcaption>Preview of <code class="path">camify.log</code>.</figcaption>
+      </figure>
+      <div class="card">
+        <p>Connections to MSFS, camera starts and stops and errors are recorded in
+        <code class="path">camify.log</code>, next to the executable. Two buttons:</p>
+        <ul>
+          <li><span class="btn-label">Open the log file</span> — opens it in your text viewer, to
+          read it in full or attach it to a bug report;</li>
+          <li><span class="btn-label">Refresh preview</span> — refreshes the preview shown in the
+          application.</li>
+        </ul>
+        <p>Beyond 5 MB, the log is renamed <code class="path">camify.old.log</code> (replacing the
+        previous one) and a new file starts.</p>
+      </div>
+    </section>
+
+    <section id="tips">
+      <h2 class="section-title"><span class="emoji">💡</span> 7. Tips &amp; good practice</h2>
+      <div class="card">
+        <ul>
+          <li><strong>With the autopilot</strong>, Traveling turns into a real cruise film: lengthen
+          the shots (15 to 30 s) for a more contemplative result.</li>
+          <li><strong>For a spectacular flyby</strong>, reduce the initial distance (200 to 400 m)
+          and play with the height: slightly below for a pass seen from underneath, well above to
+          see the aircraft with the landscape.</li>
+          <li><strong>For the tower</strong>, start the mode at the top of descent: it waits for the
+          approach by itself, you just fly.</li>
+          <li><strong>To take back control</strong>, simply change the view in MSFS or use the
+          keyboard shortcut.</li>
+          <li><strong>With Flight Logbook</strong>, both applications can run during the same
+          flight: one logs the flight, the other films it.</li>
+        </ul>
+        <h4>Application files</h4>
+        <div>
+          <span class="pill">💾 camify.db — airports and runways</span>
+          <span class="pill">📝 camify.log — log</span>
+          <span class="pill">⚙️ settings.json — language, mode, settings, shortcut</span>
+          <span class="pill">🎨 theme.txt — chosen theme</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="troubleshooting">
+      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Troubleshooting</h2>
+      <div class="card">
+        <h4>“Not connected to MSFS 2024” never turns green</h4>
+        <p>Check that Microsoft Flight Simulator 2024 is running and that a flight is loaded. The
+        <a href="#log-tab">Log</a> tab details the connection attempts. Reconnection is automatic
+        every 5 seconds.</p>
+
+        <h4>“SimConnect.dll is missing or altered”</h4>
+        <p>Camify embeds the SimConnect client and checks its fingerprint before loading it. This
+        message means a damaged or modified executable: download <code class="path">Camify.exe</code>
+        again from the official releases page.</p>
+
+        <h4>The camera is “Disabled in the simulator options”</h4>
+        <p>Cameras driven by add-ons are disabled in the MSFS 2024 options: enable them again in the
+        simulator's camera options, then restart the mode.</p>
+
+        <h4>The camera stops as soon as I touch the joystick</h4>
+        <p>This is intended if the action changes the view in MSFS (view hat, camera button…):
+        Camify then hands control back. Remove that binding in the simulator controls, or restart
+        the mode with the shortcut.</p>
+
+        <h4>Control tower mode stays “waiting”</h4>
+        <p>The aircraft must be below 3,000 ft above ground and aligned with a runway of a known
+        airport within 20 km. Check that the reference data is not empty
+        (<a href="#settings-tab">Settings</a> tab) and update it if the airport is recent.</p>
+
+        <h4>The keyboard shortcut does nothing</h4>
+        <p>It may already be used by another application: the reminder next to the title then
+        shows “(unavailable)”. Choose another combination in the
+        <a href="#settings-tab">Settings</a> tab.</p>
+      </div>
+    </section>
+
+    <section id="appendix-licenses">
+      <h2 class="section-title"><span class="emoji">⚖️</span> Appendix — Data sources and licences</h2>
+      <p class="section-lead">The third-party components and data used by the application, and their terms.</p>
+      <div class="card">
+        <table>
+          <tr><th>Item</th><th>Use in the application</th><th>Licence / terms</th></tr>
+          <tr>
+            <td><code class="path">SimConnect.dll</code> (Microsoft Flight Simulator 2024 SDK 1.7.3)</td>
+            <td>Native x64 SimConnect client, embedded unmodified in <code class="path">Camify.exe</code>
+            to communicate with the simulator</td>
+            <td>© Microsoft Corporation, all rights reserved. Provided “as is”, without warranty,
+            and subject to the Microsoft Flight Simulator SDK license terms, attached to each release
+            as <code class="path">MSFS-SDK-EULA.pdf</code>. Only used with a legally installed copy of
+            MSFS 2024.</td>
+          </tr>
+          <tr>
+            <td><a href="https://ourairports.com/data/" target="_blank" rel="noopener">OurAirports</a>
+            (<a href="https://github.com/davidmegginson/ourairports-data" target="_blank" rel="noopener">ourairports-data</a>)</td>
+            <td>Airports and runways (<code class="path">airports.csv</code>, <code class="path">runways.csv</code>)
+            for the Control tower mode, downloaded on first launch</td>
+            <td><strong>Public domain</strong> (repository under The Unlicense); provided with no
+            guarantee of accuracy.</td>
+          </tr>
+        </table>
+        <div class="callout note">
+          <strong>For simulation use only</strong>
+          The airport and runway data is provided without warranty and must never be used for
+          real-world navigation.
+        </div>
+        <p>Microsoft Flight Simulator 2024, SimConnect and Windows are trademarks of Microsoft
+        Corporation. Camify is an independent application: it is not affiliated with, endorsed by
+        or supported by Microsoft.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Camify — FS2024 · User guide.
+</footer>
+
+<script src="guide.js"></script>
+</body>
+</html>

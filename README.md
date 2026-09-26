@@ -6,7 +6,7 @@ Site de présentation des deux applications Windows gratuites pour Microsoft Fli
 - **Camify** : caméras cinématiques (traveling, flyby, tour de contrôle).
 
 Site statique (HTML, CSS, JavaScript), sans framework ni étape de build : il s'ouvre aussi
-directement depuis le disque (`file://`). Hébergeable tel quel sur GitHub Pages.
+directement depuis le disque (`file://`). Hébergé tel quel chez un hébergeur statique (hors GitHub Pages).
 
 - `index.html` : accueil partagé plein écran entre les deux applications, puis sections chargées
   au défilement en alternant les applications.

@@ -28,7 +28,7 @@
   // Guides publiés sur le site (null = pas encore disponible).
   var GUIDES = {
     cdv: [["FR", "guides/carnetdevol/guide-utilisateur.html"], ["EN", "guides/carnetdevol/user-guide.html"], ["ES", "guides/carnetdevol/guia-usuario.html"]],
-    camify: null
+    camify: [["FR", "guides/camify/guide-utilisateur.html"], ["EN", "guides/camify/user-guide.html"], ["ES", "guides/camify/guia-usuario.html"]]
   };
 
   // ===== Traduction =====
@@ -123,11 +123,70 @@
     flyby: '<svg viewBox="0 0 240 140" aria-hidden="true"><path class="path" d="M-10 58 Q120 40 250 30"/>' +
       '<g class="art-plane fly-across">' + PLANE + "</g>" +
       '<g class="art-cam" transform="translate(130 112)">' + CAMERA + "</g></svg>",
-    tower: '<svg viewBox="0 0 240 140" aria-hidden="true"><path class="runway" d="M40 126 L200 126 L160 96 L90 96 Z"/>' +
-      '<path class="runway-line" d="M120 124 L122 98"/>' +
-      '<g class="tower-icon" transform="translate(212 60)"><rect x="-4" y="10" width="8" height="56"/><path d="M-12 0 H12 L9 12 H-9 Z"/></g>' +
+    // Piste vue de côté depuis la tour : elle s'étend dans le sens du vol de l'avion, qui s'y pose.
+    tower: '<svg viewBox="0 0 240 140" aria-hidden="true">' +
+      '<g class="tower-icon" transform="translate(200 40)"><rect x="-4" y="10" width="8" height="62"/><path d="M-12 0 H12 L9 12 H-9 Z"/></g>' +
+      '<path class="runway" d="M6 130 L214 130 L234 114 L26 114 Z"/>' +
+      '<path class="runway-line" d="M24 122 H216"/>' +
+      '<path class="runway-threshold" d="M14 116 V128 M18 116 V128 M22 116 V128"/>' +
       '<g class="art-plane landing">' + PLANE + "</g></svg>"
   };
+
+  // Vidéos réelles des modes (mêmes fichiers que les guides), chargées seulement au clic.
+  var MODE_VIDEO = {
+    traveling: "guides/camify/images/demo-traveling.mp4",
+    flyby: "guides/camify/images/demo-flyby.mp4",
+    tower: "guides/camify/images/demo-tour.mp4"
+  };
+
+  // Bascule d'une carte de mode entre l'animation et la vidéo réelle. Éléments créés par le DOM
+  // (pas de HTML), source prise dans MODE_VIDEO uniquement.
+  function toggleModeVideo(btn) {
+    var mode = btn.getAttribute("data-mode");
+    var art = btn.closest(".mode-card").querySelector(".mode-art");
+    var svg = art.querySelector("svg");
+    var label = btn.querySelector(".btn-video-label");
+    var icon = btn.querySelector("[aria-hidden]");
+    var video = art.querySelector("video");
+    if (video) {
+      video.pause();
+      video.remove();
+      svg.classList.remove("is-hidden");
+      btn.setAttribute("aria-pressed", "false");
+      icon.textContent = "▶";
+      label.textContent = t("camify.modes.watch");
+      return;
+    }
+    if (!MODE_VIDEO[mode]) return;
+    video = document.createElement("video");
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.preload = "auto";
+    video.setAttribute("aria-label", t("camify.modes.videoLabel", { name: t("camify.modes." + mode + ".title") }));
+    if (reduceMotion) video.controls = true; else video.autoplay = true;
+    video.addEventListener("error", function () {
+      video.remove();
+      svg.classList.remove("is-hidden");
+      btn.hidden = true; // vidéo illisible par ce navigateur : on garde l'animation
+      btn.setAttribute("aria-pressed", "false");
+    });
+    video.src = MODE_VIDEO[mode];
+    svg.classList.add("is-hidden"); // un <svg> n'a pas la propriété hidden des éléments HTML
+    art.appendChild(video);
+    if (!reduceMotion) {
+      var playing = video.play();
+      if (playing && playing.catch) playing.catch(function () { video.controls = true; });
+    }
+    btn.setAttribute("aria-pressed", "true");
+    icon.textContent = "↺";
+    label.textContent = t("camify.modes.back");
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest(".btn-video");
+    if (btn) toggleModeVideo(btn);
+  });
 
   // ===== Sections du flux (scrolling infini) =====
 
@@ -164,7 +223,9 @@
         sectionHead("camify.modes", true) +
         '<div class="modes">' + ["traveling", "flyby", "tower"].map(function (m, i) {
           return '<article class="mode-card reveal d' + i + '"><div class="mode-art mode-' + m + '">' + MODE_ART[m] + "</div>" +
-            '<div class="mode-body"><h3>' + t("camify.modes." + m + ".title") + "</h3><p>" + t("camify.modes." + m + ".text") + "</p></div></article>";
+            '<div class="mode-body"><h3>' + t("camify.modes." + m + ".title") + "</h3><p>" + t("camify.modes." + m + ".text") + "</p>" +
+            '<button type="button" class="btn btn-small btn-video" data-mode="' + m + '" aria-pressed="false">' +
+            '<span aria-hidden="true">▶</span> <span class="btn-video-label">' + t("camify.modes.watch") + "</span></button></div></article>";
         }).join("") + "</div></div></section>";
     },
 

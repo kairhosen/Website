@@ -299,7 +299,15 @@ code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 0.92em; ba
 }
 .mode-card:hover { transform: translateY(-4px); border-color: var(--camify-light); }
 .mode-art { background: var(--camify-grad); aspect-ratio: 240 / 140; }
+.mode-art { position: relative; overflow: hidden; }
 .mode-art svg { display: block; width: 100%; height: 100%; }
+.mode-art svg.is-hidden { display: none; }
+.mode-art video { display: block; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.btn-video {
+  margin-top: 14px; color: var(--camify-light); border-color: rgba(255, 201, 168, 0.55); background: transparent;
+}
+.btn-video:hover { background: rgba(255, 255, 255, 0.08); }
+.btn-video[aria-pressed="true"] { background: var(--camify-cta); border-color: var(--camify-cta); color: #fff; }
 .mode-body { padding: 18px 20px 22px; }
 .mode-body h3 { margin: 0 0 6px; font-size: 20px; }
 .mode-body p { margin: 0; color: rgba(255, 255, 255, 0.78); }
@@ -312,14 +320,15 @@ code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 0.92em; ba
   100% { transform: translate(250px, 26px) rotate(-5deg); }
 }
 .runway { fill: rgba(10, 8, 24, 0.55); }
-.runway-line { stroke: #fff; stroke-width: 2; stroke-dasharray: 6 5; }
+.runway-line { stroke: #fff; stroke-width: 2; stroke-dasharray: 10 7; }
+.runway-threshold { stroke: #fff; stroke-width: 2; }
 .tower-icon { fill: var(--camify-light); }
 .landing { animation: landing 6s ease-out infinite; }
 @keyframes landing {
-  0% { transform: translate(-10px, 20px) scale(0.6) rotate(8deg); opacity: 0; }
+  0% { transform: translate(-30px, 34px) scale(0.8) rotate(4deg); opacity: 0; }
   10% { opacity: 1; }
-  70% { transform: translate(104px, 104px) scale(1.1) rotate(0deg); opacity: 1; }
-  100% { transform: translate(130px, 104px) scale(1.1); opacity: 0; }
+  55% { transform: translate(70px, 104px) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(190px, 104px) scale(1); opacity: 0; }
 }
 
 /* Captures cliquables */
@@ -466,5 +475,5 @@ tbody th { white-space: nowrap; }
   .scene-plane { transform: translate(170px, 90px) rotate(-8deg); }
   .scene-frame { transform: translate(196px, 86px); }
   .fly-across { transform: translate(100px, 40px) rotate(-5deg); }
-  .landing { transform: translate(104px, 104px) scale(1.1); opacity: 1; }
+  .landing { transform: translate(100px, 104px); opacity: 1; }
 }
