@@ -28,7 +28,7 @@
   // Guides publiés sur le site (null = pas encore disponible).
   var GUIDES = {
     cdv: [["FR", "guides/carnetdevol/guide-utilisateur.html"], ["EN", "guides/carnetdevol/user-guide.html"], ["ES", "guides/carnetdevol/guia-usuario.html"]],
-    camify: null
+    camify: [["FR", "guides/camify/guide-utilisateur.html"], ["EN", "guides/camify/user-guide.html"], ["ES", "guides/camify/guia-usuario.html"]]
   };
 
   // ===== Traduction =====

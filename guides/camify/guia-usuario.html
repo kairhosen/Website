@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Camify — Guía del usuario</title>
+<meta name="description" content="Guía completa de Camify, las cámaras cinematográficas para Microsoft Flight Simulator 2024: modos Traveling, Flyby y Torre de control, ajustes y atajo de teclado." />
+<link rel="stylesheet" href="guide.css" />
+</head>
+<body>
+
+<header class="hero">
+  <nav class="lang-switch" aria-label="Idioma"><a href="guide-utilisateur.html" hreflang="fr" lang="fr">Français</a> · <a href="user-guide.html" hreflang="en" lang="en">English</a></nav>
+  <button class="theme-toggle" id="themeToggle" type="button" data-dark="🌙 Modo oscuro" data-light="☀️ Modo claro">🌙 Modo oscuro</button>
+  <div class="icon">🎥</div>
+  <h1>Camify — Guía del usuario</h1>
+  <p>Cámaras cinematográficas · Microsoft Flight Simulator 2024</p>
+  <span class="badge">Windows · aplicación nativa · un solo archivo</span>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="Índice">
+    <h2>Índice</h2>
+    <ul>
+      <li><a href="#presentacion">1. Presentación</a></li>
+      <li><a href="#primer-inicio">2. Instalación y primer inicio</a></li>
+      <li><a href="#interfaz">3. Interfaz general</a></li>
+      <li><a href="#pestana-camara">4. Pestaña Cámara</a>
+        <ul class="sub">
+          <li><a href="#camara-iniciar">Iniciar y detener</a></li>
+          <li><a href="#modo-traveling">Modo Traveling</a></li>
+          <li><a href="#modo-flyby">Modo Flyby</a></li>
+          <li><a href="#modo-torre">Modo Torre de control</a></li>
+          <li><a href="#camara-directo">Panel En directo</a></li>
+          <li><a href="#camara-parada">Paradas automáticas</a></li>
+        </ul>
+      </li>
+      <li><a href="#pestana-configuracion">5. Configuración</a></li>
+      <li><a href="#pestana-registro">6. Registro</a></li>
+      <li><a href="#consejos">7. Consejos y buenas prácticas</a></li>
+      <li><a href="#solucion-problemas">8. Solución de problemas</a></li>
+      <li><a href="#anexo-licencias">Anexo — Fuentes y licencias</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section id="presentacion">
+      <h2 class="section-title"><span class="emoji">🎥</span> 1. Presentación</h2>
+      <p class="section-lead">Qué hace Camify y para quién.</p>
+      <div class="card">
+        <p><strong>Camify</strong> es una aplicación de Windows autónoma que controla la cámara de
+        <strong>Microsoft Flight Simulator 2024</strong> para filmar su avión como en el cine,
+        mientras usted pilota o mientras el piloto automático vuela por usted. Utiliza la API de
+        cámara de <strong>SimConnect</strong>, la interfaz oficial del simulador: no hay ningún mod
+        que instalar en MSFS.</p>
+        <figure class="anim anim-wide">
+          <svg viewBox="0 0 400 220" preserveAspectRatio="xMidYMin slice" role="img" aria-label="Animación: un avión cruza el encuadre, seguido por el visor de la cámara">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFB27A" stop-opacity="0.55" />
+                <stop offset="1" stop-color="#FFB27A" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="120" width="400" height="100" fill="url(#sky)" />
+            <path class="hills" d="M0 190 Q60 160 120 182 T240 176 T400 170 V220 H0 Z" />
+            <g class="scene-plane">
+              <path d="M0 0 L46 0 C52 0 56 3 56 6 C56 9 52 12 46 12 L4 12 L-6 -8 L2 -8 Z" />
+              <path d="M18 5 L34 5 L22 26 L14 26 Z" />
+            </g>
+            <g class="scene-frame">
+              <path d="M-44 -30 h16 M-44 -30 v12 M44 -30 h-16 M44 -30 v12 M-44 30 h16 M-44 30 v-12 M44 30 h-16 M44 30 v-12" />
+              <circle r="3" />
+            </g>
+            <g class="scene-rec"><circle cx="24" cy="22" r="5" /><text x="35" y="27">REC</text></g>
+          </svg>
+        </figure>
+        <p>Tres modos de cámara, cada uno iniciado con un clic o un atajo de teclado:</p>
+        <ul>
+          <li><strong>Traveling</strong>: planos exteriores lentos alrededor del avión, elegidos al
+          azar (tres cuartos delantero, perfil, picado, vista desde abajo, persecución…);</li>
+          <li><strong>Flyby</strong>: la cámara espera al avión en su trayectoria, lo ve pasar y
+          luego se recoloca más adelante;</li>
+          <li><strong>Torre de control</strong>: en la aproximación, la cámara se coloca junto a la
+          pista de aterrizaje y sigue su aterrizaje.</li>
+        </ul>
+        <p>Camify nunca pilota el avión ni graba vídeo: coloca la cámara del simulador. Para
+        conservar un recuerdo, utilice su herramienta de captura habitual (por ejemplo la Xbox Game
+        Bar de Windows, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
+      </div>
+    </section>
+
+    <section id="primer-inicio">
+      <h2 class="section-title"><span class="emoji">🚀</span> 2. Instalación y primer inicio</h2>
+      <p class="section-lead">Un solo archivo que descargar, nada que instalar.</p>
+      <div class="card">
+        <ol>
+          <li>Descargue <code class="path">Camify.exe</code> desde la página de versiones:
+          <a href="https://github.com/kairhosen/Camify-releases/releases/latest" target="_blank" rel="noopener">github.com/kairhosen/Camify-releases</a>.</li>
+          <li>Colóquelo en una carpeta propia (por ejemplo <code class="path">Documentos\Camify</code>):
+          la aplicación escribe sus archivos junto al ejecutable.</li>
+          <li>Ejecútelo, antes o después de MSFS 2024: se conecta solo.</li>
+        </ol>
+        <p>En el primer inicio, Camify descarga automáticamente los <strong>datos de aeropuertos y
+        pistas</strong> (OurAirports), necesarios para el modo <a href="#modo-torre">Torre de
+        control</a>. Solo se necesita conexión a Internet en ese momento; después, los datos se
+        actualizan cuando usted quiera desde la pestaña <a href="#pestana-configuracion">Configuración</a>.</p>
+        <div class="callout note">
+          <strong>Archivos creados junto al ejecutable</strong>
+          <code class="path">camify.db</code> (aeropuertos y pistas),
+          <code class="path">camify.log</code> (registro),
+          <code class="path">settings.json</code> (idioma, modo elegido, valores de los controles,
+          atajo) y <code class="path">theme.txt</code> (tema claro u oscuro). Si mueve el ejecutable,
+          cópielos con él para conservar sus ajustes.
+        </div>
+      </div>
+    </section>
+
+    <section id="interfaz">
+      <h2 class="section-title"><span class="emoji">🖥️</span> 3. Interfaz general</h2>
+      <p class="section-lead">El banner, el indicador de conexión, las tres pestañas y el tema.</p>
+      <div class="card">
+        <ul>
+          <li>Un <strong>banner</strong> en la parte superior, con el botón <span class="btn-label">🌙 Modo oscuro</span>
+          / <span class="btn-label">☀️ Modo claro</span> que cambia el tema de toda la aplicación
+          (se conserva entre sesiones);</li>
+          <li>Una <strong>barra de estado</strong> con un punto de color (rojo = no conectado,
+          verde = conectado). Mientras MSFS no esté disponible, Camify reintenta la conexión cada
+          <strong>5 segundos</strong>, sin que usted tenga que hacer nada;</li>
+          <li><strong>Tres pestañas</strong>: <span class="ui">🎥 Cámara</span>,
+          <span class="ui">⚙️ Configuración</span> y <span class="ui">📝 Registro</span>.</li>
+        </ul>
+        <p>La aplicación se muestra en el <strong>idioma de Windows</strong> si está disponible
+        (español, francés o inglés), y en <strong>inglés</strong> en caso contrario. Puede cambiarlo
+        en la pestaña <a href="#pestana-configuracion">Configuración</a>.</p>
+        <div class="shot-row">
+          <figure class="shot">
+            <img src="images/es-onglet-camera-sombre.png" alt="Pestaña Cámara en modo oscuro, modo Traveling en curso" loading="lazy" />
+            <figcaption>Modo oscuro — pestaña Cámara, modo Traveling en curso.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="images/es-onglet-camera-clair.png" alt="Pestaña Cámara en modo claro" loading="lazy" />
+            <figcaption>La misma pantalla en modo claro.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="pestana-camara" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Pestaña Cámara</h2>
+      <p class="section-lead">Elegir un modo, ajustarlo, iniciarlo — y seguir lo que hace la cámara.</p>
+
+      <h3 id="camara-iniciar">Iniciar y detener</h3>
+      <div class="card">
+        <p>La pestaña muestra tres <strong>tarjetas de modo</strong>: Traveling, Flyby y Torre de
+        control.</p>
+        <ul>
+          <li><strong>Hacer clic en una tarjeta</strong> la selecciona y muestra sus ajustes en el
+          bloque <span class="ui">🎚️ Ajustes del modo</span>, sin iniciar la cámara;</li>
+          <li>El <strong>botón redondo ▶</strong> de cada tarjeta inicia ese modo. Se convierte en
+          <strong>■</strong> mientras el modo está activo: un clic lo detiene y devuelve la cámara
+          al simulador;</li>
+          <li><strong>Solo un modo a la vez</strong>: iniciar un modo detiene el que está en curso;</li>
+          <li>El <strong>atajo de teclado global</strong> (<kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>C</kbd>
+          por defecto), recordado a la derecha del título <span class="ui">🎞️ Modo de cámara</span>,
+          detiene el modo en curso o inicia el modo seleccionado — desde MSFS, incluso a pantalla
+          completa.</li>
+        </ul>
+        <p>Los cambios en los controles deslizantes se aplican de inmediato, incluso con la cámara
+        en marcha, y se conservan para la siguiente sesión.</p>
+      </div>
+
+      <h3 id="modo-traveling">Modo Traveling</h3>
+      <div class="card mode-card">
+        <figure class="anim">
+          <svg viewBox="0 0 240 140" role="img" aria-label="Animación: la cámara gira lentamente alrededor del avión">
+            <ellipse class="orbit" cx="120" cy="70" rx="90" ry="38" />
+            <g class="art-plane" transform="translate(102 66)"><path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/></g>
+            <g class="art-cam"><rect x="-9" y="-6" width="18" height="12" rx="2"/><path d="M9 -3 L15 -6 V6 L9 3 Z"/>
+              <animateMotion dur="9s" repeatCount="indefinite" path="M210 70 A90 38 0 1 1 30 70 A90 38 0 1 1 210 70" /></g>
+          </svg>
+        </figure>
+        <div>
+          <p>Camify encadena <strong>planos exteriores</strong> elegidos al azar. Durante cada
+          plano, la cámara se desliza suavemente (ligero travelling circular, acercamiento o
+          alejamiento, zoom), con una aceleración y una deceleración progresivas; el paso al plano
+          siguiente es un corte. Dos planos consecutivos nunca son del mismo tipo.</p>
+          <table>
+            <tr><th>Plano</th><th>Punto de vista</th></tr>
+            <tr><td>Tres cuartos delantero</td><td>Delante del avión, de lado, ligeramente por encima</td></tr>
+            <tr><td>Perfil</td><td>De lado, a la altura del avión</td></tr>
+            <tr><td>Tres cuartos trasero</td><td>Detrás, de lado, algo por encima</td></tr>
+            <tr><td>Picado</td><td>Por encima del avión</td></tr>
+            <tr><td>Contrapicado</td><td>De lado, por debajo del avión (solo en vuelo)</td></tr>
+            <tr><td>Vista desde abajo</td><td>Casi en vertical bajo el avión (solo en vuelo)</td></tr>
+            <tr><td>Primer plano del morro</td><td>Muy cerca del morro</td></tr>
+            <tr><td>Persecución</td><td>Detrás del avión, en su estela</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Ajustes</h4>
+        <ul>
+          <li><strong>Duración mínima</strong> y <strong>Duración máxima</strong> (2 a 30 s, 4 y
+          10 s por defecto): cada plano dura un tiempo aleatorio entre estos dos valores. Los dos
+          controles se mantienen coherentes (el mínimo nunca supera el máximo).</li>
+          <li><strong>Distancia</strong>: distancia media de la cámara. Por defecto sigue la
+          <strong>envergadura</strong> de la aeronave (un A380 se filma desde mucho más lejos que un
+          C172) y el control muestra «(auto)». Muévalo para fijar un valor (5 a 200 m); el botón
+          <span class="btn-label">Auto</span> vuelve al cálculo automático. Esta elección manual
+          dura la sesión y vuelve a automático al cambiar de aeronave.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Nunca bajo el suelo</strong>
+          En tierra, se excluyen los planos desde abajo y la cámara permanece por encima del
+          terreno. En vuelo, solo se proponen con altura suficiente respecto a la distancia elegida.
+        </div>
+        <figure class="shot">
+          <video src="images/demo-traveling.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Ejemplo real: algunos planos del modo Traveling en MSFS 2024.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="modo-flyby">Modo Flyby</h3>
+      <div class="card mode-card">
+        <figure class="anim">
+          <svg viewBox="0 0 240 140" role="img" aria-label="Animación: el avión pasa delante de una cámara fija">
+            <path class="path" d="M-10 58 Q120 40 250 30" />
+            <g class="art-plane fly-across"><path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/></g>
+            <g class="art-cam" transform="translate(130 112)"><rect x="-9" y="-6" width="18" height="12" rx="2"/><path d="M9 -3 L15 -6 V6 L9 3 Z"/></g>
+          </svg>
+        </figure>
+        <div>
+          <p>La cámara se coloca, <strong>fija</strong>, lejos delante del avión en su
+          <strong>trayectoria prevista</strong> (rumbo, velocidad respecto al suelo y velocidad
+          vertical), ligeramente desplazada hacia un lado. Sigue al avión con un zoom adaptado a la
+          distancia, lo ve pasar y alejarse, y vuelve a colocarse más adelante.</p>
+          <p>Si el avión da media vuelta o gira lejos de la cámara, esta se vuelve a colocar delante
+          de él. Con el avión estacionado, se sitúa a su lado, a la altura de una persona.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Ajustes</h4>
+        <ul>
+          <li><strong>Distancia inicial</strong> (100 a 3000 m, 600 m por defecto): distancia a la
+          que se coloca la cámara delante del avión. Después, el zoom se adapta para mantener el
+          avión encuadrado.</li>
+          <li><strong>Altura</strong> (−200 a +500 m, 0 por defecto): desplaza la cámara por encima
+          (+) o por debajo (−) de la trayectoria, para variar los ángulos. Se añade una pequeña
+          variación aleatoria en cada colocación.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Nunca bajo el suelo</strong>
+          Con una altura negativa, la cámara no baja por debajo del terreno sobre el que vuela el
+          avión. El relieve exacto en la posición de la cámara no se conoce: sobre un terreno que
+          sube, el propio simulador mantiene la cámara fuera del suelo.
+        </div>
+        <figure class="shot">
+          <img src="images/es-reglages-flyby.png" alt="Ajustes del modo Flyby: distancia inicial y altura" loading="lazy" />
+          <figcaption>Ajustes del modo Flyby.</figcaption>
+        </figure>
+        <figure class="shot">
+          <video src="images/demo-flyby.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Ejemplo real: un paso en Flyby en MSFS 2024.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="modo-torre">Modo Torre de control</h3>
+      <div class="card mode-card">
+        <figure class="anim">
+          <svg viewBox="0 0 240 140" role="img" aria-label="Animación: el avión aterriza en la pista, filmado desde la torre">
+            <g class="tower-icon" transform="translate(200 40)"><rect x="-4" y="10" width="8" height="62"/><path d="M-12 0 H12 L9 12 H-9 Z"/></g>
+            <path class="runway" d="M6 130 L214 130 L234 114 L26 114 Z" />
+            <path class="runway-line" d="M24 122 H216" />
+            <path class="runway-threshold" d="M14 116 V128 M18 116 V128 M22 116 V128" />
+            <g class="art-plane landing"><path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/></g>
+          </svg>
+        </figure>
+        <div>
+          <p>Inicie este modo en cualquier momento, por ejemplo al comenzar el descenso. Mientras el
+          avión no esté en aproximación, <strong>se conserva la vista del simulador</strong>. En
+          cuanto el avión está a menos de <strong>3000 ft sobre el suelo</strong> y
+          <strong>alineado con una pista</strong>, Camify:</p>
+          <ol>
+            <li>busca el aeropuerto más cercano (radio de 20 km) y la pista de aterrizaje;</li>
+            <li>coloca la cámara <strong>una sola vez</strong> junto a la pista, a la altura de la
+            zona de toma de contacto, a la altura de un edificio (12 m);</li>
+            <li>sigue al avión, zoom incluido, <strong>sin mover nunca la cámara</strong> hasta que
+            se detiene.</li>
+          </ol>
+          <p>Este modo no tiene ajustes. Necesita los datos de aeropuertos y pistas: si están
+          vacíos, aparece un aviso en rojo bajo la descripción.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="callout note">
+          <strong>Pistas de posición aproximada</strong>
+          Algunas pistas de los datos no tienen coordenadas de umbral: Camify las reconstruye
+          alrededor del punto de referencia del aeropuerto, con una tolerancia mayor. El estado lo
+          indica con «posición de pista aproximada».
+        </div>
+        <figure class="shot">
+          <video src="images/demo-tour.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Ejemplo real: un aterrizaje filmado desde el borde de la pista.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="camara-directo">Panel En directo</h3>
+      <div class="card">
+        <p>El bloque <span class="ui">📡 En directo</span> se actualiza cuatro veces por segundo:</p>
+        <table>
+          <tr><th>Línea</th><th>Contenido</th></tr>
+          <tr><td>Aeronave</td><td>Nombre de la aeronave cargada en el simulador</td></tr>
+          <tr><td>Envergadura</td><td>Envergadura declarada por la aeronave y tamaño usado para el encuadre (acotado si la envergadura es desconocida o anómala, por ejemplo en un helicóptero)</td></tr>
+          <tr><td>Cámara</td><td>«Vista del simulador», «Controlada por Camify», «Tomada por otra aplicación» o «Desactivada en las opciones del simulador»</td></tr>
+          <tr><td>Estado</td><td>Lo que hace el modo: plano en curso y cuenta atrás (Traveling), distancia de la cámara (Flyby), aeropuerto, pista y distancia al eje (Torre), o motivo de una parada</td></tr>
+        </table>
+      </div>
+
+      <h3 id="camara-parada">Paradas automáticas</h3>
+      <div class="card">
+        <p>Usted siempre mantiene el control: Camify se detiene y devuelve la cámara al simulador
+        en los siguientes casos, con el motivo indicado en el estado.</p>
+        <ul>
+          <li><strong>Cambia la vista en MSFS</strong> (tecla de vista, joystick, menú de cámara…):
+          Camify lo detecta y se detiene al instante;</li>
+          <li>se <strong>pierde la conexión con MSFS</strong>;</li>
+          <li>la cámara <strong>ya la usa otra aplicación</strong>;</li>
+          <li>las <strong>cámaras de complementos están desactivadas</strong> en las opciones del
+          simulador;</li>
+          <li>se produce un error (detalles en el <a href="#pestana-registro">Registro</a>).</li>
+        </ul>
+        <p>Al cerrar Camify, la cámara también se devuelve al simulador.</p>
+      </div>
+    </section>
+
+    <section id="pestana-configuracion" class="tab-section">
+      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Configuración</h2>
+      <p class="section-lead">Idioma, atajo de teclado y datos de aeropuertos.</p>
+      <figure class="shot">
+        <img src="images/es-onglet-configuration.png" alt="Pestaña Configuración: idioma, atajo de teclado, aeropuertos y pistas" loading="lazy" />
+        <figcaption>La pestaña Configuración.</figcaption>
+      </figure>
+      <div class="card">
+        <h4>🌐 Idioma</h4>
+        <p>Español, francés o inglés. Por defecto, la aplicación sigue el idioma de Windows. La
+        elección se guarda en <code class="path">settings.json</code>.</p>
+
+        <h4>⌨️ Atajo de teclado</h4>
+        <p>El atajo inicia o detiene la cámara desde cualquier aplicación, incluido el simulador a
+        pantalla completa:</p>
+        <ol>
+          <li>haga clic en el campo de entrada;</li>
+          <li>pulse la combinación deseada: <kbd>Ctrl</kbd>, <kbd>Alt</kbd> o <kbd>Win</kbd>
+          (opcionalmente con <kbd>Mayús</kbd>) más una letra, un número, una tecla
+          <kbd>F1</kbd>–<kbd>F24</kbd> o una tecla de navegación;</li>
+          <li>haga clic en <span class="btn-label">Guardar</span>. <span class="btn-label">Predeterminado</span>
+          vuelve a <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>C</kbd>.</li>
+        </ol>
+        <p>Si otra aplicación ya usa la combinación, Camify lo indica y el recordatorio del atajo
+        muestra «(no disponible)»: elija otra.</p>
+
+        <h4>🛬 Aeropuertos y pistas</h4>
+        <p>Muestra el número de aeropuertos y pistas en la base de datos y la fecha de
+        actualización. El botón <span class="btn-label">Actualizar</span> vuelve a descargar los
+        archivos <code class="path">airports.csv</code> y <code class="path">runways.csv</code> de
+        OurAirports. Solo se conservan los aeropuertos grandes, medianos y pequeños con al menos
+        una pista utilizable.</p>
+      </div>
+    </section>
+
+    <section id="pestana-registro" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📝</span> 6. Registro</h2>
+      <p class="section-lead">El historial técnico, para diagnosticar un problema.</p>
+      <figure class="shot">
+        <img src="images/es-onglet-journal.png" alt="Pestaña Registro con una vista previa de camify.log" loading="lazy" />
+        <figcaption>Vista previa de <code class="path">camify.log</code>.</figcaption>
+      </figure>
+      <div class="card">
+        <p>Las conexiones a MSFS, los inicios y paradas de la cámara y los errores se registran en
+        <code class="path">camify.log</code>, junto al ejecutable. Dos botones:</p>
+        <ul>
+          <li><span class="btn-label">Abrir el archivo de registro</span> — lo abre en su visor de
+          texto, para leerlo completo o adjuntarlo a un informe de error;</li>
+          <li><span class="btn-label">Actualizar la vista previa</span> — refresca la vista previa
+          mostrada en la aplicación.</li>
+        </ul>
+        <p>A partir de 5 MB, el registro se renombra a <code class="path">camify.old.log</code>
+        (que reemplaza al anterior) y comienza un archivo nuevo.</p>
+      </div>
+    </section>
+
+    <section id="consejos">
+      <h2 class="section-title"><span class="emoji">💡</span> 7. Consejos y buenas prácticas</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Con el piloto automático</strong>, el Traveling se convierte en una auténtica
+          película de crucero: alargue los planos (15 a 30 s) para un resultado más contemplativo.</li>
+          <li><strong>Para un flyby espectacular</strong>, reduzca la distancia inicial (200 a
+          400 m) y juegue con la altura: un poco por debajo para un paso visto desde abajo, bien por
+          encima para ver el avión con el paisaje.</li>
+          <li><strong>Para la torre</strong>, inicie el modo al comenzar el descenso: espera la
+          aproximación por sí solo, usted solo tiene que pilotar.</li>
+          <li><strong>Para retomar el control</strong>, basta con cambiar la vista en MSFS o usar el
+          atajo de teclado.</li>
+          <li><strong>Con Carnet de Vol</strong>, ambas aplicaciones pueden funcionar durante el
+          mismo vuelo: una registra el vuelo y la otra lo filma.</li>
+        </ul>
+        <h4>Archivos de la aplicación</h4>
+        <div>
+          <span class="pill">💾 camify.db — aeropuertos y pistas</span>
+          <span class="pill">📝 camify.log — registro</span>
+          <span class="pill">⚙️ settings.json — idioma, modo, ajustes, atajo</span>
+          <span class="pill">🎨 theme.txt — tema elegido</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="solucion-problemas">
+      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Solución de problemas</h2>
+      <div class="card">
+        <h4>«No conectado a MSFS 2024» nunca pasa a verde</h4>
+        <p>Compruebe que Microsoft Flight Simulator 2024 está en marcha y que hay un vuelo
+        cargado. La pestaña <a href="#pestana-registro">Registro</a> detalla los intentos de
+        conexión. La reconexión es automática cada 5 segundos.</p>
+
+        <h4>«SimConnect.dll falta o está alterada»</h4>
+        <p>Camify incluye el cliente SimConnect y comprueba su huella antes de cargarlo. Este
+        mensaje indica un ejecutable dañado o modificado: vuelva a descargar
+        <code class="path">Camify.exe</code> desde la página oficial de versiones.</p>
+
+        <h4>La cámara está «Desactivada en las opciones del simulador»</h4>
+        <p>Las cámaras controladas por complementos están desactivadas en las opciones de MSFS
+        2024: vuelva a activarlas en las opciones de cámara del simulador y reinicie el modo.</p>
+
+        <h4>La cámara se detiene en cuanto toco el joystick</h4>
+        <p>Es intencionado si la acción cambia la vista en MSFS (seta de vista, botón de
+        cámara…): Camify devuelve entonces el control. Quite esa asignación en los controles del
+        simulador, o reinicie el modo con el atajo.</p>
+
+        <h4>El modo Torre de control se queda «en espera»</h4>
+        <p>El avión debe estar a menos de 3000 ft sobre el suelo y alineado con una pista de un
+        aeropuerto conocido a menos de 20 km. Compruebe que los datos no están vacíos (pestaña
+        <a href="#pestana-configuracion">Configuración</a>) y actualícelos si el aeropuerto es
+        reciente.</p>
+
+        <h4>El atajo de teclado no hace nada</h4>
+        <p>Puede que otra aplicación ya lo use: el recordatorio junto al título muestra entonces
+        «(no disponible)». Elija otra combinación en la pestaña
+        <a href="#pestana-configuracion">Configuración</a>.</p>
+      </div>
+    </section>
+
+    <section id="anexo-licencias">
+      <h2 class="section-title"><span class="emoji">⚖️</span> Anexo — Fuentes de datos y licencias</h2>
+      <p class="section-lead">Los componentes y datos de terceros que usa la aplicación, y sus condiciones.</p>
+      <div class="card">
+        <table>
+          <tr><th>Elemento</th><th>Uso en la aplicación</th><th>Licencia / condiciones</th></tr>
+          <tr>
+            <td><code class="path">SimConnect.dll</code> (Microsoft Flight Simulator 2024 SDK 1.7.3)</td>
+            <td>Cliente SimConnect nativo x64, integrado sin modificaciones en
+            <code class="path">Camify.exe</code> para comunicarse con el simulador</td>
+            <td>© Microsoft Corporation, todos los derechos reservados. Se proporciona «tal cual»,
+            sin garantía, y está sujeto a los términos de licencia del Microsoft Flight Simulator
+            SDK, adjuntos a cada versión como <code class="path">MSFS-SDK-EULA.pdf</code>. Solo se usa
+            con una copia de MSFS 2024 instalada legalmente.</td>
+          </tr>
+          <tr>
+            <td><a href="https://ourairports.com/data/" target="_blank" rel="noopener">OurAirports</a>
+            (<a href="https://github.com/davidmegginson/ourairports-data" target="_blank" rel="noopener">ourairports-data</a>)</td>
+            <td>Aeropuertos y pistas (<code class="path">airports.csv</code>, <code class="path">runways.csv</code>)
+            para el modo Torre de control, descargados en el primer inicio</td>
+            <td><strong>Dominio público</strong> (repositorio bajo The Unlicense); se proporciona sin
+            garantía de exactitud.</td>
+          </tr>
+        </table>
+        <div class="callout note">
+          <strong>Uso exclusivamente simulado</strong>
+          Los datos de aeropuertos y pistas se proporcionan sin garantía y nunca deben usarse para
+          la navegación real.
+        </div>
+        <p>Microsoft Flight Simulator 2024, SimConnect y Windows son marcas de Microsoft
+        Corporation. Camify es una aplicación independiente: no está afiliada a Microsoft ni
+        aprobada o respaldada por Microsoft.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  Camify — FS2024 · Guía del usuario.
+</footer>
+
+<script src="guide.js"></script>
+</body>
+</html>

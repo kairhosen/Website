@@ -29,8 +29,10 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
   SVG animés (`MODE_ART` dans `main.js`, scène du panneau d'accueil dans `index.html`).
 - Guides : `guides/carnetdevol/` = copies des guides de `CarnetDeVol/docs/` ; les images de
   plaquette pointent vers `../../assets/img/carnetdevol/`, `images/` reprend `docs/images/`.
-  À recopier à chaque modification des guides sources. Quand les guides de Camify existeront,
-  les copier dans `guides/camify/` et renseigner `GUIDES.camify` dans `main.js`.
+  À recopier à chaque modification des guides sources.
+- Guides de Camify : `guides/camify/` = copies de `Camify/docs/` (trois guides + `guide.css` +
+  `guide.js`, et `images/` quand les captures et vidéos existeront). Leurs animations SVG sont
+  les mêmes que `MODE_ART` : modifier les deux ensemble.
 
 ## Vérifier
 
