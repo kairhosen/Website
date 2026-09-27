@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://cdl.kairhosen.com/sitemap.xml

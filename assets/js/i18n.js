@@ -5,8 +5,8 @@
  *
  * Préfixes : cdv.* = Carnet de Vol, camify.* = Camify, cr.* = page copyright, le reste est commun.
  *
- * La langue est choisie ici, avant l'affichage, pour éviter un flash : choix mémorisé
- * (localStorage) sinon langue du navigateur (fr-* -> français, sinon anglais).
+ * La langue est fixée par la page qui charge ce fichier (<html lang="fr|en">), pas devinée :
+ * index.html/copyright.html sont en français, index-en.html/copyright-en.html en anglais.
  */
 window.KH_I18N = {
   fr: {
@@ -195,7 +195,7 @@ window.KH_I18N = {
     "cr.simTitle": "Usage exclusivement simulé",
     "cr.simText": "<p>Les données affichées par Carnet de Vol et Camify (plans SimBrief, METAR, référentiels d'aéroports et de pistes) sont fournies sans garantie et ne doivent <strong>jamais</strong> servir à la navigation réelle.</p><p>Carnet de Vol consigne des vols simulés et n'a pas valeur de carnet de vol officiel : les conditions Navigraph interdisent d'utiliser les données SimBrief pour comptabiliser des heures de vol en vue d'une licence de pilote.</p>",
     "cr.siteTitle": "Crédits et confidentialité du site",
-    "cr.siteText": "<p>Les captures d'écran proviennent des applications elles-mêmes. Les captures de l'onglet Carte de Carnet de Vol contiennent des tuiles OpenStreetMap : fond de carte © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>.</p><p>Ce site n'utilise ni police web, ni bibliothèque tierce, ni traceur, ni cookie : seulement du HTML, du CSS et du JavaScript écrits pour lui. Votre choix de langue est mémorisé dans le stockage local de votre navigateur, et le numéro de la dernière version de chaque application est lu à l'ouverture de la page depuis l'API publique de GitHub.</p><p>Le site est hébergé par IONOS. Comme tout serveur web, celui de l'hébergeur enregistre chaque requête dans ses journaux (adresse IP, date et heure, page demandée, navigateur utilisé) pour assurer la sécurité et le bon fonctionnement du service. Ces journaux servent aussi à établir des statistiques de fréquentation globales, sans cookie ni suivi individuel. Ils sont traités et conservés par IONOS selon sa <a href=\"https://www.ionos.fr/terms-gtc/clause-de-confidentialite/\">politique de confidentialité</a>.</p>",
+    "cr.siteText": "<p>Les captures d'écran proviennent des applications elles-mêmes. Les captures de l'onglet Carte de Carnet de Vol contiennent des tuiles OpenStreetMap : fond de carte © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>.</p><p>Ce site n'utilise ni police web, ni bibliothèque tierce, ni traceur, ni cookie : seulement du HTML, du CSS et du JavaScript écrits pour lui. Les boutons FR/EN mènent vers la version de la page dans l'autre langue, et le numéro de la dernière version de chaque application est lu à l'ouverture de la page depuis l'API publique de GitHub.</p><p>Le site est hébergé par IONOS. Comme tout serveur web, celui de l'hébergeur enregistre chaque requête dans ses journaux (adresse IP, date et heure, page demandée, navigateur utilisé) pour assurer la sécurité et le bon fonctionnement du service. Ces journaux servent aussi à établir des statistiques de fréquentation globales, sans cookie ni suivi individuel. Ils sont traités et conservés par IONOS selon sa <a href=\"https://www.ionos.fr/terms-gtc/clause-de-confidentialite/\">politique de confidentialité</a>.</p>",
     "cr.back": "← Retour à l'accueil"
   },
 
@@ -385,17 +385,12 @@ window.KH_I18N = {
     "cr.simTitle": "For simulation use only",
     "cr.simText": "<p>The data shown by Flight Logbook and Camify (SimBrief plans, METAR, airport and runway reference data) is provided without warranty and must <strong>never</strong> be used for real-world navigation.</p><p>Flight Logbook records simulated flights and is not an official pilot logbook: the Navigraph terms forbid using SimBrief data to log flight hours towards a pilot licence.</p>",
     "cr.siteTitle": "Site credits and privacy",
-    "cr.siteText": "<p>The screenshots come from the applications themselves. The Flight Logbook Map tab screenshots contain OpenStreetMap tiles: map tiles © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>.</p><p>This site uses no web font, third-party library, tracker or cookie: only HTML, CSS and JavaScript written for it. Your language choice is remembered in your browser's local storage, and the latest version number of each application is read from the public GitHub API when the page opens.</p><p>The site is hosted by IONOS. Like any web server, the host's server records each request in its logs (IP address, date and time, requested page, browser used) to keep the service secure and running. These logs are also used for overall visitor statistics, with no cookie or individual tracking. They are processed and retained by IONOS under its <a href=\"https://www.ionos.com/terms-gtc/privacy-policy/\">privacy policy</a>.</p>",
+    "cr.siteText": "<p>The screenshots come from the applications themselves. The Flight Logbook Map tab screenshots contain OpenStreetMap tiles: map tiles © <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>.</p><p>This site uses no web font, third-party library, tracker or cookie: only HTML, CSS and JavaScript written for it. The FR/EN buttons take you to the other language's version of the page, and the latest version number of each application is read from the public GitHub API when the page opens.</p><p>The site is hosted by IONOS. Like any web server, the host's server records each request in its logs (IP address, date and time, requested page, browser used) to keep the service secure and running. These logs are also used for overall visitor statistics, with no cookie or individual tracking. They are processed and retained by IONOS under its <a href=\"https://www.ionos.com/terms-gtc/privacy-policy/\">privacy policy</a>.</p>",
     "cr.back": "← Back to home"
   }
 };
 
-window.KH_LANG = (function () {
-  try {
-    var saved = localStorage.getItem("kh-lang");
-    if (saved === "fr" || saved === "en") return saved;
-  } catch (e) { /* stockage indisponible : on se rabat sur le navigateur */ }
-  var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"];
-  return String(langs[0] || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en";
-})();
-document.documentElement.lang = window.KH_LANG;
+// Chaque page fixe sa langue une fois pour toutes via <html lang="fr|en"> (index.html /
+// index-en.html, copyright.html / copyright-en.html) : plus de détection navigateur ni de
+// mémorisation, pour que chaque URL affiche toujours le même contenu (voir main.js).
+window.KH_LANG = document.documentElement.lang === "en" ? "en" : "fr";

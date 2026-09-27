@@ -13,7 +13,12 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
   `d1`/`d2`). Seule requête externe : l'API publique GitHub `releases/latest` des dépôts
   `*-releases`, dont la réponse est validée (`sanitizeRelease`) et insérée par `textContent`.
 - Textes dans `assets/js/i18n.js` (FR et EN aux clés identiques ; `cdv.*`, `camify.*`, `cr.*`,
-  le reste commun). Langue : choix enregistré dans `localStorage` (`kh-lang`), sinon navigateur.
+  le reste commun). Langue fixée par la page, pas devinée : `index.html`/`copyright.html` (FR)
+  et `index-en.html`/`copyright-en.html` (EN) sont deux URLs distinctes (`<html lang>` lu par
+  `i18n.js`, cf. `hreflang`/`canonical` dans chaque `<head>`) ; le bouton FR/EN navigue entre les
+  deux au lieu de réécrire le texte en place, pour que chaque URL garde un contenu stable côté
+  moteurs de recherche. Toute modification structurelle de `index.html` ou `copyright.html` doit
+  être reportée dans son pendant `-en`.
 - Téléchargements uniquement vers les dépôts publics `kairhosen/CarnetDeVol-releases` et
   `kairhosen/Camify-releases`, jamais vers les dépôts privés. Pas d'exe dans ce dépôt, 50 Mo max.
 - Audience : statistiques IONOS (journaux du serveur) et `node tools/downloads.js` (compteurs de
@@ -61,7 +66,8 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 ## Vérifier
 
 `node tools/check.js` (clés de langue, pas de script/style en ligne, ressources présentes,
-taille). Ouvrir `index.html` en clair et en sombre, en 1440 px et 390 px de large.
+taille). Ouvrir `index.html`, `index-en.html`, `copyright.html` et `copyright-en.html` en clair
+et en sombre, en 1440 px et 390 px de large.
 
 Rendu : `node tools/serve.js` (serveur statique en lecture seule sur `http://127.0.0.1:8765/`,
 gère les requêtes `Range` des vidéos). Si le panneau navigateur ne rend plus (MSFS au premier

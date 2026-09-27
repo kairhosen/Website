@@ -18,7 +18,7 @@ const fr = Object.keys(dict.fr), en = Object.keys(dict.en);
 fr.filter(k => !en.includes(k)).forEach(k => errors.push("clé absente en EN : " + k));
 en.filter(k => !fr.includes(k)).forEach(k => errors.push("clé absente en FR : " + k));
 
-const pages = ["index.html", "copyright.html"];
+const pages = ["index.html", "index-en.html", "copyright.html", "copyright-en.html"];
 const main = fs.readFileSync(path.join(root, "assets/js/main.js"), "utf8");
 const used = new Set();
 for (const page of pages) {

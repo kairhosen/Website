@@ -72,16 +72,26 @@
     Object.keys(APPS).forEach(renderRelease);
   }
 
-  function setLanguage(next) {
-    if (next === lang || !DICT[next]) return;
-    lang = next;
-    try { localStorage.setItem("kh-lang", next); } catch (e) { /* choix non mémorisé */ }
-    applyLanguage();
-    rerenderFeed();
+  // Chaque page est figée dans sa langue (voir i18n.js) : le bouton FR/EN navigue vers le
+  // fichier de l'autre langue au lieu de réécrire le texte en place, pour que chaque URL garde
+  // un contenu stable côté moteurs de recherche.
+  var LANG_PAGES = {
+    "index.html": "index-en.html", "index-en.html": "index.html",
+    "copyright.html": "copyright-en.html", "copyright-en.html": "copyright.html"
+  };
+
+  function otherLangUrl(next) {
+    if (next === lang) return null;
+    var file = location.pathname.split("/").pop() || "index.html";
+    var target = LANG_PAGES[file];
+    return target ? target + location.hash : null;
   }
 
   document.querySelectorAll(".lang-switch button").forEach(function (btn) {
-    btn.addEventListener("click", function () { setLanguage(btn.getAttribute("data-lang")); });
+    btn.addEventListener("click", function () {
+      var url = otherLangUrl(btn.getAttribute("data-lang"));
+      if (url) location.href = url;
+    });
   });
 
   // ===== Captures =====
@@ -324,14 +334,6 @@
     wire(section, instant);
     if (loaded >= CHUNKS.length && sentinel) sentinel.hidden = true;
     return true;
-  }
-
-  function rerenderFeed() {
-    if (!feed) return;
-    var count = loaded;
-    feed.innerHTML = "";
-    loaded = 0;
-    while (loaded < count) appendChunk(true);
   }
 
   // Charge la section suivante chaque fois que le bas du flux approche de l'écran.
