@@ -16,6 +16,8 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
   le reste commun). Langue : choix enregistré dans `localStorage` (`kh-lang`), sinon navigateur.
 - Téléchargements uniquement vers les dépôts publics `kairhosen/CarnetDeVol-releases` et
   `kairhosen/Camify-releases`, jamais vers les dépôts privés. Pas d'exe dans ce dépôt, 50 Mo max.
+- Audience : statistiques IONOS (journaux du serveur) et `node tools/downloads.js` (compteurs de
+  téléchargement GitHub). Aucun script de mesure dans les pages, donc pas de bandeau cookies (issue #3).
 - Chaque application a sa charte : `.theme-cdv` (bleu ciel, orange) et `.theme-camify` (nuit
   violette, corail) définissent les variables `--app-*` lues par les composants.
 - `copyright.html` regroupe les mentions des deux applications (tableau des sources avec la

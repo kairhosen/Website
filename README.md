@@ -15,3 +15,6 @@ directement depuis le disque (`file://`). Hébergé tel quel chez un hébergeur 
 - `guides/<application>/` : guides utilisateur (FR, EN, ES).
 
 Vérifications : `node tools/check.js`.
+
+Audience : statistiques de l'hébergeur IONOS (tirées des journaux du serveur, sans cookie) et
+nombre de téléchargements par version avec `node tools/downloads.js`.
