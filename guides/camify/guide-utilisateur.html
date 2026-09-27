@@ -83,7 +83,7 @@
         <p>Trois modes caméra, chacun lancé d'un clic ou d'un raccourci clavier :</p>
         <ul>
           <li><strong>Traveling</strong> : des plans extérieurs lents autour de l'avion, tirés au
-          hasard (trois-quarts avant, profil, plongée, vue de dessous, poursuite…) ;</li>
+          hasard (trois-quarts avant, profil, plongée, vues de dessous et du dessus, poursuite…) ;</li>
           <li><strong>Flyby</strong> : la caméra attend l'avion sur sa trajectoire, le regarde
           passer, puis se repositionne plus loin ;</li>
           <li><strong>Tour de contrôle</strong> : en approche, la caméra se pose en bord de la piste
@@ -198,6 +198,7 @@
             <tr><td>Plongée</td><td>Au-dessus de l'avion</td></tr>
             <tr><td>Contre-plongée</td><td>Sur le côté, en dessous de l'avion (en vol uniquement)</td></tr>
             <tr><td>Vue de dessous</td><td>Presque à la verticale sous l'avion (en vol uniquement)</td></tr>
+            <tr><td>Vue du dessus</td><td>Presque à la verticale au-dessus de l'avion</td></tr>
             <tr><td>Gros plan avant</td><td>Tout près du nez</td></tr>
             <tr><td>Poursuite</td><td>Derrière l'avion, dans son sillage</td></tr>
           </table>
@@ -239,7 +240,9 @@
           <p>La caméra est posée, <strong>fixe</strong>, loin devant l'avion sur sa
           <strong>trajectoire prévue</strong> (route, vitesse sol et vitesse verticale), légèrement
           décalée sur le côté. Elle suit l'avion du regard avec un zoom adapté à la distance, le
-          regarde passer puis s'éloigner, et se repose plus loin devant lui.</p>
+          regarde passer puis s'éloigner, et se repose plus loin devant lui : le plus souvent de
+          l'autre côté de la trajectoire, à une distance et un écart un peu différents à chaque
+          passage.</p>
           <p>Si l'avion fait demi-tour ou vire loin de la caméra, elle est reposée devant lui.
           Avion arrêté au parking, elle se place à côté de lui, à hauteur d'homme.</p>
         </div>
@@ -248,7 +251,8 @@
         <h4>Réglages</h4>
         <ul>
           <li><strong>Distance initiale</strong> (100 à 3 000 m, 600 m par défaut) : distance à
-          laquelle la caméra est posée devant l'avion. Le zoom s'adapte ensuite pour garder l'avion
+          laquelle la caméra est posée devant l'avion, à 10 % près pour varier les passages. Le zoom
+          s'adapte ensuite pour garder l'avion
           cadré.</li>
           <li><strong>Hauteur</strong> (−200 à +500 m, 0 par défaut) : décale la caméra au-dessus
           (+) ou en dessous (−) de la trajectoire, pour varier les angles. Une petite variation
@@ -259,6 +263,12 @@
           Avec une hauteur négative, la caméra ne descend pas sous le terrain survolé par l'avion.
           Le relief exact à l'endroit de la caméra n'est pas connu : au-dessus d'un terrain qui
           monte, le simulateur maintient lui-même la caméra hors du sol.
+        </div>
+        <div class="callout note">
+          <strong>Limite connue : le son du passage</strong>
+          Quand une application pilote la caméra, MSFS 2024 garde le son intérieur de l'avion : le
+          bruit ne varie pas quand l'avion approche puis s'éloigne. C'est une limite de l'API
+          caméra du simulateur, signalée à Asobo, que Camify ne peut pas contourner.
         </div>
         <figure class="shot">
           <img src="images/fr-reglages-flyby.png" alt="Réglages du mode Flyby : distance initiale et hauteur" loading="lazy" />

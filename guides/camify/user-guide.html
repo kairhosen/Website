@@ -82,7 +82,7 @@
         <p>Three camera modes, each started with a click or a keyboard shortcut:</p>
         <ul>
           <li><strong>Traveling</strong>: slow outside shots around the aircraft, picked at random
-          (front three-quarter, side, high angle, view from below, chase…);</li>
+          (front three-quarter, side, high angle, views from below and above, chase…);</li>
           <li><strong>Flyby</strong>: the camera waits for the aircraft on its path, watches it go
           by, then moves further ahead;</li>
           <li><strong>Control tower</strong>: on approach, the camera is set beside the landing
@@ -195,6 +195,7 @@
             <tr><td>High angle</td><td>Above the aircraft</td></tr>
             <tr><td>Low angle</td><td>To the side, below the aircraft (in flight only)</td></tr>
             <tr><td>View from below</td><td>Almost straight below the aircraft (in flight only)</td></tr>
+            <tr><td>View from above</td><td>Almost straight above the aircraft</td></tr>
             <tr><td>Nose close-up</td><td>Very close to the nose</td></tr>
             <tr><td>Chase</td><td>Behind the aircraft, in its wake</td></tr>
           </table>
@@ -236,7 +237,8 @@
           <p>The camera is set, <strong>fixed</strong>, far ahead of the aircraft on its
           <strong>predicted path</strong> (track, ground speed and vertical speed), slightly offset
           to the side. It follows the aircraft with a zoom matched to the distance, watches it go by
-          and fly away, then is set again further ahead.</p>
+          and fly away, then is set again further ahead: usually on the other side of the path, at a
+          slightly different distance and offset on each pass.</p>
           <p>If the aircraft turns back or turns far away from the camera, the camera is set ahead
           of it again. With the aircraft parked, it stands beside it at eye level.</p>
         </div>
@@ -245,7 +247,8 @@
         <h4>Settings</h4>
         <ul>
           <li><strong>Initial distance</strong> (100 to 3,000 m, 600 m by default): distance at
-          which the camera is set ahead of the aircraft. The zoom then adapts to keep the aircraft
+          which the camera is set ahead of the aircraft, within 10 % to vary the passes. The zoom then
+          adapts to keep the aircraft
           framed.</li>
           <li><strong>Height</strong> (−200 to +500 m, 0 by default): moves the camera above (+) or
           below (−) the path, for more varied angles. A small random variation is added each time
@@ -256,6 +259,12 @@
           With a negative height, the camera does not go below the terrain under the aircraft. The
           exact terrain at the camera position is not known: over rising ground, the simulator
           itself keeps the camera above the surface.
+        </div>
+        <div class="callout note">
+          <strong>Known limitation: the fly-by sound</strong>
+          While an application drives the camera, MSFS 2024 keeps the aircraft's interior sound: the
+          noise does not change as the aircraft approaches and flies away. This is a limitation of
+          the simulator's camera API, reported to Asobo, that Camify cannot work around.
         </div>
         <figure class="shot">
           <img src="images/en-reglages-flyby.png" alt="Flyby settings: initial distance and height" loading="lazy" />
