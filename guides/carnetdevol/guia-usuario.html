@@ -225,7 +225,7 @@
   .callout.tip { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
   .callout.warn { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
   .callout.note { background: var(--accent2-soft); border-color: color-mix(in srgb, var(--accent2) 30%, transparent); }
-  .callout strong { display: block; margin-bottom: 4px; }
+  .callout > strong:first-child { display: block; margin-bottom: 4px; }
 
   .example {
     border-left: 3px solid var(--accent);
@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Bitácora de vuelo — Guía del usuario</h1>
   <p>Seguimiento de vuelos · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Versión 1.0.26 · Windows · aplicación nativa</span>
+  <span class="badge">Versión 1.0.27 · Windows · aplicación nativa</span>
 </header>
 
 <div class="layout">
@@ -413,9 +413,10 @@
       <figure>
         <img src="../../assets/img/carnetdevol/en-vols.png" alt="Pestaña Vuelos: vuelo Londres – París importado de SimBrief, seguimiento en curso" loading="lazy" />
         <figcaption>El formulario de vuelo (capturas con la interfaz en inglés), aquí rellenado por
-        la importación de SimBrief durante un seguimiento en directo: aeropuertos, aeronave,
-        fecha/hora, distancia, duración, notas, indicativo de la aerolínea, cost index y flight
-        level.</figcaption>
+        la importación de SimBrief durante un seguimiento en directo: aeropuertos y aeronave en la
+        primera fila, fecha/hora, distancia y duración en la segunda, notas en todo el ancho y
+        después indicativo de la aerolínea, cost index y flight level; debajo, el recuadro
+        «Seguimiento del vuelo».</figcaption>
       </figure>
 
       <h3 id="vuelos-manual">Introducción manual</h3>
@@ -508,6 +509,20 @@
           (calculada a partir de la traza GPS, no en línea recta), duración, altitud máxima,
           aeronave y datos del aterrizaje se rellenan sin introducción manual.</li>
         </ol>
+        <p>El recuadro <strong>Seguimiento del vuelo</strong>, debajo del formulario, resume el
+        seguimiento:</p>
+        <ul>
+          <li>una <strong>etiqueta</strong> arriba a la derecha: <em>Sin seguimiento</em> (punto gris)
+          o <em>Seguimiento en curso</em> (punto verde);</li>
+          <li>el <strong>último aterrizaje</strong> (calidad, velocidad vertical, G y rebotes);</li>
+          <li>el <strong>historial con la hora</strong> de las etapas del seguimiento: inicio,
+          aeropuerto de salida detectado, aterrizaje, vuelo guardado. Cada etapa se añade a la
+          lista en lugar de sustituir a la anterior, y los <strong>errores</strong> (MSFS no
+          conectado, falta el aeropuerto de salida, llegada no encontrada…) se muestran
+          <strong>en naranja</strong>.</li>
+        </ul>
+        <p>El historial vuelve a empezar al iniciar un nuevo seguimiento y al pulsar
+        <span class="btn-label">🆕 Nuevo vuelo</span>.</p>
         <div class="callout tip">
           <strong>Aeronave detectada automáticamente</strong>
           Nada más conectarse a MSFS, la aplicación identifica la aeronave cargada en el simulador
@@ -551,7 +566,9 @@
           <img src="../../assets/img/carnetdevol/en-atterrissage.png" alt="Ventana emergente de aterrizaje: Suave, 180 ft/min, 1,28 G, icono de pluma" loading="lazy" style="max-width: 344px;" />
           <figcaption>La ventana emergente de aterrizaje tras una toma «Suave»; la cruz de arriba a la derecha la cierra.</figcaption>
         </figure>
-        <p>Esta calidad y estos valores también se guardan con el vuelo y pueden consultarse más
+        <p>La calidad y los valores siguen visibles después en el recuadro
+        <a href="#vuelos-seguimiento">Seguimiento del vuelo</a> de la pestaña Vuelos (línea
+        «Último aterrizaje»). También se guardan con el vuelo y pueden consultarse más
         tarde en el <a href="#pestana-historial">Historial de vuelos</a> (columnas «Aterrizaje
         (ft/min)», «Aterrizaje (G)», «Rebotes» y «Calidad del aterrizaje»), por ejemplo para
         filtrar sus mejores (o peores) aterrizajes.</p>
@@ -568,7 +585,8 @@
           <li>MSFS 2024 está abierto, con un vuelo cargado en el aparcamiento de salida. La barra de estado se pone verde.</li>
           <li>La aeronave cargada en MSFS aparece sola en el campo <span class="ui">Aeronave</span>.</li>
           <li>Empieza a rodar: el aeropuerto de salida se rellena solo, el seguimiento empieza
-          automáticamente y la pestaña <span class="ui">Mapa</span> empieza a dibujar su posición.</li>
+          automáticamente (el recuadro <span class="ui">Seguimiento del vuelo</span> pasa a
+          «Seguimiento en curso») y la pestaña <span class="ui">Mapa</span> empieza a dibujar su posición.</li>
           <li>En vuelo, consulta el panel <span class="ui">Datos en directo</span> (altitud, rumbo,
           velocidades, hora estimada de llegada) directamente en el mapa.</li>
           <li>Tres segundos después de la toma, una ventana muestra la calidad de su aterrizaje
@@ -698,10 +716,14 @@
       <p class="section-lead">Idioma de la aplicación, usuario de SimBrief, actualización de aeropuertos/aeronaves e importación de SimToolKitPro.</p>
       <figure>
         <img src="../../assets/img/carnetdevol/en-config.png" alt="Pestaña Configuración con los bloques Idioma, SimBrief, Aeropuertos y Aeronaves" loading="lazy" />
-        <figcaption>Elección del idioma, usuario de SimBrief y, después, contadores y fecha de la
-        última actualización de cada conjunto de datos.</figcaption>
+        <figcaption>Los ajustes a la izquierda (idioma, usuario de SimBrief, importación de
+        SimToolKitPro) y los conjuntos de datos a la derecha, con sus contadores y la fecha de la
+        última actualización.</figcaption>
       </figure>
       <div class="card">
+        <p>La pestaña se organiza en <strong>dos columnas</strong>: los ajustes a la izquierda y
+        los datos de aeropuertos y aeronaves a la derecha. En una ventana estrecha (menos de unos
+        900 píxeles de ancho), los bloques se apilan en una sola columna.</p>
         <h4>🌐 Idioma</h4>
         <p>La lista <strong>Idioma de la aplicación</strong> solo ofrece los idiomas disponibles
         (actualmente <strong>Español</strong>, <strong>English</strong> y <strong>Français</strong>).
@@ -928,7 +950,7 @@
 </div>
 
 <footer>
-  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 1.0.26.
+  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 1.0.27.
 </footer>
 
 <script>

@@ -225,7 +225,7 @@
   .callout.tip { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
   .callout.warn { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
   .callout.note { background: var(--accent2-soft); border-color: color-mix(in srgb, var(--accent2) 30%, transparent); }
-  .callout strong { display: block; margin-bottom: 4px; }
+  .callout > strong:first-child { display: block; margin-bottom: 4px; }
 
   .example {
     border-left: 3px solid var(--accent);
@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Flight Logbook — User guide</h1>
   <p>Flight tracking · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 1.0.26 · Windows · native application</span>
+  <span class="badge">Version 1.0.27 · Windows · native application</span>
 </header>
 
 <div class="layout">
@@ -410,8 +410,9 @@
       <figure>
         <img src="../../assets/img/carnetdevol/en-vols.png" alt="Flights tab: London – Paris flight imported from SimBrief, tracking in progress" loading="lazy" />
         <figcaption>The flight form, here filled in by the SimBrief import during live tracking:
-        airports, aircraft, date/time, distance, duration, notes, airline callsign, cost index and
-        flight level.</figcaption>
+        airports and aircraft on the first row, date/time, distance and duration on the second,
+        notes across the full width, then airline callsign, cost index and flight level; below,
+        the “Flight tracking” panel.</figcaption>
       </figure>
 
       <h3 id="flights-manual">Manual entry</h3>
@@ -501,6 +502,18 @@
           from the GPS track, not as the crow flies), duration, maximum altitude, aircraft and
           landing data are all filled in without manual entry.</li>
         </ol>
+        <p>The <strong>Flight tracking</strong> panel, below the form, sums up the tracking:</p>
+        <ul>
+          <li>a <strong>badge</strong> at the top right: <em>Not tracking</em> (grey dot) or
+          <em>Tracking</em> (green dot);</li>
+          <li>the <strong>last landing</strong> (rating, vertical speed, G and bounces);</li>
+          <li>the <strong>timestamped history</strong> of the tracking steps: start, departure
+          airport detected, landing, flight saved. Each step is added to the list instead of
+          replacing the previous one, and <strong>errors</strong> (MSFS not connected, missing
+          departure airport, arrival not found…) are shown <strong>in orange</strong>.</li>
+        </ul>
+        <p>The history starts over when a new tracking starts and when you click
+        <span class="btn-label">🆕 New flight</span>.</p>
         <div class="callout tip">
           <strong>Aircraft detected automatically</strong>
           As soon as it connects to MSFS, the application identifies the aircraft loaded in the
@@ -543,7 +556,9 @@
           <img src="../../assets/img/carnetdevol/en-atterrissage.png" alt="Landing pop-up: Soft, 180 ft/min, 1.28 G, feather icon" loading="lazy" style="max-width: 344px;" />
           <figcaption>The landing pop-up after a “Soft” touchdown; the cross at the top right closes it.</figcaption>
         </figure>
-        <p>This rating and these values are also stored with the flight and can be viewed later in
+        <p>The rating and the values then stay visible in the
+        <a href="#flights-tracking">Flight tracking</a> panel of the Flights tab (“Last landing” line).
+        They are also stored with the flight and can be viewed later in
         the <a href="#history-tab">Flight history</a> (“Landing (ft/min)”, “Landing (G)”, “Bounces”
         and “Landing quality” columns), for example to filter your best — or worst — landings.</p>
         <div class="callout note">
@@ -559,7 +574,8 @@
           <li>MSFS 2024 is open, with a flight loaded at the departure gate. The status bar turns green.</li>
           <li>The aircraft loaded in MSFS appears by itself in the <span class="ui">Aircraft</span> field.</li>
           <li>You start taxiing: the departure airport fills itself in, tracking starts
-          automatically, and the <span class="ui">Map</span> tab starts drawing your position.</li>
+          automatically (the <span class="ui">Flight tracking</span> panel switches to “Tracking”),
+          and the <span class="ui">Map</span> tab starts drawing your position.</li>
           <li>In flight, you check the <span class="ui">Live data</span> panel (altitude, heading,
           speeds, ETA) directly on the map.</li>
           <li>Three seconds after touchdown, a pop-up shows your landing quality (touchdown speed,
@@ -682,10 +698,13 @@
       <p class="section-lead">Application language, SimBrief username, airport/aircraft data updates, and SimToolKitPro import.</p>
       <figure>
         <img src="../../assets/img/carnetdevol/en-config.png" alt="Settings tab with the Language, SimBrief, Airports and Aircraft blocks" loading="lazy" />
-        <figcaption>Language choice, SimBrief username, then counters and last update date for
-        each reference dataset.</figcaption>
+        <figcaption>Settings on the left (language, SimBrief username, SimToolKitPro import),
+        reference data on the right, with their counters and last update date.</figcaption>
       </figure>
       <div class="card">
+        <p>The tab is laid out in <strong>two columns</strong>: settings on the left, airport and
+        aircraft reference data on the right. In a narrow window (less than about 900 pixels
+        wide), the blocks stack into a single column.</p>
         <h4>🌐 Language</h4>
         <p>The <strong>Application language</strong> list only offers the available languages
         (currently <strong>English</strong>, <strong>Español</strong> and <strong>Français</strong>). The change is
@@ -906,7 +925,7 @@
 </div>
 
 <footer>
-  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 1.0.26.
+  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 1.0.27.
 </footer>
 
 <script>

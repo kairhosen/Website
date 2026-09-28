@@ -225,7 +225,7 @@
   .callout.tip { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
   .callout.warn { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
   .callout.note { background: var(--accent2-soft); border-color: color-mix(in srgb, var(--accent2) 30%, transparent); }
-  .callout strong { display: block; margin-bottom: 4px; }
+  .callout > strong:first-child { display: block; margin-bottom: 4px; }
 
   .example {
     border-left: 3px solid var(--accent);
@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Carnet de Vol — Guide de l'utilisateur</h1>
   <p>Suivi de vols · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 1.0.26 · Windows · application native</span>
+  <span class="badge">Version 1.0.27 · Windows · application native</span>
 </header>
 
 <div class="layout">
@@ -407,8 +407,9 @@
       <figure>
         <img src="../../assets/img/carnetdevol/fr-vols.png" alt="Onglet Vols : vol Londres – Paris importé de SimBrief, suivi en cours" loading="lazy" />
         <figcaption>Le formulaire de vol, ici rempli par l'import SimBrief pendant un suivi en direct :
-        aéroports, appareil, date/heure, distance, durée, notes, indicatif compagnie, cost index et
-        flight level.</figcaption>
+        aéroports et appareil sur la première ligne, date/heure, distance et durée sur la deuxième,
+        notes sur toute la largeur, puis indicatif compagnie, cost index et flight level ; en
+        dessous, le cadre « Suivi du vol ».</figcaption>
       </figure>
 
       <h3 id="vols-saisie">Saisie manuelle</h3>
@@ -501,6 +502,18 @@
           (calculée à partir du tracé GPS, pas à vol d'oiseau), durée, altitude maximale, appareil
           et données d'atterrissage sont tous renseignés sans saisie manuelle.</li>
         </ol>
+        <p>Le cadre <strong>Suivi du vol</strong>, sous le formulaire, résume le suivi en cours :</p>
+        <ul>
+          <li>un <strong>badge</strong> en haut à droite : <em>Pas de suivi</em> (point gris) ou
+          <em>Suivi en cours</em> (point vert) ;</li>
+          <li>le <strong>dernier atterrissage</strong> (qualité, vitesse verticale, G et rebonds) ;</li>
+          <li>l'<strong>historique horodaté</strong> des étapes du suivi : démarrage, aéroport de
+          départ détecté, atterrissage, vol enregistré. Chaque étape s'ajoute à la liste au lieu de
+          remplacer la précédente, et les <strong>erreurs</strong> (MSFS non connecté, aéroport de
+          départ manquant, arrivée introuvable…) s'affichent <strong>en orange</strong>.</li>
+        </ul>
+        <p>L'historique repart de zéro au démarrage d'un nouveau suivi et au clic sur
+        <span class="btn-label">🆕 Nouveau vol</span>.</p>
         <div class="callout tip">
           <strong>Appareil détecté automatiquement</strong>
           Dès la connexion à MSFS, l'application identifie l'appareil chargé dans le simulateur
@@ -545,7 +558,9 @@
           <img src="../../assets/img/carnetdevol/fr-atterrissage.png" alt="Pop-up d'atterrissage : Doux, 180 ft/min, 1,28 G, icône plume" loading="lazy" style="max-width: 344px;" />
           <figcaption>La pop-up d'atterrissage après un posé « Doux » ; la croix en haut à droite la ferme.</figcaption>
         </figure>
-        <p>Cette qualité et ces valeurs sont aussi conservées avec le vol et consultables plus
+        <p>La qualité et les valeurs restent ensuite affichées dans le cadre
+        <a href="#vols-suivi">Suivi du vol</a> de l'onglet Vols (ligne « Dernier atterrissage »).
+        Elles sont aussi conservées avec le vol et consultables plus
         tard dans l'<a href="#onglet-historique">Historique des vols</a> (colonnes « Atterrissage
         (ft/min) », « Atterrissage (G) », « Rebonds » et « Qualité atterrissage »), ce qui permet
         par exemple de filtrer pour retrouver ses meilleurs — ou pires — posés.</p>
@@ -562,7 +577,8 @@
           <li>MSFS 2024 est ouvert, un vol chargé au parking de départ. La barre d'état passe au vert.</li>
           <li>L'appareil chargé dans MSFS s'affiche tout seul dans le champ <span class="ui">Appareil</span>.</li>
           <li>Vous commencez à rouler : l'aéroport de départ se remplit tout seul, le suivi démarre
-          automatiquement, et l'onglet <span class="ui">Carte</span> se met à tracer votre position.</li>
+          automatiquement (le cadre <span class="ui">Suivi du vol</span> passe à « Suivi en cours »),
+          et l'onglet <span class="ui">Carte</span> se met à tracer votre position.</li>
           <li>En vol, vous consultez le panneau <span class="ui">Données en direct</span> (altitude,
           cap, vitesses, ETA) directement sur la carte.</li>
           <li>Trois secondes après le posé, une pop-up affiche la qualité de votre atterrissage
@@ -691,10 +707,13 @@
       <p class="section-lead">Langue de l'application, identifiant SimBrief, mise à jour des bases aéroports/appareils, et import SimToolKitPro.</p>
       <figure>
         <img src="../../assets/img/carnetdevol/fr-config.png" alt="Onglet Configuration avec les blocs Langue, SimBrief, Aéroports et Appareils" loading="lazy" />
-        <figcaption>Choix de la langue, identifiant SimBrief, puis compteurs et date de dernière
-        mise à jour pour chaque référentiel.</figcaption>
+        <figcaption>Les réglages à gauche (langue, identifiant SimBrief, import SimToolKitPro), les
+        référentiels à droite, avec leurs compteurs et leur date de dernière mise à jour.</figcaption>
       </figure>
       <div class="card">
+        <p>L'onglet est organisé en <strong>deux colonnes</strong> : les réglages à gauche, les
+        référentiels des aéroports et des appareils à droite. Dans une fenêtre étroite (moins de
+        900 pixels de large environ), les blocs s'empilent sur une seule colonne.</p>
         <h4>🌐 Langue</h4>
         <p>La liste <strong>Langue de l'application</strong> ne propose que les langues
         disponibles (aujourd'hui <strong>English</strong>, <strong>Español</strong> et <strong>Français</strong>). Le
@@ -919,7 +938,7 @@
 </div>
 
 <footer>
-  Carnet de Vol — FS2024 · Guide généré pour la version 1.0.26.
+  Carnet de Vol — FS2024 · Guide généré pour la version 1.0.27.
 </footer>
 
 <script>
