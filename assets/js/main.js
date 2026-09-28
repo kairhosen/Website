@@ -129,7 +129,9 @@
 
   // ===== Illustrations des modes Camify (SVG animés en CSS) =====
 
-  var PLANE = '<path d="M0 0 L30 0 C34 0 36 2 36 4 C36 6 34 8 30 8 L3 8 L-4 -5 L1 -5 Z"/><path d="M12 3 L22 3 L14 17 L9 17 Z"/>';
+  // Avion de ligne vu de trois-quarts, nez à droite : aile et stabilisateur éloignés (lavande), dérive,
+  // fuselage, pare-brise et hublots, aile, stabilisateur et réacteur proches.
+  var PLANE = '<path fill="#DCD3EE" d="M13 2 L22.5 2 L11.5 -4.6 L8.5 -4.6 Z M-1 2.5 L4 2.5 L-0.5 -0.3 L-2.5 -0.3 Z"/><path d="M-2.5 2.2 L-5.5 -7.5 L-2.2 -7.5 L5.5 1.2 Z"/><path d="M-3.5 2.6 C1 1.4 5 0.6 9 0.6 L31 0.6 C34.5 0.6 37.5 2.8 37.5 4.6 C37.5 6.4 35 8 31 8 L9 8 C4 8 0 6.2 -3.5 3.6 Z"/><path fill="#2A1D4A" fill-opacity="0.6" d="M32.4 2.2 L35.2 2.2 L36.5 3.9 L32.4 3.9 Z"/><path stroke="#2A1D4A" stroke-opacity="0.45" stroke-width="0.9" stroke-dasharray="1 1.3" d="M9 3.2 H30.5"/><path d="M13 5 L22.5 5 L11.5 17 L8.5 17 Z M-1 4.6 L4 4.6 L-0.5 9.5 L-2.5 9.5 Z"/><path d="M13 9.3 H19.6 A1.7 1.7 0 0 1 19.6 12.7 H13 Z"/>';
   var CAMERA = '<rect x="-9" y="-6" width="18" height="12" rx="2"/><path d="M9 -3 L15 -6 V6 L9 3 Z"/>';
 
   var MODE_ART = {
