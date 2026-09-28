@@ -126,8 +126,14 @@
       <p class="section-lead">La bannière, l'indicateur de connexion, les trois onglets et le thème.</p>
       <div class="card">
         <ul>
-          <li>Une <strong>bannière</strong> en haut, avec le bouton <span class="btn-label">🌙 Mode sombre</span>
-          / <span class="btn-label">☀️ Mode clair</span> qui bascule tout le thème de l'application
+          <li>Une <strong>bannière</strong> en haut, qui sert de barre de titre : faites-la glisser
+          pour déplacer la fenêtre, double-cliquez pour l'agrandir ou la restaurer. Les boutons
+          <strong>réduire</strong>, <strong>agrandir</strong> et <strong>fermer</strong> sont en haut
+          à droite ; sous Windows 11, survoler le bouton agrandir ouvre le <strong>menu
+          d'ancrage</strong> de Windows pour placer la fenêtre sur une moitié ou un quart de
+          l'écran, par exemple à côté du simulateur ;</li>
+          <li>Sous ces boutons, <span class="btn-label">🌙 Mode sombre</span>
+          / <span class="btn-label">☀️ Mode clair</span> bascule tout le thème de l'application
           (conservé d'une session à l'autre) ;</li>
           <li>Une <strong>barre d'état</strong> avec un point de couleur (rouge = non connecté,
           vert = connecté). Tant que MSFS n'est pas disponible, Camify retente la connexion toutes
@@ -138,6 +144,10 @@
         <p>L'application s'affiche dans la <strong>langue de Windows</strong> si elle est disponible
         (français, anglais ou espagnol), et en <strong>anglais</strong> sinon. Vous pouvez en changer
         dans l'onglet <a href="#onglet-configuration">Configuration</a>.</p>
+        <p>Sur les onglets Caméra et Configuration, la <strong>hauteur de la fenêtre s'ajuste
+        toute seule</strong> à ce qui est affiché (cadre déplié ou replié, mode choisi, langue) : la
+        fenêtre reste aussi compacte que possible. Vous pouvez toujours la redimensionner par ses
+        bords.</p>
         <div class="shot-row">
           <figure class="shot">
             <img src="images/fr-onglet-camera-sombre.png" alt="Onglet Caméra en mode sombre, mode Traveling en cours" loading="lazy" />
@@ -145,7 +155,7 @@
           </figure>
           <figure class="shot">
             <img src="images/fr-onglet-camera-clair.png" alt="Onglet Caméra en mode clair" loading="lazy" />
-            <figcaption>Le même écran en mode clair.</figcaption>
+            <figcaption>Le même écran en mode clair, cadres repliés.</figcaption>
           </figure>
         </div>
       </div>
@@ -161,7 +171,7 @@
         contrôle.</p>
         <ul>
           <li><strong>Cliquer sur une carte</strong> la sélectionne et affiche ses réglages dans le
-          bloc <span class="ui">🎚️ Réglages du mode</span>, sans démarrer la caméra ;</li>
+          cadre <span class="ui">🎚️ Réglages du mode</span>, sans démarrer la caméra ;</li>
           <li>Le <strong>bouton rond ▶</strong> de chaque carte démarre ce mode. Il devient
           <strong>■</strong> pendant que le mode tourne : un clic l'arrête et rend la caméra au
           simulateur ;</li>
@@ -172,6 +182,13 @@
         </ul>
         <p>Les réglages des curseurs sont pris en compte immédiatement, même pendant que la caméra
         tourne, et conservés pour la prochaine session.</p>
+        <div class="callout tip">
+          <strong>Cadres repliables</strong>
+          Les cadres <span class="ui">🎚️ Réglages du mode</span> et <span class="ui">📡 En direct</span>
+          sont <strong>repliés au démarrage</strong>, pour une fenêtre compacte à garder à côté du
+          simulateur. Le bouton <span class="btn-label">+</span> en haut à droite d'un cadre le
+          déplie, <span class="btn-label">−</span> le replie.
+        </div>
       </div>
 
       <h3 id="mode-traveling">Mode Traveling</h3>
@@ -303,7 +320,8 @@
             jusqu'à l'arrêt.</li>
           </ol>
           <p>Ce mode n'a pas de réglage. Il demande le référentiel des aéroports et des pistes :
-          s'il est vide, un avertissement rouge s'affiche sous la description.</p>
+          s'il est vide, un avertissement rouge s'affiche dans le cadre
+          <span class="ui">🎚️ Réglages du mode</span>, sous la description.</p>
         </div>
       </div>
       <div class="card">
@@ -321,7 +339,10 @@
 
       <h3 id="camera-direct">Panneau En direct</h3>
       <div class="card">
-        <p>Le bloc <span class="ui">📡 En direct</span> est mis à jour quatre fois par seconde :</p>
+        <p>Le cadre <span class="ui">📡 En direct</span> est mis à jour quatre fois par seconde.
+        <strong>Replié</strong>, il affiche l'état de la caméra à droite de son titre (plan en
+        cours, distance, piste…) ; <strong>déplié</strong> (bouton <span class="btn-label">+</span>),
+        il détaille :</p>
         <table>
           <tr><th>Ligne</th><th>Contenu</th></tr>
           <tr><td>Appareil</td><td>Nom de l'appareil chargé dans le simulateur</td></tr>
@@ -417,6 +438,9 @@
           l'approche tout seul, vous n'avez plus qu'à piloter.</li>
           <li><strong>Pour reprendre la main</strong>, changez simplement de vue dans MSFS ou utilisez
           le raccourci clavier.</li>
+          <li><strong>Sur un seul écran</strong>, simulateur en mode fenêtré, ancrez Camify dans un
+          coin avec le menu d'ancrage de Windows 11 et laissez ses cadres repliés : l'état de la
+          caméra reste lisible à droite du titre <span class="ui">📡 En direct</span>.</li>
           <li><strong>Avec Carnet de Vol</strong>, les deux applications peuvent tourner pendant le
           même vol : l'une enregistre le vol, l'autre le filme.</li>
         </ul>

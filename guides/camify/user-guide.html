@@ -124,9 +124,15 @@
       <p class="section-lead">The banner, the connection indicator, the three tabs and the theme.</p>
       <div class="card">
         <ul>
-          <li>A <strong>banner</strong> at the top, with the <span class="btn-label">🌙 Dark mode</span>
-          / <span class="btn-label">☀️ Light mode</span> button that switches the whole application
-          theme (remembered between sessions);</li>
+          <li>A <strong>banner</strong> at the top that doubles as the title bar: drag it to move
+          the window, double-click it to maximize or restore. The <strong>minimize</strong>,
+          <strong>maximize</strong> and <strong>close</strong> buttons sit at the top right; on
+          Windows 11, hovering over the maximize button opens the Windows <strong>snap
+          layouts</strong> menu to put the window on half or a quarter of the screen, next to the
+          simulator for instance;</li>
+          <li>Below these buttons, <span class="btn-label">🌙 Dark mode</span>
+          / <span class="btn-label">☀️ Light mode</span> switches the whole application theme
+          (remembered between sessions);</li>
           <li>A <strong>status bar</strong> with a coloured dot (red = not connected, green =
           connected). While MSFS is not available, Camify retries the connection every
           <strong>5 seconds</strong>, with nothing for you to do;</li>
@@ -136,6 +142,9 @@
         <p>The application is shown in the <strong>Windows language</strong> when available
         (English, French or Spanish), and in <strong>English</strong> otherwise. You can change it
         in the <a href="#settings-tab">Settings</a> tab.</p>
+        <p>On the Camera and Settings tabs, the <strong>window height adjusts by itself</strong> to
+        what is displayed (panel expanded or collapsed, selected mode, language): the window stays
+        as compact as possible. You can still resize it by its edges.</p>
         <div class="shot-row">
           <figure class="shot">
             <img src="images/en-onglet-camera-sombre.png" alt="Camera tab in dark mode, Traveling mode running" loading="lazy" />
@@ -143,7 +152,7 @@
           </figure>
           <figure class="shot">
             <img src="images/en-onglet-camera-clair.png" alt="Camera tab in light mode" loading="lazy" />
-            <figcaption>The same screen in light mode.</figcaption>
+            <figcaption>The same screen in light mode, panels collapsed.</figcaption>
           </figure>
         </div>
       </div>
@@ -158,7 +167,7 @@
         <p>The tab shows three <strong>mode cards</strong>: Traveling, Flyby and Control tower.</p>
         <ul>
           <li><strong>Clicking a card</strong> selects it and shows its settings in the
-          <span class="ui">🎚️ Mode settings</span> block, without starting the camera;</li>
+          <span class="ui">🎚️ Mode settings</span> panel, without starting the camera;</li>
           <li>Each card's <strong>round ▶ button</strong> starts that mode. It turns into
           <strong>■</strong> while the mode runs: a click stops it and hands the camera back to the
           simulator;</li>
@@ -169,6 +178,13 @@
         </ul>
         <p>Slider changes apply immediately, even while the camera is running, and are kept for the
         next session.</p>
+        <div class="callout tip">
+          <strong>Collapsible panels</strong>
+          The <span class="ui">🎚️ Mode settings</span> and <span class="ui">📡 Live</span> panels are
+          <strong>collapsed at startup</strong>, for a compact window to keep next to the simulator.
+          The <span class="btn-label">+</span> button at the top right of a panel expands it,
+          <span class="btn-label">−</span> collapses it.
+        </div>
       </div>
 
       <h3 id="mode-traveling">Traveling mode</h3>
@@ -299,7 +315,8 @@
             until it stops.</li>
           </ol>
           <p>This mode has no settings. It needs the airport and runway data: if it is empty, a red
-          warning appears below the description.</p>
+          warning appears in the <span class="ui">🎚️ Mode settings</span> panel, below the
+          description.</p>
         </div>
       </div>
       <div class="card">
@@ -317,7 +334,10 @@
 
       <h3 id="camera-live">Live panel</h3>
       <div class="card">
-        <p>The <span class="ui">📡 Live</span> block is updated four times per second:</p>
+        <p>The <span class="ui">📡 Live</span> panel is updated four times per second.
+        <strong>Collapsed</strong>, it shows the camera status to the right of its title (current
+        shot, distance, runway…); <strong>expanded</strong> (<span class="btn-label">+</span>
+        button), it details:</p>
         <table>
           <tr><th>Line</th><th>Content</th></tr>
           <tr><td>Aircraft</td><td>Name of the aircraft loaded in the simulator</td></tr>
@@ -411,6 +431,9 @@
           approach by itself, you just fly.</li>
           <li><strong>To take back control</strong>, simply change the view in MSFS or use the
           keyboard shortcut.</li>
+          <li><strong>On a single screen</strong>, with the simulator windowed, snap Camify to a
+          corner with the Windows 11 snap layouts and leave its panels collapsed: the camera status
+          stays readable to the right of the <span class="ui">📡 Live</span> title.</li>
           <li><strong>With Flight Logbook</strong>, both applications can run during the same
           flight: one logs the flight, the other films it.</li>
         </ul>

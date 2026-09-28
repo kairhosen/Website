@@ -108,8 +108,8 @@
     stats: [1286, 893], config: [1286, 893], atterrissage: [344, 134]
   };
   var CAMIFY_SIZES = {
-    "camera-sombre": [986, 773], "camera-clair": [986, 773], flyby: [986, 773],
-    config: [986, 773], journal: [986, 773]
+    "camera-sombre": [1000, 742], "camera-clair": [1000, 544], flyby: [1000, 666],
+    config: [1000, 723], journal: [1000, 780]
   };
 
   function zoomable(name, alt, extraClass, app) {

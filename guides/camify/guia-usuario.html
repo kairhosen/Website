@@ -125,8 +125,14 @@
       <p class="section-lead">El banner, el indicador de conexión, las tres pestañas y el tema.</p>
       <div class="card">
         <ul>
-          <li>Un <strong>banner</strong> en la parte superior, con el botón <span class="btn-label">🌙 Modo oscuro</span>
-          / <span class="btn-label">☀️ Modo claro</span> que cambia el tema de toda la aplicación
+          <li>Un <strong>banner</strong> en la parte superior que hace de barra de título:
+          arrástrelo para mover la ventana, haga doble clic para maximizarla o restaurarla. Los
+          botones <strong>minimizar</strong>, <strong>maximizar</strong> y <strong>cerrar</strong>
+          están arriba a la derecha; en Windows 11, al pasar el ratón por el botón maximizar se abre
+          el <strong>menú de diseños de ajuste</strong> de Windows para colocar la ventana en la
+          mitad o un cuarto de la pantalla, por ejemplo junto al simulador;</li>
+          <li>Bajo estos botones, <span class="btn-label">🌙 Modo oscuro</span>
+          / <span class="btn-label">☀️ Modo claro</span> cambia el tema de toda la aplicación
           (se conserva entre sesiones);</li>
           <li>Una <strong>barra de estado</strong> con un punto de color (rojo = no conectado,
           verde = conectado). Mientras MSFS no esté disponible, Camify reintenta la conexión cada
@@ -137,6 +143,10 @@
         <p>La aplicación se muestra en el <strong>idioma de Windows</strong> si está disponible
         (español, francés o inglés), y en <strong>inglés</strong> en caso contrario. Puede cambiarlo
         en la pestaña <a href="#pestana-configuracion">Configuración</a>.</p>
+        <p>En las pestañas Cámara y Configuración, la <strong>altura de la ventana se ajusta
+        sola</strong> a lo que se muestra (marco desplegado o plegado, modo elegido, idioma): la
+        ventana se mantiene lo más compacta posible. Siempre puede redimensionarla por sus
+        bordes.</p>
         <div class="shot-row">
           <figure class="shot">
             <img src="images/es-onglet-camera-sombre.png" alt="Pestaña Cámara en modo oscuro, modo Traveling en curso" loading="lazy" />
@@ -144,7 +154,7 @@
           </figure>
           <figure class="shot">
             <img src="images/es-onglet-camera-clair.png" alt="Pestaña Cámara en modo claro" loading="lazy" />
-            <figcaption>La misma pantalla en modo claro.</figcaption>
+            <figcaption>La misma pantalla en modo claro, marcos plegados.</figcaption>
           </figure>
         </div>
       </div>
@@ -160,7 +170,7 @@
         control.</p>
         <ul>
           <li><strong>Hacer clic en una tarjeta</strong> la selecciona y muestra sus ajustes en el
-          bloque <span class="ui">🎚️ Ajustes del modo</span>, sin iniciar la cámara;</li>
+          marco <span class="ui">🎚️ Ajustes del modo</span>, sin iniciar la cámara;</li>
           <li>El <strong>botón redondo ▶</strong> de cada tarjeta inicia ese modo. Se convierte en
           <strong>■</strong> mientras el modo está activo: un clic lo detiene y devuelve la cámara
           al simulador;</li>
@@ -172,6 +182,13 @@
         </ul>
         <p>Los cambios en los controles deslizantes se aplican de inmediato, incluso con la cámara
         en marcha, y se conservan para la siguiente sesión.</p>
+        <div class="callout tip">
+          <strong>Marcos plegables</strong>
+          Los marcos <span class="ui">🎚️ Ajustes del modo</span> y <span class="ui">📡 En directo</span>
+          están <strong>plegados al iniciar</strong>, para una ventana compacta que se puede dejar
+          junto al simulador. El botón <span class="btn-label">+</span> arriba a la derecha de un
+          marco lo despliega, <span class="btn-label">−</span> lo pliega.
+        </div>
       </div>
 
       <h3 id="modo-traveling">Modo Traveling</h3>
@@ -302,7 +319,8 @@
             se detiene.</li>
           </ol>
           <p>Este modo no tiene ajustes. Necesita los datos de aeropuertos y pistas: si están
-          vacíos, aparece un aviso en rojo bajo la descripción.</p>
+          vacíos, aparece un aviso en rojo en el marco <span class="ui">🎚️ Ajustes del modo</span>,
+          bajo la descripción.</p>
         </div>
       </div>
       <div class="card">
@@ -320,7 +338,10 @@
 
       <h3 id="camara-directo">Panel En directo</h3>
       <div class="card">
-        <p>El bloque <span class="ui">📡 En directo</span> se actualiza cuatro veces por segundo:</p>
+        <p>El marco <span class="ui">📡 En directo</span> se actualiza cuatro veces por segundo.
+        <strong>Plegado</strong>, muestra el estado de la cámara a la derecha de su título (plano
+        en curso, distancia, pista…); <strong>desplegado</strong> (botón
+        <span class="btn-label">+</span>), detalla:</p>
         <table>
           <tr><th>Línea</th><th>Contenido</th></tr>
           <tr><td>Aeronave</td><td>Nombre de la aeronave cargada en el simulador</td></tr>
@@ -416,6 +437,9 @@
           aproximación por sí solo, usted solo tiene que pilotar.</li>
           <li><strong>Para retomar el control</strong>, basta con cambiar la vista en MSFS o usar el
           atajo de teclado.</li>
+          <li><strong>Con una sola pantalla</strong> y el simulador en ventana, ajuste Camify a una
+          esquina con los diseños de ajuste de Windows 11 y deje sus marcos plegados: el estado de
+          la cámara sigue visible a la derecha del título <span class="ui">📡 En directo</span>.</li>
           <li><strong>Con Carnet de Vol</strong>, ambas aplicaciones pueden funcionar durante el
           mismo vuelo: una registra el vuelo y la otra lo filma.</li>
         </ul>
