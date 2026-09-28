@@ -97,7 +97,7 @@
   // ===== Captures =====
 
   // Carnet de Vol : copies de CarnetDeVol/docs/images/brochure. Camify : copies de Camify/docs/images
-  // (fenêtre entière, toutes de la même taille).
+  // (fenêtre entière ; sa hauteur suit les cadres affichés, d'où une taille par capture).
   function shot(name, app) {
     if (app === "camify") return "assets/img/camify/" + lang + "-" + name + ".png";
     return "assets/img/carnetdevol/" + lang + "-" + name + (name === "carte" ? ".jpg" : ".png");
@@ -107,10 +107,13 @@
     vols: [1286, 893], carte: [1286, 893], historique: [1845, 893],
     stats: [1286, 893], config: [1286, 893], atterrissage: [344, 134]
   };
-  var CAMIFY_SIZE = [986, 773];
+  var CAMIFY_SIZES = {
+    "camera-sombre": [986, 773], "camera-clair": [986, 773], flyby: [986, 773],
+    config: [986, 773], journal: [986, 773]
+  };
 
   function zoomable(name, alt, extraClass, app) {
-    var size = app === "camify" ? CAMIFY_SIZE : SIZES[name];
+    var size = (app === "camify" ? CAMIFY_SIZES : SIZES)[name];
     var caption = app !== "camify" && name === "carte" ? alt + " — " + t("cdv.osm") : alt;
     return '<button type="button" class="zoom ' + (extraClass || "") + '" data-full="' + shot(name, app) +
       '" data-caption="' + escapeAttr(caption) + '" aria-label="' + escapeAttr(alt) + '">' +

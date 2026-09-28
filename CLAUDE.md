@@ -36,7 +36,8 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
   (`<lang>-onglet-camera-sombre.png` → `<lang>-camera-sombre.png`, `-onglet-camera-clair` →
   `-camera-clair`, `-reglages-flyby` → `-flyby`, `-onglet-configuration` → `-config`,
   `-onglet-journal` → `-journal`), en FR et EN, montrées par la galerie `camify-gallery`
-  (`gallery()` dans `main.js`, commune aux deux applications ; `CAMIFY_SIZE` = taille des captures).
+  (`gallery()` dans `main.js`, commune aux deux applications ; `CAMIFY_SIZES` = taille de chaque capture, la fenêtre de Camify
+  n'ayant pas la même hauteur d'un onglet à l'autre).
   Les modes de Camify restent illustrés par des SVG animés (`MODE_ART` dans `main.js`, scène du
   panneau d'accueil dans `index.html`) ; le bouton « Voir en situation réelle » de chaque carte
   remplace l'animation par la vidéo du guide (`MODE_VIDEO`, fichiers de `guides/camify/images/`),
@@ -52,7 +53,7 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 
 ## Placer les images (leçons apprises)
 
-- `width`/`height` des `<img>` générés = taille réelle du fichier (`SIZES`, `CAMIFY_SIZE`) : sinon
+- `width`/`height` des `<img>` générés = taille réelle du fichier (`SIZES`, `CAMIFY_SIZES`) : sinon
   le ratio réservé est faux et la mise en page saute ou laisse une bande vide. Vérifier avec
   `file assets/img/camify/*.png` après toute régénération des captures.
 - Cadre à ratio imposé (`aspect-ratio`, plaquettes) : `object-fit: cover` + `object-position`
