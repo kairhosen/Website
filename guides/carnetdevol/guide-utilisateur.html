@@ -354,13 +354,17 @@
 
     <section id="interface">
       <h2 class="section-title"><span class="emoji">🖥️</span> 3. Interface générale</h2>
-      <p class="section-lead">La bannière, l'indicateur de connexion, les six onglets et le thème.</p>
+      <p class="section-lead">La bannière-barre de titre, l'indicateur de connexion, les six onglets et le thème.</p>
       <div class="card">
         <p>La fenêtre principale est organisée en trois zones fixes, quel que soit l'onglet actif :</p>
         <ul>
-          <li>Une <strong>bannière</strong> en haut, avec le bouton <span class="btn-label">🌙 Mode sombre</span>
-          / <span class="btn-label">☀️ Mode clair</span> qui bascule instantanément tout le thème de
-          l'application (persisté d'une session à l'autre) ;</li>
+          <li>Une <strong>bannière</strong> en haut, qui sert aussi de <strong>barre de titre</strong> :
+          la fenêtre n'a pas de cadre Windows classique. En haut à droite, les boutons
+          <strong>Réduire</strong>, <strong>Agrandir</strong> / <strong>Restaurer</strong> et
+          <strong>Fermer</strong> (qui passe au rouge au survol) ; juste en dessous, le bouton
+          <span class="btn-label">🌙 Mode sombre</span> / <span class="btn-label">☀️ Mode clair</span>
+          qui bascule instantanément tout le thème de l'application (persisté d'une session à
+          l'autre) ;</li>
           <li>Juste en dessous, une <strong>fine barre d'état</strong> avec un point de couleur
           (rouge = non connecté, vert = connecté) et un texte indiquant l'état de la connexion à
           MSFS 2024. Tant qu'elle n'est pas connectée, l'application retente automatiquement
@@ -368,6 +372,16 @@
           <li><strong>Six onglets</strong> : Vols, Carte, Historique des vols, Statistiques,
           Configuration, Journal — détaillés dans les sections suivantes.</li>
         </ul>
+        <div class="callout tip">
+          <strong>Déplacer et redimensionner la fenêtre</strong>
+          Faites glisser la bannière pour déplacer la fenêtre, double-cliquez dessus pour l'agrandir
+          ou la restaurer, et tirez sur ses bords pour la redimensionner. Sous Windows 11, survolez
+          le bouton <span class="ui">Agrandir</span> pour afficher le menu d'ancrage
+          (moitié d'écran, quart d'écran…), comme sur n'importe quelle application ; l'ancrage en
+          faisant glisser la fenêtre vers un bord de l'écran fonctionne aussi. Un clic droit sur la
+          bannière ouvre le menu système de Windows. La fenêtre garde ses coins arrondis et son
+          ombre, et une fois agrandie elle laisse la barre des tâches visible.
+        </div>
         <p>L'application s'affiche dans la <strong>langue de Windows</strong> si elle est disponible
         (français, anglais ou espagnol, quelle que soit la variante régionale : français canadien ou belge,
         anglais britannique ou américain…), et en <strong>anglais</strong> sinon. Vous pouvez en
@@ -375,7 +389,8 @@
         <div class="shot-row">
           <figure>
             <img src="images/fr-onglet-vols-sombre.png" alt="Application en mode sombre, onglet Vols, connectée à MSFS 2024" loading="lazy" />
-            <figcaption>Mode sombre (par défaut au premier lancement) — connecté à MSFS 2024.</figcaption>
+            <figcaption>Mode sombre (par défaut au premier lancement) — connecté à MSFS 2024 ; boutons
+            de fenêtre en haut à droite de la bannière.</figcaption>
           </figure>
           <figure>
             <img src="images/fr-onglet-vols-clair.png" alt="Application en mode clair, onglet Vols" loading="lazy" />
@@ -582,8 +597,12 @@
           pour vous laisser regarder ailleurs sans être « recentré » de force.</td></tr>
           <tr><td>Mode sombre de la carte (lune/soleil)</td><td>Bascule l'apparence des tuiles
           OpenStreetMap indépendamment du thème général de l'application.</td></tr>
-          <tr><td>+ / −</td><td>Zoom avant / arrière.</td></tr>
+          <tr><td>+ / −</td><td>Zoom avant / arrière, autour du centre de la partie visible de
+          la carte (au-dessus du panneau « Données en direct ») : le point que vous regardez reste
+          en place.</td></tr>
         </table>
+        <p>Le tracé reste affiché <strong>à tous les niveaux de zoom</strong>, même pour un long
+        vol observé de très près (par exemple le roulage à l'arrivée d'un long-courrier).</p>
         <p>Une <strong>échelle verticale</strong> graduée (en Nm) s'affiche sous ces boutons dès
         l'ouverture de l'onglet et se recalcule automatiquement à chaque changement de zoom ou de
         position, comme sur une carte papier classique. Elle garde la largeur des boutons, la

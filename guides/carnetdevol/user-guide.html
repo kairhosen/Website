@@ -359,11 +359,14 @@
 
     <section id="interface">
       <h2 class="section-title"><span class="emoji">🖥️</span> 3. General interface</h2>
-      <p class="section-lead">The banner, the connection indicator, the six tabs, the theme and the language.</p>
+      <p class="section-lead">The banner/title bar, the connection indicator, the six tabs, the theme and the language.</p>
       <div class="card">
         <p>The main window has three fixed areas, whatever the active tab:</p>
         <ul>
-          <li>A <strong>banner</strong> at the top, with the <span class="btn-label">🌙 Dark mode</span>
+          <li>A <strong>banner</strong> at the top, which also acts as the <strong>title bar</strong>:
+          the window has no classic Windows frame. At the top right, the <strong>Minimize</strong>,
+          <strong>Maximize</strong> / <strong>Restore</strong> and <strong>Close</strong> buttons
+          (Close turns red on hover); just below them, the <span class="btn-label">🌙 Dark mode</span>
           / <span class="btn-label">☀️ Light mode</span> button that instantly switches the whole
           application theme (remembered between sessions);</li>
           <li>Just below, a <strong>thin status bar</strong> with a coloured dot (red = not
@@ -373,6 +376,15 @@
           <li><strong>Six tabs</strong>: Flights, Map, Flight history, Statistics, Settings, Log —
           described in the following sections.</li>
         </ul>
+        <div class="callout tip">
+          <strong>Moving and resizing the window</strong>
+          Drag the banner to move the window, double-click it to maximize or restore, and drag its
+          edges to resize it. On Windows 11, hover over the <span class="ui">Maximize</span> button to show
+          the snap layouts menu (half screen, quarter screen…), just like in any other
+          application; snapping by dragging the window to a screen edge works too. Right-clicking the
+          banner opens the Windows system menu. The window keeps its rounded corners and shadow, and
+          when maximized it leaves the taskbar visible.
+        </div>
         <p>The application is displayed in the <strong>Windows language</strong> when it is
         available (English, French or Spanish, whatever the regional variant: Canadian or Belgian French,
         British or American English…), and in <strong>English</strong> otherwise. You can change it
@@ -380,7 +392,8 @@
         <div class="shot-row">
           <figure>
             <img src="images/en-onglet-vols-sombre.png" alt="Application in dark mode, Flights tab, connected to MSFS 2024" loading="lazy" />
-            <figcaption>Dark mode (default on first launch) — connected to MSFS 2024.</figcaption>
+            <figcaption>Dark mode (default on first launch) — connected to MSFS 2024; window buttons at
+            the top right of the banner.</figcaption>
           </figure>
           <figure>
             <img src="images/en-onglet-vols-clair.png" alt="Application in light mode, Flights tab" loading="lazy" />
@@ -580,8 +593,11 @@
           elsewhere without being forcibly “recentered”.</td></tr>
           <tr><td>Dark map (moon/sun)</td><td>Switches the look of the OpenStreetMap tiles,
           independently of the application theme.</td></tr>
-          <tr><td>+ / −</td><td>Zoom in / out.</td></tr>
+          <tr><td>+ / −</td><td>Zoom in / out, around the centre of the visible part of the map
+          (above the “Live data” panel): the spot you are looking at stays in place.</td></tr>
         </table>
+        <p>The track stays visible <strong>at every zoom level</strong>, even for a long flight
+        viewed up close (for example taxiing in at the end of a long-haul flight).</p>
         <p>A graduated <strong>vertical scale</strong> (in Nm) is shown below these buttons as soon
         as the tab opens and is recomputed automatically at every zoom or position change, like on
         a paper chart. It keeps the width of the buttons, with the value and the unit on two lines.</p>

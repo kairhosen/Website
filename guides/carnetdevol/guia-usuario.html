@@ -361,13 +361,16 @@
 
     <section id="interfaz">
       <h2 class="section-title"><span class="emoji">🖥️</span> 3. Interfaz general</h2>
-      <p class="section-lead">El encabezado, el indicador de conexión, las seis pestañas, el tema y el idioma.</p>
+      <p class="section-lead">El encabezado/barra de título, el indicador de conexión, las seis pestañas, el tema y el idioma.</p>
       <div class="card">
         <p>La ventana principal tiene tres zonas fijas, sea cual sea la pestaña activa:</p>
         <ul>
-          <li>Un <strong>encabezado</strong> arriba, con el botón <span class="btn-label">🌙 Modo oscuro</span>
-          / <span class="btn-label">☀️ Modo claro</span> que cambia al instante el tema de toda la
-          aplicación (se recuerda entre sesiones);</li>
+          <li>Un <strong>encabezado</strong> arriba, que también hace de <strong>barra de título</strong>:
+          la ventana no tiene el marco clásico de Windows. Arriba a la derecha, los botones
+          <strong>Minimizar</strong>, <strong>Maximizar</strong> / <strong>Restaurar</strong> y
+          <strong>Cerrar</strong> (que se vuelve rojo al pasar el ratón); justo debajo, el botón
+          <span class="btn-label">🌙 Modo oscuro</span> / <span class="btn-label">☀️ Modo claro</span>
+          que cambia al instante el tema de toda la aplicación (se recuerda entre sesiones);</li>
           <li>Justo debajo, una <strong>barra de estado</strong> con un punto de color (rojo = no
           conectado, verde = conectado) y un texto con el estado de la conexión a MSFS 2024.
           Mientras no está conectada, la aplicación lo reintenta automáticamente cada
@@ -375,6 +378,16 @@
           <li><strong>Seis pestañas</strong>: Vuelos, Mapa, Historial de vuelos, Estadísticas,
           Configuración y Registro, descritas en las secciones siguientes.</li>
         </ul>
+        <div class="callout tip">
+          <strong>Mover y redimensionar la ventana</strong>
+          Arrastre el encabezado para mover la ventana, haga doble clic en él para maximizarla o
+          restaurarla, y arrastre sus bordes para cambiar su tamaño. En Windows 11, pase el ratón
+          sobre el botón <span class="ui">Maximizar</span> para mostrar el menú de diseños de
+          acoplamiento (media pantalla, cuarto de pantalla…), como en cualquier otra
+          aplicación; acoplarla arrastrándola hasta un borde de la pantalla también funciona. Un clic
+          derecho en el encabezado abre el menú del sistema de Windows. La ventana conserva sus
+          esquinas redondeadas y su sombra, y maximizada deja visible la barra de tareas.
+        </div>
         <p>La aplicación se muestra en el <strong>idioma de Windows</strong> si está disponible
         (español, francés o inglés, sea cual sea la variante regional: español de España, de México,
         de Argentina…), y en <strong>inglés</strong> en caso contrario. Puede cambiarlo en cualquier
@@ -382,7 +395,8 @@
         <div class="shot-row">
           <figure>
             <img src="images/es-onglet-vols-sombre.png" alt="Aplicación en modo oscuro, pestaña Vuelos, conectada a MSFS 2024" loading="lazy" />
-            <figcaption>Modo oscuro (predeterminado en el primer inicio), conectada a MSFS 2024.</figcaption>
+            <figcaption>Modo oscuro (predeterminado en el primer inicio), conectada a MSFS 2024; botones
+            de ventana arriba a la derecha del encabezado.</figcaption>
           </figure>
           <figure>
             <img src="images/es-onglet-vols-clair.png" alt="Aplicación en modo claro, pestaña Vuelos" loading="lazy" />
@@ -589,8 +603,12 @@
           para que pueda mirar a otra parte sin que se le «recentre» a la fuerza.</td></tr>
           <tr><td>Mapa oscuro (luna/sol)</td><td>Cambia el aspecto de los mosaicos de
           OpenStreetMap, independientemente del tema de la aplicación.</td></tr>
-          <tr><td>+ / −</td><td>Acercar / alejar.</td></tr>
+          <tr><td>+ / −</td><td>Acercar / alejar, alrededor del centro de la parte visible del mapa
+          (encima del panel «Datos en directo»): el punto que está mirando no se mueve.</td></tr>
         </table>
+        <p>El trazado sigue visible <strong>en todos los niveles de zoom</strong>, incluso en un
+        vuelo largo visto muy de cerca (por ejemplo, el rodaje a la llegada de un vuelo de largo
+        radio).</p>
         <p>Una <strong>escala vertical</strong> graduada (en Nm) aparece bajo estos botones en
         cuanto se abre la pestaña y se recalcula automáticamente con cada cambio de zoom o de
         posición, como en una carta de papel. Mantiene el ancho de los botones, con el valor y la

@@ -104,8 +104,8 @@
   }
 
   var SIZES = {
-    vols: [1286, 893], carte: [1286, 893], historique: [1845, 893],
-    stats: [1286, 893], config: [1286, 893], atterrissage: [344, 134]
+    vols: [1286, 866], carte: [1286, 866], historique: [1845, 866],
+    stats: [1286, 866], config: [1286, 866], atterrissage: [344, 134]
   };
   var CAMIFY_SIZES = {
     "camera-sombre": [1000, 742], "camera-clair": [1000, 544], flyby: [1000, 666],
