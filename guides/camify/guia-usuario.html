@@ -30,7 +30,7 @@
       <li><a href="#presentacion">1. Presentación</a></li>
       <li><a href="#primer-inicio">2. Instalación y primer inicio</a></li>
       <li><a href="#interfaz">3. Interfaz general</a></li>
-      <li><a href="#pestana-camara">4. Pestaña Cámara</a>
+      <li><a href="#pestana-camara">4. Cámara</a>
         <ul class="sub">
           <li><a href="#camara-iniciar">Iniciar y detener</a></li>
           <li><a href="#modo-traveling">Modo Traveling</a></li>
@@ -40,10 +40,9 @@
           <li><a href="#camara-parada">Paradas automáticas</a></li>
         </ul>
       </li>
-      <li><a href="#pestana-configuracion">5. Configuración</a></li>
-      <li><a href="#pestana-registro">6. Registro</a></li>
-      <li><a href="#consejos">7. Consejos y buenas prácticas</a></li>
-      <li><a href="#solucion-problemas">8. Solución de problemas</a></li>
+      <li><a href="#pestana-configuracion">5. Configuración y registro</a></li>
+      <li><a href="#consejos">6. Consejos y buenas prácticas</a></li>
+      <li><a href="#solucion-problemas">7. Solución de problemas</a></li>
       <li><a href="#anexo-licencias">Anexo — Fuentes y licencias</a></li>
     </ul>
   </nav>
@@ -108,7 +107,7 @@
         <p>En el primer inicio, Camify descarga automáticamente los <strong>datos de aeropuertos y
         pistas</strong> (OurAirports), necesarios para el modo <a href="#modo-torre">Torre de
         control</a>. Solo se necesita conexión a Internet en ese momento; después, los datos se
-        actualizan cuando usted quiera desde la pestaña <a href="#pestana-configuracion">Configuración</a>.</p>
+        actualizan cuando usted quiera desde la <a href="#pestana-configuracion">Configuración</a>.</p>
         <div class="callout note">
           <strong>Archivos creados junto al ejecutable</strong>
           <code class="path">camify.db</code> (aeropuertos y pistas),
@@ -122,7 +121,7 @@
 
     <section id="interfaz">
       <h2 class="section-title"><span class="emoji">🖥️</span> 3. Interfaz general</h2>
-      <p class="section-lead">El banner, el indicador de conexión, las tres pestañas y el tema.</p>
+      <p class="section-lead">Una sola ventana: el banner, el indicador de conexión y la cámara.</p>
       <div class="card">
         <ul>
           <li>Un <strong>banner</strong> en la parte superior que hace de barra de título:
@@ -131,29 +130,28 @@
           están arriba a la derecha; en Windows 11, al pasar el ratón por el botón maximizar se abre
           el <strong>menú de diseños de ajuste</strong> de Windows para colocar la ventana en la
           mitad o un cuarto de la pantalla, por ejemplo junto al simulador;</li>
-          <li>Bajo estos botones, <span class="btn-label">🌙 Modo oscuro</span>
-          / <span class="btn-label">☀️ Modo claro</span> cambia el tema de toda la aplicación
-          (se conserva entre sesiones);</li>
+          <li>Bajo estos botones, <span class="btn-label">⚙ Configuración</span> abre la ventana de
+          <a href="#pestana-configuracion">configuración</a>: idioma, tema claro u oscuro, atajo de
+          teclado, aeropuertos y registro;</li>
           <li>Una <strong>barra de estado</strong> con un punto de color (rojo = no conectado,
           verde = conectado). Mientras MSFS no esté disponible, Camify reintenta la conexión cada
           <strong>5 segundos</strong>, sin que usted tenga que hacer nada;</li>
-          <li><strong>Tres pestañas</strong>: <span class="ui">🎥 Cámara</span>,
-          <span class="ui">⚙️ Configuración</span> y <span class="ui">📝 Registro</span>.</li>
+          <li>Debajo, la <a href="#pestana-camara">cámara</a>: los tres modos, sus ajustes y el
+          estado en directo.</li>
         </ul>
         <p>La aplicación se muestra en el <strong>idioma de Windows</strong> si está disponible
         (español, francés o inglés), y en <strong>inglés</strong> en caso contrario. Puede cambiarlo
-        en la pestaña <a href="#pestana-configuracion">Configuración</a>.</p>
-        <p>En las pestañas Cámara y Configuración, la <strong>altura de la ventana se ajusta
-        sola</strong> a lo que se muestra (marco desplegado o plegado, modo elegido, idioma): la
-        ventana se mantiene lo más compacta posible. Siempre puede redimensionarla por sus
-        bordes.</p>
+        en la <a href="#pestana-configuracion">Configuración</a>.</p>
+        <p>La <strong>altura de la ventana se ajusta sola</strong> a lo que se muestra (marco
+        desplegado o plegado, modo elegido, idioma): la ventana se mantiene lo más compacta
+        posible. Siempre puede redimensionarla por sus bordes.</p>
         <div class="shot-row">
           <figure class="shot">
-            <img src="images/es-onglet-camera-sombre.png" alt="Pestaña Cámara en modo oscuro, modo Traveling en curso" loading="lazy" />
-            <figcaption>Modo oscuro — pestaña Cámara, modo Traveling en curso.</figcaption>
+            <img src="images/es-onglet-camera-sombre.png" alt="Ventana de Camify en modo oscuro, modo Traveling en curso" loading="lazy" />
+            <figcaption>Modo oscuro — modo Traveling en curso.</figcaption>
           </figure>
           <figure class="shot">
-            <img src="images/es-onglet-camera-clair.png" alt="Pestaña Cámara en modo claro" loading="lazy" />
+            <img src="images/es-onglet-camera-clair.png" alt="Ventana de Camify en modo claro" loading="lazy" />
             <figcaption>La misma pantalla en modo claro, marcos plegados.</figcaption>
           </figure>
         </div>
@@ -161,12 +159,12 @@
     </section>
 
     <section id="pestana-camara" class="tab-section">
-      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Pestaña Cámara</h2>
+      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Cámara</h2>
       <p class="section-lead">Elegir un modo, ajustarlo, iniciarlo — y seguir lo que hace la cámara.</p>
 
       <h3 id="camara-iniciar">Iniciar y detener</h3>
       <div class="card">
-        <p>La pestaña muestra tres <strong>tarjetas de modo</strong>: Traveling, Flyby y Torre de
+        <p>La ventana muestra tres <strong>tarjetas de modo</strong>: Traveling, Flyby y Torre de
         control.</p>
         <ul>
           <li><strong>Hacer clic en una tarjeta</strong> la selecciona y muestra sus ajustes en el
@@ -372,16 +370,24 @@
     </section>
 
     <section id="pestana-configuracion" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Configuración</h2>
-      <p class="section-lead">Idioma, atajo de teclado y datos de aeropuertos.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Configuración y registro</h2>
+      <p class="section-lead">Idioma, tema, atajo de teclado, datos de aeropuertos y registro.</p>
       <figure class="shot">
-        <img src="images/es-onglet-configuration.png" alt="Pestaña Configuración: idioma, atajo de teclado, aeropuertos y pistas" loading="lazy" />
-        <figcaption>La pestaña Configuración.</figcaption>
+        <img src="images/es-configuration.png" alt="Ventana Configuración: idioma y tema, atajo de teclado, aeropuertos y pistas, registro" loading="lazy" />
+        <figcaption>La ventana Configuración.</figcaption>
       </figure>
       <div class="card">
-        <h4>🌐 Idioma</h4>
+        <p>El botón <span class="btn-label">⚙ Configuración</span> del banner abre esta ventana
+        sobre la ventana principal. Cada cambio se aplica y se guarda al instante: no hay nada que
+        validar, <span class="btn-label">Cerrar</span> (o <kbd>Esc</kbd>) simplemente vuelve a la
+        cámara.</p>
+
+        <h4>🌐 Idioma y tema</h4>
         <p>Español, francés o inglés. Por defecto, la aplicación sigue el idioma de Windows. La
         elección se guarda en <code class="path">settings.json</code>.</p>
+        <p>Al lado, <span class="btn-label">Modo claro</span> / <span class="btn-label">Modo oscuro</span>
+        cambia el tema de toda la aplicación. En el primer inicio, Camify sigue el tema de
+        Windows; después, su elección se conserva en <code class="path">theme.txt</code>.</p>
 
         <h4>⌨️ Atajo de teclado</h4>
         <p>El atajo inicia o detiene la cámara desde cualquier aplicación, incluido el simulador a
@@ -402,33 +408,21 @@
         actualización. El botón <span class="btn-label">Actualizar</span> vuelve a descargar los
         archivos <code class="path">airports.csv</code> y <code class="path">runways.csv</code> de
         OurAirports. Solo se conservan los aeropuertos grandes, medianos y pequeños con al menos
-        una pista utilizable.</p>
-      </div>
-    </section>
+        una pista utilizable. Puede cerrar la ventana durante la actualización: esta continúa.</p>
 
-    <section id="pestana-registro" class="tab-section">
-      <h2 class="section-title"><span class="emoji">📝</span> 6. Registro</h2>
-      <p class="section-lead">El historial técnico, para diagnosticar un problema.</p>
-      <figure class="shot">
-        <img src="images/es-onglet-journal.png" alt="Pestaña Registro con una vista previa de camify.log" loading="lazy" />
-        <figcaption>Vista previa de <code class="path">camify.log</code>.</figcaption>
-      </figure>
-      <div class="card">
-        <p>Las conexiones a MSFS, los inicios y paradas de la cámara y los errores se registran en
-        <code class="path">camify.log</code>, junto al ejecutable. Dos botones:</p>
-        <ul>
-          <li><span class="btn-label">Abrir el archivo de registro</span> — lo abre en su visor de
-          texto, para leerlo completo o adjuntarlo a un informe de error;</li>
-          <li><span class="btn-label">Actualizar la vista previa</span> — refresca la vista previa
-          mostrada en la aplicación.</li>
-        </ul>
+        <h4 id="pestana-registro">📝 Registro</h4>
+        <p>El historial técnico, para diagnosticar un problema: las conexiones a MSFS, los inicios
+        y paradas de la cámara y los errores se registran en <code class="path">camify.log</code>,
+        junto al ejecutable, cuya ubicación se indica bajo el botón.
+        <span class="btn-label">Abrir el archivo de registro</span> lo abre en el Bloc de notas,
+        para leerlo o adjuntarlo a un informe de error.</p>
         <p>A partir de 5 MB, el registro se renombra a <code class="path">camify.old.log</code>
         (que reemplaza al anterior) y comienza un archivo nuevo.</p>
       </div>
     </section>
 
     <section id="consejos">
-      <h2 class="section-title"><span class="emoji">💡</span> 7. Consejos y buenas prácticas</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 6. Consejos y buenas prácticas</h2>
       <div class="card">
         <ul>
           <li><strong>Con el piloto automático</strong>, el Traveling se convierte en una auténtica
@@ -457,11 +451,11 @@
     </section>
 
     <section id="solucion-problemas">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Solución de problemas</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 7. Solución de problemas</h2>
       <div class="card">
         <h4>«No conectado a MSFS 2024» nunca pasa a verde</h4>
         <p>Compruebe que Microsoft Flight Simulator 2024 está en marcha y que hay un vuelo
-        cargado. La pestaña <a href="#pestana-registro">Registro</a> detalla los intentos de
+        cargado. El <a href="#pestana-registro">registro</a> detalla los intentos de
         conexión. La reconexión es automática cada 5 segundos.</p>
 
         <h4>«SimConnect.dll falta o está alterada»</h4>
@@ -480,13 +474,13 @@
 
         <h4>El modo Torre de control se queda «en espera»</h4>
         <p>El avión debe estar a menos de 3000 ft sobre el suelo y alineado con una pista de un
-        aeropuerto conocido a menos de 20 km. Compruebe que los datos no están vacíos (pestaña
+        aeropuerto conocido a menos de 20 km. Compruebe que los datos no están vacíos (ventana
         <a href="#pestana-configuracion">Configuración</a>) y actualícelos si el aeropuerto es
         reciente.</p>
 
         <h4>El atajo de teclado no hace nada</h4>
         <p>Puede que otra aplicación ya lo use: el recordatorio junto al título muestra entonces
-        «(no disponible)». Elija otra combinación en la pestaña
+        «(no disponible)». Elija otra combinación en la ventana
         <a href="#pestana-configuracion">Configuración</a>.</p>
       </div>
     </section>

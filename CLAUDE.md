@@ -34,10 +34,11 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 - Captures : `assets/img/carnetdevol/` = copies de `CarnetDeVol/docs/images/brochure/`
   (préfixes `fr-`, `en-`). `assets/img/camify/` = copies renommées de `Camify/docs/images/`
   (`<lang>-onglet-camera-sombre.png` → `<lang>-camera-sombre.png`, `-onglet-camera-clair` →
-  `-camera-clair`, `-reglages-flyby` → `-flyby`, `-onglet-configuration` → `-config`,
-  `-onglet-journal` → `-journal`), en FR et EN, montrées par la galerie `camify-gallery`
-  (`gallery()` dans `main.js`, commune aux deux applications ; `CAMIFY_SIZES` = taille de chaque capture, la fenêtre de Camify
-  n'ayant pas la même hauteur d'un onglet à l'autre).
+  `-camera-clair`, `-reglages-flyby` → `-flyby`, `-configuration` → `-config`), en FR et EN,
+  montrées par la galerie `camify-gallery` (`gallery()` dans `main.js`, commune aux deux
+  applications ; `CAMIFY_SIZES` = taille de chaque capture, les fenêtres de Camify n'ayant pas
+  la même hauteur d'une capture à l'autre ; `config`, fenêtre de configuration, a une taille par
+  langue et une vignette plus étroite, `.marquee-item.portrait`).
   Les modes de Camify restent illustrés par des SVG animés (`MODE_ART` dans `main.js`, scène du
   panneau d'accueil dans `index.html`) ; le bouton « Voir en situation réelle » de chaque carte
   remplace l'animation par la vidéo du guide (`MODE_VIDEO`, fichiers de `guides/camify/images/`),

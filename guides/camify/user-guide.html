@@ -30,7 +30,7 @@
       <li><a href="#overview">1. Overview</a></li>
       <li><a href="#first-launch">2. Installation and first launch</a></li>
       <li><a href="#interface">3. General interface</a></li>
-      <li><a href="#camera-tab">4. Camera tab</a>
+      <li><a href="#camera-tab">4. Camera</a>
         <ul class="sub">
           <li><a href="#camera-start">Starting and stopping</a></li>
           <li><a href="#mode-traveling">Traveling mode</a></li>
@@ -40,10 +40,9 @@
           <li><a href="#camera-stop">Automatic stops</a></li>
         </ul>
       </li>
-      <li><a href="#settings-tab">5. Settings</a></li>
-      <li><a href="#log-tab">6. Log</a></li>
-      <li><a href="#tips">7. Tips &amp; good practice</a></li>
-      <li><a href="#troubleshooting">8. Troubleshooting</a></li>
+      <li><a href="#settings-tab">5. Settings and log</a></li>
+      <li><a href="#tips">6. Tips &amp; good practice</a></li>
+      <li><a href="#troubleshooting">7. Troubleshooting</a></li>
       <li><a href="#appendix-licenses">Appendix — Sources and licences</a></li>
     </ul>
   </nav>
@@ -107,7 +106,7 @@
         <p>On the very first start, Camify automatically downloads the <strong>airport and runway
         reference data</strong> (OurAirports), needed by the <a href="#mode-tower">Control tower</a>
         mode. An Internet connection is only needed at that moment; the data can then be updated on
-        demand from the <a href="#settings-tab">Settings</a> tab.</p>
+        demand from the <a href="#settings-tab">Settings</a>.</p>
         <div class="callout note">
           <strong>Files created next to the executable</strong>
           <code class="path">camify.db</code> (airports and runways),
@@ -121,7 +120,7 @@
 
     <section id="interface">
       <h2 class="section-title"><span class="emoji">🖥️</span> 3. General interface</h2>
-      <p class="section-lead">The banner, the connection indicator, the three tabs and the theme.</p>
+      <p class="section-lead">A single window: the banner, the connection indicator and the camera.</p>
       <div class="card">
         <ul>
           <li>A <strong>banner</strong> at the top that doubles as the title bar: drag it to move
@@ -130,28 +129,28 @@
           Windows 11, hovering over the maximize button opens the Windows <strong>snap
           layouts</strong> menu to put the window on half or a quarter of the screen, next to the
           simulator for instance;</li>
-          <li>Below these buttons, <span class="btn-label">🌙 Dark mode</span>
-          / <span class="btn-label">☀️ Light mode</span> switches the whole application theme
-          (remembered between sessions);</li>
+          <li>Below these buttons, <span class="btn-label">⚙ Settings</span> opens the
+          <a href="#settings-tab">settings</a> window: language, light or dark theme, keyboard
+          shortcut, airports and log;</li>
           <li>A <strong>status bar</strong> with a coloured dot (red = not connected, green =
           connected). While MSFS is not available, Camify retries the connection every
           <strong>5 seconds</strong>, with nothing for you to do;</li>
-          <li><strong>Three tabs</strong>: <span class="ui">🎥 Camera</span>,
-          <span class="ui">⚙️ Settings</span> and <span class="ui">📝 Log</span>.</li>
+          <li>Below, the <a href="#camera-tab">camera</a>: the three modes, their settings and the
+          live status.</li>
         </ul>
         <p>The application is shown in the <strong>Windows language</strong> when available
         (English, French or Spanish), and in <strong>English</strong> otherwise. You can change it
-        in the <a href="#settings-tab">Settings</a> tab.</p>
-        <p>On the Camera and Settings tabs, the <strong>window height adjusts by itself</strong> to
-        what is displayed (panel expanded or collapsed, selected mode, language): the window stays
-        as compact as possible. You can still resize it by its edges.</p>
+        in the <a href="#settings-tab">Settings</a>.</p>
+        <p>The <strong>window height adjusts by itself</strong> to what is displayed (panel
+        expanded or collapsed, selected mode, language): the window stays as compact as possible.
+        You can still resize it by its edges.</p>
         <div class="shot-row">
           <figure class="shot">
-            <img src="images/en-onglet-camera-sombre.png" alt="Camera tab in dark mode, Traveling mode running" loading="lazy" />
-            <figcaption>Dark mode — Camera tab, Traveling mode running.</figcaption>
+            <img src="images/en-onglet-camera-sombre.png" alt="Camify window in dark mode, Traveling mode running" loading="lazy" />
+            <figcaption>Dark mode — Traveling mode running.</figcaption>
           </figure>
           <figure class="shot">
-            <img src="images/en-onglet-camera-clair.png" alt="Camera tab in light mode" loading="lazy" />
+            <img src="images/en-onglet-camera-clair.png" alt="Camify window in light mode" loading="lazy" />
             <figcaption>The same screen in light mode, panels collapsed.</figcaption>
           </figure>
         </div>
@@ -159,12 +158,12 @@
     </section>
 
     <section id="camera-tab" class="tab-section">
-      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Camera tab</h2>
+      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Camera</h2>
       <p class="section-lead">Choose a mode, adjust it, start it — and follow what the camera does.</p>
 
       <h3 id="camera-start">Starting and stopping</h3>
       <div class="card">
-        <p>The tab shows three <strong>mode cards</strong>: Traveling, Flyby and Control tower.</p>
+        <p>The window shows three <strong>mode cards</strong>: Traveling, Flyby and Control tower.</p>
         <ul>
           <li><strong>Clicking a card</strong> selects it and shows its settings in the
           <span class="ui">🎚️ Mode settings</span> panel, without starting the camera;</li>
@@ -368,16 +367,24 @@
     </section>
 
     <section id="settings-tab" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Settings</h2>
-      <p class="section-lead">Language, keyboard shortcut and airport data.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Settings and log</h2>
+      <p class="section-lead">Language, theme, keyboard shortcut, airport data and log.</p>
       <figure class="shot">
-        <img src="images/en-onglet-configuration.png" alt="Settings tab: language, keyboard shortcut, airports and runways" loading="lazy" />
-        <figcaption>The Settings tab.</figcaption>
+        <img src="images/en-configuration.png" alt="Settings window: language and theme, keyboard shortcut, airports and runways, log" loading="lazy" />
+        <figcaption>The Settings window.</figcaption>
       </figure>
       <div class="card">
-        <h4>🌐 Language</h4>
+        <p>The <span class="btn-label">⚙ Settings</span> button in the banner opens this window on
+        top of the main window. Every change is applied and saved at once: there is nothing to
+        confirm, <span class="btn-label">Close</span> (or <kbd>Esc</kbd>) simply takes you back to
+        the camera.</p>
+
+        <h4>🌐 Language and theme</h4>
         <p>English, French or Spanish. By default the application follows the Windows language.
         The choice is saved in <code class="path">settings.json</code>.</p>
+        <p>Next to it, <span class="btn-label">Light mode</span> / <span class="btn-label">Dark mode</span>
+        switches the whole application theme. On first launch Camify follows the Windows theme;
+        your choice is then kept in <code class="path">theme.txt</code>.</p>
 
         <h4>⌨️ Keyboard shortcut</h4>
         <p>The shortcut starts or stops the camera from any application, including the simulator
@@ -397,33 +404,22 @@
         <p>Shows the number of airports and runways in the database and the update date. The
         <span class="btn-label">Update</span> button downloads OurAirports'
         <code class="path">airports.csv</code> and <code class="path">runways.csv</code> again. Only
-        large, medium and small airports with at least one usable runway are kept.</p>
-      </div>
-    </section>
+        large, medium and small airports with at least one usable runway are kept. You can close
+        the window during the update: it carries on.</p>
 
-    <section id="log-tab" class="tab-section">
-      <h2 class="section-title"><span class="emoji">📝</span> 6. Log</h2>
-      <p class="section-lead">The technical history, to diagnose a problem.</p>
-      <figure class="shot">
-        <img src="images/en-onglet-journal.png" alt="Log tab showing a preview of camify.log" loading="lazy" />
-        <figcaption>Preview of <code class="path">camify.log</code>.</figcaption>
-      </figure>
-      <div class="card">
-        <p>Connections to MSFS, camera starts and stops and errors are recorded in
-        <code class="path">camify.log</code>, next to the executable. Two buttons:</p>
-        <ul>
-          <li><span class="btn-label">Open the log file</span> — opens it in your text viewer, to
-          read it in full or attach it to a bug report;</li>
-          <li><span class="btn-label">Refresh preview</span> — refreshes the preview shown in the
-          application.</li>
-        </ul>
+        <h4 id="log-tab">📝 Log</h4>
+        <p>The technical history, to diagnose a problem: connections to MSFS, camera starts and
+        stops and errors are recorded in <code class="path">camify.log</code>, next to the
+        executable, whose location is shown below the button.
+        <span class="btn-label">Open the log file</span> opens it in Notepad, to read it or attach
+        it to a bug report.</p>
         <p>Beyond 5 MB, the log is renamed <code class="path">camify.old.log</code> (replacing the
         previous one) and a new file starts.</p>
       </div>
     </section>
 
     <section id="tips">
-      <h2 class="section-title"><span class="emoji">💡</span> 7. Tips &amp; good practice</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 6. Tips &amp; good practice</h2>
       <div class="card">
         <ul>
           <li><strong>With the autopilot</strong>, Traveling turns into a real cruise film: lengthen
@@ -452,11 +448,11 @@
     </section>
 
     <section id="troubleshooting">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Troubleshooting</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 7. Troubleshooting</h2>
       <div class="card">
         <h4>“Not connected to MSFS 2024” never turns green</h4>
         <p>Check that Microsoft Flight Simulator 2024 is running and that a flight is loaded. The
-        <a href="#log-tab">Log</a> tab details the connection attempts. Reconnection is automatic
+        <a href="#log-tab">log</a> details the connection attempts. Reconnection is automatic
         every 5 seconds.</p>
 
         <h4>“SimConnect.dll is missing or altered”</h4>
@@ -476,12 +472,12 @@
         <h4>Control tower mode stays “waiting”</h4>
         <p>The aircraft must be below 3,000 ft above ground and aligned with a runway of a known
         airport within 20 km. Check that the reference data is not empty
-        (<a href="#settings-tab">Settings</a> tab) and update it if the airport is recent.</p>
+        (<a href="#settings-tab">Settings</a> window) and update it if the airport is recent.</p>
 
         <h4>The keyboard shortcut does nothing</h4>
         <p>It may already be used by another application: the reminder next to the title then
         shows “(unavailable)”. Choose another combination in the
-        <a href="#settings-tab">Settings</a> tab.</p>
+        <a href="#settings-tab">Settings</a> window.</p>
       </div>
     </section>
 

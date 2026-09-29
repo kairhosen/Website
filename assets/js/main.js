@@ -107,13 +107,19 @@
     vols: [1286, 866], carte: [1286, 866], historique: [1845, 866],
     stats: [1286, 866], config: [1286, 866], atterrissage: [344, 134]
   };
+  // config : fenêtre modale de configuration, dont la hauteur varie avec la langue (retours à la ligne).
   var CAMIFY_SIZES = {
-    "camera-sombre": [1000, 776], "camera-clair": [1000, 544], flyby: [1000, 666],
-    config: [1000, 723], journal: [1000, 780]
+    "camera-sombre": [1000, 717], "camera-clair": [1000, 485], flyby: [1000, 607],
+    config: { fr: [680, 796], en: [680, 779] }
   };
 
-  function zoomable(name, alt, extraClass, app) {
+  function shotSize(name, app) {
     var size = (app === "camify" ? CAMIFY_SIZES : SIZES)[name];
+    return Array.isArray(size) ? size : size[lang];
+  }
+
+  function zoomable(name, alt, extraClass, app) {
+    var size = shotSize(name, app);
     var caption = app !== "camify" && name === "carte" ? alt + " — " + t("cdv.osm") : alt;
     return '<button type="button" class="zoom ' + (extraClass || "") + '" data-full="' + shot(name, app) +
       '" data-caption="' + escapeAttr(caption) + '" aria-label="' + escapeAttr(alt) + '">' +
@@ -234,9 +240,13 @@
     var items = function (hidden) {
       return names.map(function (n) {
         var alt = t(app + ".shotAlt", { name: t(app + ".tab." + n) });
+        // Capture plus haute que large (fenêtre de configuration) : vignette plus étroite, pour
+        // garder la même hauteur que ses voisines.
+        var size = shotSize(n, app);
+        var item = size[1] > size[0] ? "marquee-item portrait" : "marquee-item";
         return hidden
-          ? '<div class="marquee-item" aria-hidden="true"><img src="' + shot(n, app) + '" alt="" loading="lazy" decoding="async" /></div>'
-          : '<div class="marquee-item">' + zoomable(n, alt, "", app) + "</div>";
+          ? '<div class="' + item + '" aria-hidden="true"><img src="' + shot(n, app) + '" alt="" loading="lazy" decoding="async" /></div>'
+          : '<div class="' + item + '">' + zoomable(n, alt, "", app) + "</div>";
       }).join("");
     };
     return '<section class="section ' + sectionClass + " theme-" + app + '" id="' + app + '-gallery"><div class="container">' +
@@ -291,7 +301,7 @@
     },
 
     function camifyGallery() {
-      return gallery("camify", ["camera-sombre", "camera-clair", "flyby", "config", "journal"], "section-dark");
+      return gallery("camify", ["camera-sombre", "camera-clair", "flyby", "config"], "section-dark");
     },
 
     function shared() {

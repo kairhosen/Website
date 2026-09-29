@@ -30,7 +30,7 @@
       <li><a href="#presentation">1. Présentation</a></li>
       <li><a href="#premier-lancement">2. Installation et premier lancement</a></li>
       <li><a href="#interface">3. Interface générale</a></li>
-      <li><a href="#onglet-camera">4. Onglet Caméra</a>
+      <li><a href="#onglet-camera">4. Caméra</a>
         <ul class="sub">
           <li><a href="#camera-demarrer">Démarrer et arrêter</a></li>
           <li><a href="#mode-traveling">Mode Traveling</a></li>
@@ -40,10 +40,9 @@
           <li><a href="#camera-arret">Arrêts automatiques</a></li>
         </ul>
       </li>
-      <li><a href="#onglet-configuration">5. Configuration</a></li>
-      <li><a href="#onglet-journal">6. Journal</a></li>
-      <li><a href="#astuces">7. Astuces &amp; bonnes pratiques</a></li>
-      <li><a href="#depannage">8. Dépannage</a></li>
+      <li><a href="#onglet-configuration">5. Configuration et journal</a></li>
+      <li><a href="#astuces">6. Astuces &amp; bonnes pratiques</a></li>
+      <li><a href="#depannage">7. Dépannage</a></li>
       <li><a href="#annexe-licences">Annexe — Sources et licences</a></li>
     </ul>
   </nav>
@@ -108,7 +107,7 @@
         <p>Au tout premier démarrage, Camify télécharge automatiquement le <strong>référentiel des
         aéroports et des pistes</strong> (données OurAirports), nécessaire au mode
         <a href="#mode-tour">Tour de contrôle</a>. Une connexion Internet est simplement nécessaire
-        à ce moment-là ; le référentiel se met ensuite à jour à la demande depuis l'onglet
+        à ce moment-là ; le référentiel se met ensuite à jour à la demande depuis la
         <a href="#onglet-configuration">Configuration</a>.</p>
         <div class="callout note">
           <strong>Fichiers créés à côté de l'exécutable</strong>
@@ -123,7 +122,7 @@
 
     <section id="interface">
       <h2 class="section-title"><span class="emoji">🖥️</span> 3. Interface générale</h2>
-      <p class="section-lead">La bannière, l'indicateur de connexion, les trois onglets et le thème.</p>
+      <p class="section-lead">Une seule fenêtre : la bannière, l'indicateur de connexion et la caméra.</p>
       <div class="card">
         <ul>
           <li>Une <strong>bannière</strong> en haut, qui sert de barre de titre : faites-la glisser
@@ -132,29 +131,28 @@
           à droite ; sous Windows 11, survoler le bouton agrandir ouvre le <strong>menu
           d'ancrage</strong> de Windows pour placer la fenêtre sur une moitié ou un quart de
           l'écran, par exemple à côté du simulateur ;</li>
-          <li>Sous ces boutons, <span class="btn-label">🌙 Mode sombre</span>
-          / <span class="btn-label">☀️ Mode clair</span> bascule tout le thème de l'application
-          (conservé d'une session à l'autre) ;</li>
+          <li>Sous ces boutons, <span class="btn-label">⚙ Configuration</span> ouvre la fenêtre de
+          <a href="#onglet-configuration">configuration</a> : langue, thème clair ou sombre,
+          raccourci clavier, aéroports et journal ;</li>
           <li>Une <strong>barre d'état</strong> avec un point de couleur (rouge = non connecté,
           vert = connecté). Tant que MSFS n'est pas disponible, Camify retente la connexion toutes
           les <strong>5 secondes</strong>, sans action de votre part ;</li>
-          <li><strong>Trois onglets</strong> : <span class="ui">🎥 Caméra</span>,
-          <span class="ui">⚙️ Configuration</span> et <span class="ui">📝 Journal</span>.</li>
+          <li>En dessous, la <a href="#onglet-camera">caméra</a> : les trois modes, leurs réglages
+          et l'état en direct.</li>
         </ul>
         <p>L'application s'affiche dans la <strong>langue de Windows</strong> si elle est disponible
         (français, anglais ou espagnol), et en <strong>anglais</strong> sinon. Vous pouvez en changer
-        dans l'onglet <a href="#onglet-configuration">Configuration</a>.</p>
-        <p>Sur les onglets Caméra et Configuration, la <strong>hauteur de la fenêtre s'ajuste
-        toute seule</strong> à ce qui est affiché (cadre déplié ou replié, mode choisi, langue) : la
-        fenêtre reste aussi compacte que possible. Vous pouvez toujours la redimensionner par ses
-        bords.</p>
+        dans la <a href="#onglet-configuration">Configuration</a>.</p>
+        <p>La <strong>hauteur de la fenêtre s'ajuste toute seule</strong> à ce qui est affiché
+        (cadre déplié ou replié, mode choisi, langue) : la fenêtre reste aussi compacte que
+        possible. Vous pouvez toujours la redimensionner par ses bords.</p>
         <div class="shot-row">
           <figure class="shot">
-            <img src="images/fr-onglet-camera-sombre.png" alt="Onglet Caméra en mode sombre, mode Traveling en cours" loading="lazy" />
-            <figcaption>Mode sombre — onglet Caméra, mode Traveling en cours.</figcaption>
+            <img src="images/fr-onglet-camera-sombre.png" alt="Fenêtre de Camify en mode sombre, mode Traveling en cours" loading="lazy" />
+            <figcaption>Mode sombre — mode Traveling en cours.</figcaption>
           </figure>
           <figure class="shot">
-            <img src="images/fr-onglet-camera-clair.png" alt="Onglet Caméra en mode clair" loading="lazy" />
+            <img src="images/fr-onglet-camera-clair.png" alt="Fenêtre de Camify en mode clair" loading="lazy" />
             <figcaption>Le même écran en mode clair, cadres repliés.</figcaption>
           </figure>
         </div>
@@ -162,12 +160,12 @@
     </section>
 
     <section id="onglet-camera" class="tab-section">
-      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Onglet Caméra</h2>
+      <h2 class="section-title"><span class="emoji">🎞️</span> 4. Caméra</h2>
       <p class="section-lead">Choisir un mode, le régler, le lancer — et suivre ce que fait la caméra.</p>
 
       <h3 id="camera-demarrer">Démarrer et arrêter</h3>
       <div class="card">
-        <p>L'onglet présente trois <strong>cartes de mode</strong> : Traveling, Flyby et Tour de
+        <p>La fenêtre présente trois <strong>cartes de mode</strong> : Traveling, Flyby et Tour de
         contrôle.</p>
         <ul>
           <li><strong>Cliquer sur une carte</strong> la sélectionne et affiche ses réglages dans le
@@ -373,16 +371,24 @@
     </section>
 
     <section id="onglet-configuration" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Configuration</h2>
-      <p class="section-lead">Langue, raccourci clavier et référentiel des aéroports.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Configuration et journal</h2>
+      <p class="section-lead">Langue, thème, raccourci clavier, référentiel des aéroports et journal.</p>
       <figure class="shot">
-        <img src="images/fr-onglet-configuration.png" alt="Onglet Configuration : langue, raccourci clavier, aéroports et pistes" loading="lazy" />
-        <figcaption>L'onglet Configuration.</figcaption>
+        <img src="images/fr-configuration.png" alt="Fenêtre Configuration : langue et thème, raccourci clavier, aéroports et pistes, journal" loading="lazy" />
+        <figcaption>La fenêtre Configuration.</figcaption>
       </figure>
       <div class="card">
-        <h4>🌐 Langue</h4>
+        <p>Le bouton <span class="btn-label">⚙ Configuration</span> de la bannière ouvre cette
+        fenêtre par-dessus la fenêtre principale. Chaque changement est appliqué et enregistré
+        aussitôt : il n'y a rien à valider, <span class="btn-label">Fermer</span> (ou
+        <kbd>Échap</kbd>) ramène simplement à la caméra.</p>
+
+        <h4>🌐 Langue et thème</h4>
         <p>Français, anglais ou espagnol. Par défaut, l'application suit la langue de Windows. Le
         choix est enregistré dans <code class="path">settings.json</code>.</p>
+        <p>À côté, <span class="btn-label">Mode clair</span> / <span class="btn-label">Mode sombre</span>
+        bascule tout le thème de l'application. Au premier lancement, Camify suit le thème de
+        Windows ; votre choix est ensuite conservé dans <code class="path">theme.txt</code>.</p>
 
         <h4>⌨️ Raccourci clavier</h4>
         <p>Le raccourci démarre ou arrête la caméra depuis n'importe quelle application, simulateur
@@ -403,33 +409,21 @@
         <span class="btn-label">Mettre à jour</span> retélécharge les fichiers
         <code class="path">airports.csv</code> et <code class="path">runways.csv</code> d'OurAirports.
         Seuls les grands, moyens et petits aéroports ayant au moins une piste exploitable sont
-        conservés.</p>
-      </div>
-    </section>
+        conservés. Vous pouvez fermer la fenêtre pendant la mise à jour : elle se poursuit.</p>
 
-    <section id="onglet-journal" class="tab-section">
-      <h2 class="section-title"><span class="emoji">📝</span> 6. Journal</h2>
-      <p class="section-lead">L'historique technique, pour diagnostiquer un problème.</p>
-      <figure class="shot">
-        <img src="images/fr-onglet-journal.png" alt="Onglet Journal affichant un aperçu de camify.log" loading="lazy" />
-        <figcaption>Aperçu de <code class="path">camify.log</code>.</figcaption>
-      </figure>
-      <div class="card">
-        <p>Les connexions à MSFS, les démarrages et arrêts de la caméra et les erreurs sont
-        enregistrés dans <code class="path">camify.log</code>, à côté de l'exécutable. Deux boutons :</p>
-        <ul>
-          <li><span class="btn-label">Ouvrir le fichier journal</span> — l'ouvre dans votre
-          visionneuse de texte, pour le consulter en entier ou le joindre à un rapport de bug ;</li>
-          <li><span class="btn-label">Actualiser l'aperçu</span> — rafraîchit l'aperçu affiché dans
-          l'application.</li>
-        </ul>
+        <h4 id="onglet-journal">📝 Journal</h4>
+        <p>L'historique technique, pour diagnostiquer un problème : les connexions à MSFS, les
+        démarrages et arrêts de la caméra et les erreurs sont enregistrés dans
+        <code class="path">camify.log</code>, à côté de l'exécutable, dont l'emplacement est
+        rappelé sous le bouton. <span class="btn-label">Ouvrir le fichier journal</span> l'ouvre
+        dans le Bloc-notes, pour le consulter ou le joindre à un rapport de bug.</p>
         <p>Au-delà de 5 Mo, le journal est renommé en <code class="path">camify.old.log</code> (qui
         remplace le précédent) et un nouveau fichier démarre.</p>
       </div>
     </section>
 
     <section id="astuces">
-      <h2 class="section-title"><span class="emoji">💡</span> 7. Astuces &amp; bonnes pratiques</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 6. Astuces &amp; bonnes pratiques</h2>
       <div class="card">
         <ul>
           <li><strong>Avec le pilote automatique</strong>, le Traveling devient un vrai film de
@@ -458,11 +452,11 @@
     </section>
 
     <section id="depannage">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Dépannage</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 7. Dépannage</h2>
       <div class="card">
         <h4>« Non connecté à MSFS 2024 » ne passe jamais au vert</h4>
         <p>Vérifiez que Microsoft Flight Simulator 2024 est lancé et qu'un vol est chargé.
-        L'onglet <a href="#onglet-journal">Journal</a> détaille les tentatives de connexion. La
+        Le <a href="#onglet-journal">journal</a> détaille les tentatives de connexion. La
         reconnexion est automatique toutes les 5 secondes.</p>
 
         <h4>« SimConnect.dll absente ou altérée »</h4>
@@ -481,13 +475,13 @@
 
         <h4>Le mode Tour de contrôle reste « en attente »</h4>
         <p>L'avion doit être sous 3 000 ft sol et aligné sur une piste d'un aéroport connu à moins
-        de 20 km. Vérifiez que le référentiel n'est pas vide (onglet
+        de 20 km. Vérifiez que le référentiel n'est pas vide (fenêtre
         <a href="#onglet-configuration">Configuration</a>) et mettez-le à jour si l'aéroport est
         récent.</p>
 
         <h4>Le raccourci clavier ne fait rien</h4>
         <p>Il est peut-être déjà utilisé par une autre application : le rappel à côté du titre
-        indique alors « (indisponible) ». Choisissez une autre combinaison dans l'onglet
+        indique alors « (indisponible) ». Choisissez une autre combinaison dans la fenêtre
         <a href="#onglet-configuration">Configuration</a>.</p>
       </div>
     </section>
