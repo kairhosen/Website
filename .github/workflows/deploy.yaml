@@ -1,4 +1,4 @@
-# Déploiement automatique du site vers IONOS par FTPS.
+# Déploiement automatique du site vers IONOS par SFTP (FTP chiffré par SSH).
 # À placer dans le dépôt : .github/workflows/deploy.yml
 # Se lance à chaque push sur main, ou à la main (onglet Actions > Déployer > Run workflow).
 
@@ -33,16 +33,15 @@ jobs:
       # Envoie tout le site en écrasant les fichiers existants.
       # Les fichiers présents uniquement sur le serveur ne sont pas supprimés.
       # Les fichiers internes (outils, notes, git) ne sont pas envoyés.
-      - name: Transférer par FTPS
+      - name: Transférer par SFTP
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_DIR: ${{ secrets.FTP_DIR || '/' }}
         run: |
-          lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_SERVER" <<LFTP
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "sftp://$FTP_SERVER" <<LFTP
+          set sftp:auto-confirm yes
           set net:max-retries 3
           set net:timeout 30
           mirror -R --overwrite --parallel=4 --verbose \
