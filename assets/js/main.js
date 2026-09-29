@@ -108,7 +108,7 @@
     stats: [1286, 866], config: [1286, 866], atterrissage: [344, 134]
   };
   var CAMIFY_SIZES = {
-    "camera-sombre": [1000, 742], "camera-clair": [1000, 544], flyby: [1000, 666],
+    "camera-sombre": [1000, 776], "camera-clair": [1000, 544], flyby: [1000, 666],
     config: [1000, 723], journal: [1000, 780]
   };
 
