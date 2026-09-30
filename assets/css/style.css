@@ -218,6 +218,7 @@ code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 0.92em; ba
 .cdv-collage .back { width: 56%; top: 0; right: 0; transform: rotateY(-16deg) rotateZ(2deg); opacity: 0.85; animation-delay: -2s; }
 .cdv-collage .front { width: 50%; top: 28px; left: 14%; transform: rotateY(-12deg) rotateX(4deg); }
 .cdv-collage .popup { width: 36%; left: 0; bottom: 6px; transform: rotate(-3deg); animation-delay: -4s; }
+.cdv-collage .phone { width: 19%; right: 3%; bottom: -14px; border-radius: 16px; border-width: 3px; transform: rotate(4deg); animation-delay: -5s; }
 @keyframes float {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -10px; }
@@ -362,6 +363,13 @@ code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 0.92em; ba
 .popup-shot { position: absolute; width: 48%; right: 8px; bottom: -24px; transform: rotate(-2deg); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); border-radius: 10px; }
 @media (min-width: 900px) { .popup-shot { right: -16px; } }
 .popup-shot .zoom { aspect-ratio: 344 / 134; }
+/* Page du téléphone en incrustation sur la carte (étape « Pendant le vol »). */
+.phone-shot {
+  position: absolute; width: 22%; left: 10px; bottom: -28px; transform: rotate(3deg);
+  border-radius: 16px; border: 3px solid rgba(255, 255, 255, 0.5); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); overflow: hidden;
+}
+@media (min-width: 900px) { .phone-shot { left: -18px; } }
+.phone-shot .zoom { border-radius: 12px; }
 
 /* Défilement infini des captures */
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }

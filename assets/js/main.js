@@ -100,12 +100,12 @@
   // (fenêtre entière ; sa hauteur suit les cadres affichés, d'où une taille par capture).
   function shot(name, app) {
     if (app === "camify") return "assets/img/camify/" + lang + "-" + name + ".png";
-    return "assets/img/carnetdevol/" + lang + "-" + name + (name === "carte" ? ".jpg" : ".png");
+    return "assets/img/carnetdevol/" + lang + "-" + name + (name === "carte" || name === "telephone" ? ".jpg" : ".png");
   }
 
   var SIZES = {
     vols: [1286, 866], carte: [1286, 866], historique: [1845, 866],
-    stats: [1286, 866], config: [1286, 950], atterrissage: [344, 134]
+    stats: [1286, 866], config: [1286, 950], atterrissage: [344, 134], telephone: [585, 1000]
   };
   // config : fenêtre modale de configuration, dont la hauteur varie avec la langue (retours à la ligne).
   var CAMIFY_SIZES = {
@@ -259,7 +259,7 @@
     function cdvFeatures() {
       return '<section class="section theme-cdv app-section" id="carnetdevol"><div class="container">' + appBadge("cdv") +
         sectionHead("cdv.features", true) +
-        cards("cdv.features.", [["live", "📡"], ["landing", "🛬"], ["map", "🗺️"], ["simbrief", "📥"], ["stats", "📊"], ["local", "🔒"]]) +
+        cards("cdv.features.", [["live", "📡"], ["landing", "🛬"], ["map", "🗺️"], ["phone", "📱"], ["stats", "📊"], ["local", "🔒"]]) +
         "</div></section>";
     },
 
@@ -282,6 +282,9 @@
           var media = zoomable(s[1], t(p + ".alt"), "frame");
           if (s[0] === "after") {
             media += '<div class="popup-shot">' + zoomable("atterrissage", t(p + ".popupAlt"), "contain") + "</div>";
+          }
+          if (s[0] === "during") {
+            media += '<div class="phone-shot">' + zoomable("telephone", t(p + ".phoneAlt"), "") + "</div>";
           }
           return '<article class="journey-step' + (i % 2 ? " reverse" : "") + '">' +
             '<div class="journey-text reveal"><span class="phase"><span class="phase-num">' + s[2] + "</span>" + t(p + ".phase") + "</span>" +
