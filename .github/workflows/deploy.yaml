@@ -1,0 +1,64 @@
+# Déploiement automatique du site vers IONOS par SFTP (FTP chiffré par SSH).
+# Se lance à chaque push sur main, ou à la main (onglet Actions > Déployer > Run workflow).
+
+name: Déployer
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Bloque le déploiement si les vérifications du site échouent.
+      - name: Vérifier le site
+        run: node tools/check.js
+
+      - name: Installer lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      # Liste blanche : seuls les fichiers publics sont copiés dans _site, qui est seul envoyé.
+      # (Une liste d'exclusions laissait passer le dossier .git : l'exclusion « .git* » de lftp
+      # ne s'applique pas aux dossiers.) Tout nouveau fichier public doit être ajouté ici.
+      - name: Préparer les fichiers publics
+        run: |
+          mkdir _site
+          cp -r index.html index-en.html copyright.html copyright-en.html \
+            robots.txt sitemap.xml assets guides _site/
+          find _site -name '.*' -exec rm -rf {} +
+          ls -la _site
+
+      # Envoie _site en écrasant les fichiers existants ; les fichiers présents uniquement sur le
+      # serveur ne sont pas supprimés, sauf les fichiers internes envoyés par erreur auparavant.
+      - name: Transférer par SFTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR: ${{ secrets.FTP_DIR || '/' }}
+        run: |
+          lftp --env-password -u "$FTP_USER" "sftp://$FTP_SERVER" <<LFTP
+          set sftp:auto-confirm yes
+          set net:max-retries 3
+          set net:timeout 30
+          set cmd:fail-exit yes
+          cd "$FTP_DIR"
+          set cmd:fail-exit no
+          rm -rf .git .github tools
+          rm -f CLAUDE.md README.md .nojekyll .gitignore .gitattributes
+          set cmd:fail-exit yes
+          mirror -R --overwrite --parallel=4 --verbose _site/ .
+          bye
+          LFTP

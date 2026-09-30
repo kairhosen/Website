@@ -65,6 +65,25 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
   le mode d'après quelques images a échoué. Quand une vidéo est ajoutée ou remplacée, faire
   confirmer par l'auteur des enregistrements quelle vidéo montre quel mode.
 
+## Déployer
+
+`.github/workflows/deploy.yaml` (« Déployer ») publie le site chez IONOS par SFTP (lftp) à chaque
+push sur `main`, ou à la main (Actions > Déployer > Run workflow). Il lance d'abord
+`node tools/check.js` et s'arrête si la vérification échoue. Secrets du dépôt : `FTP_SERVER`,
+`FTP_USER`, `FTP_PASSWORD`, `FTP_DIR` (facultatif, `/` par défaut).
+
+- Après chaque modification validée par `node tools/check.js` : commit, puis push/fusion sur
+  `main` ; c'est ce push qui déclenche le déploiement. Contrôler ensuite que le run « Déployer »
+  est vert (outil GitHub `actions_list` / `get_job_logs`) et relancer par `workflow_dispatch` si
+  besoin, puis vérifier le site en ligne avec `curl -I`.
+- Liste blanche : seuls `index*.html`, `copyright*.html`, `robots.txt`, `sitemap.xml`, `assets/`
+  et `guides/` sont copiés dans `_site/` puis envoyés. Un nouveau fichier ou dossier public à la
+  racine doit être ajouté à l'étape « Préparer les fichiers publics ». Ne jamais revenir à une
+  liste d'exclusions : `--exclude-glob .git*` de lftp laissait passer le dossier `.git`.
+- Les fichiers absents du dépôt ne sont pas supprimés du serveur (pas de `--delete`), sauf les
+  fichiers internes (`.git`, `.github`, `tools`, `CLAUDE.md`, `README.md`, `.nojekyll`) que le
+  workflow efface à chaque passage : un fichier public renommé ou retiré est à effacer à la main.
+
 ## Vérifier
 
 `node tools/check.js` (clés de langue, pas de script/style en ligne, ressources présentes,
