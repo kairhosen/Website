@@ -105,7 +105,7 @@
 
   var SIZES = {
     vols: [1286, 866], carte: [1286, 866], historique: [1845, 866],
-    stats: [1286, 866], config: [1286, 866], atterrissage: [344, 134]
+    stats: [1286, 866], config: [1286, 950], atterrissage: [344, 134]
   };
   // config : fenêtre modale de configuration, dont la hauteur varie avec la langue (retours à la ligne).
   var CAMIFY_SIZES = {

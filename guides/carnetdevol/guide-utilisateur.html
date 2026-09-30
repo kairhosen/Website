@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Carnet de Vol — Guide de l'utilisateur</h1>
   <p>Suivi de vols · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 1.0.27 · Windows · application native</span>
+  <span class="badge">Version 2.0.0 · Windows · application native</span>
 </header>
 
 <div class="layout">
@@ -704,10 +704,10 @@
 
     <section id="onglet-configuration" class="tab-section">
       <h2 class="section-title"><span class="emoji">⚙️</span> 8. Configuration</h2>
-      <p class="section-lead">Langue de l'application, identifiant SimBrief, mise à jour des bases aéroports/appareils, et import SimToolKitPro.</p>
+      <p class="section-lead">Langue de l'application, identifiant SimBrief, mise à jour des bases aéroports/appareils, import SimToolKitPro et accès depuis le téléphone.</p>
       <figure>
-        <img src="../../assets/img/carnetdevol/fr-config.png" alt="Onglet Configuration avec les blocs Langue, SimBrief, Aéroports et Appareils" loading="lazy" />
-        <figcaption>Les réglages à gauche (langue, identifiant SimBrief, import SimToolKitPro), les
+        <img src="../../assets/img/carnetdevol/fr-config.png" alt="Onglet Configuration avec les blocs Langue, SimBrief, Import SimToolKitPro, Accès depuis le téléphone, Aéroports et Appareils" loading="lazy" />
+        <figcaption>Les réglages à gauche (langue, identifiant SimBrief, import SimToolKitPro, accès depuis le téléphone), les
         référentiels à droite, avec leurs compteurs et leur date de dernière mise à jour.</figcaption>
       </figure>
       <div class="card">
@@ -761,6 +761,49 @@
           <strong>Sans risque de doublon</strong>
           Réimporter plusieurs fois le même fichier n'ajoute jamais deux fois le même vol.
         </div>
+
+        <h4 id="acces-telephone">📱 Accès depuis le téléphone</h4>
+        <p>Suivez le vol en cours depuis un <strong>téléphone</strong> ou une <strong>tablette</strong>
+        (iPhone, Android…), dans son navigateur, sans rien installer : position de l'avion sur la
+        carte avec le tracé du vol, altitude, vitesse sol, vitesse verticale, cap, phase (au sol / en
+        vol), facteur de charge, départ et arrivée, appareil, durée du suivi, arrivée estimée et
+        dernier atterrissage. Le téléphone est en <strong>lecture seule</strong> : il ne peut rien
+        modifier dans Carnet de Vol.</p>
+        <figure>
+          <img src="images/fr-telephone.jpg" alt="Page du téléphone : carte avec le tracé du vol Londres – Paris, altitude, vitesses, cap, phase et facteur de charge" loading="lazy" style="max-width: 320px;" />
+          <figcaption>La page du téléphone pendant un vol ; l'icône Partager, en haut à droite, prépare l'ajout à l'écran d'accueil.</figcaption>
+        </figure>
+        <ol>
+          <li>Cochez <strong>Autoriser l'accès depuis le téléphone</strong> (désactivé par défaut).
+          À la première activation, Windows peut demander d'autoriser Carnet de Vol dans son
+          pare-feu : n'acceptez que pour les <strong>réseaux privés</strong>.</li>
+          <li>Choisissez l'<strong>adresse du PC</strong> (réseau local, ou Tailscale pour un accès
+          hors de chez vous), puis cliquez <strong>Afficher le QR code</strong>.</li>
+          <li>Scannez le QR code avec l'<strong>appareil photo</strong> du téléphone : la page
+          s'ouvre directement. Pour en faire une icône, comme une application, touchez d'abord l'icône
+          <strong>Partager</strong> à droite de l'état, en haut de la page, puis Partager dans Safari et
+          <strong>Sur l'écran d'accueil</strong>.</li>
+        </ol>
+        <div class="callout note">
+          <strong>Sécurité</strong>
+          Le QR code contient un <strong>code secret</strong> propre à votre PC : sans lui, aucune
+          donnée n'est transmise. Ne le partagez pas ; il se masque seul après trois minutes. En cas
+          de doute, <strong>Changer le code</strong> déconnecte immédiatement tous les téléphones,
+          qui devront scanner le nouveau QR code. Seuls les appareils de votre réseau local (ou de
+          votre réseau Tailscale) peuvent se connecter ; jusqu'à quatre téléphones à la fois.
+        </div>
+        <div class="callout tip">
+          <strong>Hors de chez vous</strong>
+          Installez <a href="https://tailscale.com/" target="_blank" rel="noopener">Tailscale</a>
+          (gratuit pour un usage personnel) sur le PC et sur le téléphone, avec le même compte :
+          l'adresse Tailscale du PC (100.x.x.x) apparaît alors dans la liste. La liaison est
+          chiffrée et aucun port n'est à ouvrir sur votre box. Ne redirigez jamais le port 8741 de
+          votre box vers le PC : les connexions venant d'Internet sont de toute façon refusées.
+        </div>
+        <p>Si le téléphone affiche « PC injoignable », vérifiez que Carnet de Vol est ouvert, que
+        l'accès est coché et que le téléphone est sur le même Wi-Fi que le PC (pas en réseau invité,
+        ni en 4G/5G sans Tailscale). Le réglage et le code sont enregistrés dans
+        <code class="path">settings.json</code>, à côté de l'exécutable.</p>
       </div>
     </section>
 
@@ -911,6 +954,13 @@
             (<a href="https://www.weather.gov/disclaimer" target="_blank" rel="noopener">avertissement NWS</a>),
             fournies « en l'état », sans garantie ; limite de 100 requêtes par minute.</td>
           </tr>
+          <tr>
+            <td><a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> 1.9.4</td>
+            <td>Carte de la page du téléphone (<a href="#acces-telephone">accès depuis le téléphone</a>),
+            livrée dans l'exécutable ; fond de carte OpenStreetMap chargé par le téléphone</td>
+            <td>Licence <strong>BSD à 2 clauses</strong> : © 2010-2023 Volodymyr Agafonkin,
+            © 2010-2011 CloudMade.</td>
+          </tr>
         </table>
         <div class="callout note">
           <strong>Usage exclusivement simulé</strong>
@@ -938,7 +988,7 @@
 </div>
 
 <footer>
-  Carnet de Vol — FS2024 · Guide généré pour la version 1.0.27.
+  Carnet de Vol — FS2024 · Guide généré pour la version 2.0.0.
 </footer>
 
 <script>

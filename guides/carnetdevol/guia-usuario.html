@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Bitácora de vuelo — Guía del usuario</h1>
   <p>Seguimiento de vuelos · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Versión 1.0.27 · Windows · aplicación nativa</span>
+  <span class="badge">Versión 2.0.0 · Windows · aplicación nativa</span>
 </header>
 
 <div class="layout">
@@ -713,11 +713,11 @@
 
     <section id="pestana-configuracion" class="tab-section">
       <h2 class="section-title"><span class="emoji">⚙️</span> 8. Configuración</h2>
-      <p class="section-lead">Idioma de la aplicación, usuario de SimBrief, actualización de aeropuertos/aeronaves e importación de SimToolKitPro.</p>
+      <p class="section-lead">Idioma de la aplicación, usuario de SimBrief, actualización de aeropuertos/aeronaves, importación de SimToolKitPro y acceso desde el teléfono.</p>
       <figure>
-        <img src="../../assets/img/carnetdevol/en-config.png" alt="Pestaña Configuración con los bloques Idioma, SimBrief, Aeropuertos y Aeronaves" loading="lazy" />
+        <img src="../../assets/img/carnetdevol/en-config.png" alt="Pestaña Configuración con los bloques Idioma, SimBrief, Importación SimToolKitPro, Acceso desde el teléfono, Aeropuertos y Aeronaves" loading="lazy" />
         <figcaption>Los ajustes a la izquierda (idioma, usuario de SimBrief, importación de
-        SimToolKitPro) y los conjuntos de datos a la derecha, con sus contadores y la fecha de la
+        SimToolKitPro, acceso desde el teléfono) y los conjuntos de datos a la derecha, con sus contadores y la fecha de la
         última actualización.</figcaption>
       </figure>
       <div class="card">
@@ -770,6 +770,49 @@
           <strong>Sin riesgo de duplicados</strong>
           Importar varias veces el mismo archivo nunca añade dos veces el mismo vuelo.
         </div>
+
+        <h4 id="acceso-telefono">📱 Acceso desde el teléfono</h4>
+        <p>Sigue el vuelo en curso desde un <strong>teléfono</strong> o una <strong>tableta</strong>
+        (iPhone, Android…), en su navegador, sin instalar nada: posición del avión en el mapa con la
+        traza del vuelo, altitud, velocidad sobre el suelo, velocidad vertical, rumbo, fase (en
+        tierra / en vuelo), factor de carga, salida y llegada, aeronave, duración del seguimiento,
+        llegada estimada y último aterrizaje. El teléfono es de <strong>solo lectura</strong>: no
+        puede modificar nada en Carnet de Vol.</p>
+        <figure>
+          <img src="images/es-telephone.jpg" alt="Página del teléfono: mapa con la traza del vuelo Londres – París, altitud, velocidades, rumbo, fase y factor de carga" loading="lazy" style="max-width: 320px;" />
+          <figcaption>La página del teléfono durante un vuelo; el icono Compartir, arriba a la derecha, prepara el añadido a la pantalla de inicio.</figcaption>
+        </figure>
+        <ol>
+          <li>Marca <strong>Permitir el acceso desde el teléfono</strong> (desactivado por defecto).
+          La primera vez, Windows puede pedir que se permita Carnet de Vol en su cortafuegos:
+          permítelo solo en <strong>redes privadas</strong>.</li>
+          <li>Elige la <strong>dirección del PC</strong> (red local, o Tailscale para acceder desde
+          fuera de casa) y haz clic en <strong>Mostrar el código QR</strong>.</li>
+          <li>Escanea el código QR con la <strong>cámara</strong> del teléfono: la página se abre
+          directamente. Para convertirla en un icono, como una aplicación, toca primero el icono
+          <strong>Compartir</strong> junto al estado, arriba de la página, y luego Compartir en Safari y
+          <strong>Añadir a pantalla de inicio</strong>.</li>
+        </ol>
+        <div class="callout note">
+          <strong>Seguridad</strong>
+          El código QR contiene un <strong>código secreto</strong> propio de tu PC: sin él, no se
+          transmite ningún dato. No lo compartas; se oculta solo al cabo de tres minutos. Ante la
+          duda, <strong>Cambiar el código</strong> desconecta de inmediato todos los teléfonos, que
+          deberán escanear el nuevo código QR. Solo pueden conectarse los dispositivos de tu red
+          local (o de tu red Tailscale); hasta cuatro teléfonos a la vez.
+        </div>
+        <div class="callout tip">
+          <strong>Fuera de casa</strong>
+          Instala <a href="https://tailscale.com/" target="_blank" rel="noopener">Tailscale</a>
+          (gratuito para uso personal) en el PC y en el teléfono, con la misma cuenta: la dirección
+          Tailscale del PC (100.x.x.x) aparece entonces en la lista. La conexión está cifrada y no
+          hay que abrir ningún puerto en el router. No redirijas nunca el puerto 8741 del router al
+          PC: las conexiones procedentes de Internet se rechazan de todos modos.
+        </div>
+        <p>Si el teléfono muestra «PC inaccesible», comprueba que Carnet de Vol está abierto, que el
+        acceso está marcado y que el teléfono está en la misma red Wi-Fi que el PC (no en una red de
+        invitados, ni en 4G/5G sin Tailscale). El ajuste y el código se guardan en
+        <code class="path">settings.json</code>, junto al ejecutable.</p>
       </div>
     </section>
 
@@ -923,6 +966,13 @@
             (<a href="https://www.weather.gov/disclaimer" target="_blank" rel="noopener">aviso legal del NWS</a>),
             proporcionada «tal cual», sin garantía; límite de 100 consultas por minuto.</td>
           </tr>
+          <tr>
+            <td><a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> 1.9.4</td>
+            <td>Mapa de la página del teléfono (<a href="#acceso-telefono">acceso desde el teléfono</a>),
+            incluido en el ejecutable; mapa base de OpenStreetMap cargado por el teléfono</td>
+            <td>Licencia <strong>BSD de 2 cláusulas</strong>: © 2010-2023 Volodymyr Agafonkin,
+            © 2010-2011 CloudMade.</td>
+          </tr>
         </table>
         <div class="callout note">
           <strong>Uso exclusivamente simulado</strong>
@@ -950,7 +1000,7 @@
 </div>
 
 <footer>
-  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 1.0.27.
+  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 2.0.0.
 </footer>
 
 <script>

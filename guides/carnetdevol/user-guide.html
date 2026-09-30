@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Flight Logbook — User guide</h1>
   <p>Flight tracking · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 1.0.27 · Windows · native application</span>
+  <span class="badge">Version 2.0.0 · Windows · native application</span>
 </header>
 
 <div class="layout">
@@ -695,10 +695,10 @@
 
     <section id="settings-tab" class="tab-section">
       <h2 class="section-title"><span class="emoji">⚙️</span> 8. Settings</h2>
-      <p class="section-lead">Application language, SimBrief username, airport/aircraft data updates, and SimToolKitPro import.</p>
+      <p class="section-lead">Application language, SimBrief username, airport/aircraft data updates, SimToolKitPro import and phone access.</p>
       <figure>
-        <img src="../../assets/img/carnetdevol/en-config.png" alt="Settings tab with the Language, SimBrief, Airports and Aircraft blocks" loading="lazy" />
-        <figcaption>Settings on the left (language, SimBrief username, SimToolKitPro import),
+        <img src="../../assets/img/carnetdevol/en-config.png" alt="Settings tab with the Language, SimBrief, SimToolKitPro import, Phone access, Airports and Aircraft blocks" loading="lazy" />
+        <figcaption>Settings on the left (language, SimBrief username, SimToolKitPro import, phone access),
         reference data on the right, with their counters and last update date.</figcaption>
       </figure>
       <div class="card">
@@ -749,6 +749,48 @@
           <strong>No risk of duplicates</strong>
           Importing the same file several times never adds the same flight twice.
         </div>
+
+        <h4 id="phone-access">📱 Phone access</h4>
+        <p>Follow the current flight on a <strong>phone</strong> or <strong>tablet</strong> (iPhone,
+        Android…), in its web browser, with nothing to install: aircraft position on the map with
+        the flight track, altitude, ground speed, vertical speed, heading, phase (on ground /
+        airborne), load factor, departure and arrival, aircraft, tracking time, estimated arrival and
+        last landing. The phone is <strong>read-only</strong>: it cannot change anything in Carnet
+        de Vol.</p>
+        <figure>
+          <img src="images/en-telephone.jpg" alt="Phone page: map with the London – Paris flight track, altitude, speeds, heading, phase and load factor" loading="lazy" style="max-width: 320px;" />
+          <figcaption>The phone page during a flight; the Share icon at the top right prepares adding it to the Home Screen.</figcaption>
+        </figure>
+        <ol>
+          <li>Tick <strong>Allow access from a phone</strong> (off by default). The first time,
+          Windows may ask to allow Carnet de Vol through its firewall: allow it on
+          <strong>private networks</strong> only.</li>
+          <li>Pick the <strong>PC address</strong> (local network, or Tailscale to reach it away
+          from home), then click <strong>Show the QR code</strong>.</li>
+          <li>Scan the QR code with the phone's <strong>camera</strong>: the page opens directly.
+          To turn it into an icon, like an app, first tap the <strong>Share</strong> icon next to the
+          status at the top of the page, then Share in Safari and <strong>Add to Home Screen</strong>.</li>
+        </ol>
+        <div class="callout note">
+          <strong>Security</strong>
+          The QR code holds a <strong>secret code</strong> unique to your PC: without it, no data is
+          sent. Do not share it; it hides itself after three minutes. If in doubt,
+          <strong>Change the code</strong> disconnects every phone at once; they will have to scan
+          the new QR code. Only devices on your local network (or your Tailscale network) can
+          connect; up to four phones at a time.
+        </div>
+        <div class="callout tip">
+          <strong>Away from home</strong>
+          Install <a href="https://tailscale.com/" target="_blank" rel="noopener">Tailscale</a>
+          (free for personal use) on the PC and on the phone, with the same account: the PC's
+          Tailscale address (100.x.x.x) then appears in the list. The link is encrypted and no port
+          needs to be opened on your router. Never forward port 8741 from your router to the PC:
+          connections coming from the Internet are refused anyway.
+        </div>
+        <p>If the phone shows “PC unreachable”, check that Carnet de Vol is open, that access is
+        ticked and that the phone is on the same Wi-Fi as the PC (not a guest network, nor 4G/5G
+        without Tailscale). The setting and the code are saved in
+        <code class="path">settings.json</code>, next to the executable.</p>
       </div>
     </section>
 
@@ -900,6 +942,13 @@
             (<a href="https://www.weather.gov/disclaimer" target="_blank" rel="noopener">NWS disclaimer</a>),
             provided “as is”, with no warranty; limit of 100 requests per minute.</td>
           </tr>
+          <tr>
+            <td><a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> 1.9.4</td>
+            <td>Map of the phone page (<a href="#phone-access">phone access</a>), shipped inside the
+            executable; OpenStreetMap base map loaded by the phone</td>
+            <td><strong>BSD 2-Clause</strong> license: © 2010-2023 Volodymyr Agafonkin,
+            © 2010-2011 CloudMade.</td>
+          </tr>
         </table>
         <div class="callout note">
           <strong>Simulation use only</strong>
@@ -925,7 +974,7 @@
 </div>
 
 <footer>
-  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 1.0.27.
+  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 2.0.0.
 </footer>
 
 <script>
