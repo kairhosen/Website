@@ -239,11 +239,14 @@
   function gallery(app, names, sectionClass) {
     var items = function (hidden) {
       return names.map(function (n) {
-        var alt = t(app + ".shotAlt", { name: t(app + ".tab." + n) });
+        // Page du téléphone : pas un onglet, texte alternatif propre (cdv.shotAlt.telephone).
+        var alt = n === "telephone" ? t(app + ".shotAlt.telephone") : t(app + ".shotAlt", { name: t(app + ".tab." + n) });
         // Capture plus haute que large (fenêtre de configuration) : vignette plus étroite, pour
         // garder la même hauteur que ses voisines.
         var size = shotSize(n, app);
         var item = size[1] > size[0] ? "marquee-item portrait" : "marquee-item";
+        // Page du téléphone, encore plus élancée : même hauteur que les captures de fenêtre.
+        if (size[1] > size[0] * 1.5) item += " phone";
         return hidden
           ? '<div class="' + item + '" aria-hidden="true"><img src="' + shot(n, app) + '" alt="" loading="lazy" decoding="async" /></div>'
           : '<div class="' + item + '">' + zoomable(n, alt, "", app) + "</div>";
@@ -300,7 +303,7 @@
     },
 
     function cdvGallery() {
-      return gallery("cdv", ["vols", "carte", "historique", "stats", "config"], "section-navy");
+      return gallery("cdv", ["vols", "carte", "telephone", "historique", "stats", "config"], "section-navy");
     },
 
     function camifyGallery() {

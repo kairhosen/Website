@@ -44,6 +44,7 @@ window.KH_I18N = {
     "cdv.check4": "Vol suivi en direct depuis votre téléphone",
     "cdv.download": "Télécharger Carnet de Vol",
     "cdv.shotAlt": "Carnet de Vol, onglet {name}",
+    "cdv.shotAlt.telephone": "Carnet de Vol, page du téléphone pendant un vol",
     "cdv.osm": "Fond de carte © OpenStreetMap contributors",
 
     "cdv.features.kicker": "Carnet de Vol · Fonctionnalités",
@@ -237,6 +238,7 @@ window.KH_I18N = {
     "cdv.check4": "Flight followed live from your phone",
     "cdv.download": "Download Flight Logbook",
     "cdv.shotAlt": "Flight Logbook, {name} tab",
+    "cdv.shotAlt.telephone": "Flight Logbook, phone page during a flight",
     "cdv.osm": "Map tiles © OpenStreetMap contributors",
 
     "cdv.features.kicker": "Flight Logbook · Features",
