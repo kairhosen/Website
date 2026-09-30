@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Bitácora de vuelo — Guía del usuario</h1>
   <p>Seguimiento de vuelos · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Versión 2.0.0 · Windows · aplicación nativa</span>
+  <span class="badge">Versión 2.0.1 · Windows · aplicación nativa</span>
 </header>
 
 <div class="layout">
@@ -480,6 +480,11 @@
           activa el botón <span class="btn-label">⏮ Reanudar último vuelo</span>. Permite reanudar
           el seguimiento en directo sobre ese vuelo, algo útil tras reiniciar MSFS o la aplicación
           en pleno vuelo, sin perder la traza ya registrada.
+          Durante el seguimiento, el vuelo se guarda en la base cada 30 segundos, así como al
+          perder la conexión con MSFS y al cerrar la aplicación: un bloqueo ya no hace perder el
+          vuelo. Al reiniciar, un mensaje indica el vuelo interrumpido y el botón se activa incluso
+          sin importación de SimBrief; el inicio automático del seguimiento queda en pausa hasta
+          que reanude ese vuelo o inicie un nuevo seguimiento.
         </div>
       </div>
 
@@ -1000,7 +1005,7 @@
 </div>
 
 <footer>
-  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 2.0.0.
+  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 2.0.1.
 </footer>
 
 <script>

@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Flight Logbook — User guide</h1>
   <p>Flight tracking · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 2.0.0 · Windows · native application</span>
+  <span class="badge">Version 2.0.1 · Windows · native application</span>
 </header>
 
 <div class="layout">
@@ -474,6 +474,11 @@
           <span class="btn-label">⏮ Resume last flight</span> button becomes available. It resumes
           live tracking on that existing flight — useful after restarting MSFS or the application
           mid-flight, without losing the track already recorded.
+          During tracking, the flight is saved to the database every 30 seconds, as well as when
+          the connection to MSFS is lost and when the application closes, so a crash no longer
+          loses the flight. On restart, a message reports the interrupted flight and the button is
+          available even without a SimBrief import; automatic tracking start stays paused until you
+          either resume that flight or start a new tracking session.
         </div>
       </div>
 
@@ -974,7 +979,7 @@
 </div>
 
 <footer>
-  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 2.0.0.
+  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 2.0.1.
 </footer>
 
 <script>

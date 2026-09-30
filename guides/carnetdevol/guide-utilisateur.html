@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Carnet de Vol — Guide de l'utilisateur</h1>
   <p>Suivi de vols · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 2.0.0 · Windows · application native</span>
+  <span class="badge">Version 2.0.1 · Windows · application native</span>
 </header>
 
 <div class="layout">
@@ -473,6 +473,11 @@
           <span class="btn-label">⏮ Reprendre le dernier vol</span> s'active. Il permet de
           reprendre le suivi en direct sur ce vol existant — utile après un redémarrage de MSFS ou
           de l'application en plein vol, sans perdre le tracé déjà enregistré.
+          Pendant le suivi, le vol est enregistré en base toutes les 30 secondes, ainsi qu'à la
+          perte de connexion avec MSFS et à la fermeture de l'application : un crash ne fait donc
+          plus perdre le vol. Au redémarrage, un message signale le vol interrompu et le bouton
+          s'active même sans import SimBrief ; le démarrage automatique du suivi reste suspendu
+          tant que vous n'avez ni repris ce vol ni démarré un nouveau suivi.
         </div>
       </div>
 
@@ -988,7 +993,7 @@
 </div>
 
 <footer>
-  Carnet de Vol — FS2024 · Guide généré pour la version 2.0.0.
+  Carnet de Vol — FS2024 · Guide généré pour la version 2.0.1.
 </footer>
 
 <script>
