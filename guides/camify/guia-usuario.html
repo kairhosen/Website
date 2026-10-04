@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Camify — Guía del usuario</title>
-<meta name="description" content="Guía completa de Camify, las cámaras cinematográficas para Microsoft Flight Simulator 2024: modos Traveling, Flyby y Torre de control, ajustes y atajo de teclado." />
+<meta name="description" content="Guía completa de Camify, las cámaras cinematográficas para Microsoft Flight Simulator 2024: modos Traveling, Flyby y Torre de control, ajustes, atajo de teclado, control y capturas desde el teléfono." />
 <link rel="canonical" href="http://cdl.kairhosen.com/guides/camify/guia-usuario.html" />
 <link rel="alternate" hreflang="fr" href="http://cdl.kairhosen.com/guides/camify/guide-utilisateur.html" />
 <link rel="alternate" hreflang="en" href="http://cdl.kairhosen.com/guides/camify/user-guide.html" />
@@ -40,9 +40,17 @@
           <li><a href="#camara-parada">Paradas automáticas</a></li>
         </ul>
       </li>
-      <li><a href="#pestana-configuracion">5. Configuración y registro</a></li>
-      <li><a href="#consejos">6. Consejos y buenas prácticas</a></li>
-      <li><a href="#solucion-problemas">7. Solución de problemas</a></li>
+      <li><a href="#telefono">5. Acceso desde el teléfono</a>
+        <ul class="sub">
+          <li><a href="#telefono-activar">Activar y emparejar</a></li>
+          <li><a href="#telefono-modos">Controlar las cámaras</a></li>
+          <li><a href="#telefono-capturas">Capturas de MSFS</a></li>
+          <li><a href="#telefono-seguridad">Seguridad</a></li>
+        </ul>
+      </li>
+      <li><a href="#pestana-configuracion">6. Configuración y registro</a></li>
+      <li><a href="#consejos">7. Consejos y buenas prácticas</a></li>
+      <li><a href="#solucion-problemas">8. Solución de problemas</a></li>
       <li><a href="#anexo-licencias">Anexo — Fuentes y licencias</a></li>
     </ul>
   </nav>
@@ -87,6 +95,9 @@
           <li><strong>Torre de control</strong>: en la aproximación, la cámara se coloca junto a la
           pista de aterrizaje y sigue su aterrizaje.</li>
         </ul>
+        <p>Los modos también se inician desde un <strong>teléfono</strong> o una tableta, que
+        además recibe capturas de pantalla del simulador: vea
+        <a href="#telefono">Acceso desde el teléfono</a>.</p>
         <p>Camify nunca pilota el avión ni graba vídeo: coloca la cámara del simulador. Para
         conservar un recuerdo, utilice su herramienta de captura habitual (por ejemplo la Xbox Game
         Bar de Windows, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
@@ -104,6 +115,10 @@
           la aplicación escribe sus archivos junto al ejecutable.</li>
           <li>Ejecútelo, antes o después de MSFS 2024: se conecta solo.</li>
         </ol>
+        <p>Camify requiere <strong>Windows 10 versión 2004</strong> o posterior (se recomienda
+        Windows 11). El ejecutable pesa <strong>87 MB</strong>: contiene todo lo necesario, sin
+        .NET ni otro componente que instalar. Para pasar a una nueva versión, basta con sustituir
+        el ejecutable anterior: sus ajustes se conservan.</p>
         <p>En el primer inicio, Camify descarga automáticamente los <strong>datos de aeropuertos y
         pistas</strong> (OurAirports), necesarios para el modo <a href="#modo-torre">Torre de
         control</a>. Solo se necesita conexión a Internet en ese momento; después, los datos se
@@ -113,7 +128,7 @@
           <code class="path">camify.db</code> (aeropuertos y pistas),
           <code class="path">camify.log</code> (registro),
           <code class="path">settings.json</code> (idioma, modo elegido, valores de los controles,
-          atajo) y <code class="path">theme.txt</code> (tema claro u oscuro). Si mueve el ejecutable,
+          atajo, acceso desde el teléfono y su código) y <code class="path">theme.txt</code> (tema claro u oscuro). Si mueve el ejecutable,
           cópielos con él para conservar sus ajustes.
         </div>
       </div>
@@ -170,8 +185,9 @@
           <li><strong>Hacer clic en una tarjeta</strong> la selecciona y muestra sus ajustes en el
           marco <span class="ui">🎚️ Ajustes del modo</span>, sin iniciar la cámara;</li>
           <li>El <strong>botón redondo ▶</strong> de cada tarjeta inicia ese modo. Se convierte en
-          <strong>■</strong> mientras el modo está activo: un clic lo detiene y devuelve la cámara
-          al simulador;</li>
+          <strong>■</strong> mientras el modo está activo: un clic lo detiene, devuelve la cámara
+          al simulador y <strong>vuelve a la vista que tenía antes</strong> (cabina, exterior,
+          dron…);</li>
           <li><strong>Solo un modo a la vez</strong>: iniciar un modo detiene el que está en curso;</li>
           <li>El <strong>atajo de teclado global</strong> (<kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>C</kbd>
           por defecto), recordado a la derecha del título <span class="ui">🎞️ Modo de cámara</span>,
@@ -358,22 +374,150 @@
         en los siguientes casos, con el motivo indicado en el estado.</p>
         <ul>
           <li><strong>Cambia la vista en MSFS</strong> (tecla de vista, joystick, menú de cámara…):
-          Camify lo detecta y se detiene al instante;</li>
+          Camify lo detecta, se detiene al instante y mantiene la vista que acaba de elegir;</li>
           <li>se <strong>pierde la conexión con MSFS</strong>;</li>
           <li>la cámara <strong>ya la usa otra aplicación</strong>;</li>
           <li>las <strong>cámaras de complementos están desactivadas</strong> en las opciones del
           simulador;</li>
           <li>se produce un error (detalles en el <a href="#pestana-registro">Registro</a>).</li>
         </ul>
-        <p>Al cerrar Camify, la cámara también se devuelve al simulador.</p>
+        <p>Al cerrar Camify, la cámara también se devuelve al simulador, que vuelve a la vista
+        anterior.</p>
+      </div>
+    </section>
+
+    <section id="telefono" class="tab-section">
+      <h2 class="section-title"><span class="emoji">📱</span> 5. Acceso desde el teléfono</h2>
+      <p class="section-lead">El teléfono como mando a distancia de las cámaras, y las capturas de MSFS en el bolsillo.</p>
+      <div class="card">
+        <p>Desde un <strong>teléfono</strong> o una <strong>tableta</strong> (iPhone, Android…),
+        en su navegador y sin instalar nada, puede:</p>
+        <ul>
+          <li><strong>iniciar y detener</strong> los modos Traveling, Flyby y Torre de control, con
+          grandes botones pensados para pulsarse sin mirar, como un Stream Deck;</li>
+          <li>seguir el <strong>estado de la cámara</strong> (plano en curso, distancia, pista…) y
+          la aeronave cargada;</li>
+          <li><strong>capturar la ventana de MSFS</strong> y recibir las imágenes en el teléfono,
+          para guardarlas en Fotos.</li>
+        </ul>
+        <p>El acceso está <strong>desactivado por defecto</strong>. El teléfono debe estar en la
+        <strong>misma red</strong> que el PC (la misma Wi-Fi), o conectado mediante Tailscale fuera
+        de casa.</p>
+        <div class="shot-row">
+          <figure class="shot phone">
+            <img src="images/es-telephone.jpg" alt="Página del teléfono: grandes botones Traveling (en curso), Flyby y Torre de control, marco de capturas con tres imágenes, estado de la cámara abajo" loading="lazy" />
+            <figcaption>La página del teléfono, Traveling en curso.</figcaption>
+          </figure>
+          <figure class="shot phone-wide">
+            <img src="images/es-telephone-paysage.jpg" alt="Página del teléfono en horizontal: los modos a la izquierda, las capturas a la derecha" loading="lazy" />
+            <figcaption>En horizontal: los modos a la izquierda, las capturas a la derecha.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <h3 id="telefono-activar">Activar y emparejar</h3>
+      <div class="card">
+        <p>En la ventana <a href="#pestana-configuracion">Configuración</a>, marco
+        <span class="ui">📱 Acceso desde el teléfono</span>:</p>
+        <ol>
+          <li>Marque <strong>Permitir el acceso desde el teléfono</strong>. La primera vez, Windows
+          puede pedir que autorice Camify en su cortafuegos: acepte solo para las <strong>redes
+          privadas</strong>.</li>
+          <li>Elija la <strong>dirección del PC</strong> (red local, o Tailscale para un acceso
+          fuera de casa) y haga clic en <span class="btn-label">Mostrar el código QR</span>.</li>
+          <li>Escanee el código QR con la <strong>cámara</strong> del teléfono: la página se abre
+          directamente en el navegador.</li>
+        </ol>
+        <div class="callout tip">
+          <strong>Un icono en la pantalla de inicio</strong>
+          Para abrir la página como una aplicación, pulse primero el icono
+          <strong>Compartir</strong> arriba a la derecha de la página y, en iPhone, Compartir en
+          Safari y <strong>Añadir a pantalla de inicio</strong>; en Android, el menú ⋮ y
+          <strong>Añadir a la pantalla de inicio</strong>. En iPhone este paso es necesario: el
+          icono no comparte el almacenamiento de Safari y debe recibir el código al añadirlo.
+        </div>
+        <div class="callout tip">
+          <strong>Fuera de casa</strong>
+          Instale <a href="https://tailscale.com/" target="_blank" rel="noopener">Tailscale</a>
+          (gratuito para uso personal) en el PC y en el teléfono, con la misma cuenta: la dirección
+          Tailscale del PC (100.x.x.x) aparece entonces en la lista. La conexión está cifrada y no
+          hay que abrir ningún puerto en su router. No redirija nunca el puerto 8742 de su router
+          al PC: las conexiones procedentes de Internet se rechazan de todos modos.
+        </div>
+      </div>
+
+      <h3 id="telefono-modos">Controlar las cámaras</h3>
+      <div class="card">
+        <ul>
+          <li><strong>Pulse un modo</strong> para iniciarlo: su botón se vuelve rojo con un
+          cuadrado ■. Púlselo de nuevo para <strong>detenerlo</strong>. Iniciar otro modo detiene
+          el que está en curso, como en Camify.</li>
+          <li>En la parte inferior de la pantalla, el marco <span class="ui">Cámara</span> muestra
+          el estado en directo (plano en curso y cuenta atrás, distancia de la cámara, pista…) y la
+          aeronave. Las respuestas a los comandos (por ejemplo «MSFS no está conectado») también
+          aparecen allí.</li>
+          <li>La pastilla del encabezado indica la conexión: <strong>Conectado</strong>,
+          <strong>Cámara activa</strong>, <strong>MSFS no conectado</strong> o <strong>PC
+          inaccesible</strong> (nuevo intento automático).</li>
+          <li>La página se adapta a la orientación: en <strong>horizontal</strong>, los modos pasan
+          a la izquierda y las capturas a la derecha.</li>
+        </ul>
+        <p>El teléfono <strong>no puede modificar nada más</strong>: ni los ajustes de los modos,
+        ni el atajo, ni la configuración.</p>
+      </div>
+
+      <h3 id="telefono-capturas">Capturas de MSFS</h3>
+      <div class="card">
+        <ul>
+          <li><span class="btn-label">Capturar MSFS</span>, arriba a la derecha del marco
+          <span class="ui">Capturas</span>, toma una imagen de la <strong>ventana del
+          simulador</strong> (hasta 1920 px de ancho); el resultado («Captura recibida.» o el
+          motivo de un fallo) aparece en la parte inferior del marco. Como máximo una captura cada
+          dos segundos.</li>
+          <li>Las <strong>10 últimas capturas</strong> se muestran en miniaturas; la más reciente
+          tiene un borde rojo hasta que la abre.</li>
+          <li>Pulse una miniatura para abrirla a <strong>pantalla completa</strong> y pase a la
+          anterior o a la siguiente con las flechas. Para conservarla: <strong>mantenga pulsada la
+          imagen</strong> y luego «Guardar en Fotos» (iPhone) o «Descargar imagen» (Android), o use
+          el botón <span class="btn-label">Guardar</span>.</li>
+        </ul>
+        <div class="callout note">
+          <strong>Ventana de MSFS</strong>
+          Solo se captura la ventana de MSFS 2024, aunque otra ventana la tape. No debe estar
+          minimizada. En pantalla completa exclusiva la captura puede fallar: cambie MSFS a
+          pantalla completa en ventana.
+        </div>
+      </div>
+
+      <h3 id="telefono-seguridad">Seguridad</h3>
+      <div class="card">
+        <ul>
+          <li>El código QR contiene un <strong>código secreto</strong> propio de su PC: sin él, el
+          teléfono no recibe nada y no puede controlar nada. No lo comparta; se oculta solo al cabo
+          de tres minutos.</li>
+          <li>En caso de duda, <span class="btn-label">Cambiar el código</span> desconecta de
+          inmediato todos los teléfonos y borra sus capturas: deberán escanear el nuevo código
+          QR.</li>
+          <li>Solo los dispositivos de su <strong>red local</strong> o de su red Tailscale pueden
+          conectarse, hasta cuatro a la vez; las conexiones procedentes de Internet se
+          rechazan.</li>
+          <li>El teléfono solo envía una <strong>lista cerrada de comandos</strong> (iniciar un
+          modo, detener, capturar, mostrar una captura): no puede modificar ningún ajuste ni leer
+          ningún archivo del PC.</li>
+          <li>Solo se captura la <strong>ventana de MSFS</strong>, nunca el resto de la pantalla.
+          Las capturas se quedan <strong>en memoria</strong> en Camify, nunca se escriben en el
+          disco y se borran al cerrarlo, al desmarcar el acceso o al cambiar el código.</li>
+        </ul>
+        <p>El ajuste y el código se guardan en <code class="path">settings.json</code>, junto al
+        ejecutable.</p>
       </div>
     </section>
 
     <section id="pestana-configuracion" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 5. Configuración y registro</h2>
-      <p class="section-lead">Idioma, tema, atajo de teclado, datos de aeropuertos y registro.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 6. Configuración y registro</h2>
+      <p class="section-lead">Idioma, tema, atajo de teclado, acceso desde el teléfono, datos de aeropuertos y registro.</p>
       <figure class="shot">
-        <img src="images/es-configuration.png" alt="Ventana Configuración: idioma y tema, atajo de teclado, aeropuertos y pistas, registro" loading="lazy" />
+        <img src="images/es-configuration.png" alt="Ventana Configuración: idioma y tema, atajo de teclado, acceso desde el teléfono, aeropuertos y pistas, registro" loading="lazy" />
         <figcaption>La ventana Configuración.</figcaption>
       </figure>
       <div class="card">
@@ -403,6 +547,12 @@
         <p>Si otra aplicación ya usa la combinación, Camify lo indica y el recordatorio del atajo
         muestra «(no disponible)»: elija otra.</p>
 
+        <h4>📱 Acceso desde el teléfono</h4>
+        <p>Activa la página del teléfono, elige la dirección del PC, muestra el código QR y cambia
+        el código secreto; la línea de estado indica el puerto de escucha (8742) y el número de
+        teléfonos conectados. Todo se detalla en <a href="#telefono">Acceso desde el
+        teléfono</a>.</p>
+
         <h4>🛬 Aeropuertos y pistas</h4>
         <p>Muestra el número de aeropuertos y pistas en la base de datos y la fecha de
         actualización. El botón <span class="btn-label">Actualizar</span> vuelve a descargar los
@@ -422,7 +572,7 @@
     </section>
 
     <section id="consejos">
-      <h2 class="section-title"><span class="emoji">💡</span> 6. Consejos y buenas prácticas</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 7. Consejos y buenas prácticas</h2>
       <div class="card">
         <ul>
           <li><strong>Con el piloto automático</strong>, el Traveling se convierte en una auténtica
@@ -437,6 +587,9 @@
           <li><strong>Con una sola pantalla</strong> y el simulador en ventana, ajuste Camify a una
           esquina con los diseños de ajuste de Windows 11 y deje sus marcos plegados: el estado de
           la cámara sigue visible a la derecha del título <span class="ui">📡 En directo</span>.</li>
+          <li><strong>El teléfono como mando</strong>: junto al teclado o a la palanca de gases,
+          inicia los modos con un toque sin apartar la vista de MSFS, y guarda las mejores imágenes
+          del vuelo con <span class="btn-label">Capturar MSFS</span>.</li>
           <li><strong>Con Carnet de Vol</strong>, ambas aplicaciones pueden funcionar durante el
           mismo vuelo: una registra el vuelo y la otra lo filma.</li>
         </ul>
@@ -444,14 +597,14 @@
         <div>
           <span class="pill">💾 camify.db — aeropuertos y pistas</span>
           <span class="pill">📝 camify.log — registro</span>
-          <span class="pill">⚙️ settings.json — idioma, modo, ajustes, atajo</span>
+          <span class="pill">⚙️ settings.json — idioma, modo, ajustes, atajo, acceso teléfono</span>
           <span class="pill">🎨 theme.txt — tema elegido</span>
         </div>
       </div>
     </section>
 
     <section id="solucion-problemas">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 7. Solución de problemas</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Solución de problemas</h2>
       <div class="card">
         <h4>«No conectado a MSFS 2024» nunca pasa a verde</h4>
         <p>Compruebe que Microsoft Flight Simulator 2024 está en marcha y que hay un vuelo
@@ -482,6 +635,21 @@
         <p>Puede que otra aplicación ya lo use: el recordatorio junto al título muestra entonces
         «(no disponible)». Elija otra combinación en la ventana
         <a href="#pestana-configuracion">Configuración</a>.</p>
+
+        <h4>El teléfono muestra «PC inaccesible»</h4>
+        <p>Compruebe que Camify está abierto, que el acceso desde el teléfono está marcado y que
+        el teléfono está en la misma Wi-Fi que el PC (no en una red de invitados, ni en 4G/5G sin
+        Tailscale). Si Windows pidió permiso para el cortafuegos, debe concederse para las redes
+        privadas, y la red del PC debe estar definida como «privada» en Windows.</p>
+
+        <h4>El teléfono muestra «Código rechazado»</h4>
+        <p>El código se cambió en Camify: escanee el nuevo código QR. En iPhone, elimine el icono
+        antiguo de la pantalla de inicio y añádalo de nuevo.</p>
+
+        <h4>La captura falla</h4>
+        <p>MSFS 2024 debe estar en marcha y su ventana no debe estar minimizada. En pantalla
+        completa exclusiva, cambie el simulador a pantalla completa en ventana. El
+        <a href="#pestana-registro">registro</a> da los detalles del error.</p>
       </div>
     </section>
 

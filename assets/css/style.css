@@ -231,6 +231,14 @@ code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 0.92em; ba
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
 }
 .camify-scene svg { display: block; width: 100%; height: 100%; }
+.camify-visual .camify-scene { height: 100%; }
+/* Page du téléphone de Camify en incrustation sur la scène, comme dans le collage de Carnet de Vol. */
+.camify-visual .phone {
+  position: absolute; width: 17%; right: 3%; bottom: -18px; border-radius: 16px; overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.4); box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
+  transform: rotate(4deg); animation: float 7s ease-in-out infinite; animation-delay: -3s;
+}
+.camify-visual .phone img { display: block; width: 100%; }
 .camify-scene .hills { fill: rgba(10, 8, 24, 0.45); }
 .scene-plane { fill: #fff; animation: scene-fly 7s linear infinite; }
 .scene-frame { fill: none; stroke: var(--camify-light); stroke-width: 2.5; stroke-linecap: round; animation: scene-track 7s linear infinite; }

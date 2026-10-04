@@ -34,7 +34,9 @@ Les applications sont les vedettes : l'éditeur n'apparaît que discrètement (e
 - Captures : `assets/img/carnetdevol/` = copies de `CarnetDeVol/docs/images/brochure/`
   (préfixes `fr-`, `en-`). `assets/img/camify/` = copies renommées de `Camify/docs/images/`
   (`<lang>-onglet-camera-sombre.png` → `<lang>-camera-sombre.png`, `-onglet-camera-clair` →
-  `-camera-clair`, `-reglages-flyby` → `-flyby`, `-configuration` → `-config`), en FR et EN,
+  `-camera-clair`, `-reglages-flyby` → `-flyby`, `-configuration` → `-config`, et
+  `<lang>-telephone.jpg` tel quel, page du téléphone aussi montrée en incrustation dans le bandeau),
+  en FR et EN,
   montrées par la galerie `camify-gallery` (`gallery()` dans `main.js`, commune aux deux
   applications ; `CAMIFY_SIZES` = taille de chaque capture, les fenêtres de Camify n'ayant pas
   la même hauteur d'une capture à l'autre ; `config`, fenêtre de configuration, a une taille par

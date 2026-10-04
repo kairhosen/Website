@@ -67,7 +67,8 @@
       btn.setAttribute("aria-pressed", String(btn.getAttribute("data-lang") === lang));
     });
     document.querySelectorAll("img[data-shot]").forEach(function (img) {
-      img.src = shot(img.getAttribute("data-shot").split(":")[1]);
+      var ref = img.getAttribute("data-shot").split(":"); // "<application>:<capture>"
+      img.src = shot(ref[1], ref[0]);
     });
     Object.keys(APPS).forEach(renderRelease);
   }
@@ -99,7 +100,7 @@
   // Carnet de Vol : copies de CarnetDeVol/docs/images/brochure. Camify : copies de Camify/docs/images
   // (fenêtre entière ; sa hauteur suit les cadres affichés, d'où une taille par capture).
   function shot(name, app) {
-    if (app === "camify") return "assets/img/camify/" + lang + "-" + name + ".png";
+    if (app === "camify") return "assets/img/camify/" + lang + "-" + name + (name === "telephone" ? ".jpg" : ".png");
     return "assets/img/carnetdevol/" + lang + "-" + name + (name === "carte" || name === "telephone" ? ".jpg" : ".png");
   }
 
@@ -109,8 +110,8 @@
   };
   // config : fenêtre modale de configuration, dont la hauteur varie avec la langue (retours à la ligne).
   var CAMIFY_SIZES = {
-    "camera-sombre": [1000, 717], "camera-clair": [1000, 485], flyby: [1000, 607],
-    config: { fr: [680, 796], en: [680, 779] }
+    "camera-sombre": [1000, 697], "camera-clair": [1000, 465], flyby: [1000, 587], telephone: [585, 1266],
+    config: { fr: [680, 990], en: [680, 973] }
   };
 
   function shotSize(name, app) {
@@ -239,7 +240,7 @@
   function gallery(app, names, sectionClass) {
     var items = function (hidden) {
       return names.map(function (n) {
-        // Page du téléphone : pas un onglet, texte alternatif propre (cdv.shotAlt.telephone).
+        // Page du téléphone : pas un onglet, texte alternatif propre (<app>.shotAlt.telephone).
         var alt = n === "telephone" ? t(app + ".shotAlt.telephone") : t(app + ".shotAlt", { name: t(app + ".tab." + n) });
         // Capture plus haute que large (fenêtre de configuration) : vignette plus étroite, pour
         // garder la même hauteur que ses voisines.
@@ -298,7 +299,7 @@
 
     function camifyFeatures() {
       return '<section class="section theme-camify" id="camify-features"><div class="container">' + sectionHead("camify.features", false) +
-        cards("camify.features.", [["hotkey", "⌨️"], ["takeover", "🎮"], ["size", "📐"], ["airports", "🛫"], ["live", "🎬"], ["local", "🔒"]]) +
+        cards("camify.features.", [["phone", "📱"], ["hotkey", "⌨️"], ["takeover", "🎮"], ["airports", "🛫"], ["live", "🎬"], ["local", "🔒"]]) +
         "</div></section>";
     },
 
@@ -307,7 +308,7 @@
     },
 
     function camifyGallery() {
-      return gallery("camify", ["camera-sombre", "camera-clair", "flyby", "config"], "section-dark");
+      return gallery("camify", ["camera-sombre", "telephone", "camera-clair", "flyby", "config"], "section-dark");
     },
 
     function shared() {

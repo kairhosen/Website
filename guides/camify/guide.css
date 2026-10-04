@@ -213,7 +213,7 @@ tr:last-child td { border-bottom: none; }
 .callout.tip { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
 .callout.warn { background: var(--danger-soft); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
 .callout.note { background: var(--accent2-soft); border-color: color-mix(in srgb, var(--accent2) 30%, transparent); }
-.callout strong { display: block; margin-bottom: 4px; }
+.callout > strong:first-child { display: block; margin-bottom: 4px; }
 
 .example {
   border-left: 3px solid var(--accent);
@@ -308,3 +308,7 @@ figure.shot video { width: 100%; max-width: 760px; display: block; border-radius
   .fly-across { transform: translate(100px, 40px) rotate(-5deg); }
   .landing { transform: translate(100px, 104px); }
 }
+
+/* Captures de la page du téléphone : portrait étroit à côté du paysage. */
+.shot-row figure.phone { flex: 0 1 280px; }
+.shot-row figure.phone-wide { flex: 1 1 420px; align-self: flex-start; }
