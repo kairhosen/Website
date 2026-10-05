@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Bitácora de vuelo — Guía del usuario</h1>
   <p>Seguimiento de vuelos · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Versión 2.0.2 · Windows · aplicación nativa</span>
+  <span class="badge">Versión 2.0.3 · Windows · aplicación nativa</span>
 </header>
 
 <div class="layout">
@@ -796,14 +796,18 @@
           <li>Escanea el código QR con la <strong>cámara</strong> del teléfono: la página se abre
           directamente. Para convertirla en un icono, como una aplicación, toca primero el icono
           <strong>Compartir</strong> junto al estado, arriba de la página, y luego Compartir en Safari y
-          <strong>Añadir a pantalla de inicio</strong>.</li>
+          <strong>Añadir a pantalla de inicio</strong>. Si el icono pierde después su código
+          (código cambiado en Carnet de Vol), no hace falta reinstalarlo: muestra el código QR e
+          introduce en el icono el <strong>código corto</strong> de 8 caracteres que aparece debajo.</li>
         </ol>
         <div class="callout note">
           <strong>Seguridad</strong>
           El código QR contiene un <strong>código secreto</strong> propio de tu PC: sin él, no se
           transmite ningún dato. No lo compartas; se oculta solo al cabo de tres minutos. Ante la
           duda, <strong>Cambiar el código</strong> desconecta de inmediato todos los teléfonos, que
-          deberán escanear el nuevo código QR. Solo pueden conectarse los dispositivos de tu red
+          deberán escanear el nuevo código QR. El <strong>código corto</strong> que aparece bajo el
+          código QR solo sirve una vez, solo es válido mientras se muestra el código QR y se anula
+          tras diez intentos fallidos. Solo pueden conectarse los dispositivos de tu red
           local (o de tu red Tailscale); hasta cuatro teléfonos a la vez.
         </div>
         <div class="callout tip">
@@ -913,6 +917,14 @@
         <h4>Un texto sigue en el idioma anterior tras el cambio</h4>
         <p>Los mensajes de estado ya mostrados (resultado de un guardado, de una importación…)
         conservan su idioma hasta el siguiente mensaje; todo lo demás cambia de inmediato.</p>
+
+        <h4>El teléfono muestra «Código rechazado»</h4>
+        <p>El código se cambió en Carnet de Vol: escanea el nuevo código QR
+        (<a href="#acceso-telefono">Acceso desde el teléfono</a>). Desde el icono de la pantalla de
+        inicio de un iPhone, que no puede escanear, muestra el código QR en Carnet de Vol e
+        introduce el código corto que aparece debajo. Si también se rechaza, comprueba que el código
+        QR sigue mostrándose (se oculta al cabo de tres minutos) e introduce el código actual: cada
+        código solo sirve una vez.</p>
       </div>
     </section>
 
@@ -1005,7 +1017,7 @@
 </div>
 
 <footer>
-  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 2.0.2.
+  Bitácora de vuelo (Carnet de Vol) — FS2024 · Guía redactada para la versión 2.0.3.
 </footer>
 
 <script>

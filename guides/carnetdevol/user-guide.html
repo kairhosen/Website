@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Flight Logbook — User guide</h1>
   <p>Flight tracking · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 2.0.2 · Windows · native application</span>
+  <span class="badge">Version 2.0.3 · Windows · native application</span>
 </header>
 
 <div class="layout">
@@ -774,14 +774,18 @@
           from home), then click <strong>Show the QR code</strong>.</li>
           <li>Scan the QR code with the phone's <strong>camera</strong>: the page opens directly.
           To turn it into an icon, like an app, first tap the <strong>Share</strong> icon next to the
-          status at the top of the page, then Share in Safari and <strong>Add to Home Screen</strong>.</li>
+          status at the top of the page, then Share in Safari and <strong>Add to Home Screen</strong>.
+          If the icon later loses its code (code changed in Carnet de Vol), no need to reinstall it:
+          show the QR code and type in the icon the 8-character <strong>short code</strong> shown
+          under it.</li>
         </ol>
         <div class="callout note">
           <strong>Security</strong>
           The QR code holds a <strong>secret code</strong> unique to your PC: without it, no data is
           sent. Do not share it; it hides itself after three minutes. If in doubt,
           <strong>Change the code</strong> disconnects every phone at once; they will have to scan
-          the new QR code. Only devices on your local network (or your Tailscale network) can
+          the new QR code. The <strong>short code</strong> shown under the QR code works only
+          once, only while the QR code is shown, and is cancelled after ten wrong attempts. Only devices on your local network (or your Tailscale network) can
           connect; up to four phones at a time.
         </div>
         <div class="callout tip">
@@ -890,6 +894,13 @@
         <h4>A text is still in the previous language after switching</h4>
         <p>Status messages already shown (result of a save, of an import…) keep their language
         until the next message; everything else switches immediately.</p>
+
+        <h4>The phone shows “Code refused”</h4>
+        <p>The code was changed in Carnet de Vol: scan the new QR code
+        (<a href="#phone-access">Phone access</a>). From an iPhone Home Screen icon, which can't
+        scan, show the QR code in Carnet de Vol and type the short code shown under it. If that one
+        is refused too, check that the QR code is still shown (it hides itself after three minutes)
+        and type the current code: each code works only once.</p>
       </div>
     </section>
 
@@ -979,7 +990,7 @@
 </div>
 
 <footer>
-  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 2.0.2.
+  Flight Logbook (Carnet de Vol) — FS2024 · Guide written for version 2.0.3.
 </footer>
 
 <script>

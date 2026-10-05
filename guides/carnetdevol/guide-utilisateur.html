@@ -272,7 +272,7 @@
   <div class="icon">🧭</div>
   <h1>Carnet de Vol — Guide de l'utilisateur</h1>
   <p>Suivi de vols · Microsoft Flight Simulator 2024</p>
-  <span class="badge">Version 2.0.2 · Windows · application native</span>
+  <span class="badge">Version 2.0.3 · Windows · application native</span>
 </header>
 
 <div class="layout">
@@ -787,14 +787,18 @@
           <li>Scannez le QR code avec l'<strong>appareil photo</strong> du téléphone : la page
           s'ouvre directement. Pour en faire une icône, comme une application, touchez d'abord l'icône
           <strong>Partager</strong> à droite de l'état, en haut de la page, puis Partager dans Safari et
-          <strong>Sur l'écran d'accueil</strong>.</li>
+          <strong>Sur l'écran d'accueil</strong>. Si l'icône perd ensuite son code (code changé
+          dans Carnet de Vol), inutile de la réinstaller : affichez le QR code et saisissez dans
+          l'icône le <strong>code court</strong> de 8 caractères affiché dessous.</li>
         </ol>
         <div class="callout note">
           <strong>Sécurité</strong>
           Le QR code contient un <strong>code secret</strong> propre à votre PC : sans lui, aucune
           donnée n'est transmise. Ne le partagez pas ; il se masque seul après trois minutes. En cas
           de doute, <strong>Changer le code</strong> déconnecte immédiatement tous les téléphones,
-          qui devront scanner le nouveau QR code. Seuls les appareils de votre réseau local (ou de
+          qui devront scanner le nouveau QR code. Le <strong>code court</strong> affiché sous le QR
+          code ne sert qu'une fois, n'est valable que tant que le QR code est affiché et est annulé
+          après dix essais faux. Seuls les appareils de votre réseau local (ou de
           votre réseau Tailscale) peuvent se connecter ; jusqu'à quatre téléphones à la fois.
         </div>
         <div class="callout tip">
@@ -901,6 +905,14 @@
         <a href="#onglet-configuration">Configuration</a>, puis relancez l'import : les vols
         précédemment ignorés faute d'aéroport reconnu seront importés sans créer de doublon pour
         les vols déjà passés.</p>
+
+        <h4>Le téléphone affiche « Code refusé »</h4>
+        <p>Le code a été changé dans Carnet de Vol : scannez le nouveau QR code
+        (<a href="#acces-telephone">Accès depuis le téléphone</a>). Depuis l'icône de l'écran
+        d'accueil d'un iPhone, qui ne peut pas scanner, affichez le QR code dans Carnet de Vol et
+        saisissez le code court affiché dessous. S'il est refusé lui aussi, vérifiez que le QR code
+        est toujours affiché (il se masque après trois minutes) et saisissez le code actuel : chaque
+        code ne sert qu'une fois.</p>
       </div>
     </section>
 
@@ -993,7 +1005,7 @@
 </div>
 
 <footer>
-  Carnet de Vol — FS2024 · Guide généré pour la version 2.0.2.
+  Carnet de Vol — FS2024 · Guide généré pour la version 2.0.3.
 </footer>
 
 <script>

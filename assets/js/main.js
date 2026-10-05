@@ -111,7 +111,7 @@
   // config : fenêtre modale de configuration, dont la hauteur varie avec la langue (retours à la ligne).
   var CAMIFY_SIZES = {
     "camera-sombre": [1000, 697], "camera-clair": [1000, 465], flyby: [1000, 587], telephone: [585, 1266],
-    config: { fr: [680, 990], en: [680, 973] }
+    config: { fr: [1060, 830], en: [1060, 813] }
   };
 
   function shotSize(name, app) {
@@ -242,7 +242,7 @@
       return names.map(function (n) {
         // Page du téléphone : pas un onglet, texte alternatif propre (<app>.shotAlt.telephone).
         var alt = n === "telephone" ? t(app + ".shotAlt.telephone") : t(app + ".shotAlt", { name: t(app + ".tab." + n) });
-        // Capture plus haute que large (fenêtre de configuration) : vignette plus étroite, pour
+        // Capture plus haute que large : vignette plus étroite, pour
         // garder la même hauteur que ses voisines.
         var size = shotSize(n, app);
         var item = size[1] > size[0] ? "marquee-item portrait" : "marquee-item";
