@@ -429,7 +429,9 @@
           right of the page, then, on iPhone, Share in Safari and <strong>Add to Home
           Screen</strong>; on Android, the ⋮ menu then <strong>Add to Home screen</strong>. On
           iPhone this step is required: the icon does not share Safari's storage and must receive
-          the code when it is added.
+          the code when it is added. If it loses it (code changed in Camify), no need to reinstall
+          it: show the QR code and type into the icon the 8-character <strong>short code</strong>
+          shown under it.
         </div>
         <div class="callout tip">
           <strong>Away from home</strong>
@@ -489,6 +491,8 @@
           <li>The QR code contains a <strong>secret code</strong> specific to your PC: without it,
           the phone receives nothing and can control nothing. Don't share it; it hides itself after
           three minutes.</li>
+          <li>The <strong>short code</strong> shown under the QR code works only once, only while
+          the QR code is shown, and is cancelled after ten wrong attempts.</li>
           <li>If in doubt, <span class="btn-label">Change the code</span> immediately disconnects
           all phones and erases their screenshots: they will have to scan the new QR code.</li>
           <li>Only devices on your <strong>local network</strong> or your Tailscale network can
@@ -633,8 +637,9 @@
         be set to “private” in Windows.</p>
 
         <h4>The phone shows “Code refused”</h4>
-        <p>The code was changed in Camify: scan the new QR code. On iPhone, delete the old icon
-        from the home screen and add it again.</p>
+        <p>The code was changed in Camify: scan the new QR code. From the home-screen icon of an
+        iPhone, which cannot scan, show the QR code in Camify and type the short code shown under
+        it.</p>
 
         <h4>The screenshot fails</h4>
         <p>MSFS 2024 must be running and its window must not be minimized. In exclusive full
