@@ -40,7 +40,16 @@
           <li><a href="#camara-parada">Paradas automáticas</a></li>
         </ul>
       </li>
-      <li><a href="#telefono">5. Acceso desde el teléfono</a>
+      <li><a href="#repeticion">5. Repetición del aterrizaje</a>
+        <ul class="sub">
+          <li><a href="#repeticion-grabacion">Grabación automática</a></li>
+          <li><a href="#repeticion-ventana">Ventana de repetición</a></li>
+          <li><a href="#repeticion-calidad">Calidad del aterrizaje</a></li>
+          <li><a href="#repeticion-msfs">Repetir en MSFS</a></li>
+          <li><a href="#repeticion-biblioteca">Mis aterrizajes</a></li>
+        </ul>
+      </li>
+      <li><a href="#telefono">6. Acceso desde el teléfono</a>
         <ul class="sub">
           <li><a href="#telefono-activar">Activar y emparejar</a></li>
           <li><a href="#telefono-modos">Controlar las cámaras</a></li>
@@ -48,9 +57,9 @@
           <li><a href="#telefono-seguridad">Seguridad</a></li>
         </ul>
       </li>
-      <li><a href="#pestana-configuracion">6. Configuración y registro</a></li>
-      <li><a href="#consejos">7. Consejos y buenas prácticas</a></li>
-      <li><a href="#solucion-problemas">8. Solución de problemas</a></li>
+      <li><a href="#pestana-configuracion">7. Configuración y registro</a></li>
+      <li><a href="#consejos">8. Consejos y buenas prácticas</a></li>
+      <li><a href="#solucion-problemas">9. Solución de problemas</a></li>
       <li><a href="#anexo-licencias">Anexo — Fuentes y licencias</a></li>
     </ul>
   </nav>
@@ -95,10 +104,14 @@
           <li><strong>Torre de control</strong>: en la aproximación, la cámara se coloca junto a la
           pista de aterrizaje y sigue su aterrizaje.</li>
         </ul>
+        <p>Camify también graba cada uno de sus <strong>aterrizajes</strong>: los califica
+        (velocidad vertical en la toma, factor de carga, eje, umbral…) y le permite
+        <strong>volver a verlos en MSFS</strong>, filmados por sus cámaras: vea
+        <a href="#repeticion">Repetición del aterrizaje</a>.</p>
         <p>Los modos también se inician desde un <strong>teléfono</strong> o una tableta, que
         además recibe capturas de pantalla del simulador: vea
         <a href="#telefono">Acceso desde el teléfono</a>.</p>
-        <p>Camify nunca pilota el avión ni graba vídeo: coloca la cámara del simulador. Para
+        <p>Camify nunca pilota su avión ni graba vídeo: coloca la cámara del simulador. Para
         conservar un recuerdo, utilice su herramienta de captura habitual (por ejemplo la Xbox Game
         Bar de Windows, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
       </div>
@@ -128,7 +141,8 @@
           <code class="path">camify.db</code> (aeropuertos y pistas),
           <code class="path">camify.log</code> (registro),
           <code class="path">settings.json</code> (idioma, modo elegido, valores de los controles,
-          atajo, acceso desde el teléfono y su código) y <code class="path">theme.txt</code> (tema claro u oscuro). Si mueve el ejecutable,
+          atajo, acceso desde el teléfono y su código), <code class="path">theme.txt</code> (tema claro u oscuro) y la carpeta
+          <code class="path">replays</code> (sus aterrizajes). Si mueve el ejecutable,
           cópielos con él para conservar sus ajustes.
         </div>
       </div>
@@ -151,7 +165,8 @@
           <li>Una <strong>barra de estado</strong> con un punto de color (rojo = no conectado,
           verde = conectado). Mientras MSFS no esté disponible, Camify reintenta la conexión cada
           <strong>5 segundos</strong>, sin que usted tenga que hacer nada;</li>
-          <li>Debajo, la <a href="#pestana-camara">cámara</a>: los tres modos, sus ajustes y el
+          <li>Debajo, la <a href="#pestana-camara">cámara</a>: los tres modos, la <a href="#repeticion">repetición
+          de aterrizajes</a>, los ajustes del modo y el
           estado en directo.</li>
         </ul>
         <p>La aplicación se muestra en el <strong>idioma de Windows</strong> si está disponible
@@ -386,8 +401,159 @@
       </div>
     </section>
 
+    <section id="repeticion" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🎬</span> 5. Repetición del aterrizaje</h2>
+      <p class="section-lead">Cada aterrizaje grabado, calificado y repetido en MSFS bajo las cámaras de Camify.</p>
+      <div class="card">
+        <p>El panel <span class="ui">🎬 Repetición de aterrizajes</span>, bajo los modos de cámara,
+        está plegado al inicio como los demás (botón <span class="btn-label">+</span>). Plegado,
+        muestra a la derecha de su título el último aterrizaje o la grabación en curso. Desplegado,
+        presenta tres tarjetas:</p>
+        <ul>
+          <li><strong>Último aterrizaje</strong>: la pista, la aeronave, la hora y la calificación
+          del último aterrizaje de la sesión; su botón redondo ▶ lo repite al instante (ventana de
+          repetición y, si es posible, en MSFS);</li>
+          <li><strong>Mis aterrizajes</strong>: el número de aterrizajes guardados en el disco;
+          <span class="btn-label">Abrir</span> muestra la <a href="#repeticion-biblioteca">lista</a>;</li>
+          <li><strong>Grabación automática</strong>: el estado de la grabación, con un punto rojo
+          «Grabando» durante la aproximación.</li>
+        </ul>
+        <figure class="shot">
+          <img src="images/es-replay-carte.png" alt="Ventana principal, panel Repetición de aterrizajes desplegado: tarjetas Último aterrizaje, Mis aterrizajes (3 aterrizajes grabados) y Grabación automática" loading="lazy" />
+          <figcaption>El panel de repetición desplegado.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="repeticion-grabacion">Grabación automática</h3>
+      <div class="card">
+        <p>No hay nada que iniciar: en cuanto el <strong>tren está bajado</strong> en descenso (por
+        debajo de 5000 ft sobre el suelo), Camify graba la aproximación, la toma y la carrera, y se
+        detiene al <strong>salir de la pista</strong>, al detenerse por completo o a velocidad de
+        rodaje. Un <strong>motor y al aire</strong> (tren recogido o nuevo ascenso antes de la toma)
+        anula la grabación; un <strong>toque y despegue</strong> se graba, y Camify se prepara para
+        el aterrizaje siguiente.</p>
+        <p>La grabación solo lee el simulador: no toca ni su avión ni la cámara, y funciona incluso
+        sin ningún modo de cámara en marcha. Se desactiva en la
+        <a href="#pestana-configuracion">Configuración</a> (casilla
+        <strong>Grabar mis aterrizajes automáticamente</strong>, marcada por defecto).</p>
+        <div class="callout note">
+          <strong>Un archivo por aterrizaje</strong>
+          Cada aterrizaje se escribe en la carpeta <code class="path">replays</code>, junto al
+          ejecutable, en su propio archivo <code class="path">.camify-replay</code> (de unos cientos
+          de KB a unos pocos MB), con el nombre de la fecha, el aeropuerto, la pista y la aeronave.
+          Nunca se borra nada automáticamente: un archivo dañado nunca arrastra a los demás.
+        </div>
+      </div>
+
+      <h3 id="repeticion-ventana">Ventana de repetición</h3>
+      <div class="card">
+        <p>El botón ▶ del último aterrizaje, o <span class="btn-label">Abrir la repetición</span> en
+        <a href="#repeticion-biblioteca">Mis aterrizajes</a>, abre la ventana de repetición. Su
+        banda superior recuerda la pista, la calificación y la fecha;
+        <span class="btn-label">Mis aterrizajes…</span> y <span class="btn-label">Exportar…</span>
+        están a la derecha.</p>
+        <figure class="shot">
+          <img src="images/es-replay-fenetre.png" alt="Ventana de repetición: gráfico de la aproximación con marcas Tren bajado, 50 ft, Toma y Fin, cursor justo después de la toma, valores en el cursor, calidad Suave −246 ft/min con todos los criterios en verde, e información del vuelo" loading="lazy" />
+          <figcaption>Un aterrizaje en Luxemburgo, en pausa justo después de la toma.</figcaption>
+        </figure>
+        <ul>
+          <li>El <strong>gráfico</strong> traza la <strong>altura sobre el suelo</strong> (altura de
+          las ruedas, 0 una vez en tierra), la <strong>velocidad vertical</strong> y la
+          <strong>velocidad indicada</strong>. Encima, <strong>marcas</strong> en las que se puede
+          hacer clic: tren bajado, 50 ft, toma, rebotes eventuales, fin.</li>
+          <li>Haga clic o arrastre sobre el gráfico o sobre la barra inferior para mover el
+          <strong>cursor</strong>. El botón redondo inicia o pausa la reproducción;
+          <span class="ui">Velocidad</span> va de ×0,25 a ×2.</li>
+          <li><span class="ui">📍 En el cursor</span> da los valores en el instante mostrado: altura
+          sobre el suelo, velocidades, factor de carga, cabeceo, alabeo.</li>
+          <li><span class="ui">✈️ Vuelo</span> recuerda la aeronave, la librea, la llegada, la fecha,
+          la duración y lo que puso fin a la grabación.</li>
+        </ul>
+        <p>La reproducción en la ventana funciona siempre, incluso sin MSFS.</p>
+      </div>
+
+      <h3 id="repeticion-calidad">Calidad del aterrizaje</h3>
+      <div class="card">
+        <p>La calificación principal sigue la <strong>velocidad vertical en la toma</strong>, con
+        los mismos umbrales para todas las aeronaves (y los mismos que Carnet de Vol). Su icono, un
+        indicador de cinco sectores, aparece también en la tarjeta, en la lista y en el
+        teléfono.</p>
+        <table>
+          <tr><th>Clase</th><th>Velocidad vertical en la toma</th></tr>
+          <tr><td>Muy suave</td><td>menos de 100 ft/min</td></tr>
+          <tr><td>Suave</td><td>de 100 a 250 ft/min</td></tr>
+          <tr><td>Normal</td><td>de 250 a 500 ft/min</td></tr>
+          <tr><td>Firme</td><td>de 500 a 700 ft/min</td></tr>
+          <tr><td>Muy firme</td><td>700 ft/min o más</td></tr>
+        </table>
+        <p>Cada criterio recibe después su punto <strong>verde</strong>, <strong>naranja</strong> o
+        <strong>rojo</strong>:</p>
+        <table>
+          <tr><th>Criterio</th><th>Verde</th><th>Naranja</th></tr>
+          <tr><td>Factor de carga máx.</td><td>menos de 1,4 g</td><td>de 1,4 a 1,75 g</td></tr>
+          <tr><td>Rebotes</td><td>ninguno</td><td>uno</td></tr>
+          <tr><td>Distancia al umbral</td><td>de 150 a 900 m</td><td>de 0 a 150 m o de 900 a 1200 m</td></tr>
+          <tr><td>Desvío del eje</td><td>menos de 3 m</td><td>menos de un cuarto del ancho</td></tr>
+          <tr><td>Deriva (crab)</td><td>menos de 5°</td><td>menos de 10°</td></tr>
+          <tr><td>Alabeo</td><td>menos de 3°</td><td>menos de 6°</td></tr>
+          <tr><td>Cabeceo</td><td>de 0 a 8°</td><td>negativo o de 8 a 10°</td></tr>
+        </table>
+        <p>Más allá, el punto es rojo. Las velocidades en la toma y la distancia de carrera se dan a
+        título indicativo. El umbral y el eje proceden de las pistas del escenario de MSFS (en su
+        defecto, de OurAirports); sin pista conocida, o si su posición es estimada, estos dos
+        criterios no se califican.</p>
+      </div>
+
+      <h3 id="repeticion-msfs">Repetir en MSFS</h3>
+      <div class="card">
+        <p>Con la casilla <span class="ui">Repetir en MSFS</span> marcada (por defecto), la
+        repetición también tiene lugar en el simulador: un <strong>avión fantasma</strong>, misma
+        aeronave y misma librea, rehace exactamente su aproximación y su aterrizaje, filmado por el
+        <strong>modo de cámara seleccionado</strong> en la ventana principal (Traveling, Flyby o
+        Torre de control). El cursor, la pausa y la velocidad lo controlan igual que la
+        ventana.</p>
+        <ul>
+          <li>Para no molestar su vuelo, su avión debe estar <strong>detenido en tierra</strong> o el
+          simulador <strong>en pausa</strong>; si no, la ventana reproduce sola y lo indica.</li>
+          <li>El fantasma se retira y vuelve la vista anterior al final, cuando detiene la
+          repetición o cierra la ventana, si cambia de vista en MSFS, si su avión se mueve o si
+          cambia de aeronave.</li>
+          <li>Si la librea no está instalada, MSFS usa la librea por defecto (Camify lo indica); si
+          falta la propia aeronave, solo es posible la repetición en la ventana.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>El buen momento</strong>
+          Una vez estacionado, con los motores apagados: lance la repetición del último aterrizaje
+          y elija el modo Torre de control para volver a verlo desde el borde de la pista.
+        </div>
+      </div>
+
+      <h3 id="repeticion-biblioteca">Mis aterrizajes</h3>
+      <div class="card">
+        <figure class="shot">
+          <img src="images/es-replay-bibliotheque.png" alt="Ventana Mis aterrizajes: búsqueda, filtro por clase, lista de tres aterrizajes en ELLX 24 con icono de dureza, fecha, aeronave y librea, velocidad vertical, g máx., duración y tamaño" loading="lazy" />
+          <figcaption>Sus aterrizajes, del más reciente al más antiguo.</figcaption>
+        </figure>
+        <ul>
+          <li><span class="ui">Buscar</span> filtra por aeropuerto, pista, aeronave o librea;
+          <span class="ui">Clase</span> conserva una sola clase de dureza.</li>
+          <li><span class="btn-label">Abrir la repetición</span> (o un doble clic) abre el
+          aterrizaje seleccionado en la ventana de repetición.</li>
+          <li><span class="btn-label">Exportar…</span> copia su archivo donde usted quiera, por
+          ejemplo para enviarlo a un amigo; <span class="btn-label">Importar un archivo…</span>
+          añade un aterrizaje recibido, tras comprobarlo.</li>
+          <li><span class="btn-label">Eliminar</span> pide confirmación (segunda pulsación) y envía
+          el archivo a la <strong>Papelera de reciclaje</strong> de Windows.</li>
+          <li><span class="btn-label">Abrir la carpeta</span> muestra la carpeta
+          <code class="path">replays</code> en el Explorador de archivos.</li>
+        </ul>
+        <p>La parte inferior de la ventana indica el número de aterrizajes y el espacio que ocupan.
+        Un archivo ilegible queda en gris en la lista, sin afectar a los demás.</p>
+      </div>
+    </section>
+
     <section id="telefono" class="tab-section">
-      <h2 class="section-title"><span class="emoji">📱</span> 5. Acceso desde el teléfono</h2>
+      <h2 class="section-title"><span class="emoji">📱</span> 6. Acceso desde el teléfono</h2>
       <p class="section-lead">El teléfono como mando a distancia de las cámaras, y las capturas de MSFS en el bolsillo.</p>
       <div class="card">
         <p>Desde un <strong>teléfono</strong> o una <strong>tableta</strong> (iPhone, Android…),
@@ -397,6 +563,7 @@
           grandes botones pensados para pulsarse sin mirar, como un Stream Deck;</li>
           <li>seguir el <strong>estado de la cámara</strong> (plano en curso, distancia, pista…) y
           la aeronave cargada;</li>
+          <li><strong>repetir el último aterrizaje</strong> en MSFS;</li>
           <li><strong>capturar la ventana de MSFS</strong> y recibir las imágenes en el teléfono,
           para guardarlas en Fotos.</li>
         </ul>
@@ -464,6 +631,11 @@
           <li>La página se adapta a la orientación: en <strong>horizontal</strong>, los modos pasan
           a la izquierda y las capturas a la derecha.</li>
         </ul>
+        <p>Bajo los modos, <span class="btn-label">Repetición del último aterrizaje</span> muestra
+        el icono y la calificación del último aterrizaje de la sesión. Al tocarlo, lo repite en
+        MSFS, con el modo de cámara elegido en el PC, y abre la
+        <a href="#repeticion-ventana">ventana de repetición</a> en el PC; como en el PC, su avión
+        debe estar detenido en tierra o el simulador en pausa. Toque de nuevo para detener.</p>
         <p>El teléfono <strong>no puede modificar nada más</strong>: ni los ajustes de los modos,
         ni el atajo, ni la configuración.</p>
       </div>
@@ -506,8 +678,8 @@
           conectarse, hasta cuatro a la vez; las conexiones procedentes de Internet se
           rechazan.</li>
           <li>El teléfono solo envía una <strong>lista cerrada de comandos</strong> (iniciar un
-          modo, detener, capturar, mostrar una captura): no puede modificar ningún ajuste ni leer
-          ningún archivo del PC.</li>
+          modo, detener, repetir el último aterrizaje, capturar, mostrar una captura): no puede
+          modificar ningún ajuste, ni leer ningún archivo del PC, ni recorrer sus aterrizajes.</li>
           <li>Solo se captura la <strong>ventana de MSFS</strong>, nunca el resto de la pantalla.
           Las capturas se quedan <strong>en memoria</strong> en Camify, nunca se escriben en el
           disco y se borran al cerrarlo, al desmarcar el acceso o al cambiar el código.</li>
@@ -518,8 +690,8 @@
     </section>
 
     <section id="pestana-configuracion" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 6. Configuración y registro</h2>
-      <p class="section-lead">Idioma, tema, atajo de teclado, acceso desde el teléfono, datos de aeropuertos y registro.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 7. Configuración y registro</h2>
+      <p class="section-lead">Idioma, tema, atajo de teclado, acceso desde el teléfono, grabación de aterrizajes, datos de aeropuertos y registro.</p>
       <figure class="shot">
         <img src="images/es-configuration.png" alt="Ventana Configuración: idioma y tema, atajo de teclado, acceso desde el teléfono, aeropuertos y pistas, registro" loading="lazy" />
         <figcaption>La ventana Configuración.</figcaption>
@@ -557,6 +729,11 @@
         teléfonos conectados. Todo se detalla en <a href="#telefono">Acceso desde el
         teléfono</a>.</p>
 
+        <h4>🎬 Repetición de aterrizajes</h4>
+        <p><strong>Grabar mis aterrizajes automáticamente</strong> (marcada por defecto):
+        desmarcada, Camify ya no graba nada; los aterrizajes ya guardados siguen en
+        <a href="#repeticion-biblioteca">Mis aterrizajes</a>.</p>
+
         <h4>🛬 Aeropuertos y pistas</h4>
         <p>Muestra el número de aeropuertos y pistas en la base de datos y la fecha de
         actualización. El botón <span class="btn-label">Actualizar</span> vuelve a descargar los
@@ -576,7 +753,7 @@
     </section>
 
     <section id="consejos">
-      <h2 class="section-title"><span class="emoji">💡</span> 7. Consejos y buenas prácticas</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 8. Consejos y buenas prácticas</h2>
       <div class="card">
         <ul>
           <li><strong>Con el piloto automático</strong>, el Traveling se convierte en una auténtica
@@ -594,6 +771,9 @@
           <li><strong>El teléfono como mando</strong>: junto al teclado o a la palanca de gases,
           inicia los modos con un toque sin apartar la vista de MSFS, y guarda las mejores imágenes
           del vuelo con <span class="btn-label">Capturar MSFS</span>.</li>
+          <li><strong>Para mejorar sus aterrizajes</strong>, compare sus repeticiones en Mis
+          aterrizajes: la velocidad vertical en la toma indica la suavidad, el umbral y el eje la
+          precisión.</li>
           <li><strong>Con Carnet de Vol</strong>, ambas aplicaciones pueden funcionar durante el
           mismo vuelo: una registra el vuelo y la otra lo filma.</li>
         </ul>
@@ -603,12 +783,13 @@
           <span class="pill">📝 camify.log — registro</span>
           <span class="pill">⚙️ settings.json — idioma, modo, ajustes, atajo, acceso teléfono</span>
           <span class="pill">🎨 theme.txt — tema elegido</span>
+          <span class="pill">🎬 replays — sus aterrizajes</span>
         </div>
       </div>
     </section>
 
     <section id="solucion-problemas">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Solución de problemas</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 9. Solución de problemas</h2>
       <div class="card">
         <h4>«No conectado a MSFS 2024» nunca pasa a verde</h4>
         <p>Compruebe que Microsoft Flight Simulator 2024 está en marcha y que hay un vuelo
@@ -639,6 +820,17 @@
         <p>Puede que otra aplicación ya lo use: el recordatorio junto al título muestra entonces
         «(no disponible)». Elija otra combinación en la ventana
         <a href="#pestana-configuracion">Configuración</a>.</p>
+
+        <h4>No se graba ningún aterrizaje</h4>
+        <p>Compruebe que la casilla <strong>Grabar mis aterrizajes automáticamente</strong> está
+        marcada en la <a href="#pestana-configuracion">Configuración</a>. La grabación empieza
+        cuando se baja el tren en descenso: un aterrizaje comenzado antes de iniciar Camify, o
+        seguido de un motor y al aire, no se graba.</p>
+
+        <h4>Se rechaza «Repetir en MSFS»</h4>
+        <p>Detenga su avión en tierra (velocidad nula) o ponga el simulador en pausa y vuelva a
+        lanzar la repetición. Si la aeronave grabada no está instalada en su MSFS, solo es posible
+        la reproducción en la ventana.</p>
 
         <h4>El teléfono muestra «PC inaccesible»</h4>
         <p>Compruebe que Camify está abierto, que el acceso desde el teléfono está marcado y que

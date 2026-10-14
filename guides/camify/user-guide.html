@@ -40,7 +40,16 @@
           <li><a href="#camera-stop">Automatic stops</a></li>
         </ul>
       </li>
-      <li><a href="#phone">5. Phone access</a>
+      <li><a href="#replay">5. Landing replay</a>
+        <ul class="sub">
+          <li><a href="#replay-recording">Automatic recording</a></li>
+          <li><a href="#replay-window">Replay window</a></li>
+          <li><a href="#replay-quality">Landing quality</a></li>
+          <li><a href="#replay-msfs">Replay in MSFS</a></li>
+          <li><a href="#replay-library">My landings</a></li>
+        </ul>
+      </li>
+      <li><a href="#phone">6. Phone access</a>
         <ul class="sub">
           <li><a href="#phone-enable">Enabling and pairing</a></li>
           <li><a href="#phone-modes">Controlling the cameras</a></li>
@@ -48,9 +57,9 @@
           <li><a href="#phone-security">Security</a></li>
         </ul>
       </li>
-      <li><a href="#settings-tab">6. Settings and log</a></li>
-      <li><a href="#tips">7. Tips &amp; good practice</a></li>
-      <li><a href="#troubleshooting">8. Troubleshooting</a></li>
+      <li><a href="#settings-tab">7. Settings and log</a></li>
+      <li><a href="#tips">8. Tips &amp; good practice</a></li>
+      <li><a href="#troubleshooting">9. Troubleshooting</a></li>
       <li><a href="#appendix-licenses">Appendix — Sources and licences</a></li>
     </ul>
   </nav>
@@ -94,9 +103,12 @@
           <li><strong>Control tower</strong>: on approach, the camera is set beside the landing
           runway and follows your landing.</li>
         </ul>
+        <p>Camify also records each of your <strong>landings</strong>: it rates them (vertical
+        speed at touchdown, load factor, centreline, threshold…) and lets you <strong>watch them
+        again in MSFS</strong>, filmed by its cameras: see <a href="#replay">Landing replay</a>.</p>
         <p>The modes can also be started from a <strong>phone</strong> or tablet, which also
         receives screenshots of the simulator: see <a href="#phone">Phone access</a>.</p>
-        <p>Camify never flies the aircraft and does not record video: it positions the simulator's
+        <p>Camify never flies your aircraft and does not record video: it positions the simulator's
         camera. To keep a record, use your usual capture tool (for example the Windows Xbox Game
         Bar, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
       </div>
@@ -126,7 +138,8 @@
           <code class="path">camify.db</code> (airports and runways),
           <code class="path">camify.log</code> (log),
           <code class="path">settings.json</code> (language, selected mode, slider values, shortcut,
-          phone access and its code) and <code class="path">theme.txt</code> (light or dark theme). If you move the executable,
+          phone access and its code), <code class="path">theme.txt</code> (light or dark theme) and the
+          <code class="path">replays</code> folder (your landings). If you move the executable,
           copy them along to keep your settings.
         </div>
       </div>
@@ -149,7 +162,8 @@
           <li>A <strong>status bar</strong> with a coloured dot (red = not connected, green =
           connected). While MSFS is not available, Camify retries the connection every
           <strong>5 seconds</strong>, with nothing for you to do;</li>
-          <li>Below, the <a href="#camera-tab">camera</a>: the three modes, their settings and the
+          <li>Below, the <a href="#camera-tab">camera</a>: the three modes, the <a href="#replay">landing
+          replay</a>, the mode settings and the
           live status.</li>
         </ul>
         <p>The application is shown in the <strong>Windows language</strong> when available
@@ -382,8 +396,157 @@
       </div>
     </section>
 
+    <section id="replay" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🎬</span> 5. Landing replay</h2>
+      <p class="section-lead">Every landing recorded, rated, and replayed in MSFS under Camify's cameras.</p>
+      <div class="card">
+        <p>The <span class="ui">🎬 Landing replay</span> panel, below the camera modes, is collapsed
+        at startup like the others (<span class="btn-label">+</span> button). Collapsed, it shows
+        the last landing or the recording in progress to the right of its title. Expanded, it holds
+        three cards:</p>
+        <ul>
+          <li><strong>Last landing</strong>: the runway, aircraft, time and rating of the session's
+          last landing; its round ▶ button replays it at once (replay window and, when possible,
+          in MSFS);</li>
+          <li><strong>My landings</strong>: the number of landings saved on disk;
+          <span class="btn-label">Open</span> shows the <a href="#replay-library">list</a>;</li>
+          <li><strong>Automatic recording</strong>: the recording status, with a red dot and
+          “Recording” during the approach.</li>
+        </ul>
+        <figure class="shot">
+          <img src="images/en-replay-carte.png" alt="Main window, Landing replay panel expanded: Last landing, My landings (3 landings recorded) and Automatic recording cards" loading="lazy" />
+          <figcaption>The Replay panel expanded.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="replay-recording">Automatic recording</h3>
+      <div class="card">
+        <p>Nothing to start: as soon as the <strong>gear is down</strong> on descent (below
+        5,000 ft above ground), Camify records the approach, touchdown and rollout, then stops when
+        you <strong>leave the runway</strong>, come to a full stop or slow to taxi speed. A
+        <strong>go-around</strong> (gear up or climbing back before touchdown) discards the
+        recording; a <strong>touch-and-go</strong> is recorded, then Camify gets ready for the next
+        landing.</p>
+        <p>Recording only reads the simulator: it touches neither your aircraft nor the camera, and
+        works even when no camera mode is running. It can be turned off in the
+        <a href="#settings-tab">Settings</a> (<strong>Record my landings automatically</strong>,
+        ticked by default).</p>
+        <div class="callout note">
+          <strong>One file per landing</strong>
+          Each landing is written to the <code class="path">replays</code> folder, next to the
+          executable, in its own <code class="path">.camify-replay</code> file (a few hundred KB to a
+          few MB), named after the date, airport, runway and aircraft. Nothing is ever deleted
+          automatically: a damaged file never takes the others with it.
+        </div>
+      </div>
+
+      <h3 id="replay-window">Replay window</h3>
+      <div class="card">
+        <p>The last landing's ▶ button, or <span class="btn-label">Open replay</span> in
+        <a href="#replay-library">My landings</a>, opens the replay window. Its banner shows the
+        runway, rating and date; <span class="btn-label">My landings…</span> and
+        <span class="btn-label">Export…</span> sit on the right.</p>
+        <figure class="shot">
+          <img src="images/en-replay-fenetre.png" alt="Replay window: approach chart with Gear down, 50 ft, Touchdown and End marks, cursor just after touchdown, values at the cursor, quality Soft −246 ft/min with every criterion green, and flight information" loading="lazy" />
+          <figcaption>A landing in Luxembourg, paused just after touchdown.</figcaption>
+        </figure>
+        <ul>
+          <li>The <strong>chart</strong> plots the <strong>height above ground</strong> (wheel
+          height, 0 once down), the <strong>vertical speed</strong> and the <strong>indicated
+          airspeed</strong>. Above it, clickable <strong>marks</strong>: gear down, 50 ft,
+          touchdown, any bounces, end.</li>
+          <li>Click or drag on the chart or on the bar below it to move the
+          <strong>cursor</strong>. The round button plays or pauses; <span class="ui">Speed</span>
+          goes from ×0.25 to ×2.</li>
+          <li><span class="ui">📍 At the cursor</span> gives the values at the displayed moment:
+          height above ground, speeds, load factor, pitch, bank.</li>
+          <li><span class="ui">✈️ Flight</span> shows the aircraft, livery, arrival, date, duration
+          and what ended the recording.</li>
+        </ul>
+        <p>Playback in the window always works, even without MSFS.</p>
+      </div>
+
+      <h3 id="replay-quality">Landing quality</h3>
+      <div class="card">
+        <p>The main rating follows the <strong>vertical speed at touchdown</strong>, with the same
+        thresholds for every aircraft (and the same as Flight Logbook). Its five-sector gauge icon
+        also appears on the card, in the list and on the phone.</p>
+        <table>
+          <tr><th>Class</th><th>Vertical speed at touchdown</th></tr>
+          <tr><td>Very soft</td><td>under 100 ft/min</td></tr>
+          <tr><td>Soft</td><td>100 to 250 ft/min</td></tr>
+          <tr><td>Normal</td><td>250 to 500 ft/min</td></tr>
+          <tr><td>Firm</td><td>500 to 700 ft/min</td></tr>
+          <tr><td>Very firm</td><td>700 ft/min and over</td></tr>
+        </table>
+        <p>Each criterion then gets a <strong>green</strong>, <strong>orange</strong> or
+        <strong>red</strong> dot:</p>
+        <table>
+          <tr><th>Criterion</th><th>Green</th><th>Orange</th></tr>
+          <tr><td>Max load factor</td><td>under 1.4 g</td><td>1.4 to 1.75 g</td></tr>
+          <tr><td>Bounces</td><td>none</td><td>one</td></tr>
+          <tr><td>Distance from threshold</td><td>150 to 900 m</td><td>0 to 150 m or 900 to 1,200 m</td></tr>
+          <tr><td>Centreline offset</td><td>under 3 m</td><td>under a quarter of the width</td></tr>
+          <tr><td>Crab</td><td>under 5°</td><td>under 10°</td></tr>
+          <tr><td>Bank</td><td>under 3°</td><td>under 6°</td></tr>
+          <tr><td>Pitch</td><td>0 to 8°</td><td>negative or 8 to 10°</td></tr>
+        </table>
+        <p>Beyond that, the dot is red. Speeds at touchdown and the rollout distance are given for
+        information. The threshold and centreline come from the MSFS scenery runways (OurAirports
+        as a fallback); with no known runway, or when its position is estimated, these two criteria
+        are not rated.</p>
+      </div>
+
+      <h3 id="replay-msfs">Replay in MSFS</h3>
+      <div class="card">
+        <p>With <span class="ui">Replay in MSFS</span> ticked (the default), the replay also takes
+        place in the simulator: a <strong>ghost aircraft</strong>, same aircraft and same livery,
+        flies exactly your approach and landing again, filmed by the <strong>camera mode
+        selected</strong> in the main window (Traveling, Flyby or Control tower). The cursor, pause
+        and speed drive it just like the window.</p>
+        <ul>
+          <li>So as not to disturb your flight, your aircraft must be <strong>stopped on the
+          ground</strong> or the simulator <strong>paused</strong>; otherwise the window plays on its
+          own and says so.</li>
+          <li>The ghost is removed and the previous view comes back at the end, when you stop the
+          replay or close the window, if you change view in MSFS, if your aircraft moves or if you
+          change aircraft.</li>
+          <li>If the livery is not installed, MSFS uses the default livery (Camify says so); if the
+          aircraft itself is missing, only the replay in the window is possible.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>The right moment</strong>
+          Once parked at the gate, engines off: start the last landing's replay and pick the
+          Control tower mode to watch it from beside the runway.
+        </div>
+      </div>
+
+      <h3 id="replay-library">My landings</h3>
+      <div class="card">
+        <figure class="shot">
+          <img src="images/en-replay-bibliotheque.png" alt="My landings window: search, class filter, list of three landings at ELLX 24 with hardness icon, date, aircraft and livery, vertical speed, max g, duration and size" loading="lazy" />
+          <figcaption>Your landings, newest first.</figcaption>
+        </figure>
+        <ul>
+          <li><span class="ui">Search</span> filters by airport, runway, aircraft or livery;
+          <span class="ui">Class</span> keeps a single hardness class.</li>
+          <li><span class="btn-label">Open replay</span> (or a double-click) opens the selected
+          landing in the replay window.</li>
+          <li><span class="btn-label">Export…</span> copies its file wherever you like, for
+          instance to send it to a friend; <span class="btn-label">Import a file…</span> adds a
+          landing you received, after checking it.</li>
+          <li><span class="btn-label">Delete</span> asks for confirmation (press again) and sends the
+          file to the Windows <strong>Recycle Bin</strong>.</li>
+          <li><span class="btn-label">Open folder</span> shows the <code class="path">replays</code>
+          folder in File Explorer.</li>
+        </ul>
+        <p>The bottom of the window gives the number of landings and the space they take. An
+        unreadable file stays greyed out in the list, without affecting the others.</p>
+      </div>
+    </section>
+
     <section id="phone" class="tab-section">
-      <h2 class="section-title"><span class="emoji">📱</span> 5. Phone access</h2>
+      <h2 class="section-title"><span class="emoji">📱</span> 6. Phone access</h2>
       <p class="section-lead">The phone as a remote control for the cameras, and MSFS screenshots in your pocket.</p>
       <div class="card">
         <p>From a <strong>phone</strong> or a <strong>tablet</strong> (iPhone, Android…), in its
@@ -393,6 +556,7 @@
           large buttons designed to be tapped without looking, like a Stream Deck;</li>
           <li>follow the <strong>camera status</strong> (current shot, distance, runway…) and the
           loaded aircraft;</li>
+          <li><strong>replay the last landing</strong> in MSFS;</li>
           <li><strong>capture the MSFS window</strong> and get the images on the phone, to keep
           them in Photos.</li>
         </ul>
@@ -458,6 +622,11 @@
           <li>The page follows the orientation: in <strong>landscape</strong>, the modes move to
           the left and the screenshots to the right.</li>
         </ul>
+        <p>Below the modes, <span class="btn-label">Replay last landing</span> shows the icon and
+        rating of the session's last landing. Tapping it replays the landing in MSFS, with the
+        camera mode chosen on the PC, and opens the <a href="#replay-window">replay window</a> on
+        the PC; as on the PC, your aircraft must be stopped on the ground or the simulator paused.
+        Tap again to stop.</p>
         <p>The phone <strong>cannot change anything else</strong>: not the mode settings, the
         shortcut or the configuration.</p>
       </div>
@@ -498,8 +667,8 @@
           <li>Only devices on your <strong>local network</strong> or your Tailscale network can
           connect, up to four at a time; connections from the Internet are refused.</li>
           <li>The phone only sends a <strong>closed list of commands</strong> (start a mode, stop,
-          capture, show a screenshot): it can neither change a setting nor read a file on the
-          PC.</li>
+          replay the last landing, capture, show a screenshot): it can neither change a setting,
+          read a file on the PC nor browse your landings.</li>
           <li>Only the <strong>MSFS window</strong> is captured, never the rest of the screen.
           Screenshots stay <strong>in memory</strong> in Camify, are never written to disk, and are
           erased when it closes, when you untick access or when you change the code.</li>
@@ -510,8 +679,8 @@
     </section>
 
     <section id="settings-tab" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 6. Settings and log</h2>
-      <p class="section-lead">Language, theme, keyboard shortcut, phone access, airport data and log.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 7. Settings and log</h2>
+      <p class="section-lead">Language, theme, keyboard shortcut, phone access, landing recording, airport data and log.</p>
       <figure class="shot">
         <img src="images/en-configuration.png" alt="Settings window: language and theme, keyboard shortcut, phone access, airports and runways, log" loading="lazy" />
         <figcaption>The Settings window.</figcaption>
@@ -548,6 +717,11 @@
         secret code; the status line shows the listening port (8742) and the number of connected
         phones. Everything is detailed in <a href="#phone">Phone access</a>.</p>
 
+        <h4>🎬 Landing replay</h4>
+        <p><strong>Record my landings automatically</strong> (ticked by default): unticked, Camify
+        records nothing more; landings already saved stay in
+        <a href="#replay-library">My landings</a>.</p>
+
         <h4>🛬 Airports and runways</h4>
         <p>Shows the number of airports and runways in the database and the update date. The
         <span class="btn-label">Update</span> button downloads OurAirports'
@@ -567,7 +741,7 @@
     </section>
 
     <section id="tips">
-      <h2 class="section-title"><span class="emoji">💡</span> 7. Tips &amp; good practice</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 8. Tips &amp; good practice</h2>
       <div class="card">
         <ul>
           <li><strong>With the autopilot</strong>, Traveling turns into a real cruise film: lengthen
@@ -585,6 +759,9 @@
           <li><strong>The phone as a remote</strong>: placed next to the keyboard or the
           throttle, it starts the modes with a tap without taking your eyes off MSFS, and keeps the
           best images of the flight with <span class="btn-label">Capture MSFS</span>.</li>
+          <li><strong>To improve your landings</strong>, compare your replays in My landings: the
+          vertical speed at touchdown tells how soft, the threshold and centreline how
+          precise.</li>
           <li><strong>With Flight Logbook</strong>, both applications can run during the same
           flight: one logs the flight, the other films it.</li>
         </ul>
@@ -594,12 +771,13 @@
           <span class="pill">📝 camify.log — log</span>
           <span class="pill">⚙️ settings.json — language, mode, settings, shortcut, phone access</span>
           <span class="pill">🎨 theme.txt — chosen theme</span>
+          <span class="pill">🎬 replays — your landings</span>
         </div>
       </div>
     </section>
 
     <section id="troubleshooting">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Troubleshooting</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 9. Troubleshooting</h2>
       <div class="card">
         <h4>“Not connected to MSFS 2024” never turns green</h4>
         <p>Check that Microsoft Flight Simulator 2024 is running and that a flight is loaded. The
@@ -629,6 +807,17 @@
         <p>It may already be used by another application: the reminder next to the title then
         shows “(unavailable)”. Choose another combination in the
         <a href="#settings-tab">Settings</a> window.</p>
+
+        <h4>No landing is recorded</h4>
+        <p>Check that <strong>Record my landings automatically</strong> is ticked in the
+        <a href="#settings-tab">Settings</a>. Recording starts when the gear comes down on descent:
+        a landing begun before Camify was started, or followed by a go-around, is not
+        recorded.</p>
+
+        <h4>“Replay in MSFS” is refused</h4>
+        <p>Stop your aircraft on the ground (zero speed) or pause the simulator, then start the
+        replay again. If the recorded aircraft is not installed in your MSFS, only playback in the
+        window is possible.</p>
 
         <h4>The phone shows “PC unreachable”</h4>
         <p>Check that Camify is open, that phone access is ticked and that the phone is on the

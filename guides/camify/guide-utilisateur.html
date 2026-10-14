@@ -40,7 +40,16 @@
           <li><a href="#camera-arret">Arrêts automatiques</a></li>
         </ul>
       </li>
-      <li><a href="#telephone">5. Accès depuis le téléphone</a>
+      <li><a href="#replay">5. Replay de l'atterrissage</a>
+        <ul class="sub">
+          <li><a href="#replay-enregistrement">Enregistrement automatique</a></li>
+          <li><a href="#replay-fenetre">Fenêtre de replay</a></li>
+          <li><a href="#replay-qualite">Qualité de l'atterrissage</a></li>
+          <li><a href="#replay-msfs">Rejouer dans MSFS</a></li>
+          <li><a href="#replay-bibliotheque">Mes atterrissages</a></li>
+        </ul>
+      </li>
+      <li><a href="#telephone">6. Accès depuis le téléphone</a>
         <ul class="sub">
           <li><a href="#telephone-activer">Activer et appairer</a></li>
           <li><a href="#telephone-modes">Piloter les caméras</a></li>
@@ -48,9 +57,9 @@
           <li><a href="#telephone-securite">Sécurité</a></li>
         </ul>
       </li>
-      <li><a href="#onglet-configuration">6. Configuration et journal</a></li>
-      <li><a href="#astuces">7. Astuces &amp; bonnes pratiques</a></li>
-      <li><a href="#depannage">8. Dépannage</a></li>
+      <li><a href="#onglet-configuration">7. Configuration et journal</a></li>
+      <li><a href="#astuces">8. Astuces &amp; bonnes pratiques</a></li>
+      <li><a href="#depannage">9. Dépannage</a></li>
       <li><a href="#annexe-licences">Annexe — Sources et licences</a></li>
     </ul>
   </nav>
@@ -95,10 +104,14 @@
           <li><strong>Tour de contrôle</strong> : en approche, la caméra se pose en bord de la piste
           d'atterrissage et suit votre atterrissage.</li>
         </ul>
+        <p>Camify enregistre aussi chacun de vos <strong>atterrissages</strong> : il en note la
+        qualité (vitesse verticale au toucher, facteur de charge, axe, seuil…) et vous le fait
+        <strong>revoir dans MSFS</strong>, filmé par ses caméras : voir
+        <a href="#replay">Replay de l'atterrissage</a>.</p>
         <p>Les modes se lancent aussi depuis un <strong>téléphone</strong> ou une tablette, qui
         reçoit en plus des captures d'écran du simulateur : voir
         <a href="#telephone">Accès depuis le téléphone</a>.</p>
-        <p>Camify ne pilote jamais l'avion et n'enregistre pas de vidéo : il place la caméra du
+        <p>Camify ne pilote jamais votre avion et n'enregistre pas de vidéo : il place la caméra du
         simulateur. Pour garder une trace, utilisez votre outil de capture habituel (par exemple
         la Xbox Game Bar de Windows, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
       </div>
@@ -129,7 +142,8 @@
           <code class="path">camify.db</code> (aéroports et pistes),
           <code class="path">camify.log</code> (journal),
           <code class="path">settings.json</code> (langue, mode choisi, réglages des curseurs,
-          raccourci, accès depuis le téléphone et son code) et <code class="path">theme.txt</code> (thème clair ou sombre). Si vous déplacez
+          raccourci, accès depuis le téléphone et son code), <code class="path">theme.txt</code> (thème clair ou sombre) et le dossier
+          <code class="path">replays</code> (vos atterrissages). Si vous déplacez
           l'exécutable, copiez-les avec lui pour conserver vos réglages.
         </div>
       </div>
@@ -152,8 +166,9 @@
           <li>Une <strong>barre d'état</strong> avec un point de couleur (rouge = non connecté,
           vert = connecté). Tant que MSFS n'est pas disponible, Camify retente la connexion toutes
           les <strong>5 secondes</strong>, sans action de votre part ;</li>
-          <li>En dessous, la <a href="#onglet-camera">caméra</a> : les trois modes, leurs réglages
-          et l'état en direct.</li>
+          <li>En dessous, la <a href="#onglet-camera">caméra</a> : les trois modes, le
+          <a href="#replay">replay des atterrissages</a>, les réglages du mode et l'état en
+          direct.</li>
         </ul>
         <p>L'application s'affiche dans la <strong>langue de Windows</strong> si elle est disponible
         (français, anglais ou espagnol), et en <strong>anglais</strong> sinon. Vous pouvez en changer
@@ -387,8 +402,158 @@
       </div>
     </section>
 
+    <section id="replay" class="tab-section">
+      <h2 class="section-title"><span class="emoji">🎬</span> 5. Replay de l'atterrissage</h2>
+      <p class="section-lead">Chaque atterrissage enregistré, noté, et rejoué dans MSFS sous l'œil des caméras de Camify.</p>
+      <div class="card">
+        <p>Le cadre <span class="ui">🎬 Replay des atterrissages</span>, sous les modes caméra, est
+        replié au démarrage comme les autres (bouton <span class="btn-label">+</span>). Replié, il
+        rappelle à droite de son titre le dernier atterrissage ou l'enregistrement en cours. Déplié,
+        il présente trois cartes :</p>
+        <ul>
+          <li><strong>Dernier atterrissage</strong> : la piste, l'appareil, l'heure et la note du
+          dernier atterrissage de la session ; son bouton rond ▶ le rejoue aussitôt (fenêtre de
+          replay et, si possible, dans MSFS) ;</li>
+          <li><strong>Mes atterrissages</strong> : le nombre d'atterrissages enregistrés sur le
+          disque ; <span class="btn-label">Ouvrir</span> affiche la
+          <a href="#replay-bibliotheque">liste</a> ;</li>
+          <li><strong>Enregistrement automatique</strong> : l'état de l'enregistrement, avec un point
+          rouge « Enregistrement en cours » pendant l'approche.</li>
+        </ul>
+        <figure class="shot">
+          <img src="images/fr-replay-carte.png" alt="Fenêtre principale, cadre Replay des atterrissages déplié : cartes Dernier atterrissage, Mes atterrissages (3 atterrissages enregistrés) et Enregistrement automatique" loading="lazy" />
+          <figcaption>Le cadre Replay déplié.</figcaption>
+        </figure>
+      </div>
+
+      <h3 id="replay-enregistrement">Enregistrement automatique</h3>
+      <div class="card">
+        <p>Rien à lancer : dès que le <strong>train est sorti</strong> en descente (sous 5 000 ft
+        sol), Camify enregistre l'approche, le toucher et le roulage, puis s'arrête à la
+        <strong>sortie de piste</strong>, à l'arrêt complet ou à vitesse de roulage. Une
+        <strong>remise de gaz</strong> (train rentré ou remontée avant le toucher) annule
+        l'enregistrement ; un <strong>touch-and-go</strong> est enregistré, puis Camify se prépare
+        pour l'atterrissage suivant.</p>
+        <p>L'enregistrement ne fait que lire le simulateur : il ne touche ni à votre avion, ni à la
+        caméra, et fonctionne même quand aucun mode caméra ne tourne. Il se désactive dans la
+        <a href="#onglet-configuration">Configuration</a> (case
+        <strong>Enregistrer automatiquement mes atterrissages</strong>, cochée par défaut).</p>
+        <div class="callout note">
+          <strong>Un fichier par atterrissage</strong>
+          Chaque atterrissage est écrit dans le dossier <code class="path">replays</code>, à côté de
+          l'exécutable, dans son propre fichier <code class="path">.camify-replay</code> (quelques
+          centaines de Ko à quelques Mo), nommé par la date, l'aéroport, la piste et l'appareil.
+          Rien n'est effacé automatiquement : un fichier abîmé n'emporte jamais les autres.
+        </div>
+      </div>
+
+      <h3 id="replay-fenetre">Fenêtre de replay</h3>
+      <div class="card">
+        <p>Le bouton ▶ du dernier atterrissage, ou <span class="btn-label">Ouvrir le replay</span>
+        dans <a href="#replay-bibliotheque">Mes atterrissages</a>, ouvre la fenêtre de replay. Son
+        bandeau rappelle la piste, la note et la date ; <span class="btn-label">Mes atterrissages…</span>
+        et <span class="btn-label">Exporter…</span> sont à droite.</p>
+        <figure class="shot">
+          <img src="images/fr-replay-fenetre.png" alt="Fenêtre de replay : graphe de l'approche avec repères Train sorti, 50 ft, Toucher et Fin, curseur juste après le toucher, valeurs au curseur, qualité Doux −246 ft/min avec tous les critères au vert, et informations du vol" loading="lazy" />
+          <figcaption>Un atterrissage à Luxembourg, en pause juste après le toucher.</figcaption>
+        </figure>
+        <ul>
+          <li>Le <strong>graphe</strong> trace l'<strong>altitude / sol</strong> (hauteur des roues,
+          0 une fois posé), la <strong>vitesse verticale</strong> et la <strong>vitesse
+          indiquée</strong>. Au-dessus, des <strong>repères</strong> cliquables : train sorti, 50 ft,
+          toucher, rebonds éventuels, fin.</li>
+          <li>Cliquez ou faites glisser sur le graphe ou sur la barre en dessous pour déplacer le
+          <strong>curseur</strong>. Le bouton rond lance la lecture ou la met en pause ;
+          <span class="ui">Vitesse</span> va de ×0,25 à ×2.</li>
+          <li><span class="ui">📍 Au curseur</span> donne les valeurs à l'instant affiché : altitude
+          / sol, vitesses, facteur de charge, assiette, inclinaison.</li>
+          <li><span class="ui">✈️ Vol</span> rappelle l'appareil, la livrée, l'arrivée, la date, la
+          durée et ce qui a mis fin à l'enregistrement.</li>
+        </ul>
+        <p>La lecture dans la fenêtre marche toujours, même sans MSFS.</p>
+      </div>
+
+      <h3 id="replay-qualite">Qualité de l'atterrissage</h3>
+      <div class="card">
+        <p>La note principale suit la <strong>vitesse verticale au toucher</strong>, avec les mêmes
+        seuils pour tous les appareils (et que Carnet de Vol). Son icône, en jauge à cinq secteurs,
+        apparaît aussi sur la carte, dans la liste et sur le téléphone.</p>
+        <table>
+          <tr><th>Classe</th><th>Vitesse verticale au toucher</th></tr>
+          <tr><td>Très doux</td><td>moins de 100 ft/min</td></tr>
+          <tr><td>Doux</td><td>100 à 250 ft/min</td></tr>
+          <tr><td>Normal</td><td>250 à 500 ft/min</td></tr>
+          <tr><td>Ferme</td><td>500 à 700 ft/min</td></tr>
+          <tr><td>Très ferme</td><td>700 ft/min et plus</td></tr>
+        </table>
+        <p>Chaque critère a ensuite sa pastille <strong>verte</strong>, <strong>orange</strong> ou
+        <strong>rouge</strong> :</p>
+        <table>
+          <tr><th>Critère</th><th>Vert</th><th>Orange</th></tr>
+          <tr><td>Facteur de charge max.</td><td>moins de 1,4 g</td><td>1,4 à 1,75 g</td></tr>
+          <tr><td>Rebonds</td><td>aucun</td><td>un</td></tr>
+          <tr><td>Distance du seuil</td><td>150 à 900 m</td><td>0 à 150 m ou 900 à 1 200 m</td></tr>
+          <tr><td>Écart à l'axe</td><td>moins de 3 m</td><td>moins d'un quart de la largeur</td></tr>
+          <tr><td>Crabe</td><td>moins de 5°</td><td>moins de 10°</td></tr>
+          <tr><td>Inclinaison</td><td>moins de 3°</td><td>moins de 6°</td></tr>
+          <tr><td>Assiette</td><td>0 à 8°</td><td>négative ou 8 à 10°</td></tr>
+        </table>
+        <p>Au-delà, la pastille est rouge. Les vitesses au toucher et la distance de roulage sont
+        données à titre indicatif. Le seuil et l'axe viennent des pistes du décor de MSFS (à défaut,
+        d'OurAirports) ; sans piste connue, ou si sa position est estimée, ces deux critères ne sont
+        pas notés.</p>
+      </div>
+
+      <h3 id="replay-msfs">Rejouer dans MSFS</h3>
+      <div class="card">
+        <p>Case <span class="ui">Rejouer dans MSFS</span> cochée (par défaut), le replay a aussi lieu
+        dans le simulateur : un <strong>avion fantôme</strong>, même appareil et même livrée, refait
+        exactement votre approche et votre atterrissage, filmé par le <strong>mode caméra
+        sélectionné</strong> dans la fenêtre principale (Traveling, Flyby ou Tour de contrôle). Le
+        curseur, la pause et la vitesse le pilotent comme la fenêtre.</p>
+        <ul>
+          <li>Pour ne pas gêner votre vol, il faut que votre avion soit <strong>arrêté au sol</strong>
+          ou que le simulateur soit <strong>en pause</strong> ; sinon la fenêtre rejoue seule et le
+          dit.</li>
+          <li>Le fantôme est retiré et la vue d'avant revient à la fin, quand vous arrêtez le replay
+          ou fermez la fenêtre, si vous changez de vue dans MSFS, si votre avion bouge ou si vous
+          changez d'appareil.</li>
+          <li>Si la livrée n'est pas installée, MSFS prend la livrée par défaut (Camify le signale) ;
+          si l'appareil lui-même est absent, seul le replay dans la fenêtre est possible.</li>
+        </ul>
+        <div class="callout tip">
+          <strong>Le bon moment</strong>
+          Une fois garé au parking, moteurs coupés : lancez le replay du dernier atterrissage et
+          choisissez le mode Tour de contrôle pour le revoir depuis le bord de piste.
+        </div>
+      </div>
+
+      <h3 id="replay-bibliotheque">Mes atterrissages</h3>
+      <div class="card">
+        <figure class="shot">
+          <img src="images/fr-replay-bibliotheque.png" alt="Fenêtre Mes atterrissages : recherche, filtre par classe, liste de trois atterrissages à ELLX 24 avec icône de dureté, date, appareil et livrée, vitesse verticale, g max, durée et taille" loading="lazy" />
+          <figcaption>La liste de vos atterrissages, du plus récent au plus ancien.</figcaption>
+        </figure>
+        <ul>
+          <li><span class="ui">Rechercher</span> filtre par aéroport, piste, appareil ou livrée ;
+          <span class="ui">Classe</span> ne garde qu'une classe de dureté.</li>
+          <li><span class="btn-label">Ouvrir le replay</span> (ou un double-clic) ouvre l'atterrissage
+          sélectionné dans la fenêtre de replay.</li>
+          <li><span class="btn-label">Exporter…</span> en copie le fichier où vous voulez, par exemple
+          pour l'envoyer à un ami ; <span class="btn-label">Importer un fichier…</span> ajoute un
+          atterrissage reçu, après l'avoir vérifié.</li>
+          <li><span class="btn-label">Supprimer</span> demande une confirmation (second appui) et
+          envoie le fichier à la <strong>corbeille</strong> de Windows.</li>
+          <li><span class="btn-label">Ouvrir le dossier</span> affiche le dossier
+          <code class="path">replays</code> dans l'Explorateur.</li>
+        </ul>
+        <p>Le bas de la fenêtre indique le nombre d'atterrissages et la place qu'ils occupent. Un
+        fichier illisible reste grisé dans la liste, sans gêner les autres.</p>
+      </div>
+    </section>
+
     <section id="telephone" class="tab-section">
-      <h2 class="section-title"><span class="emoji">📱</span> 5. Accès depuis le téléphone</h2>
+      <h2 class="section-title"><span class="emoji">📱</span> 6. Accès depuis le téléphone</h2>
       <p class="section-lead">Le téléphone comme télécommande des caméras, et les captures de MSFS dans la poche.</p>
       <div class="card">
         <p>Depuis un <strong>téléphone</strong> ou une <strong>tablette</strong> (iPhone,
@@ -398,6 +563,7 @@
           avec de grands boutons pensés pour être touchés sans regarder, comme un Stream Deck ;</li>
           <li>suivre l'<strong>état de la caméra</strong> (plan en cours, distance, piste…) et
           l'appareil chargé ;</li>
+          <li><strong>rejouer le dernier atterrissage</strong> dans MSFS ;</li>
           <li><strong>capturer la fenêtre de MSFS</strong> et retrouver les images sur le
           téléphone, pour les garder dans Photos.</li>
         </ul>
@@ -464,6 +630,11 @@
           <li>La page s'adapte à l'orientation : en <strong>paysage</strong>, les modes passent à
           gauche et les captures à droite.</li>
         </ul>
+        <p>Sous les modes, <span class="btn-label">Replay du dernier atterrissage</span> montre
+        l'icône et la note du dernier atterrissage de la session. Le toucher le rejoue dans MSFS,
+        avec le mode caméra choisi sur le PC, et ouvre la <a href="#replay-fenetre">fenêtre de
+        replay</a> sur le PC ; comme sur le PC, votre avion doit être arrêté au sol ou le simulateur
+        en pause. Touchez à nouveau pour arrêter.</p>
         <p>Le téléphone ne peut <strong>rien modifier d'autre</strong> : ni les réglages des
         modes, ni le raccourci, ni la configuration.</p>
       </div>
@@ -506,8 +677,8 @@
           Tailscale peuvent se connecter, jusqu'à quatre à la fois ; les connexions venant
           d'Internet sont refusées.</li>
           <li>Le téléphone n'envoie qu'une <strong>liste fermée de commandes</strong> (démarrer un
-          mode, arrêter, capturer, afficher une capture) : il ne peut ni modifier un réglage, ni
-          lire un fichier du PC.</li>
+          mode, arrêter, rejouer le dernier atterrissage, capturer, afficher une capture) : il ne
+          peut ni modifier un réglage, ni lire un fichier du PC, ni parcourir vos atterrissages.</li>
           <li>Seule la <strong>fenêtre de MSFS</strong> est capturée, jamais le reste de l'écran.
           Les captures restent <strong>en mémoire</strong> dans Camify, ne sont jamais écrites sur
           le disque et sont effacées à sa fermeture, quand vous décochez l'accès ou changez le
@@ -519,8 +690,8 @@
     </section>
 
     <section id="onglet-configuration" class="tab-section">
-      <h2 class="section-title"><span class="emoji">⚙️</span> 6. Configuration et journal</h2>
-      <p class="section-lead">Langue, thème, raccourci clavier, accès depuis le téléphone, référentiel des aéroports et journal.</p>
+      <h2 class="section-title"><span class="emoji">⚙️</span> 7. Configuration et journal</h2>
+      <p class="section-lead">Langue, thème, raccourci clavier, accès depuis le téléphone, enregistrement des atterrissages, référentiel des aéroports et journal.</p>
       <figure class="shot">
         <img src="images/fr-configuration.png" alt="Fenêtre Configuration : langue et thème, raccourci clavier, accès depuis le téléphone, aéroports et pistes, journal" loading="lazy" />
         <figcaption>La fenêtre Configuration.</figcaption>
@@ -557,6 +728,11 @@
         code secret ; la ligne d'état indique le port d'écoute (8742) et le nombre de téléphones
         connectés. Tout est détaillé dans <a href="#telephone">Accès depuis le téléphone</a>.</p>
 
+        <h4>🎬 Replay des atterrissages</h4>
+        <p><strong>Enregistrer automatiquement mes atterrissages</strong> (cochée par défaut) :
+        décochée, Camify n'enregistre plus rien ; les atterrissages déjà enregistrés restent dans
+        <a href="#replay-bibliotheque">Mes atterrissages</a>.</p>
+
         <h4>🛬 Aéroports et pistes</h4>
         <p>Affiche le nombre d'aéroports et de pistes en base et la date de mise à jour. Le bouton
         <span class="btn-label">Mettre à jour</span> retélécharge les fichiers
@@ -576,7 +752,7 @@
     </section>
 
     <section id="astuces">
-      <h2 class="section-title"><span class="emoji">💡</span> 7. Astuces &amp; bonnes pratiques</h2>
+      <h2 class="section-title"><span class="emoji">💡</span> 8. Astuces &amp; bonnes pratiques</h2>
       <div class="card">
         <ul>
           <li><strong>Avec le pilote automatique</strong>, le Traveling devient un vrai film de
@@ -594,6 +770,9 @@
           <li><strong>Le téléphone en télécommande</strong> : posé à côté du clavier ou du
           palonnier, il lance les modes d'un toucher sans quitter MSFS des yeux, et garde les plus
           belles images du vol grâce à <span class="btn-label">Capturer MSFS</span>.</li>
+          <li><strong>Pour progresser à l'atterrissage</strong>, comparez vos replays dans Mes
+          atterrissages : la vitesse verticale au toucher dit la douceur, le seuil et l'axe la
+          précision.</li>
           <li><strong>Avec Carnet de Vol</strong>, les deux applications peuvent tourner pendant le
           même vol : l'une enregistre le vol, l'autre le filme.</li>
         </ul>
@@ -603,12 +782,13 @@
           <span class="pill">📝 camify.log — journal</span>
           <span class="pill">⚙️ settings.json — langue, mode, réglages, raccourci, accès téléphone</span>
           <span class="pill">🎨 theme.txt — thème choisi</span>
+          <span class="pill">🎬 replays — vos atterrissages</span>
         </div>
       </div>
     </section>
 
     <section id="depannage">
-      <h2 class="section-title"><span class="emoji">🛠️</span> 8. Dépannage</h2>
+      <h2 class="section-title"><span class="emoji">🛠️</span> 9. Dépannage</h2>
       <div class="card">
         <h4>« Non connecté à MSFS 2024 » ne passe jamais au vert</h4>
         <p>Vérifiez que Microsoft Flight Simulator 2024 est lancé et qu'un vol est chargé.
@@ -639,6 +819,17 @@
         <p>Il est peut-être déjà utilisé par une autre application : le rappel à côté du titre
         indique alors « (indisponible) ». Choisissez une autre combinaison dans la fenêtre
         <a href="#onglet-configuration">Configuration</a>.</p>
+
+        <h4>Aucun atterrissage n'est enregistré</h4>
+        <p>Vérifiez que la case <strong>Enregistrer automatiquement mes atterrissages</strong> est
+        cochée dans la <a href="#onglet-configuration">Configuration</a>. L'enregistrement démarre
+        quand le train sort en descente : un atterrissage commencé avant le lancement de Camify, ou
+        suivi d'une remise de gaz, n'est pas enregistré.</p>
+
+        <h4>« Rejouer dans MSFS » est refusé</h4>
+        <p>Arrêtez votre avion au sol (vitesse nulle) ou mettez le simulateur en pause, puis relancez
+        le replay. Si l'appareil de l'enregistrement n'est pas installé dans votre MSFS, seule la
+        lecture dans la fenêtre est possible.</p>
 
         <h4>Le téléphone affiche « PC injoignable »</h4>
         <p>Vérifiez que Camify est ouvert, que l'accès depuis le téléphone est coché et que le
