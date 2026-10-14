@@ -299,7 +299,7 @@
 
     function camifyFeatures() {
       return '<section class="section theme-camify" id="camify-features"><div class="container">' + sectionHead("camify.features", false) +
-        cards("camify.features.", [["phone", "📱"], ["hotkey", "⌨️"], ["takeover", "🎮"], ["airports", "🛫"], ["live", "🎬"], ["local", "🔒"]]) +
+        cards("camify.features.", [["replay", "🛬"], ["phone", "📱"], ["hotkey", "⌨️"], ["takeover", "🎮"], ["airports", "🛫"], ["live", "🎬"], ["local", "🔒"]]) +
         "</div></section>";
     },
 

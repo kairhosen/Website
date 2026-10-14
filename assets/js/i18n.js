@@ -95,6 +95,7 @@ window.KH_I18N = {
     "camify.check2": "Raccourci clavier global, plein écran compris",
     "camify.check3": "Cadrage adapté à l'envergure de l'appareil",
     "camify.check4": "Caméras pilotées depuis votre téléphone, captures comprises",
+    "camify.check5": "Chaque atterrissage enregistré, noté et rejouable dans MSFS",
     "camify.download": "Télécharger Camify",
 
     "camify.modes.kicker": "Camify · Modes caméra",
@@ -122,6 +123,8 @@ window.KH_I18N = {
     "camify.features.airports.text": "Référentiel OurAirports téléchargé au premier lancement, pour que la tour trouve votre piste d'atterrissage partout dans le monde, jusqu'aux îles du Pacifique à cheval sur la ligne de changement de date.",
     "camify.features.live.title": "En direct",
     "camify.features.live.text": "Le plan en cours et le prochain changement de plan s'affichent pendant que la caméra tourne. Replié d'un clic, le cadre garde l'état de la caméra à côté de son titre et la fenêtre se fait compacte.",
+    "camify.features.replay.title": "Replay de l'atterrissage",
+    "camify.features.replay.text": "Chaque atterrissage est enregistré et noté : revoyez-le sur un graphe ou rejouez-le dans MSFS, sous tous les angles, depuis le PC ou le téléphone.",
     "camify.features.local.title": "Léger et local",
     "camify.features.local.text": "Un seul exécutable, aucun compte. Français, anglais, espagnol, thème clair ou sombre.",
 
@@ -291,6 +294,7 @@ window.KH_I18N = {
     "camify.check2": "Global keyboard shortcut, even in full screen",
     "camify.check3": "Framing adapted to the aircraft's wingspan",
     "camify.check4": "Cameras controlled from your phone, screenshots included",
+    "camify.check5": "Every landing recorded, rated and replayable in MSFS",
     "camify.download": "Download Camify",
 
     "camify.modes.kicker": "Camify · Camera modes",
@@ -318,6 +322,8 @@ window.KH_I18N = {
     "camify.features.airports.text": "OurAirports data downloaded on first launch, so the tower finds your landing runway anywhere in the world, even on Pacific islands straddling the date line.",
     "camify.features.live.title": "Live status",
     "camify.features.live.text": "The current shot and the next shot change are shown while the camera rolls. Collapsed with one click, the panel keeps the camera status next to its title and the window gets compact.",
+    "camify.features.replay.title": "Landing replay",
+    "camify.features.replay.text": "Every landing is recorded and rated: review it on a graph or replay it in MSFS, from every angle, from the PC or the phone.",
     "camify.features.local.title": "Lightweight and local",
     "camify.features.local.text": "A single executable, no account. English, French, Spanish, light or dark theme.",
 
