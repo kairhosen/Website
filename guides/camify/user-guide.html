@@ -108,7 +108,7 @@
         again in MSFS</strong>, filmed by its cameras: see <a href="#replay">Landing replay</a>.</p>
         <p>The modes can also be started from a <strong>phone</strong> or tablet, which also
         receives screenshots of the simulator: see <a href="#phone">Phone access</a>.</p>
-        <p>Camify never flies your aircraft and does not record video: it positions the simulator's
+        <p>Camify never flies your aircraft in flight (only the replay in MSFS moves it, on the ground, when you ask) and does not record video: it positions the simulator's
         camera. To keep a record, use your usual capture tool (for example the Windows Xbox Game
         Bar, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
       </div>
@@ -499,25 +499,33 @@
 
       <h3 id="replay-msfs">Replay in MSFS</h3>
       <div class="card">
-        <p>With <span class="ui">Replay in MSFS</span> ticked (the default), the replay also takes
-        place in the simulator: a <strong>ghost aircraft</strong>, same aircraft and same livery,
-        flies exactly your approach and landing again, filmed by the <strong>camera mode
-        selected</strong> in the main window (Traveling, Flyby or Control tower). The cursor, pause
-        and speed drive it just like the window.</p>
+        <p>With <span class="ui">Replay in MSFS</span> ticked, the replay also takes place in the
+        simulator: <strong>your own aircraft</strong>, frozen, is moved to the runway and flies
+        exactly your approach and landing again, sitting on the MSFS ground to the centimetre,
+        filmed by the <strong>camera mode selected</strong> in the main window (Traveling, Flyby or
+        Control tower). The cursor, pause and speed drive it just like the window. The box is
+        unticked when the window is opened from the PC; the phone always ticks it.</p>
         <ul>
-          <li>So as not to disturb your flight, your aircraft must be <strong>stopped on the
-          ground</strong> or the simulator <strong>paused</strong>; otherwise the window plays on its
-          own and says so.</li>
-          <li>The ghost is removed and the previous view comes back at the end, when you stop the
-          replay or close the window, if you change view in MSFS, if your aircraft moves or if you
-          change aircraft.</li>
-          <li>If the livery is not installed, MSFS uses the default livery (Camify says so); if the
-          aircraft itself is missing, only the replay in the window is possible.</li>
+          <li>Your aircraft must be <strong>stopped on the ground</strong>, the simulator
+          <strong>not paused</strong>, and the landing less than 200 km away; otherwise the window
+          plays on its own and says why.</li>
+          <li>At the start, MSFS loads the scene for a few seconds. When the film ends, the aircraft
+          stays on the last frame until you stop.</li>
+          <li>When you stop the replay or close the window, your aircraft is <strong>put back where
+          it was</strong>, unfrozen, and the previous view comes back. If you change view in MSFS,
+          move the aircraft or change aircraft, the replay stops and the aircraft is only unfrozen,
+          where it is.</li>
+          <li>With an aircraft other than the recorded one, the replay uses yours (Camify says so).
+          During a replay, no new landing is recorded.</li>
+          <li>If Camify closes abruptly during a replay, a banner at the next launch offers to
+          <span class="btn-label">Put back</span> your aircraft or to
+          <span class="btn-label">Ignore</span>. Nothing moves without your click.</li>
         </ul>
         <div class="callout tip">
           <strong>The right moment</strong>
           Once parked at the gate, engines off: start the last landing's replay and pick the
-          Control tower mode to watch it from beside the runway.
+          Control tower mode to watch it from beside the runway. When you stop, your aircraft is
+          back at the gate.
         </div>
       </div>
 
@@ -625,8 +633,8 @@
         <p>Below the modes, <span class="btn-label">Replay last landing</span> shows the icon and
         rating of the session's last landing. Tapping it replays the landing in MSFS, with the
         camera mode chosen on the PC, and opens the <a href="#replay-window">replay window</a> on
-        the PC; as on the PC, your aircraft must be stopped on the ground or the simulator paused.
-        Tap again to stop.</p>
+        the PC; as on the PC, your aircraft must be stopped on the ground and the simulator not
+        paused. Tap again to stop: your aircraft is put back where it was.</p>
         <p>The phone <strong>cannot change anything else</strong>: not the mode settings, the
         shortcut or the configuration.</p>
       </div>
@@ -815,9 +823,10 @@
         recorded.</p>
 
         <h4>“Replay in MSFS” is refused</h4>
-        <p>Stop your aircraft on the ground (zero speed) or pause the simulator, then start the
-        replay again. If the recorded aircraft is not installed in your MSFS, only playback in the
-        window is possible.</p>
+        <p>Stop your aircraft on the ground (zero speed), unpause the simulator, then start the
+        replay again. The landing must be less than 200 km from your aircraft. If a banner asks
+        whether to put your aircraft back, answer it first. The replay window gives the exact
+        reason.</p>
 
         <h4>The phone shows “PC unreachable”</h4>
         <p>Check that Camify is open, that phone access is ticked and that the phone is on the

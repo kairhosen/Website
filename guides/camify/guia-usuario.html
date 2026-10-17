@@ -111,7 +111,7 @@
         <p>Los modos también se inician desde un <strong>teléfono</strong> o una tableta, que
         además recibe capturas de pantalla del simulador: vea
         <a href="#telefono">Acceso desde el teléfono</a>.</p>
-        <p>Camify nunca pilota su avión ni graba vídeo: coloca la cámara del simulador. Para
+        <p>Camify nunca pilota su avión en vuelo (solo la repetición en MSFS lo mueve, en tierra, cuando usted lo pide) ni graba vídeo: coloca la cámara del simulador. Para
         conservar un recuerdo, utilice su herramienta de captura habitual (por ejemplo la Xbox Game
         Bar de Windows, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
       </div>
@@ -506,25 +506,34 @@
 
       <h3 id="repeticion-msfs">Repetir en MSFS</h3>
       <div class="card">
-        <p>Con la casilla <span class="ui">Repetir en MSFS</span> marcada (por defecto), la
-        repetición también tiene lugar en el simulador: un <strong>avión fantasma</strong>, misma
-        aeronave y misma librea, rehace exactamente su aproximación y su aterrizaje, filmado por el
-        <strong>modo de cámara seleccionado</strong> en la ventana principal (Traveling, Flyby o
-        Torre de control). El cursor, la pausa y la velocidad lo controlan igual que la
-        ventana.</p>
+        <p>Con la casilla <span class="ui">Repetir en MSFS</span> marcada, la repetición también
+        tiene lugar en el simulador: <strong>su propio avión</strong>, congelado, se traslada a la
+        pista y rehace exactamente su aproximación y su aterrizaje, apoyado al centímetro sobre el
+        suelo de MSFS, filmado por el <strong>modo de cámara seleccionado</strong> en la ventana
+        principal (Traveling, Flyby o Torre de control). El cursor, la pausa y la velocidad lo
+        controlan igual que la ventana. La casilla está desmarcada al abrir la ventana desde el PC;
+        el teléfono la marca siempre.</p>
         <ul>
-          <li>Para no molestar su vuelo, su avión debe estar <strong>detenido en tierra</strong> o el
-          simulador <strong>en pausa</strong>; si no, la ventana reproduce sola y lo indica.</li>
-          <li>El fantasma se retira y vuelve la vista anterior al final, cuando detiene la
-          repetición o cierra la ventana, si cambia de vista en MSFS, si su avión se mueve o si
-          cambia de aeronave.</li>
-          <li>Si la librea no está instalada, MSFS usa la librea por defecto (Camify lo indica); si
-          falta la propia aeronave, solo es posible la repetición en la ventana.</li>
+          <li>Su avión debe estar <strong>detenido en tierra</strong>, el simulador <strong>sin
+          pausa</strong> y el aterrizaje a menos de 200 km; si no, la ventana reproduce sola e
+          indica por qué.</li>
+          <li>Al empezar, MSFS carga la escena unos segundos. Al final de la película, el avión se
+          queda en la última imagen hasta que usted detenga la repetición.</li>
+          <li>Al detener la repetición o cerrar la ventana, su avión <strong>vuelve a su
+          sitio</strong>, se descongela y vuelve la vista anterior. Si cambia de vista en MSFS, mueve
+          el avión o cambia de aeronave, la repetición se detiene y el avión solo se descongela,
+          donde esté.</li>
+          <li>Con otra aeronave que la grabada, la repetición se hace con la suya (Camify lo
+          indica). Durante una repetición no se graba ningún aterrizaje nuevo.</li>
+          <li>Si Camify se cierra bruscamente durante una repetición, en el siguiente inicio una
+          franja propone <span class="btn-label">Colocar</span> su avión en su sitio o
+          <span class="btn-label">Ignorar</span>. Nada se mueve sin su clic.</li>
         </ul>
         <div class="callout tip">
           <strong>El buen momento</strong>
           Una vez estacionado, con los motores apagados: lance la repetición del último aterrizaje
-          y elija el modo Torre de control para volver a verlo desde el borde de la pista.
+          y elija el modo Torre de control para volver a verlo desde el borde de la pista. Al
+          detenerla, su avión vuelve a su plaza de estacionamiento.
         </div>
       </div>
 
@@ -635,7 +644,8 @@
         el icono y la calificación del último aterrizaje de la sesión. Al tocarlo, lo repite en
         MSFS, con el modo de cámara elegido en el PC, y abre la
         <a href="#repeticion-ventana">ventana de repetición</a> en el PC; como en el PC, su avión
-        debe estar detenido en tierra o el simulador en pausa. Toque de nuevo para detener.</p>
+        debe estar detenido en tierra y el simulador sin pausa. Toque de nuevo para detener: su
+        avión vuelve a su sitio.</p>
         <p>El teléfono <strong>no puede modificar nada más</strong>: ni los ajustes de los modos,
         ni el atajo, ni la configuración.</p>
       </div>
@@ -828,9 +838,10 @@
         seguido de un motor y al aire, no se graba.</p>
 
         <h4>Se rechaza «Repetir en MSFS»</h4>
-        <p>Detenga su avión en tierra (velocidad nula) o ponga el simulador en pausa y vuelva a
-        lanzar la repetición. Si la aeronave grabada no está instalada en su MSFS, solo es posible
-        la reproducción en la ventana.</p>
+        <p>Detenga su avión en tierra (velocidad nula), quite la pausa del simulador y vuelva a
+        lanzar la repetición. El aterrizaje debe estar a menos de 200 km de su avión. Si una franja
+        pregunta si desea colocar su avión en su sitio, respóndala primero. La ventana de
+        repetición indica el motivo exacto.</p>
 
         <h4>El teléfono muestra «PC inaccesible»</h4>
         <p>Compruebe que Camify está abierto, que el acceso desde el teléfono está marcado y que

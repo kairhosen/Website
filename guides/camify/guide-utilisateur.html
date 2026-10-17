@@ -111,7 +111,7 @@
         <p>Les modes se lancent aussi depuis un <strong>téléphone</strong> ou une tablette, qui
         reçoit en plus des captures d'écran du simulateur : voir
         <a href="#telephone">Accès depuis le téléphone</a>.</p>
-        <p>Camify ne pilote jamais votre avion et n'enregistre pas de vidéo : il place la caméra du
+        <p>Camify ne pilote jamais votre avion en vol (seul le replay dans MSFS le déplace, au sol, à votre demande) et n'enregistre pas de vidéo : il place la caméra du
         simulateur. Pour garder une trace, utilisez votre outil de capture habituel (par exemple
         la Xbox Game Bar de Windows, <kbd>Win</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>R</kbd>).</p>
       </div>
@@ -506,25 +506,33 @@
 
       <h3 id="replay-msfs">Rejouer dans MSFS</h3>
       <div class="card">
-        <p>Case <span class="ui">Rejouer dans MSFS</span> cochée (par défaut), le replay a aussi lieu
-        dans le simulateur : un <strong>avion fantôme</strong>, même appareil et même livrée, refait
-        exactement votre approche et votre atterrissage, filmé par le <strong>mode caméra
-        sélectionné</strong> dans la fenêtre principale (Traveling, Flyby ou Tour de contrôle). Le
-        curseur, la pause et la vitesse le pilotent comme la fenêtre.</p>
+        <p>Case <span class="ui">Rejouer dans MSFS</span> cochée, le replay a aussi lieu dans le
+        simulateur : <strong>votre propre avion</strong>, gelé, est déplacé sur la piste et refait
+        exactement votre approche et votre atterrissage, posé au centimètre près sur le sol de MSFS,
+        filmé par le <strong>mode caméra sélectionné</strong> dans la fenêtre principale (Traveling,
+        Flyby ou Tour de contrôle). Le curseur, la pause et la vitesse le pilotent comme la fenêtre.
+        La case est décochée à l'ouverture depuis le PC ; le téléphone la coche d'office.</p>
         <ul>
-          <li>Pour ne pas gêner votre vol, il faut que votre avion soit <strong>arrêté au sol</strong>
-          ou que le simulateur soit <strong>en pause</strong> ; sinon la fenêtre rejoue seule et le
-          dit.</li>
-          <li>Le fantôme est retiré et la vue d'avant revient à la fin, quand vous arrêtez le replay
-          ou fermez la fenêtre, si vous changez de vue dans MSFS, si votre avion bouge ou si vous
-          changez d'appareil.</li>
-          <li>Si la livrée n'est pas installée, MSFS prend la livrée par défaut (Camify le signale) ;
-          si l'appareil lui-même est absent, seul le replay dans la fenêtre est possible.</li>
+          <li>Il faut que votre avion soit <strong>arrêté au sol</strong>, le simulateur
+          <strong>hors pause</strong>, et l'atterrissage à moins de 200 km ; sinon la fenêtre rejoue
+          seule et dit pourquoi.</li>
+          <li>Au départ, MSFS charge la scène quelques secondes. À la fin du film, l'avion reste sur
+          la dernière image jusqu'à ce que vous arrêtiez.</li>
+          <li>Quand vous arrêtez le replay ou fermez la fenêtre, votre avion est <strong>remis à sa
+          place</strong>, dégelé, et la vue d'avant revient. Si vous changez de vue dans MSFS,
+          déplacez l'avion ou changez d'appareil, le replay s'arrête et l'avion est seulement
+          dégelé, là où il est.</li>
+          <li>Avec un autre appareil que celui de l'enregistrement, le replay se fait avec le vôtre
+          (Camify le signale). Pendant un replay, aucun nouvel atterrissage n'est enregistré.</li>
+          <li>Si Camify se ferme brutalement pendant un replay, au lancement suivant un bandeau
+          propose <span class="btn-label">Remettre</span> votre avion à sa place ou
+          <span class="btn-label">Ignorer</span>. Rien n'est déplacé sans votre clic.</li>
         </ul>
         <div class="callout tip">
           <strong>Le bon moment</strong>
           Une fois garé au parking, moteurs coupés : lancez le replay du dernier atterrissage et
-          choisissez le mode Tour de contrôle pour le revoir depuis le bord de piste.
+          choisissez le mode Tour de contrôle pour le revoir depuis le bord de piste. À l'arrêt,
+          votre avion retrouve sa place au parking.
         </div>
       </div>
 
@@ -633,8 +641,8 @@
         <p>Sous les modes, <span class="btn-label">Replay du dernier atterrissage</span> montre
         l'icône et la note du dernier atterrissage de la session. Le toucher le rejoue dans MSFS,
         avec le mode caméra choisi sur le PC, et ouvre la <a href="#replay-fenetre">fenêtre de
-        replay</a> sur le PC ; comme sur le PC, votre avion doit être arrêté au sol ou le simulateur
-        en pause. Touchez à nouveau pour arrêter.</p>
+        replay</a> sur le PC ; comme sur le PC, votre avion doit être arrêté au sol et le simulateur
+        hors pause. Touchez à nouveau pour arrêter : votre avion est remis à sa place.</p>
         <p>Le téléphone ne peut <strong>rien modifier d'autre</strong> : ni les réglages des
         modes, ni le raccourci, ni la configuration.</p>
       </div>
@@ -827,9 +835,10 @@
         suivi d'une remise de gaz, n'est pas enregistré.</p>
 
         <h4>« Rejouer dans MSFS » est refusé</h4>
-        <p>Arrêtez votre avion au sol (vitesse nulle) ou mettez le simulateur en pause, puis relancez
-        le replay. Si l'appareil de l'enregistrement n'est pas installé dans votre MSFS, seule la
-        lecture dans la fenêtre est possible.</p>
+        <p>Arrêtez votre avion au sol (vitesse nulle), sortez le simulateur de la pause, puis
+        relancez le replay. L'atterrissage doit être à moins de 200 km de votre avion. Si un bandeau
+        demande de remettre votre avion à sa place, répondez-y d'abord. La fenêtre de replay en
+        donne la raison exacte.</p>
 
         <h4>Le téléphone affiche « PC injoignable »</h4>
         <p>Vérifiez que Camify est ouvert, que l'accès depuis le téléphone est coché et que le
