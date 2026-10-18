@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Camify — User guide</title>
-<meta name="description" content="Complete guide to Camify, the cinematic cameras for Microsoft Flight Simulator 2024: Traveling, Flyby and Control tower modes, settings, keyboard shortcut, control and screenshots from a phone." />
+<meta name="description" content="Complete guide to Camify, the cinematic cameras for Microsoft Flight Simulator 2024: Traveling, Flyby and Control tower modes, settings, keyboard shortcut, control, screenshots and live stream from a phone." />
 <link rel="canonical" href="http://cdl.kairhosen.com/guides/camify/user-guide.html" />
 <link rel="alternate" hreflang="fr" href="http://cdl.kairhosen.com/guides/camify/guide-utilisateur.html" />
 <link rel="alternate" hreflang="en" href="http://cdl.kairhosen.com/guides/camify/user-guide.html" />
@@ -54,6 +54,7 @@
           <li><a href="#phone-enable">Enabling and pairing</a></li>
           <li><a href="#phone-modes">Controlling the cameras</a></li>
           <li><a href="#phone-screenshots">MSFS screenshots</a></li>
+          <li><a href="#phone-live">Live stream</a></li>
           <li><a href="#phone-security">Security</a></li>
         </ul>
       </li>
@@ -558,7 +559,7 @@
 
     <section id="phone" class="tab-section">
       <h2 class="section-title"><span class="emoji">📱</span> 6. Phone access</h2>
-      <p class="section-lead">The phone as a remote control for the cameras, and MSFS screenshots in your pocket.</p>
+      <p class="section-lead">The phone as a remote control for the cameras, MSFS screenshots and live view in your pocket.</p>
       <div class="card">
         <p>From a <strong>phone</strong> or a <strong>tablet</strong> (iPhone, Android…), in its
         web browser and with nothing to install, you can:</p>
@@ -569,14 +570,16 @@
           loaded aircraft;</li>
           <li><strong>replay the last landing</strong> in MSFS;</li>
           <li><strong>capture the MSFS window</strong> and get the images on the phone, to keep
-          them in Photos.</li>
+          them in Photos;</li>
+          <li>watch MSFS <strong>live</strong> (<a href="#phone-live">live stream</a>) and change
+          the view.</li>
         </ul>
         <p>Access is <strong>disabled by default</strong>. The phone must be on the <strong>same
         network</strong> as the PC (the same Wi-Fi), or connected through Tailscale when away from
         home.</p>
         <div class="shot-row">
           <figure class="shot phone">
-            <img src="images/en-telephone.jpg" alt="Phone page: large Traveling (playing), Flyby and Control tower buttons, screenshots panel with three images, camera status at the bottom" loading="lazy" />
+            <img src="images/en-telephone.jpg" alt="Phone page: large Traveling (playing), Flyby and Control tower buttons, last landing replay, Live stream, screenshots panel, camera status at the bottom" loading="lazy" />
             <figcaption>The phone page, Traveling playing.</figcaption>
           </figure>
           <figure class="shot phone-wide">
@@ -665,6 +668,44 @@
         </div>
       </div>
 
+      <h3 id="phone-live">Live stream</h3>
+      <div class="card">
+        <p>The phone can also show the <strong>MSFS window live</strong>, as video without sound
+        (up to 720p, 60 frames per second), and change the view without touching the PC.</p>
+        <ol>
+          <li>In the <a href="#settings-tab">Settings</a> window, <span class="ui">📱 Phone
+          access</span> card, tick <strong>Allow the live stream to the phone</strong> (unticked by
+          default; phone access must be enabled).</li>
+          <li>On the phone, tap <span class="btn-label">Live stream</span>, under the replay: the
+          video opens full screen and starts within a second or two.</li>
+        </ol>
+        <ul>
+          <li><span class="ui">Cockpit</span> and <span class="ui">External</span> change the
+          simulator view. If a Camify mode is playing, it stops first. Changing the view is refused
+          during a replay.</li>
+          <li>The <span class="ui">Traveling</span>, <span class="ui">Flyby</span>,
+          <span class="ui">Control tower</span> and <span class="btn-label">Stop</span> buttons control the
+          modes without leaving the video.</li>
+          <li>After four seconds without touching the screen, the buttons fade out (only the close
+          button stays, dimmed): tap the video to bring them back. The <strong>full screen</strong> button hides the rest of the page; on
+          iPhone it is the native full screen, without the view buttons.</li>
+          <li>If the picture falls behind, the page plays slightly faster or jumps back to live. In
+          the background or with the screen locked, the stream pauses and resumes when you
+          return.</li>
+          <li>On the PC, a banner shows <span class="ui">One phone is watching the live
+          stream.</span>; <span class="btn-label">Stop live stream</span> stops it for every
+          phone.</li>
+        </ul>
+        <div class="callout note">
+          <strong>Requirements</strong>
+          Two phones at most watch at the same time. The PC needs a <strong>hardware H.264 video
+          encoder</strong> (otherwise the live stream is refused); on iPhone, <strong>iOS 17.1</strong> or
+          later is required. The stream is only encoded while a phone is watching. After a Wi-Fi
+          drop, the live stream resumes by itself if the connection comes back within 30 seconds;
+          otherwise, start it again.
+        </div>
+      </div>
+
       <h3 id="phone-security">Security</h3>
       <div class="card">
         <ul>
@@ -678,11 +719,15 @@
           <li>Only devices on your <strong>local network</strong> or your Tailscale network can
           connect, up to four at a time; connections from the Internet are refused.</li>
           <li>The phone only sends a <strong>closed list of commands</strong> (start a mode, stop,
-          replay the last landing, capture, show a screenshot): it can neither change a setting,
+          replay the last landing, capture, show a screenshot, start or leave the live stream,
+          pick the cockpit or external view): it can neither change a setting,
           read a file on the PC nor browse your landings.</li>
           <li>Only the <strong>MSFS window</strong> is captured, never the rest of the screen.
           Screenshots stay <strong>in memory</strong> in Camify, are never written to disk, and are
           erased when it closes, when you untick access or when you change the code.</li>
+          <li>The <strong>live stream</strong> has its own checkbox, unticked by default. The video
+          only shows the MSFS window, travels only over the authenticated connection, is never
+          recorded and stops as soon as no phone is watching.</li>
         </ul>
         <p>The setting and the code are saved in <code class="path">settings.json</code>, next to
         the executable.</p>
@@ -725,7 +770,7 @@
 
         <h4>📱 Phone access</h4>
         <p>Enables the phone page, chooses the PC address, shows the QR code and changes the
-        secret code; the status line shows the listening port (8742) and the number of connected
+        secret code, and allows the live stream (separate checkbox, unticked by default); the status line shows the listening port (8742) and the number of connected
         phones. Everything is detailed in <a href="#phone">Phone access</a>.</p>
 
         <h4>🎬 Landing replay</h4>
@@ -846,6 +891,12 @@
         <p>MSFS 2024 must be running and its window must not be minimized. In exclusive full
         screen, switch the simulator to windowed full screen. The <a href="#log-tab">log</a> gives
         the details of the error.</p>
+
+        <h4>The live stream does not start or stops</h4>
+        <p>Tick “Allow the live stream to the phone” in the Settings; two phones at most can watch.
+        On iPhone, iOS 17.1 or later is required. If the PC has no hardware H.264 video encoder,
+        the live stream is impossible. After a Wi-Fi drop of more than 30 seconds, start it again from the phone; the
+        <a href="#log-tab">log</a> gives the reason for a stop.</p>
       </div>
     </section>
 

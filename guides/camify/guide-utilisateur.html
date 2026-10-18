@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Camify — Guide de l'utilisateur</title>
-<meta name="description" content="Guide complet de Camify, les caméras cinématiques pour Microsoft Flight Simulator 2024 : modes Traveling, Flyby et Tour de contrôle, réglages, raccourci clavier, pilotage et captures depuis le téléphone." />
+<meta name="description" content="Guide complet de Camify, les caméras cinématiques pour Microsoft Flight Simulator 2024 : modes Traveling, Flyby et Tour de contrôle, réglages, raccourci clavier, pilotage, captures et live stream depuis le téléphone." />
 <link rel="canonical" href="http://cdl.kairhosen.com/guides/camify/guide-utilisateur.html" />
 <link rel="alternate" hreflang="fr" href="http://cdl.kairhosen.com/guides/camify/guide-utilisateur.html" />
 <link rel="alternate" hreflang="en" href="http://cdl.kairhosen.com/guides/camify/user-guide.html" />
@@ -54,6 +54,7 @@
           <li><a href="#telephone-activer">Activer et appairer</a></li>
           <li><a href="#telephone-modes">Piloter les caméras</a></li>
           <li><a href="#telephone-captures">Captures de MSFS</a></li>
+          <li><a href="#telephone-live">Live stream</a></li>
           <li><a href="#telephone-securite">Sécurité</a></li>
         </ul>
       </li>
@@ -565,7 +566,7 @@
 
     <section id="telephone" class="tab-section">
       <h2 class="section-title"><span class="emoji">📱</span> 6. Accès depuis le téléphone</h2>
-      <p class="section-lead">Le téléphone comme télécommande des caméras, et les captures de MSFS dans la poche.</p>
+      <p class="section-lead">Le téléphone comme télécommande des caméras, les captures et le direct de MSFS dans la poche.</p>
       <div class="card">
         <p>Depuis un <strong>téléphone</strong> ou une <strong>tablette</strong> (iPhone,
         Android…), dans son navigateur et sans rien installer, vous pouvez :</p>
@@ -576,14 +577,16 @@
           l'appareil chargé ;</li>
           <li><strong>rejouer le dernier atterrissage</strong> dans MSFS ;</li>
           <li><strong>capturer la fenêtre de MSFS</strong> et retrouver les images sur le
-          téléphone, pour les garder dans Photos.</li>
+          téléphone, pour les garder dans Photos ;</li>
+          <li>regarder MSFS <strong>en direct</strong> (<a href="#telephone-live">live stream</a>)
+          et changer de vue.</li>
         </ul>
         <p>L'accès est <strong>désactivé par défaut</strong>. Le téléphone doit être sur le
         <strong>même réseau</strong> que le PC (le même Wi-Fi), ou relié par Tailscale hors de chez
         vous.</p>
         <div class="shot-row">
           <figure class="shot phone">
-            <img src="images/fr-telephone.jpg" alt="Page du téléphone : grands boutons Traveling (en cours), Flyby et Tour de contrôle, cadre des captures avec trois images, état de la caméra en bas" loading="lazy" />
+            <img src="images/fr-telephone.jpg" alt="Page du téléphone : grands boutons Traveling (en cours), Flyby et Tour de contrôle, replay du dernier atterrissage, Live stream, cadre des captures, état de la caméra en bas" loading="lazy" />
             <figcaption>La page du téléphone, Traveling en cours.</figcaption>
           </figure>
           <figure class="shot phone-wide">
@@ -673,6 +676,44 @@
         </div>
       </div>
 
+      <h3 id="telephone-live">Live stream</h3>
+      <div class="card">
+        <p>Le téléphone peut aussi afficher la <strong>fenêtre de MSFS en direct</strong>, en vidéo
+        sans son (jusqu'à 720p, 60 images par seconde), et changer de vue sans toucher au PC.</p>
+        <ol>
+          <li>Dans la fenêtre <a href="#onglet-configuration">Configuration</a>, cadre
+          <span class="ui">📱 Accès depuis le téléphone</span>, cochez <strong>Autoriser le live
+          stream vers le téléphone</strong> (décoché par défaut ; l'accès depuis le téléphone doit être
+          activé).</li>
+          <li>Sur le téléphone, touchez <span class="btn-label">Live stream</span>, sous le replay :
+          la vidéo s'ouvre en plein écran et démarre en une ou deux secondes.</li>
+        </ol>
+        <ul>
+          <li><span class="ui">Cockpit</span> et <span class="ui">Extérieur</span> changent la vue
+          du simulateur. Si un mode Camify tourne, il s'arrête d'abord. Le changement de vue est
+          refusé pendant un replay.</li>
+          <li>Les boutons <span class="ui">Traveling</span>, <span class="ui">Flyby</span>,
+          <span class="ui">Tour de contrôle</span> et <span class="btn-label">Arrêter</span> pilotent les modes
+          sans quitter la vidéo.</li>
+          <li>Sans toucher l'écran pendant quatre secondes, les boutons s'effacent (seul le bouton de
+          fermeture reste, atténué) : touchez la vidéo pour les faire revenir. Le bouton <strong>plein écran</strong> masque le reste de la page ;
+          sur iPhone, c'est le plein écran natif, sans les boutons de vue.</li>
+          <li>Si l'image prend du retard, la page accélère légèrement la lecture ou saute au direct.
+          Mise en arrière-plan ou écran verrouillé, le flux se met en pause et reprend au retour.</li>
+          <li>Sur le PC, un bandeau indique <span class="ui">Un téléphone regarde le live
+          stream.</span> ; <span class="btn-label">Arrêter le live stream</span> l'arrête pour tous
+          les téléphones.</li>
+        </ul>
+        <div class="callout note">
+          <strong>Conditions</strong>
+          Deux téléphones au plus regardent en même temps. Le PC doit avoir un
+          <strong>encodeur vidéo matériel H.264</strong> (sinon le live stream est refusé) ; sur
+          iPhone, <strong>iOS 17.1</strong> ou plus récent est requis. Le flux n'est encodé que
+          pendant qu'un téléphone regarde. Après une coupure du Wi-Fi, le live stream reprend seul si
+          la connexion revient dans les 30 secondes ; sinon, relancez-le.
+        </div>
+      </div>
+
       <h3 id="telephone-securite">Sécurité</h3>
       <div class="card">
         <ul>
@@ -688,12 +729,16 @@
           Tailscale peuvent se connecter, jusqu'à quatre à la fois ; les connexions venant
           d'Internet sont refusées.</li>
           <li>Le téléphone n'envoie qu'une <strong>liste fermée de commandes</strong> (démarrer un
-          mode, arrêter, rejouer le dernier atterrissage, capturer, afficher une capture) : il ne
+          mode, arrêter, rejouer le dernier atterrissage, capturer, afficher une capture, lancer ou
+          quitter le live stream, choisir la vue cockpit ou extérieure) : il ne
           peut ni modifier un réglage, ni lire un fichier du PC, ni parcourir vos atterrissages.</li>
           <li>Seule la <strong>fenêtre de MSFS</strong> est capturée, jamais le reste de l'écran.
           Les captures restent <strong>en mémoire</strong> dans Camify, ne sont jamais écrites sur
           le disque et sont effacées à sa fermeture, quand vous décochez l'accès ou changez le
           code.</li>
+          <li>Le <strong>live stream</strong> a sa propre case, décochée par défaut. La vidéo ne
+          montre que la fenêtre de MSFS, passe uniquement par la connexion authentifiée, n'est
+          jamais enregistrée et s'arrête dès qu'aucun téléphone ne regarde.</li>
         </ul>
         <p>Le réglage et le code sont enregistrés dans <code class="path">settings.json</code>, à
         côté de l'exécutable.</p>
@@ -736,7 +781,7 @@
 
         <h4>📱 Accès depuis le téléphone</h4>
         <p>Active la page du téléphone, choisit l'adresse du PC, affiche le QR code et change le
-        code secret ; la ligne d'état indique le port d'écoute (8742) et le nombre de téléphones
+        code secret, et autorise le live stream (case séparée, décochée par défaut) ; la ligne d'état indique le port d'écoute (8742) et le nombre de téléphones
         connectés. Tout est détaillé dans <a href="#telephone">Accès depuis le téléphone</a>.</p>
 
         <h4>🎬 Replay des atterrissages</h4>
@@ -858,6 +903,13 @@
         <p>MSFS 2024 doit être lancé et sa fenêtre ne doit pas être réduite. En plein écran
         exclusif, passez le simulateur en plein écran fenêtré. Le
         <a href="#onglet-journal">journal</a> donne le détail de l'erreur.</p>
+
+        <h4>Le live stream ne démarre pas ou s'arrête</h4>
+        <p>Cochez « Autoriser le live stream vers le téléphone » dans la Configuration ; deux
+        téléphones au plus peuvent regarder. Sur iPhone, iOS 17.1 ou plus récent est requis. Si le
+        PC n'a pas d'encodeur vidéo matériel H.264, le live stream est impossible. Après une coupure
+        du Wi-Fi de plus de 30 secondes, relancez-le depuis le téléphone ; le <a href="#onglet-journal">journal</a> donne
+        la raison d'un arrêt.</p>
       </div>
     </section>
 
