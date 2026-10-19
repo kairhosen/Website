@@ -42,7 +42,7 @@
       </li>
       <li><a href="#replay">5. Landing replay</a>
         <ul class="sub">
-          <li><a href="#replay-recording">Automatic recording</a></li>
+          <li><a href="#replay-recording">Recording landings</a></li>
           <li><a href="#replay-window">Replay window</a></li>
           <li><a href="#replay-quality">Landing quality</a></li>
           <li><a href="#replay-msfs">Replay in MSFS</a></li>
@@ -411,16 +411,18 @@
           in MSFS);</li>
           <li><strong>My landings</strong>: the number of landings saved on disk;
           <span class="btn-label">Open</span> shows the <a href="#replay-library">list</a>;</li>
-          <li><strong>Automatic recording</strong>: the recording status, with a red dot and
-          “Recording” during the approach.</li>
+          <li><strong>Auto recording</strong>: the recording status, with a blinking
+          <strong>REC</strong> badge and “Recording” during the approach. When automatic recording
+          is off, the card becomes <strong>Record the next landing</strong>, with a
+          <a href="#replay-recording">record button</a>.</li>
         </ul>
         <figure class="shot">
-          <img src="images/en-replay-carte.png" alt="Main window, Landing replay panel expanded: Last landing, My landings (3 landings recorded) and Automatic recording cards" loading="lazy" />
+          <img src="images/en-replay-carte.png" alt="Main window, Landing replay panel expanded: Last landing, My landings (3 landings recorded) and Auto recording cards" loading="lazy" />
           <figcaption>The Replay panel expanded.</figcaption>
         </figure>
       </div>
 
-      <h3 id="replay-recording">Automatic recording</h3>
+      <h3 id="replay-recording">Recording landings</h3>
       <div class="card">
         <p>Nothing to start: as soon as the <strong>gear is down</strong> on descent (below
         5,000 ft above ground), Camify records the approach, touchdown and rollout, then stops when
@@ -429,9 +431,15 @@
         recording; a <strong>touch-and-go</strong> is recorded, then Camify gets ready for the next
         landing.</p>
         <p>Recording only reads the simulator: it touches neither your aircraft nor the camera, and
-        works even when no camera mode is running. It can be turned off in the
+        works even when no camera mode is running. A red <strong>REC</strong> badge blinks next to
+        the message while it runs.</p>
+        <p>Automatic recording can be turned off in the
         <a href="#settings-tab">Settings</a> (<strong>Record my landings automatically</strong>,
-        ticked by default).</p>
+        ticked by default). The card is then titled <strong>Record the next landing</strong>: click
+        its round <strong>red dot</strong> button to record only the next landing, the same way.
+        Once armed, the button turns into a <strong>red square</strong> that cancels it. A
+        go-around keeps it armed; a recorded landing (or touch-and-go) uses it up, so click again
+        for the following one.</p>
         <div class="callout note">
           <strong>One file per landing</strong>
           Each landing is written to the <code class="path">replays</code> folder, next to the
@@ -775,7 +783,8 @@
 
         <h4>🎬 Landing replay</h4>
         <p><strong>Record my landings automatically</strong> (ticked by default): unticked, Camify
-        records nothing more; landings already saved stay in
+        records only the landing armed with the button of the
+        <a href="#replay-recording">Record the next landing</a> card; landings already saved stay in
         <a href="#replay-library">My landings</a>.</p>
 
         <h4>🛬 Airports and runways</h4>
@@ -866,7 +875,9 @@
 
         <h4>No landing is recorded</h4>
         <p>Check that <strong>Record my landings automatically</strong> is ticked in the
-        <a href="#settings-tab">Settings</a>. Recording starts when the gear comes down on descent:
+        <a href="#settings-tab">Settings</a> or, if not, that you clicked the record button of the
+        <a href="#replay-recording">Record the next landing</a> card before the approach.
+        Recording starts when the gear comes down on descent:
         a landing begun before Camify was started, or followed by a go-around, is not
         recorded.</p>
 

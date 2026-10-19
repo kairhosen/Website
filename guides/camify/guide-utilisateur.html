@@ -42,7 +42,7 @@
       </li>
       <li><a href="#replay">5. Replay de l'atterrissage</a>
         <ul class="sub">
-          <li><a href="#replay-enregistrement">Enregistrement automatique</a></li>
+          <li><a href="#replay-enregistrement">Enregistrement des atterrissages</a></li>
           <li><a href="#replay-fenetre">Fenêtre de replay</a></li>
           <li><a href="#replay-qualite">Qualité de l'atterrissage</a></li>
           <li><a href="#replay-msfs">Rejouer dans MSFS</a></li>
@@ -418,16 +418,19 @@
           <li><strong>Mes atterrissages</strong> : le nombre d'atterrissages enregistrés sur le
           disque ; <span class="btn-label">Ouvrir</span> affiche la
           <a href="#replay-bibliotheque">liste</a> ;</li>
-          <li><strong>Enregistrement automatique</strong> : l'état de l'enregistrement, avec un point
-          rouge « Enregistrement en cours » pendant l'approche.</li>
+          <li><strong>Enregistrement auto</strong> : l'état de l'enregistrement, avec un badge
+          <strong>REC</strong> clignotant « Enregistrement en cours » pendant l'approche. Si
+          l'enregistrement automatique est désactivé, la carte devient
+          <strong>Enregistrer le prochain atterrissage</strong>, avec un
+          <a href="#replay-enregistrement">bouton d'enregistrement</a>.</li>
         </ul>
         <figure class="shot">
-          <img src="images/fr-replay-carte.png" alt="Fenêtre principale, cadre Replay des atterrissages déplié : cartes Dernier atterrissage, Mes atterrissages (3 atterrissages enregistrés) et Enregistrement automatique" loading="lazy" />
+          <img src="images/fr-replay-carte.png" alt="Fenêtre principale, cadre Replay des atterrissages déplié : cartes Dernier atterrissage, Mes atterrissages (3 atterrissages enregistrés) et Enregistrement auto" loading="lazy" />
           <figcaption>Le cadre Replay déplié.</figcaption>
         </figure>
       </div>
 
-      <h3 id="replay-enregistrement">Enregistrement automatique</h3>
+      <h3 id="replay-enregistrement">Enregistrement des atterrissages</h3>
       <div class="card">
         <p>Rien à lancer : dès que le <strong>train est sorti</strong> en descente (sous 5 000 ft
         sol), Camify enregistre l'approche, le toucher et le roulage, puis s'arrête à la
@@ -436,9 +439,16 @@
         l'enregistrement ; un <strong>touch-and-go</strong> est enregistré, puis Camify se prépare
         pour l'atterrissage suivant.</p>
         <p>L'enregistrement ne fait que lire le simulateur : il ne touche ni à votre avion, ni à la
-        caméra, et fonctionne même quand aucun mode caméra ne tourne. Il se désactive dans la
+        caméra, et fonctionne même quand aucun mode caméra ne tourne. Un badge
+        <strong>REC</strong> rouge clignote à côté du message tant qu'il est en cours.</p>
+        <p>L'enregistrement automatique se désactive dans la
         <a href="#onglet-configuration">Configuration</a> (case
-        <strong>Enregistrer automatiquement mes atterrissages</strong>, cochée par défaut).</p>
+        <strong>Enregistrer automatiquement mes atterrissages</strong>, cochée par défaut). La
+        carte s'intitule alors <strong>Enregistrer le prochain atterrissage</strong> : cliquez sur
+        son bouton rond à <strong>point rouge</strong> pour enregistrer le seul atterrissage
+        suivant, de la même façon. Une fois armé, le bouton devient un <strong>carré rouge</strong>
+        qui annule l'enregistrement. Une remise de gaz garde l'armement ; un atterrissage
+        enregistré (ou un touch-and-go) le consomme, il faut recliquer pour le suivant.</p>
         <div class="callout note">
           <strong>Un fichier par atterrissage</strong>
           Chaque atterrissage est écrit dans le dossier <code class="path">replays</code>, à côté de
@@ -786,7 +796,9 @@
 
         <h4>🎬 Replay des atterrissages</h4>
         <p><strong>Enregistrer automatiquement mes atterrissages</strong> (cochée par défaut) :
-        décochée, Camify n'enregistre plus rien ; les atterrissages déjà enregistrés restent dans
+        décochée, Camify n'enregistre que l'atterrissage armé avec le bouton de la carte
+        <a href="#replay-enregistrement">Enregistrer le prochain atterrissage</a> ; les
+        atterrissages déjà enregistrés restent dans
         <a href="#replay-bibliotheque">Mes atterrissages</a>.</p>
 
         <h4>🛬 Aéroports et pistes</h4>
@@ -878,7 +890,10 @@
 
         <h4>Aucun atterrissage n'est enregistré</h4>
         <p>Vérifiez que la case <strong>Enregistrer automatiquement mes atterrissages</strong> est
-        cochée dans la <a href="#onglet-configuration">Configuration</a>. L'enregistrement démarre
+        cochée dans la <a href="#onglet-configuration">Configuration</a>, ou, sinon, que vous avez
+        cliqué sur le bouton d'enregistrement de la carte
+        <a href="#replay-enregistrement">Enregistrer le prochain atterrissage</a> avant
+        l'approche. L'enregistrement démarre
         quand le train sort en descente : un atterrissage commencé avant le lancement de Camify, ou
         suivi d'une remise de gaz, n'est pas enregistré.</p>
 

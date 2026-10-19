@@ -42,7 +42,7 @@
       </li>
       <li><a href="#repeticion">5. Repetición del aterrizaje</a>
         <ul class="sub">
-          <li><a href="#repeticion-grabacion">Grabación automática</a></li>
+          <li><a href="#repeticion-grabacion">Grabación de los aterrizajes</a></li>
           <li><a href="#repeticion-ventana">Ventana de repetición</a></li>
           <li><a href="#repeticion-calidad">Calidad del aterrizaje</a></li>
           <li><a href="#repeticion-msfs">Repetir en MSFS</a></li>
@@ -416,16 +416,18 @@
           repetición y, si es posible, en MSFS);</li>
           <li><strong>Mis aterrizajes</strong>: el número de aterrizajes guardados en el disco;
           <span class="btn-label">Abrir</span> muestra la <a href="#repeticion-biblioteca">lista</a>;</li>
-          <li><strong>Grabación automática</strong>: el estado de la grabación, con un punto rojo
-          «Grabando» durante la aproximación.</li>
+          <li><strong>Grabación auto</strong>: el estado de la grabación, con una insignia
+          <strong>REC</strong> parpadeante «Grabando» durante la aproximación. Si la grabación
+          automática está desactivada, la tarjeta pasa a ser <strong>Grabar el próximo
+          aterrizaje</strong>, con un <a href="#repeticion-grabacion">botón de grabación</a>.</li>
         </ul>
         <figure class="shot">
-          <img src="images/es-replay-carte.png" alt="Ventana principal, panel Repetición de aterrizajes desplegado: tarjetas Último aterrizaje, Mis aterrizajes (3 aterrizajes grabados) y Grabación automática" loading="lazy" />
+          <img src="images/es-replay-carte.png" alt="Ventana principal, panel Repetición de aterrizajes desplegado: tarjetas Último aterrizaje, Mis aterrizajes (3 aterrizajes grabados) y Grabación auto" loading="lazy" />
           <figcaption>El panel de repetición desplegado.</figcaption>
         </figure>
       </div>
 
-      <h3 id="repeticion-grabacion">Grabación automática</h3>
+      <h3 id="repeticion-grabacion">Grabación de los aterrizajes</h3>
       <div class="card">
         <p>No hay nada que iniciar: en cuanto el <strong>tren está bajado</strong> en descenso (por
         debajo de 5000 ft sobre el suelo), Camify graba la aproximación, la toma y la carrera, y se
@@ -434,9 +436,16 @@
         anula la grabación; un <strong>toque y despegue</strong> se graba, y Camify se prepara para
         el aterrizaje siguiente.</p>
         <p>La grabación solo lee el simulador: no toca ni su avión ni la cámara, y funciona incluso
-        sin ningún modo de cámara en marcha. Se desactiva en la
+        sin ningún modo de cámara en marcha. Una insignia <strong>REC</strong> roja parpadea junto
+        al mensaje mientras graba.</p>
+        <p>La grabación automática se desactiva en la
         <a href="#pestana-configuracion">Configuración</a> (casilla
-        <strong>Grabar mis aterrizajes automáticamente</strong>, marcada por defecto).</p>
+        <strong>Grabar mis aterrizajes automáticamente</strong>, marcada por defecto). La tarjeta
+        se titula entonces <strong>Grabar el próximo aterrizaje</strong>: pulse su botón redondo
+        con <strong>punto rojo</strong> para grabar solo el aterrizaje siguiente, de la misma
+        forma. Una vez armado, el botón pasa a ser un <strong>cuadrado rojo</strong> que lo
+        cancela. Un motor y al aire mantiene el armado; un aterrizaje grabado (o un toque y
+        despegue) lo consume: vuelva a pulsar para el siguiente.</p>
         <div class="callout note">
           <strong>Un archivo por aterrizaje</strong>
           Cada aterrizaje se escribe en la carpeta <code class="path">replays</code>, junto al
@@ -790,7 +799,9 @@
 
         <h4>🎬 Repetición de aterrizajes</h4>
         <p><strong>Grabar mis aterrizajes automáticamente</strong> (marcada por defecto):
-        desmarcada, Camify ya no graba nada; los aterrizajes ya guardados siguen en
+        desmarcada, Camify solo graba el aterrizaje armado con el botón de la tarjeta
+        <a href="#repeticion-grabacion">Grabar el próximo aterrizaje</a>; los aterrizajes ya
+        guardados siguen en
         <a href="#repeticion-biblioteca">Mis aterrizajes</a>.</p>
 
         <h4>🛬 Aeropuertos y pistas</h4>
@@ -882,7 +893,10 @@
 
         <h4>No se graba ningún aterrizaje</h4>
         <p>Compruebe que la casilla <strong>Grabar mis aterrizajes automáticamente</strong> está
-        marcada en la <a href="#pestana-configuracion">Configuración</a>. La grabación empieza
+        marcada en la <a href="#pestana-configuracion">Configuración</a> o, si no, que ha pulsado
+        el botón de grabación de la tarjeta
+        <a href="#repeticion-grabacion">Grabar el próximo aterrizaje</a> antes de la
+        aproximación. La grabación empieza
         cuando se baja el tren en descenso: un aterrizaje comenzado antes de iniciar Camify, o
         seguido de un motor y al aire, no se graba.</p>
 
