@@ -42,6 +42,9 @@ jobs:
 
       # Envoie _site en écrasant les fichiers existants ; les fichiers présents uniquement sur le
       # serveur ne sont pas supprimés, sauf les fichiers internes envoyés par erreur auparavant.
+      # Un rm par dossier et sans -f : un « rm -rf a b c » échouait sans rien afficher et laissait
+      # tools/ en ligne. Les erreurs (dossier déjà absent compris) restent visibles dans le journal,
+      # sans arrêter le déploiement, et « cls » montre ce que contient la racine après nettoyage.
       - name: Transférer par SFTP
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
@@ -56,8 +59,11 @@ jobs:
           set cmd:fail-exit yes
           cd "$FTP_DIR"
           set cmd:fail-exit no
-          rm -rf .git .github tools
+          rm -r tools
+          rm -r .git
+          rm -r .github
           rm -f CLAUDE.md README.md .nojekyll .gitignore .gitattributes
+          cls -1a
           set cmd:fail-exit yes
           mirror -R --overwrite --parallel=4 --verbose _site/ .
           bye
